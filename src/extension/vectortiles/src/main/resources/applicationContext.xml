@@ -46,6 +46,7 @@
      <property name="overSamplingFactor" value="2.0">
       <description>Sub-pixel accuracy - higher value means less generalization (higher resolution results)</description>
     </property>
+    <property name="tld" ref="gwcTLDispatcher"/>
   </bean>
     
   <bean id="wmsMapBoxBuilderFactory" class="org.geoserver.wms.mapbox.MapBoxTileBuilderFactory">
@@ -58,6 +59,7 @@
      <property name="overSamplingFactor" value="2.0">
       <description>Sub-pixel accuracy - higher value means less generalization (higher resolution results)</description>
     </property>
+    <property name="tld" ref="gwcTLDispatcher"/>
   </bean>
   
 

@@ -233,6 +233,11 @@
       <artifactId>xmlunit</artifactId>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.geoserver.extension</groupId>
+      <artifactId>gs-vectortiles</artifactId>
+      <version>${project.version}</version>
+    </dependency>
   </dependencies>
   <build>
     <plugins>
@@ -1294,7 +1299,7 @@
         </dependency>
       </dependencies>
    </profile>
-   <profile>
+<!--   <profile>
       <id>vectortiles</id>
       <dependencies>
         <dependency>
@@ -1303,7 +1308,7 @@
           <version>${project.version}</version>
         </dependency>
       </dependencies>
-   </profile>
+   </profile>-->
    <profile>
       <id>gdal-translate</id>
       <dependencies>

@@ -11,6 +11,7 @@ import static org.geotools.renderer.lite.VectorMapRenderUtils.getStyleQuery;
 import com.google.common.base.Stopwatch;
 import java.awt.Rectangle;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.logging.Level;
@@ -29,6 +30,9 @@ import org.geotools.map.Layer;
 import org.geotools.renderer.lite.VectorMapRenderUtils;
 import org.geotools.util.factory.Hints;
 import org.geotools.util.logging.Logging;
+import org.geowebcache.grid.GridSubset;
+import org.geowebcache.layer.TileLayer;
+import org.geowebcache.layer.TileLayerDispatcher;
 import org.locationtech.jts.geom.Geometry;
 import org.opengis.feature.Attribute;
 import org.opengis.feature.ComplexAttribute;
@@ -53,6 +57,8 @@ public class VectorTileMapOutputFormat extends AbstractMapOutputFormat {
             2.0; // 1=no oversampling, 4=four time oversample (generialization will be 1/4 pixel)
 
     private boolean transformToScreenCoordinates;
+
+    private TileLayerDispatcher tld;
 
     public VectorTileMapOutputFormat(VectorTileBuilderFactory tileBuilderFactory) {
         super(tileBuilderFactory.getMimeType(), tileBuilderFactory.getOutputFormats());
@@ -82,13 +88,16 @@ public class VectorTileMapOutputFormat extends AbstractMapOutputFormat {
         this.transformToScreenCoordinates = useScreenCoords;
     }
 
+    public void setTld(TileLayerDispatcher tld) {
+        this.tld = tld;
+    }
+
     @Override
     public WebMap produceMap(final WMSMapContent mapContent) throws ServiceException, IOException {
         checkNotNull(mapContent);
         checkNotNull(mapContent.getRenderingArea());
         checkArgument(mapContent.getMapWidth() > 0);
         checkArgument(mapContent.getMapHeight() > 0);
-
         final ReferencedEnvelope renderingArea = mapContent.getRenderingArea();
         int mapWidth = mapContent.getMapWidth();
         int mapHeight = mapContent.getMapHeight();
@@ -105,7 +114,9 @@ public class VectorTileMapOutputFormat extends AbstractMapOutputFormat {
 
         CoordinateReferenceSystem sourceCrs;
         for (Layer layer : mapContent.layers()) {
-
+            if (!checkCoverage(mapContent, layer)) {
+                continue;
+            }
             FeatureSource<?, ?> featureSource = layer.getFeatureSource();
             GeometryDescriptor geometryDescriptor =
                     featureSource.getSchema().getGeometryDescriptor();
@@ -135,6 +146,43 @@ public class VectorTileMapOutputFormat extends AbstractMapOutputFormat {
 
         WebMap map = vectorTileBuilder.build(mapContent);
         return map;
+    }
+
+    /**
+     * 判断当前成绩是否是显示层级
+     *
+     * @param mapContent
+     * @param layer
+     * @return
+     */
+    public boolean checkCoverage(WMSMapContent mapContent, Layer layer) {
+        try {
+            Map<String, String> rawKvp = mapContent.getRequest().getRawKvp();
+            String layers = rawKvp.get("LAYERS");
+            if (layers.equals(layer.getTitle())) {
+                return true;
+            }
+            // 获取坐标系
+            String gridSetId = rawKvp.get("SRS");
+            gridSetId = gridSetId.substring(gridSetId.indexOf(":") + 1);
+            // 获取当前层级
+            String tileindex = rawKvp.get("TILEINDEX");
+            String[] tileindexs = tileindex.split(",");
+            long[] index = Arrays.stream(tileindexs).mapToLong(i -> Long.valueOf(i)).toArray();
+            String layerId = layer.getTitle();
+            TileLayer tileLayer = tld.getTileLayer(layerId);
+            GridSubset gridSubset = tileLayer.getGridSubset(gridSetId);
+            if (gridSubset.covers(index)) {
+                return true;
+            }
+            if (index[2] < gridSubset.getZoomStart() || index[2] > gridSubset.getZoomStop()) {
+                return false;
+            }
+        } catch (Exception e) {
+            LOGGER.fine("checkCoverage");
+            return true;
+        }
+        return true;
     }
 
     protected Pipeline getPipeline(

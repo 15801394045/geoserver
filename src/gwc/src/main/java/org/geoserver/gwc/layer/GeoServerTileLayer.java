@@ -30,6 +30,7 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import org.geoserver.catalog.Catalog;
@@ -706,7 +707,6 @@ public class GeoServerTileLayer extends TileLayer implements ProxyLayer {
         String srs = gridSubset.getSRS().toString();
         String format = mimeType.getFormat();
         BoundingBox bbox = metaTile.getMetaTileBounds();
-
         params.put("SERVICE", "WMS");
         params.put("VERSION", "1.1.1");
         params.put("REQUEST", "GetMap");
@@ -722,6 +722,13 @@ public class GeoServerTileLayer extends TileLayer implements ProxyLayer {
         params.put("TRANSPARENT", "true");
         params.put(GWC_SEED_INTERCEPT_TOKEN, "true");
 
+        if (tile.getTileIndex() != null) {
+            List<String> collect =
+                    Arrays.stream(tile.getTileIndex())
+                            .mapToObj(i -> String.valueOf(i))
+                            .collect(Collectors.toList());
+            params.put("TILEINDEX", String.join(",", collect));
+        }
         Map<String, String> filteredParams = tile.getFilteringParameters();
         if (filteredParams.isEmpty()) {
             filteredParams = getDefaultParameterFilters();
