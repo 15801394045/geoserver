@@ -10,19 +10,22 @@ import java.util.Map;
 
 /**
  * A store of geoaspatial resources.
- *
+ * 一个地理空间资源库。
  * @author Justin Deoliveira, The Open Planning Project
  */
 public interface StoreInfo extends CatalogInfo {
 
-    /** The catalog the store is part of. */
+    /**
+     * The catalog the store is part of.
+     * 商店所属的目录。
+     * */
     Catalog getCatalog();
 
     /**
      * The store name.
-     *
+     * 商店名称。
      * <p>This value is unique among all stores and can be used to identify the store.
-     *
+     * <p>此值在所有存储中都是唯一的，可用于标识存储。
      * @uml.property name="name"
      */
     String getName();

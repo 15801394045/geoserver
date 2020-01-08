@@ -52,9 +52,11 @@ public class VectorTileMapOutputFormat extends AbstractMapOutputFormat {
     private final VectorTileBuilderFactory tileBuilderFactory;
 
     private boolean clipToMapBounds;
-
-    private double overSamplingFactor =
-            2.0; // 1=no oversampling, 4=four time oversample (generialization will be 1/4 pixel)
+    /**
+     * 1=no oversampling, 4=four time oversample (generialization will be 1/4 pixel)
+     * 1=无过采样，4=四次过采样（一般化为1/4像素）
+     */
+    private double overSamplingFactor = 2.0;
 
     private boolean transformToScreenCoordinates;
 
@@ -66,7 +68,7 @@ public class VectorTileMapOutputFormat extends AbstractMapOutputFormat {
     }
 
     /**
-     * Multiplies density of simplification from its base value.
+     * Multiplies density of simplification from its base value. 将简化的密度与其基值相乘。
      *
      * @param factor
      */
@@ -76,6 +78,7 @@ public class VectorTileMapOutputFormat extends AbstractMapOutputFormat {
 
     /**
      * Does this format use features clipped to the extent of the tile instead of whole features
+     * 此格式是否使用剪切到平铺范围的功能而不是整个功能
      *
      * @param clip
      */
@@ -83,7 +86,7 @@ public class VectorTileMapOutputFormat extends AbstractMapOutputFormat {
         this.clipToMapBounds = clip;
     }
 
-    /** Does this format use screen coordinates */
+    /** Does this format use screen coordinates 此格式是否使用屏幕坐标 */
     public void setTransformToScreenCoordinates(boolean useScreenCoords) {
         this.transformToScreenCoordinates = useScreenCoords;
     }
@@ -109,8 +112,8 @@ public class VectorTileMapOutputFormat extends AbstractMapOutputFormat {
                             this.tileBuilderFactory.getOversampleY() * mapHeight);
         }
 
-        VectorTileBuilder vectorTileBuilder;
-        vectorTileBuilder = this.tileBuilderFactory.newBuilder(paintArea, renderingArea);
+        VectorTileBuilder vectorTileBuilder =
+                this.tileBuilderFactory.newBuilder(paintArea, renderingArea);
 
         CoordinateReferenceSystem sourceCrs;
         for (Layer layer : mapContent.layers()) {
@@ -164,19 +167,26 @@ public class VectorTileMapOutputFormat extends AbstractMapOutputFormat {
             }
             // 获取坐标系
             String gridSetId = rawKvp.get("SRS");
-            gridSetId = gridSetId.substring(gridSetId.indexOf(":") + 1);
+
             // 获取当前层级
             String tileindex = rawKvp.get("TILEINDEX");
             String[] tileindexs = tileindex.split(",");
             long[] index = Arrays.stream(tileindexs).mapToLong(i -> Long.valueOf(i)).toArray();
             String layerId = layer.getTitle();
             TileLayer tileLayer = tld.getTileLayer(layerId);
-            GridSubset gridSubset = tileLayer.getGridSubset(gridSetId);
-            if (gridSubset.covers(index)) {
-                return true;
+            GridSubset gridSubset = null;
+            gridSubset = tileLayer.getGridSubset(gridSetId);
+            if (gridSubset == null) {
+                gridSetId = gridSetId.substring(gridSetId.indexOf(":") + 1);
+                gridSubset = tileLayer.getGridSubset(gridSetId);
             }
-            if (index[2] < gridSubset.getZoomStart() || index[2] > gridSubset.getZoomStop()) {
-                return false;
+            if (gridSubset != null) {
+                if (gridSubset.covers(index)) {
+                    return true;
+                }
+                if (index[2] < gridSubset.getZoomStart() || index[2] > gridSubset.getZoomStop()) {
+                    return false;
+                }
             }
         } catch (Exception e) {
             LOGGER.fine("checkCoverage");
@@ -276,12 +286,11 @@ public class VectorTileMapOutputFormat extends AbstractMapOutputFormat {
                     String.format(
                             "Added %,d out of %,d features of '%s' in %s",
                             count, total, layer.getTitle(), sw);
-            // System.err.println(msg);
             LOGGER.fine(msg);
         }
     }
 
-    /** @return {@code null}, not a raster format. */
+    /** @return {@code null}，不是光栅格式。 */
     @Override
     public MapProducerCapabilities getCapabilities(String format) {
         return null;

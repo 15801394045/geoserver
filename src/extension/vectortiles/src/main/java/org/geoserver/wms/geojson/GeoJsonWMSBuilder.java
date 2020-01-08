@@ -57,9 +57,13 @@ public class GeoJsonWMSBuilder implements VectorTileBuilder {
 
         PrecisionModel pm = null;
         if (SI.RADIAN.equals(standardUnit)) {
-            pm = new PrecisionModel(1e6); // truncate coords at 6 decimals
+            // truncate coords at 6 decimals
+            // 在六位小数处截断坐标
+            pm = new PrecisionModel(1e6);
         } else if (SI.METRE.equals(standardUnit)) {
-            pm = new PrecisionModel(100); // truncate coords at 2 decimals
+            // truncate coords at 2 decimals
+            // 在2位小数处截断坐标
+            pm = new PrecisionModel(100);
         }
         if (pm != null) {
             precisionReducerFilter = new CoordinatePrecisionReducerFilter(pm);

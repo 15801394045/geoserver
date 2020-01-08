@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * Configuration class used to override the default config dir (GEOSERVER_DATA_DIR/cluster/)
+ * 用于重写默认配置目录的配置类（GEOSERVER_DATA_dir/cluster/）
  *
  * @author carlo cancellieri - GeoSolutions SAS
  */
@@ -27,15 +28,17 @@ public final class ConfigDirConfiguration implements JMSConfigurationExt {
 
     /**
      * Override the global config dir
-     *
+     * 覆盖全局配置目录
      * @throws IOException
      */
     @PostConstruct
     private void init() throws IOException {
         // check for override
+        //检查覆盖
         Resource baseDir = null;
         final String baseDirPath = JMSConfiguration.getOverride(CONFIGDIR_KEY);
         // if no override try to load from the GeoServer loader
+        //如果没有覆盖，请尝试从GeoServer加载程序加载
         if (baseDirPath != null) {
             baseDir = Resources.fromPath(baseDirPath);
         } else {

@@ -67,7 +67,7 @@ public class DataAccessNewPage extends AbstractDataAccessPage {
 
     /**
      * Callback method called when the submit button have been pressed and the parameters validation
-     * has succeed.
+     * has succeed. 当按下submit按钮并且参数验证成功时调用回调方法。
      *
      * @see AbstractDataAccessPage#onSaveDataStore(Form)
      */

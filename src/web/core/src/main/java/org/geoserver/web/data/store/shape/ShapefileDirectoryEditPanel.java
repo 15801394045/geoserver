@@ -28,6 +28,7 @@ public class ShapefileDirectoryEditPanel extends ShapefileStoreEditPanel {
         super(componentId, storeEditForm);
     }
 
+    @Override
     protected FileParamPanel buildFileParamPanel(final IModel paramsModel) {
         FileParamPanel file =
                 new DirectoryParamPanel(

@@ -34,7 +34,7 @@ import org.geotools.util.logging.Logging;
 
 /**
  * Utility class for IO related utilities
- *
+ * IO相关实用程序的实用程序类
  * @author Andrea Aime - TOPP
  */
 public class IOUtils {
@@ -325,6 +325,7 @@ public class IOUtils {
 
     /**
      * Zips up the directory contents into the specified {@link ZipOutputStream}.
+     * 将目录内容压缩到指定的{@link ZipOutputStream}。
      *
      * <p>Note this method does not take ownership of the provided zip output stream, meaning the
      * client code is responsible for calling {@link ZipOutputStream#finish() finish()} when it's
@@ -385,10 +386,11 @@ public class IOUtils {
     /**
      * Gets the output file for the provided zip entry and checks that it will not be written
      * outside of the target directory.
+     * 获取所提供zip项的输出文件，并检查该文件是否不会写入目标目录之外。
      *
-     * @param destDir the output directory
-     * @param entry the zip entry
-     * @return the output file
+     * @param destDir the output directory 输出目录
+     * @param entry the zip entry zip条目
+     * @return the output file 输出文件
      * @throws IOException if the zip entry is outside of the target directory
      */
     public static File getZipOutputFile(File destDir, ZipEntry entry) throws IOException {

@@ -390,6 +390,16 @@
       value="org.geoserver.web.data.store.shape.ShapefileDirectoryEditPanel" />
   </bean>
 
+  <bean id="shapefileUploadDataStorePanel" class="org.geoserver.web.data.resource.DataStorePanelInfo">
+    <property name="id" value="shapefile-upload" />
+    <property name="factoryClass"
+              value="org.geotools.data.shapefile.UploadShapefileDataStoreFactory" />
+    <property name="iconBase" value="org.geoserver.web.GeoServerApplication" />
+    <property name="icon" value="img/icons/geosilk/page_white_vector.png" />
+    <property name="componentClass"
+              value="org.geoserver.web.data.store.shape.UploadShapefileEditPanel" />
+  </bean>
+
   <bean id="propertyDataStorePanel" class="org.geoserver.web.data.resource.DataStorePanelInfo">
     <property name="id" value="property" />
     <property name="factoryClass"

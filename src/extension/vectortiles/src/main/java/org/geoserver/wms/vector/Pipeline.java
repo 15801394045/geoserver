@@ -14,7 +14,7 @@ public abstract class Pipeline {
 
     protected static final Geometry EMPTY = new GeometryFactory().createPoint((Coordinate) null);
 
-    /** Pipeline terminator which returns the geometry without change. */
+    /** Pipeline terminator which returns the geometry without change. 管道终止符，返回几何图形而不做更改。 */
     static final Pipeline END =
             new Pipeline() {
 
@@ -34,6 +34,8 @@ public abstract class Pipeline {
     /**
      * Set the next operation in the pipeline
      *
+     * <p>设置管道中的下一个操作
+     *
      * @param step
      */
     void setNext(Pipeline step) {
@@ -42,7 +44,7 @@ public abstract class Pipeline {
     }
 
     /**
-     * Execute pipeline including all downstream pipelines.
+     * Execute pipeline including all downstream pipelines. 执行管道，包括所有下游管道。
      *
      * @param geom
      * @return
@@ -58,7 +60,7 @@ public abstract class Pipeline {
     }
 
     /**
-     * Implementation of the pipeline. A unary operation on a geometry.
+     * Implementation of the pipeline. A unary operation on a geometry. 管道的实施。对几何学的一元运算。
      *
      * @param geom
      * @return

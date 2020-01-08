@@ -15,8 +15,10 @@ import org.xml.sax.helpers.DefaultHandler;
 
 /**
  * A simple sax error handle which hold on to errors and warnings when parsing an xml document.
+ * 核心平台模块一个简单的sax错误句柄，它在解析xml文档时保留错误和警告。
  *
  * <p>If constructed with an instance of {@link java.util.logging.Logger} errors will be logged.
+ * <p>如果使用{@link java.util.logging.Logger}实例构造，则将记录错误。
  *
  * @author Justin Deoliveira, The Open Planning Project
  */

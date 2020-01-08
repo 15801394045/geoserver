@@ -31,6 +31,7 @@ import org.geotools.util.logging.Logging;
 
 /**
  * Utility to work with compressed files
+ * 处理压缩文件的实用程序
  *
  * <p>Based on Importer {@link VFSWorker} by Gabriel Roldan
  *
@@ -43,7 +44,7 @@ public class BackupUtils {
 
     /**
      * Returns a random temp folder Resource inside the System Temp Directory.
-     *
+     * 返回系统临时目录中的随机临时文件夹资源。
      * @return
      * @throws IOException
      */
@@ -82,7 +83,7 @@ public class BackupUtils {
 
     /**
      * Returns a random temp folder Resource inside the GeoServer Temp Directory.
-     *
+     * 返回GeoServer temp目录中的随机临时文件夹资源。
      * @param geoServerDataDirectory
      * @return
      * @throws IOException
@@ -115,7 +116,7 @@ public class BackupUtils {
     /**
      * Extracts the archive file {@code archiveFile} to {@code targetFolder}; both shall previously
      * exist.
-     *
+     * 将存档文件{@code archiveFile}提取到{@code targetFolder}；这两个文件都应该存在。
      * @param archiveFile
      * @param targetFolder
      * @throws IOException

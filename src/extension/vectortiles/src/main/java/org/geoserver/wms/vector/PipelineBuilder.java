@@ -39,7 +39,7 @@ import org.opengis.referencing.operation.TransformException;
 
 public class PipelineBuilder {
 
-    // The base simplification tolerance for screen coordinates.
+    /** The base simplification tolerance for screen coordinates. 屏幕坐标的基础简化公差 */
     private static final double PIXEL_BASE_SAMPLE_SIZE = 0.25;
 
     static class Context {
@@ -52,15 +52,20 @@ public class PipelineBuilder {
 
         MathTransform sourceToScreen;
 
-        ReferencedEnvelope
-                renderingArea; // WMS request; bounding box - in final map (target) CRS (BBOX from
-        // WMS)
+        /**
+         * WMS request; bounding box - in final map (target) CRS (BBOX from WMS)
+         * WMS请求；边界框-在最终地图（目标）CRS中（来自WMS的BBOX）
+         */
+        ReferencedEnvelope renderingArea;
 
-        Rectangle paintArea; // WMS request; rectangle of the image (width and height from WMS)
+        /**
+         * WMS request; rectangle of the image (width and height from WMS) WMS请求；图像的矩形（距WMS的宽度和高度）
+         */
+        Rectangle paintArea;
 
         public ScreenMap screenMap;
-
-        public CoordinateReferenceSystem sourceCrs; // data's CRS
+        /** data's CRS 数据的CRS */
+        public CoordinateReferenceSystem sourceCrs;
 
         public AffineTransform worldToScreen;
 
@@ -68,7 +73,8 @@ public class PipelineBuilder {
 
         public double screenSimplificationDistance;
 
-        public double pixelSizeInTargetCRS; // approximate size of a pixel in the Target CRS
+        /** approximate size of a pixel in the Target CRS 目标CRS中像素的近似大小 */
+        public double pixelSizeInTargetCRS;
 
         public int queryBuffer;
     }
@@ -79,6 +85,7 @@ public class PipelineBuilder {
     // the client (i.e. OpenLayers) doesn't draw the clip lines created when
     // the polygon is clipped to the request BBOX.
     // 12 is what the current streaming renderer (for WMS images) uses
+    /** 剪辑时，我们希望将剪辑框稍微展开一点，这样客户端（即OpenLayers）就不会绘制将多边形剪辑到请求BBOX时创建的剪辑线。 12是当前流式渲染器（用于WMS图像）使用的 */
     final int clipBBOXSizeIncreasePixels = 12;
 
     private Pipeline first = Pipeline.END, last = Pipeline.END;
@@ -88,10 +95,10 @@ public class PipelineBuilder {
     }
 
     /**
-     * @param renderingArea The extent of the tile in target CRS
-     * @param paintArea The extent of the tile in screen/pixel coordinates
-     * @param sourceCrs The CRS of the features
-     * @param overSampleFactor Divisor for simplification tolerance.
+     * @param renderingArea The extent of the tile in target CRS 目标CRS中平铺的范围
+     * @param paintArea The extent of the tile in screen/pixel coordinates 平铺在屏幕/像素坐标中的范围
+     * @param sourceCrs The CRS of the features 特征的CRS
+     * @param overSampleFactor Divisor for simplification tolerance. 用于简化公差的除数。
      * @return
      * @throws FactoryException
      */
@@ -139,6 +146,7 @@ public class PipelineBuilder {
 
             // 0.8px is used to make sure the generalization isn't too much (doesn't make visible
             // changes)
+            // 0.8px用于确保泛化不会太多（不会进行可见的更改）
             spans_sourceCRS =
                     Decimator.computeGeneralizationDistances(screenToWorld, context.paintArea, 0.8);
 
@@ -148,6 +156,7 @@ public class PipelineBuilder {
             // this is used for clipping the data to A pixels around request BBOX, so we want this
             // to be the larger of the two spans
             // so we are getting at least A pixels around.
+            // 这用于将数据剪裁到请求BBOX周围的像素，因此我们希望这是两个跨距中的较大值，因此我们至少得到一个像素。
             context.pixelSizeInTargetCRS = Math.max(spans_targetCRS[0], spans_targetCRS[1]);
 
         } catch (TransformException e) {
@@ -156,6 +165,7 @@ public class PipelineBuilder {
 
         context.screenSimplificationDistance = PIXEL_BASE_SAMPLE_SIZE / overSampleFactor;
         // use min so generalize "less" (if pixel is different size in X and Y)
+        // 使用最小值，因此概括为“较少”（如果像素在X和Y中的大小不同）
         context.targetCRSSimplificationDistance =
                 Math.min(spans_targetCRS[0], spans_targetCRS[1]) / overSampleFactor;
 
@@ -168,7 +178,7 @@ public class PipelineBuilder {
     }
 
     /**
-     * Prepares features for subsequent manipulation
+     * Prepares features for subsequent manipulation 为后续操作准备功能
      *
      * @return
      */
@@ -178,7 +188,7 @@ public class PipelineBuilder {
     }
 
     /**
-     * Flatten singleton feature collections
+     * Flatten singleton feature collections 展平单例要素集合
      *
      * @return
      */
@@ -187,7 +197,7 @@ public class PipelineBuilder {
         return this;
     }
 
-    /** @return the completed pipeline */
+    /** @return the completed pipeline 已完工的管道 */
     public Pipeline build() {
         return first;
     }
@@ -239,7 +249,7 @@ public class PipelineBuilder {
 
             if (preProcessed.getDimension() > 0) {
                 Envelope env = preProcessed.getEnvelopeInternal();
-                if (screenMap.canSimplify(env))
+                if (screenMap.canSimplify(env)) {
                     if (screenMap.checkAndSet(env)) {
                         return EMPTY;
                     } else {
@@ -252,16 +262,17 @@ public class PipelineBuilder {
                                         preProcessed.getFactory(),
                                         preProcessed.getClass());
                     }
+                }
             }
             return preProcessed;
         }
     }
 
     /**
-     * Transform from source CRS to target.
+     * Transform from source CRS to target. 从源CRS转换到目标CRS。
      *
      * @param transformToScreenCoordinates If true, further transfrorm from target to screen
-     *     coordinates
+     *     coordinates 如果为真，则进一步将目标坐标转换为屏幕坐标
      * @return
      */
     public PipelineBuilder transform(final boolean transformToScreenCoordinates) {
@@ -275,9 +286,10 @@ public class PipelineBuilder {
     }
 
     /**
-     * Simplify the geometry
+     * Simplify the geometry 简化几何结构
      *
      * @param isTransformToScreenCoordinates Use screen coordinate space simplification tolerance
+     *     使用屏幕坐标空间简化公差
      * @return
      */
     public PipelineBuilder simplify(boolean isTransformToScreenCoordinates) {
@@ -296,7 +308,9 @@ public class PipelineBuilder {
      * Clip to the area of the tile plus its gutter
      *
      * @param clipToMapBounds Do we actually want to clip. Does nothing if false.
+     *     我们真的要剪辑吗。如果是假的话什么都不做。
      * @param transformToScreenCoordinates is the pipeline working in screen coordinates
+     *     管道是否在屏幕坐标下工作
      * @return
      */
     public PipelineBuilder clip(boolean clipToMapBounds, boolean transformToScreenCoordinates) {

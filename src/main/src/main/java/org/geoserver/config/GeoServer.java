@@ -12,6 +12,7 @@ import org.geoserver.catalog.WorkspaceInfo;
 
 /**
  * Facade providing access to the GeoServer configuration.
+ * 提供对GeoServer配置的访问的Facade。
  *
  * <p>
  *

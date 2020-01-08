@@ -10,7 +10,7 @@ import org.geoserver.wms.WMSMapContent;
 import org.geoserver.wms.WebMap;
 import org.locationtech.jts.geom.Geometry;
 
-/** Collects features into a vector tile */
+/** Collects features into a vector tile 将特征收集到矢量图层 */
 public interface VectorTileBuilder {
 
     /**

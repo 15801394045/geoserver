@@ -25,7 +25,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.geotools.util.logging.Logging;
 
-/** Implementation of ResourceStore backed by the file system. */
+/**
+ * Implementation of ResourceStore backed by the file system.
+ *
+ * 由文件系统支持的资源存储的实现。
+ *  */
 public class FileSystemResourceStore implements ResourceStore {
 
     static final Logger LOGGER = Logging.getLogger(FileSystemResource.class);

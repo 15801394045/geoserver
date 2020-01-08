@@ -14,6 +14,8 @@ import org.springframework.web.context.ServletContextAware;
 /**
  * ResourceStore using ServletContext to look up data directory.
  *
+ *使用ServletContext查找数据目录的资源存储。
+ *
  * @see GeoServerResourceLoader#lookupGeoServerDataDirectory(ServletContext)
  * @author Jody Garnett (Boundless)
  */

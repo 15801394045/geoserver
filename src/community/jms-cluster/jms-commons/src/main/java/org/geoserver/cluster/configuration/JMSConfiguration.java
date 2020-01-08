@@ -21,6 +21,7 @@ import org.springframework.web.util.WebUtils;
 
 /**
  * Abstract class to store and load configuration from global var or temp webapp directory
+ * 从全局变量或临时webapp目录存储和加载配置的抽象类
  *
  * @author carlo cancellieri - GeoSolutions SAS
  */

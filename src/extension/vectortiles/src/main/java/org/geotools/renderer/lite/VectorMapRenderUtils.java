@@ -47,9 +47,11 @@ import org.opengis.referencing.operation.MathTransform2D;
 import org.opengis.referencing.operation.TransformException;
 
 /**
- * Utility methods to deal with transformations and style based queries.
+ * Utility methods to deal with transformations and style based queries. 处理转换和基于样式的查询的实用程序方法。
  *
  * <p>Note, most code in this class has been taken and adapted from GeoTools' StreamingRenderer.
+ *
+ * <p>注意，这个类中的大多数代码都是从GeoTools的StreamingRenderer中获取并改编的。
  */
 public class VectorMapRenderUtils {
 
@@ -60,6 +62,8 @@ public class VectorMapRenderUtils {
     /**
      * Creates a query selecting those features relevant to the style and extent of the given map,
      * for the given layer.
+     *
+     * <p>创建一个查询，为给定图层选择与给定地图的样式和范围相关的要素。
      *
      * @param layer
      * @param mapContent
@@ -83,6 +87,7 @@ public class VectorMapRenderUtils {
                 getFeatureStyles(layer, screenSize, mapScale, schema);
 
         // if there aren't any styles to render, we don't need to get any data....
+        // 如果没有任何样式要渲染，我们不需要获取任何数据。。。。
         if (styleList.isEmpty()) {
             Query query = new Query(schema.getName().getLocalPart());
             query.setProperties(Query.NO_PROPERTIES);
@@ -106,6 +111,7 @@ public class VectorMapRenderUtils {
             throw new RuntimeException(e);
         }
         // take into account the origin query (coming from cql_filter or featureid)
+        // 考虑来源查询（来自cql_过滤器或featureid）
         Query query = DataUtilities.mixQueries(styleQuery, layer.getQuery(), null);
         query.setProperties(Query.ALL_PROPERTIES);
 
@@ -145,9 +151,7 @@ public class VectorMapRenderUtils {
             throws IOException {
         Style style = layer.getStyle();
         List<FeatureTypeStyle> featureStyles = style.featureTypeStyles();
-        List<LiteFeatureTypeStyle> styleList =
-                createLiteFeatureTypeStyles(layer, featureStyles, schema, mapScale, screenSize);
-        return styleList;
+        return createLiteFeatureTypeStyles(layer, featureStyles, schema, mapScale, screenSize);
     }
 
     protected static double[] getPixelSize(

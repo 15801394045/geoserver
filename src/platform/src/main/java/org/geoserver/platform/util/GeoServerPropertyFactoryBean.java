@@ -18,7 +18,7 @@ import org.springframework.context.ApplicationContextAware;
 /**
  * Spring FactoryBean that can create a bean based on the value of a system property, context
  * parameter, or environment variable
- *
+ * Spring FactoryBean，它可以基于系统属性、上下文参数或环境变量的值创建bean
  * @author Kevin Smith, Boundless
  * @param <T>
  */
@@ -31,7 +31,7 @@ public abstract class GeoServerPropertyFactoryBean<T> extends AbstractFactoryBea
     private final String propertyName;
     private String defaultValue;
 
-    /** @param propertyName The property to check when creating a bean */
+    /** @param propertyName The property to check when creating a bean 创建bean时要检查的属性*/
     public GeoServerPropertyFactoryBean(final String propertyName) {
         super();
         this.propertyName = propertyName;
