@@ -6,6 +6,7 @@
 package org.geoserver.csw.xml;
 
 import java.util.Map;
+
 import org.picocontainer.MutablePicoContainer;
 
 public class CSWConfiguration extends org.geotools.csw.CSWConfiguration {

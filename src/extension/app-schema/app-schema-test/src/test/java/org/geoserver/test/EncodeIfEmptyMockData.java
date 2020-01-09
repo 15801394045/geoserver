@@ -13,16 +13,24 @@ package org.geoserver.test;
  */
 public class EncodeIfEmptyMockData extends AbstractAppSchemaMockData {
 
-    /** Prefix for om namespace. */
+    /**
+     * Prefix for om namespace.
+     */
     protected static final String OM_PREFIX = "om";
 
-    /** Prefix for om namespace. */
+    /**
+     * Prefix for om namespace.
+     */
     protected static final String SWE_PREFIX = "swe";
 
-    /** URI for om namespace. */
+    /**
+     * URI for om namespace.
+     */
     protected static final String OM_URI = "http://www.opengis.net/om/2.0";
 
-    /** URI for om namespace. */
+    /**
+     * URI for om namespace.
+     */
     protected static final String SWE_URI = "http://www.opengis.net/swe/2.0";
 
     public EncodeIfEmptyMockData() {
@@ -31,7 +39,9 @@ public class EncodeIfEmptyMockData extends AbstractAppSchemaMockData {
         setSchemaCatalog("schemas/wml2dr_catalog.xml");
     }
 
-    /** @see org.geoserver.test.AbstractAppSchemaMockData#addContent() */
+    /**
+     * @see org.geoserver.test.AbstractAppSchemaMockData#addContent()
+     */
     @Override
     public void addContent() {
         putNamespace(OM_PREFIX, OM_URI);

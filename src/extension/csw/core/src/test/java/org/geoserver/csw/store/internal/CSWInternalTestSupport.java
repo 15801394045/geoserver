@@ -5,6 +5,7 @@
 package org.geoserver.csw.store.internal;
 
 import java.io.File;
+
 import org.apache.commons.io.FileUtils;
 import org.geoserver.csw.CSWTestSupport;
 import org.geoserver.data.test.SystemTestData;

@@ -9,6 +9,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+
 import org.apache.wicket.extensions.markup.html.repeater.data.sort.SortOrder;
 import org.apache.wicket.extensions.markup.html.repeater.util.SortParam;
 import org.apache.wicket.model.IModel;
@@ -33,7 +34,9 @@ public class GeofenceRulesModel extends GeoServerDataProvider<ShortRule> {
 
     private static final long serialVersionUID = 478867886089304835L;
 
-    /** Makes columns that are unsortable and display "*" instead of empty when null */
+    /**
+     * Makes columns that are unsortable and display "*" instead of empty when null
+     */
     public static class RuleBeanProperty<T> extends BeanProperty<T> {
         private static final long serialVersionUID = 483799722644223445L;
 
@@ -122,7 +125,7 @@ public class GeofenceRulesModel extends GeoServerDataProvider<ShortRule> {
 
     @Override
     protected List<org.geoserver.web.wicket.GeoServerDataProvider.Property<ShortRule>>
-            getProperties() {
+    getProperties() {
         return Arrays.asList(
                 PRIORITY, ROLE, USER, SERVICE, REQUEST, WORKSPACE, LAYER, ACCESS, BUTTONS);
     }

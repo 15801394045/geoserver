@@ -11,6 +11,7 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
 import org.apache.commons.exec.CommandLine;
 import org.apache.commons.exec.DefaultExecutor;
 import org.apache.commons.exec.ExecuteWatchdog;
@@ -34,12 +35,16 @@ public abstract class AbstractCommandLineTransform extends AbstractTransform {
         this.options = Optional.ofNullable(options).orElseGet(() -> new ArrayList<>());
     }
 
-    /** @return the options */
+    /**
+     * @return the options
+     */
     public List<String> getOptions() {
         return options;
     }
 
-    /** @param options the options to set */
+    /**
+     * @param options the options to set
+     */
     public void setOptions(List<String> options) {
         this.options = options;
     }
@@ -61,7 +66,7 @@ public abstract class AbstractCommandLineTransform extends AbstractTransform {
         // grab at least some part of the outputs
         int limit = 16 * 1024;
         try (OutputStream os = new BoundedOutputStream(new ByteArrayOutputStream(), limit);
-                OutputStream es = new BoundedOutputStream(new ByteArrayOutputStream(), limit)) {
+             OutputStream es = new BoundedOutputStream(new ByteArrayOutputStream(), limit)) {
             PumpStreamHandler streamHandler = new PumpStreamHandler(os, es);
             executor.setStreamHandler(streamHandler);
             try {

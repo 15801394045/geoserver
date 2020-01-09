@@ -143,7 +143,7 @@ public class DatabaseUtil {
          *
          * @param key - the operator
          * @return - the status whether the operator is currently open or closed. eg if we found $$
-         *     and no corresponding $$ to close it, the status is open
+         * and no corresponding $$ to close it, the status is open
          */
         public boolean getOperatorStatus(String key) {
             return open.get(key).booleanValue();
@@ -152,7 +152,7 @@ public class DatabaseUtil {
         /**
          * Sets the status of the operator
          *
-         * @param key - the operator's status to be set
+         * @param key   - the operator's status to be set
          * @param value - the status value
          */
         public void setOperatorStatus(String key, boolean value) {
@@ -173,7 +173,7 @@ public class DatabaseUtil {
          * Checks if all operators are currently closed
          *
          * @return - true only if the current status of all operators are closed. This determines
-         *     the end of the statements in the sql script.
+         * the end of the statements in the sql script.
          */
         public boolean isAllClosed() {
             for (boolean opn : open.values()) {
@@ -184,7 +184,9 @@ public class DatabaseUtil {
             return true;
         }
 
-        /** Resets the status of all the operators. */
+        /**
+         * Resets the status of all the operators.
+         */
         public void reset() {
             for (String s : this.operators) {
                 setOperatorStatus(s, false);

@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.atomic.AtomicLong;
+
 import org.geoserver.monitor.Query.Comparison;
 import org.geoserver.monitor.Query.SortOrder;
 import org.geoserver.ows.util.OwsUtils;
@@ -34,7 +35,8 @@ public class MemoryMonitorDAO implements MonitorDAO {
     }
 
     @Override
-    public void init(MonitorConfig config) {}
+    public void init(MonitorConfig config) {
+    }
 
     public RequestData init(RequestData data) {
         data.setId(REQUEST_ID_GEN.getAndIncrement());
@@ -45,7 +47,8 @@ public class MemoryMonitorDAO implements MonitorDAO {
         live.add(data);
     }
 
-    public void update(RequestData data) {}
+    public void update(RequestData data) {
+    }
 
     public void save(RequestData data) {
         live.remove(data);
@@ -156,7 +159,9 @@ public class MemoryMonitorDAO implements MonitorDAO {
     public java.util.List<RequestData> getOwsRequests(
             String service, String operation, String version) {
         return null;
-    };
+    }
+
+    ;
 
     public void clear() {
         live.clear();

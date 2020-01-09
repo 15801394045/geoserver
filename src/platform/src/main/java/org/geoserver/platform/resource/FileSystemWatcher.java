@@ -24,6 +24,8 @@ import org.springframework.scheduling.concurrent.CustomizableThreadFactory;
 /**
  * Active object (using a ScheduledExecutorService) used to watch file system for changes.
  *
+ * 用于监视文件系统更改的活动对象（使用ScheduledExecutorService）。
+ *
  * <p>This implementation currently polls the file system and should be updated with Java 7
  * WatchService when available. The internal design is similar to WatchService, WatchKey and
  * WatchEvent in order to facilitate this transition.

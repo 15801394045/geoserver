@@ -8,6 +8,7 @@ package org.geoserver.wps.ppio;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+
 import net.opengis.ows11.BoundingBoxType;
 import net.opengis.ows11.Ows11Factory;
 import org.geoserver.wps.WPSException;

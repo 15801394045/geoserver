@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import junit.framework.TestCase;
 import org.geoserver.config.impl.GeoServerImpl;
 import org.geoserver.csw.kvp.GetRepositoryItemKvpRequestReader;

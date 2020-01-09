@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Logger;
+
 import org.geoserver.wms.WMSMapContent;
 import org.geoserver.wms.WebMap;
 import org.geotools.data.DataUtilities;
@@ -45,11 +46,15 @@ public class EncodeHTMLImageMap extends WebMap {
     private static final Logger LOGGER =
             org.geotools.util.logging.Logging.getLogger("org.vfny.geoserver.responses.wms.map");
 
-    /** Filter factory for creating filters */
+    /**
+     * Filter factory for creating filters
+     */
     private static final FilterFactory filterFactory =
             CommonFactoryFinder.getFilterFactory2(GeoTools.getDefaultHints());
 
-    /** Current writer. The writer is able to encode a single feature. */
+    /**
+     * Current writer. The writer is able to encode a single feature.
+     */
     private HTMLImageMapWriter writer;
 
     private final int maxFilterSize = 15;
@@ -170,7 +175,7 @@ public class EncodeHTMLImageMap extends WebMap {
      * of any parent type of the feature type of <code>featureType</code>. This method returns an
      * empty array in the case of which no rules match.
      *
-     * @param style The style containing the feature type styles.
+     * @param style       The style containing the feature type styles.
      * @param featureType The feature type being filtered against.
      */
     protected FeatureTypeStyle[] filterFeatureTypeStyles(
@@ -191,9 +196,9 @@ public class EncodeHTMLImageMap extends WebMap {
             // does this style apply to the feature collection
             if (featureTypeStyle.featureTypeNames().isEmpty()
                     || featureTypeStyle
-                            .featureTypeNames()
-                            .stream()
-                            .anyMatch(tn -> FeatureTypes.matches(featureType, tn))) {
+                    .featureTypeNames()
+                    .stream()
+                    .anyMatch(tn -> FeatureTypes.matches(featureType, tn))) {
                 filtered.add(featureTypeStyle);
             }
         }
@@ -204,7 +209,7 @@ public class EncodeHTMLImageMap extends WebMap {
     /**
      * Evaluates if the supplied scaleDenominator is congruent with a rule defined scale range.
      *
-     * @param r current rule
+     * @param r                current rule
      * @param scaleDenominator current value to verify
      * @return true if scaleDenominator is in the rule defined range
      */
@@ -249,7 +254,7 @@ public class EncodeHTMLImageMap extends WebMap {
     /**
      * Encodes the current set of layers.
      *
-     * @throws IOException if an error occurs during encoding
+     * @throws IOException      if an error occurs during encoding
      * @throws AbortedException if the encoding is aborted
      * @task TODO: respect layer filtering given by their Styles
      */
@@ -271,7 +276,7 @@ public class EncodeHTMLImageMap extends WebMap {
                 boolean reproject =
                         (sourceCrs != null)
                                 && !CRS.equalsIgnoreMetadata(
-                                        aoi.getCoordinateReferenceSystem(), sourceCrs);
+                                aoi.getCoordinateReferenceSystem(), sourceCrs);
                 if (reproject) {
                     aoi = aoi.transform(sourceCrs, true);
                 }

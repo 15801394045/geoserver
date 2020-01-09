@@ -93,7 +93,8 @@
                     <targetAttribute>st_${GML_PREFIX}:featureLinkA</targetAttribute>
                     <ClientProperty>
                         <name>xlink:role</name>
-                        <value>'http://www.geosciml.org/geosciml/2.0/doc/GeoSciML/GeologicUnit/GeologicUnit.html'</value>
+                        <value>'http://www.geosciml.org/geosciml/2.0/doc/GeoSciML/GeologicUnit/GeologicUnit.html'
+                        </value>
                     </ClientProperty>
                     <ClientProperty>
                         <name>xlink:href</name>
@@ -108,7 +109,8 @@
                     <targetAttribute>st_${GML_PREFIX}:featureLinkB</targetAttribute>
                     <ClientProperty>
                         <name>xlink:role</name>
-                        <value>'http://www.geosciml.org/geosciml/2.0/doc/GeoSciML/GeologicUnit/GeologicUnit.html'</value>
+                        <value>'http://www.geosciml.org/geosciml/2.0/doc/GeoSciML/GeologicUnit/GeologicUnit.html'
+                        </value>
                     </ClientProperty>
                     <ClientProperty>
                         <name>xlink:href</name>
@@ -123,7 +125,8 @@
                     <targetAttribute>st_${GML_PREFIX}:featureLinkC</targetAttribute>
                     <ClientProperty>
                         <name>xlink:role</name>
-                        <value>'http://www.geosciml.org/geosciml/2.0/doc/GeoSciML/GeologicUnit/GeologicUnit.html'</value>
+                        <value>'http://www.geosciml.org/geosciml/2.0/doc/GeoSciML/GeologicUnit/GeologicUnit.html'
+                        </value>
                     </ClientProperty>
                     <ClientProperty>
                         <name>xlink:href</name>

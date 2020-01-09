@@ -1,6 +1,7 @@
 package org.geoserver.sldservice;
 
 import java.io.File;
+
 import org.geotools.coverage.grid.GridCoverage2D;
 import org.geotools.coverage.grid.GridCoverageFactory;
 import org.geotools.gce.geotiff.GeoTiffWriter;

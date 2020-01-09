@@ -9,7 +9,9 @@ import org.geoserver.test.onlineTest.setup.AppSchemaReferenceMockData;
 import org.geoserver.test.onlineTest.setup.ReferenceDataPostgisSetup;
 import org.geoserver.test.onlineTest.support.AbstractReferenceDataSetup;
 
-/** @author Victor Tey(CSIRO Earth Science and Resource Engineering) */
+/**
+ * @author Victor Tey(CSIRO Earth Science and Resource Engineering)
+ */
 public class DataReferenceWfsPostgisWithJoiningTest extends DataReferenceWfsOnlineTest {
 
     public DataReferenceWfsPostgisWithJoiningTest() throws Exception {

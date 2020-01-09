@@ -21,6 +21,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 import java.util.HashMap;
 import java.util.Map;
+
 import org.custommonkey.xmlunit.XpathEngine;
 import org.geoserver.catalog.FeatureTypeInfo;
 import org.geotools.data.DataAccess;
@@ -33,7 +34,9 @@ import org.junit.Test;
 import org.opengis.feature.type.Name;
 import org.w3c.dom.Document;
 
-/** Contains tests related with JDBC multiple values support. */
+/**
+ * Contains tests related with JDBC multiple values support.
+ */
 public final class NormalizedMultiValuesTest extends AbstractAppSchemaTestSupport {
 
     // xpath engines used to check WFS responses
@@ -70,7 +73,9 @@ public final class NormalizedMultiValuesTest extends AbstractAppSchemaTestSuppor
         return new MockData();
     }
 
-    /** Helper class that will setup custom complex feature types using the stations data set. */
+    /**
+     * Helper class that will setup custom complex feature types using the stations data set.
+     */
     private static final class MockData extends StationsMockData {
 
         @Override
@@ -200,7 +205,9 @@ public final class NormalizedMultiValuesTest extends AbstractAppSchemaTestSuppor
         checkStation1Gml32(document);
     }
 
-    /** Helper method that checks that station 1 is present in the provided document. */
+    /**
+     * Helper method that checks that station 1 is present in the provided document.
+     */
     private void checkStation1Gml31(Document document) {
         // check station exists
         checkCount(
@@ -252,7 +259,9 @@ public final class NormalizedMultiValuesTest extends AbstractAppSchemaTestSuppor
                         + "[ms_gml31:tag='wind_tag']");
     }
 
-    /** Helper method that checks that station 2 is present in the provided document. */
+    /**
+     * Helper method that checks that station 2 is present in the provided document.
+     */
     private void checkStation2Gml31(Document document) {
         // check station exists
         checkCount(
@@ -294,7 +303,9 @@ public final class NormalizedMultiValuesTest extends AbstractAppSchemaTestSuppor
                         + "[ms_gml31:tag='pressure_tag']");
     }
 
-    /** Helper method that checks that station 1 is present in the provided document. */
+    /**
+     * Helper method that checks that station 1 is present in the provided document.
+     */
     private void checkStation1Gml32(Document document) {
         // check station exists
         checkCount(
@@ -346,7 +357,9 @@ public final class NormalizedMultiValuesTest extends AbstractAppSchemaTestSuppor
                         + "[ms_gml32:tag='wind_tag']");
     }
 
-    /** Helper method that checks that station 2 is present in the provided document. */
+    /**
+     * Helper method that checks that station 2 is present in the provided document.
+     */
     private void checkStation2Gml32(Document document) {
         // check station exists
         checkCount(

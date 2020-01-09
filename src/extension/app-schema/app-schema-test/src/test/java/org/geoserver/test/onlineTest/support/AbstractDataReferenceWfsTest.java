@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 import javax.sql.DataSource;
+
 import org.geoserver.data.test.SystemTestData;
 import org.geoserver.test.AbstractAppSchemaTestSupport;
 import org.junit.Assume;
@@ -41,7 +42,9 @@ public abstract class AbstractDataReferenceWfsTest extends AbstractAppSchemaTest
      */
     public static final String SKIP_ON_FAILURE_KEY = "skip.on.failure";
 
-    /** The default value used for {@link #SKIP_ON_FAILURE_KEY} if it is not present. */
+    /**
+     * The default value used for {@link #SKIP_ON_FAILURE_KEY} if it is not present.
+     */
     public static final String SKIP_ON_FAILURE_DEFAULT = "true";
 
     protected boolean skipOnFailure = true;

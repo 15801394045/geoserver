@@ -13,6 +13,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Logger;
+
 import org.apache.wicket.extensions.markup.html.repeater.util.SortParam;
 import org.geoserver.catalog.Predicates;
 import org.geoserver.catalog.StoreInfo;
@@ -187,7 +188,7 @@ public class ProcessStatusProvider extends GeoServerDataProvider<ExecutionStatus
             if (property.isSearchable()) { // we really need another flag
                 final String sortProperty = ((BeanProperty<StoreInfo>) property).getPropertyPath();
                 sortOrder = sortBy(sortProperty, sort.isAscending());
-                query.setSortBy(new SortBy[] {sortOrder});
+                query.setSortBy(new SortBy[]{sortOrder});
             }
         }
         LOGGER.fine("built query " + query + " to filter statuses");

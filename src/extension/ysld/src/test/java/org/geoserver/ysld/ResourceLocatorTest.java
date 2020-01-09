@@ -12,6 +12,7 @@ import static org.junit.Assert.*;
 
 import java.io.File;
 import java.io.PrintWriter;
+
 import org.geotools.styling.ExternalGraphic;
 import org.geotools.styling.PointSymbolizer;
 import org.geotools.styling.SLD;
@@ -21,7 +22,8 @@ import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 
 public class ResourceLocatorTest {
-    @Rule public TemporaryFolder testFolder = new TemporaryFolder();
+    @Rule
+    public TemporaryFolder testFolder = new TemporaryFolder();
 
     @Test
     public void testRelativePathWithDefaultResourceLocator() throws Exception {
@@ -29,7 +31,7 @@ public class ResourceLocatorTest {
 
         // Want a real file to hold the YSLD
         File file = testFolder.newFile();
-        try (PrintWriter out = new PrintWriter(file); ) {
+        try (PrintWriter out = new PrintWriter(file);) {
             out.print(
                     "feature-styles:\n"
                             + "- name: name\n"

@@ -8,6 +8,7 @@ package org.geoserver.csw.feature.sort;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+
 import org.opengis.feature.Feature;
 import org.opengis.filter.sort.SortBy;
 import org.opengis.filter.sort.SortOrder;

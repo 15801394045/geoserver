@@ -25,7 +25,9 @@ public class IdFunctionWfsWithJoiningTest extends AbstractAppSchemaTestSupport {
         return new IdFunctionMockData();
     }
 
-    /** Test whether GetFeature returns wfs:FeatureCollection. */
+    /**
+     * Test whether GetFeature returns wfs:FeatureCollection.
+     */
     @Test
     public void testGetFeature() {
         Document doc = getAsDOM("wfs?request=GetFeature&version=1.1.0&typename=gsml:MappedFeature");

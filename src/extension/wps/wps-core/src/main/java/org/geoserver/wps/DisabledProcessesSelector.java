@@ -8,6 +8,7 @@ package org.geoserver.wps;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
 import org.geoserver.config.ConfigurationListenerAdapter;
 import org.geoserver.config.GeoServer;
 import org.geoserver.config.GeoServerInitializer;
@@ -17,12 +18,15 @@ import org.geoserver.wps.process.ProcessSelector;
 import org.geotools.process.ProcessFactory;
 import org.opengis.feature.type.Name;
 
-/** Filters processes and process factories based on the configuration in WPSInfo */
+/**
+ * Filters processes and process factories based on the configuration in WPSInfo
+ */
 public class DisabledProcessesSelector extends ProcessSelector implements GeoServerInitializer {
 
     Set<Name> disabledProcesses = new HashSet<Name>();
 
-    public DisabledProcessesSelector() {}
+    public DisabledProcessesSelector() {
+    }
 
     public DisabledProcessesSelector(Set<Name> disabled) {
         this.disabledProcesses.addAll(disabled);

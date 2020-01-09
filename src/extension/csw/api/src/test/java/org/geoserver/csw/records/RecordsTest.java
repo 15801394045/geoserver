@@ -7,6 +7,7 @@ package org.geoserver.csw.records;
 
 import java.util.Collection;
 import java.util.List;
+
 import junit.framework.TestCase;
 import org.geotools.geometry.jts.ReferencedEnvelope;
 import org.geotools.referencing.crs.DefaultGeographicCRS;

@@ -13,6 +13,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.apache.commons.io.FilenameUtils;
 import org.geoserver.catalog.Catalog;
 import org.geoserver.catalog.StoreInfo;
@@ -37,12 +38,16 @@ import org.vfny.geoserver.util.DataStoreUtils;
  */
 public abstract class DataFormat implements Serializable {
 
-    /** serialVersionUID */
+    /**
+     * serialVersionUID
+     */
     private static final long serialVersionUID = 1L;
 
     static Logger LOG = Logging.getLogger(DataFormat.class);
 
-    /** looks up a format based on file extension. */
+    /**
+     * looks up a format based on file extension.
+     */
     public static DataFormat lookup(File file) {
         FileData fileData = new FileData(file);
         for (DataFormat df : GeoServerExtensions.extensions(DataFormat.class)) {
@@ -95,7 +100,9 @@ public abstract class DataFormat implements Serializable {
         return null;
     }
 
-    /** Looks up a format based on a set of connection parameters. */
+    /**
+     * Looks up a format based on a set of connection parameters.
+     */
     public static DataFormat lookup(Map<String, Serializable> params) {
         DataStoreFactorySpi factory = (DataStoreFactorySpi) DataStoreUtils.aquireFactory(params);
         if (factory != null) {

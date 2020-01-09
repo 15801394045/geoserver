@@ -17,13 +17,14 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.geotools.util.logging.Logging;
 
 /**
  * A task queue that groups tasks by key and ensures that tasks with same key execute serially.
  *
- * @author Justin Deoliveira, OpenGeo
  * @param <K> The key type.
+ * @author Justin Deoliveira, OpenGeo
  */
 public class PipeliningTaskQueue<K> implements Runnable {
 

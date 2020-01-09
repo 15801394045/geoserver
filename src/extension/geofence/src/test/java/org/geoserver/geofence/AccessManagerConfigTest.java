@@ -12,6 +12,7 @@ import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
+
 import org.custommonkey.xmlunit.SimpleNamespaceContext;
 import org.custommonkey.xmlunit.XMLUnit;
 import org.geoserver.geofence.config.GeoFenceConfiguration;
@@ -90,7 +91,7 @@ public class AccessManagerConfigTest extends GeoServerTestSupport {
         Resource configurationFile = configurer.getConfigFile();
 
         try (BufferedWriter writer =
-                new BufferedWriter(new OutputStreamWriter(configurationFile.out()))) {
+                     new BufferedWriter(new OutputStreamWriter(configurationFile.out()))) {
             writer.write("newUserProperty=custom_property_value\n");
         }
 

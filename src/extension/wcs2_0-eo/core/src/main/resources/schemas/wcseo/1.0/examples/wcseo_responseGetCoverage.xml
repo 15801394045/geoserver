@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <wcseo:RectifiedDataset
-    xmlns:ows="http://www.opengis.net/ows/2.0"
-    xmlns:gml="http://www.opengis.net/gml/3.2"
-    xmlns:gmlcov="http://www.opengis.net/gmlcov/1.0"
-    xmlns:swe="http://www.opengis.net/swe/2.0"
-    xmlns:wcs="http://www.opengis.net/wcs/2.0"
-    xmlns:wcseo="http://www.opengis.net/wcseo/1.0"
-    xmlns:eop="http://www.opengis.net/eop/2.0"
-    xmlns:om="http://www.opengis.net/om/2.0"
-    xmlns:xlink="http://www.w3.org/1999/xlink"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.opengis.net/wcseo/1.0 http://schemas.opengis.net/wcseo/1.0/wcsEOGetCoverage.xsd"
-    gml:id="someEOCoverage1">
+        xmlns:ows="http://www.opengis.net/ows/2.0"
+        xmlns:gml="http://www.opengis.net/gml/3.2"
+        xmlns:gmlcov="http://www.opengis.net/gmlcov/1.0"
+        xmlns:swe="http://www.opengis.net/swe/2.0"
+        xmlns:wcs="http://www.opengis.net/wcs/2.0"
+        xmlns:wcseo="http://www.opengis.net/wcseo/1.0"
+        xmlns:eop="http://www.opengis.net/eop/2.0"
+        xmlns:om="http://www.opengis.net/om/2.0"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.opengis.net/wcseo/1.0 http://schemas.opengis.net/wcseo/1.0/wcsEOGetCoverage.xsd"
+        gml:id="someEOCoverage1">
     <gml:boundedBy>
-        <gml:Envelope srsName="http://www.opengis.net/def/crs/EPSG/0/4326" axisLabels="Lat Long" srsDimension="2" uomLabels="deg deg">
+        <gml:Envelope srsName="http://www.opengis.net/def/crs/EPSG/0/4326" axisLabels="Lat Long" srsDimension="2"
+                      uomLabels="deg deg">
             <gml:lowerCorner>42.862778 1.896944</gml:lowerCorner>
             <gml:upperCorner>43.516667 2.861667</gml:upperCorner>
         </gml:Envelope>
@@ -120,7 +121,9 @@
                                     <gml:Polygon gml:id="someEOCoverage1_fppoly">
                                         <gml:exterior>
                                             <gml:LinearRing>
-                                                <gml:posList>43.516667 2.1025 43.381667 2.861667 42.862778 2.65 42.996389 1.896944 43.516667 2.1025</gml:posList>
+                                                <gml:posList>43.516667 2.1025 43.381667 2.861667 42.862778 2.65
+                                                    42.996389 1.896944 43.516667 2.1025
+                                                </gml:posList>
                                             </gml:LinearRing>
                                         </gml:exterior>
                                     </gml:Polygon>
@@ -139,9 +142,12 @@
                         <eop:browse>
                             <eop:BrowseInformation>
                                 <eop:type>QUICKLOOK</eop:type>
-                                <eop:referenceSystemIdentifier codeSpace="EPSG">epsg:4326</eop:referenceSystemIdentifier>
+                                <eop:referenceSystemIdentifier codeSpace="EPSG">epsg:4326
+                                </eop:referenceSystemIdentifier>
                                 <eop:fileName>
-                                   <ows:ServiceReference xlink:href="http://etc"><ows:RequestMessage></ows:RequestMessage></ows:ServiceReference>
+                                    <ows:ServiceReference xlink:href="http://etc">
+                                        <ows:RequestMessage></ows:RequestMessage>
+                                    </ows:ServiceReference>
                                 </eop:fileName>
                             </eop:BrowseInformation>
                         </eop:browse>
@@ -149,9 +155,12 @@
                             <eop:MaskInformation>
                                 <eop:type>CLOUD</eop:type>
                                 <eop:format>VECTOR</eop:format>
-                                <eop:referenceSystemIdentifier codeSpace="EPSG">epsg:4326</eop:referenceSystemIdentifier>
+                                <eop:referenceSystemIdentifier codeSpace="EPSG">epsg:4326
+                                </eop:referenceSystemIdentifier>
                                 <eop:fileName>
-                                    <ows:ServiceReference xlink:href="http://etc"><ows:RequestMessage></ows:RequestMessage></ows:ServiceReference>
+                                    <ows:ServiceReference xlink:href="http://etc">
+                                        <ows:RequestMessage></ows:RequestMessage>
+                                    </ows:ServiceReference>
                                 </eop:fileName>
                             </eop:MaskInformation>
                         </eop:mask>
@@ -187,7 +196,8 @@
             <wcseo:lineage>
                 <!-- GetCoverage request via KVP -->
                 <wcseo:referenceGetCoverage>
-                    <ows:Reference xlink:href="http://www.someWCS.org?SERVICE=WCS&amp;VERSION=2.0.0&amp;REQUEST=GetCoverage&amp;COVERAGEID=someEOCoverage1&amp;FORMAT=application/gml+xml"/>
+                    <ows:Reference
+                            xlink:href="http://www.someWCS.org?SERVICE=WCS&amp;VERSION=2.0.0&amp;REQUEST=GetCoverage&amp;COVERAGEID=someEOCoverage1&amp;FORMAT=application/gml+xml"/>
                 </wcseo:referenceGetCoverage>
                 <gml:timePosition>2011-02-04T15:45:52Z</gml:timePosition>
             </wcseo:lineage>
@@ -197,11 +207,11 @@
                     <ows:ServiceReference xlink:href="http://www.someWCS.org">
                         <ows:RequestMessage>
                             <wcs:GetCoverage
-                                xmlns:wcs="http://www.opengis.net/wcs/2.0"
-                                xmlns:gml="http://www.opengis.net/gml/3.2"
-                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                                xsi:schemaLocation="http://www.opengis.net/wcs/2.0 http://schemas.opengis.net/wcs/2.0/wcsAll.xsd"
-                                service="WCS" version="2.0.0">
+                                    xmlns:wcs="http://www.opengis.net/wcs/2.0"
+                                    xmlns:gml="http://www.opengis.net/gml/3.2"
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                                    xsi:schemaLocation="http://www.opengis.net/wcs/2.0 http://schemas.opengis.net/wcs/2.0/wcsAll.xsd"
+                                    service="WCS" version="2.0.0">
                                 <wcs:format>application/gml+xml</wcs:format>
                                 <wcs:CoverageId>someEOCoverage1</wcs:CoverageId>
                             </wcs:GetCoverage>

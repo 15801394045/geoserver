@@ -1,17 +1,21 @@
-<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:swe="http://www.opengis.net/swe/2.0" targetNamespace="http://www.opengis.net/swe/2.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0.0">
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:swe="http://www.opengis.net/swe/2.0"
+        targetNamespace="http://www.opengis.net/swe/2.0" elementFormDefault="qualified"
+        attributeFormDefault="unqualified" version="2.0.0">
     <annotation>
-        <documentation>SWE Common Data Model schema for simple data components (i.e. without descendants). See requirements class http://www.opengis.net/spec/SWE/2.0/req/xsd-simple-components/
-        
-        SWE Common is an OGC Standard.
-        Copyright (c) 2010 Open Geospatial Consortium, Inc. All Rights Reserved. 
-        To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
+        <documentation>SWE Common Data Model schema for simple data components (i.e. without descendants). See
+            requirements class http://www.opengis.net/spec/SWE/2.0/req/xsd-simple-components/
+
+            SWE Common is an OGC Standard.
+            Copyright (c) 2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+            To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
         </documentation>
     </annotation>
     <include schemaLocation="basic_types.xsd"/>
     <!-- ================================================= -->
     <element name="Count" substitutionGroup="swe:AbstractSimpleComponent" type="swe:CountType">
         <annotation>
-            <documentation>Scalar component with integer representation used for a discrete counting value</documentation>
+            <documentation>Scalar component with integer representation used for a discrete counting value
+            </documentation>
         </annotation>
     </element>
     <complexType name="CountType">
@@ -21,7 +25,9 @@
                     <element maxOccurs="1" minOccurs="0" name="constraint" type="swe:AllowedValuesPropertyType"/>
                     <element maxOccurs="1" minOccurs="0" name="value" type="integer">
                         <annotation>
-                            <documentation>Value is optional, to enable structure to act as a schema for values provided using other encodings</documentation>
+                            <documentation>Value is optional, to enable structure to act as a schema for values provided
+                                using other encodings
+                            </documentation>
                         </annotation>
                     </element>
                 </sequence>
@@ -36,7 +42,9 @@
     </complexType><!-- ================================================= -->
     <element name="CategoryRange" substitutionGroup="swe:AbstractSimpleComponent" type="swe:CategoryRangeType">
         <annotation>
-            <documentation>Pair of categorical values used to specify a range in an ordinal reference system (specified by the code space)</documentation>
+            <documentation>Pair of categorical values used to specify a range in an ordinal reference system (specified
+                by the code space)
+            </documentation>
         </annotation>
     </element>
     <complexType name="CategoryRangeType">
@@ -45,13 +53,18 @@
                 <sequence>
                     <element maxOccurs="1" minOccurs="0" name="codeSpace" type="swe:Reference">
                         <annotation>
-                            <documentation>Name of the dictionary defining an ordered set of values with respect to which the range is expressed (ordinal reference system)</documentation>
+                            <documentation>Name of the dictionary defining an ordered set of values with respect to
+                                which the range is expressed (ordinal reference system)
+                            </documentation>
                         </annotation>
                     </element>
                     <element maxOccurs="1" minOccurs="0" name="constraint" type="swe:AllowedTokensPropertyType"/>
                     <element maxOccurs="1" minOccurs="0" name="value" type="swe:TokenPair">
                         <annotation>
-                            <documentation>Value is a pair of tokens separated by a space (if tokens contain spaces, they must be espaced by using XML entities). It is optional, to enable structure to act as a schema for values provided using other encodings</documentation>
+                            <documentation>Value is a pair of tokens separated by a space (if tokens contain spaces,
+                                they must be espaced by using XML entities). It is optional, to enable structure to act
+                                as a schema for values provided using other encodings
+                            </documentation>
                         </annotation>
                     </element>
                 </sequence>
@@ -64,7 +77,8 @@
         </sequence>
         <attributeGroup ref="swe:AssociationAttributeGroup"/>
     </complexType><!-- ================================================= -->
-    <element abstract="true" name="AbstractSimpleComponent" substitutionGroup="swe:AbstractDataComponent" type="swe:AbstractSimpleComponentType"/>
+    <element abstract="true" name="AbstractSimpleComponent" substitutionGroup="swe:AbstractDataComponent"
+             type="swe:AbstractSimpleComponentType"/>
     <complexType abstract="true" name="AbstractSimpleComponentType">
         <complexContent>
             <extension base="swe:AbstractDataComponentType">
@@ -74,12 +88,16 @@
                 </sequence>
                 <attribute name="referenceFrame" type="anyURI" use="optional">
                     <annotation>
-                        <documentation>Frame of reference (usually temporal or spatial) with respect to which the value of the component is expressed. A reference frame anchors a value to a real world datum.</documentation>
+                        <documentation>Frame of reference (usually temporal or spatial) with respect to which the value
+                            of the component is expressed. A reference frame anchors a value to a real world datum.
+                        </documentation>
                     </annotation>
                 </attribute>
                 <attribute name="axisID" type="string" use="optional">
                     <annotation>
-                        <documentation>Specifies the reference axis (refer to gml:axisID). The reference frame URI should also be specified unless it is inherited from parent Vector</documentation>
+                        <documentation>Specifies the reference axis (refer to gml:axisID). The reference frame URI
+                            should also be specified unless it is inherited from parent Vector
+                        </documentation>
                     </annotation>
                 </attribute>
             </extension>
@@ -102,13 +120,16 @@
                 <sequence>
                     <element name="uom" type="swe:UnitReference">
                         <annotation>
-                            <documentation>Unit of measure used to express the value of this data component</documentation>
+                            <documentation>Unit of measure used to express the value of this data component
+                            </documentation>
                         </annotation>
                     </element>
                     <element maxOccurs="1" minOccurs="0" name="constraint" type="swe:AllowedValuesPropertyType"/>
                     <element maxOccurs="1" minOccurs="0" name="value" type="swe:RealPair">
                         <annotation>
-                            <documentation>Value is a pair of double numbers separated by a space. It is optional, to enable structure to act as a schema for values provided using other encodings</documentation>
+                            <documentation>Value is a pair of double numbers separated by a space. It is optional, to
+                                enable structure to act as a schema for values provided using other encodings
+                            </documentation>
                         </annotation>
                     </element>
                 </sequence>
@@ -123,7 +144,9 @@
     </complexType><!-- ================================================= -->
     <element name="Time" substitutionGroup="swe:AbstractSimpleComponent" type="swe:TimeType">
         <annotation>
-            <documentation>Scalar component used to represent a time quantity either as ISO 8601 (e.g. 2004-04-18T12:03:04.6Z) or as a duration relative to a time of reference</documentation>
+            <documentation>Scalar component used to represent a time quantity either as ISO 8601 (e.g.
+                2004-04-18T12:03:04.6Z) or as a duration relative to a time of reference
+            </documentation>
         </annotation>
     </element>
     <complexType name="TimeType">
@@ -132,24 +155,31 @@
                 <sequence>
                     <element name="uom" type="swe:UnitReference">
                         <annotation>
-                            <documentation>Temporal unit of measure used to express the value of this data component</documentation>
+                            <documentation>Temporal unit of measure used to express the value of this data component
+                            </documentation>
                         </annotation>
                     </element>
                     <element maxOccurs="1" minOccurs="0" name="constraint" type="swe:AllowedTimesPropertyType"/>
                     <element maxOccurs="1" minOccurs="0" name="value" type="swe:TimePosition">
                         <annotation>
-                            <documentation>Value is optional, to enable structure to act as a schema for values provided using other encodings</documentation>
+                            <documentation>Value is optional, to enable structure to act as a schema for values provided
+                                using other encodings
+                            </documentation>
                         </annotation>
                     </element>
                 </sequence>
                 <attribute name="referenceTime" type="dateTime" use="optional">
                     <annotation>
-                        <documentation>Specifies the origin of the temporal reference frame as an ISO8601 date (used to specify time after an epoch that is to say in a custom frame)</documentation>
+                        <documentation>Specifies the origin of the temporal reference frame as an ISO8601 date (used to
+                            specify time after an epoch that is to say in a custom frame)
+                        </documentation>
                     </annotation>
                 </attribute>
                 <attribute name="localFrame" type="anyURI" use="optional">
                     <annotation>
-                        <documentation>Temporal frame of reference whose origin is located by the value of this component</documentation>
+                        <documentation>Temporal frame of reference whose origin is located by the value of this
+                            component
+                        </documentation>
                     </annotation>
                 </attribute>
             </extension>
@@ -172,24 +202,32 @@
                 <sequence>
                     <element name="uom" type="swe:UnitReference">
                         <annotation>
-                            <documentation>Temporal unit of measure used to express the value of this data component</documentation>
+                            <documentation>Temporal unit of measure used to express the value of this data component
+                            </documentation>
                         </annotation>
                     </element>
                     <element maxOccurs="1" minOccurs="0" name="constraint" type="swe:AllowedTimesPropertyType"/>
                     <element maxOccurs="1" minOccurs="0" name="value" type="swe:TimePair">
                         <annotation>
-                            <documentation>Value is a pair of time values expressed in ISO-8601 or as decimal numbers separated by a space. It is optional, to enable structure to act as a schema for values provided using other encodings</documentation>
+                            <documentation>Value is a pair of time values expressed in ISO-8601 or as decimal numbers
+                                separated by a space. It is optional, to enable structure to act as a schema for values
+                                provided using other encodings
+                            </documentation>
                         </annotation>
                     </element>
                 </sequence>
                 <attribute name="referenceTime" type="dateTime" use="optional">
                     <annotation>
-                        <documentation>Specifies the origin of the temporal reference frame as an ISO8601 date (used to specify time after an epoch that is to say in a custom frame)</documentation>
+                        <documentation>Specifies the origin of the temporal reference frame as an ISO8601 date (used to
+                            specify time after an epoch that is to say in a custom frame)
+                        </documentation>
                     </annotation>
                 </attribute>
                 <attribute name="localFrame" type="anyURI" use="optional">
                     <annotation>
-                        <documentation>Temporal frame of reference whose origin is located by the value of this component</documentation>
+                        <documentation>Temporal frame of reference whose origin is located by the value of this
+                            component
+                        </documentation>
                     </annotation>
                 </attribute>
             </extension>
@@ -212,7 +250,9 @@
                 <sequence>
                     <element maxOccurs="1" minOccurs="0" name="value" type="boolean">
                         <annotation>
-                            <documentation>Value is optional, to enable structure to act as a schema for values provided using other encodings</documentation>
+                            <documentation>Value is optional, to enable structure to act as a schema for values provided
+                                using other encodings
+                            </documentation>
                         </annotation>
                     </element>
                 </sequence>
@@ -227,7 +267,8 @@
     </complexType><!-- ================================================= -->
     <element name="Text" substitutionGroup="swe:AbstractSimpleComponent" type="swe:TextType">
         <annotation>
-            <documentation>Free text component used to store comments or any other type of textual statement</documentation>
+            <documentation>Free text component used to store comments or any other type of textual statement
+            </documentation>
         </annotation>
     </element>
     <complexType name="TextType">
@@ -237,7 +278,9 @@
                     <element maxOccurs="1" minOccurs="0" name="constraint" type="swe:AllowedTokensPropertyType"/>
                     <element maxOccurs="1" minOccurs="0" name="value" type="string">
                         <annotation>
-                            <documentation>Value is optional, to enable structure to act as a schema for values provided using other encodings</documentation>
+                            <documentation>Value is optional, to enable structure to act as a schema for values provided
+                                using other encodings
+                            </documentation>
                         </annotation>
                     </element>
                 </sequence>
@@ -252,7 +295,9 @@
     </complexType><!-- ================================================= -->
     <element name="Category" substitutionGroup="swe:AbstractSimpleComponent" type="swe:CategoryType">
         <annotation>
-            <documentation>Scalar component used to represent a categorical value as a simple token identifying a term in a code space</documentation>
+            <documentation>Scalar component used to represent a categorical value as a simple token identifying a term
+                in a code space
+            </documentation>
         </annotation>
     </element>
     <complexType name="CategoryType">
@@ -261,13 +306,17 @@
                 <sequence>
                     <element maxOccurs="1" minOccurs="0" name="codeSpace" type="swe:Reference">
                         <annotation>
-                            <documentation>Name of the dictionary where the possible values for this component are listed and defined</documentation>
+                            <documentation>Name of the dictionary where the possible values for this component are
+                                listed and defined
+                            </documentation>
                         </annotation>
                     </element>
                     <element maxOccurs="1" minOccurs="0" name="constraint" type="swe:AllowedTokensPropertyType"/>
                     <element maxOccurs="1" minOccurs="0" name="value" type="string">
                         <annotation>
-                            <documentation>Value is optional, to enable structure to act as a schema for values provided using other encodings</documentation>
+                            <documentation>Value is optional, to enable structure to act as a schema for values provided
+                                using other encodings
+                            </documentation>
                         </annotation>
                     </element>
                 </sequence>
@@ -282,7 +331,9 @@
     </complexType><!-- ================================================= -->
     <element name="Quantity" substitutionGroup="swe:AbstractSimpleComponent" type="swe:QuantityType">
         <annotation>
-            <documentation>Scalar component with decimal representation and a unit of measure used to store value of a continuous quantity</documentation>
+            <documentation>Scalar component with decimal representation and a unit of measure used to store value of a
+                continuous quantity
+            </documentation>
         </annotation>
     </element>
     <complexType name="QuantityType">
@@ -291,13 +342,16 @@
                 <sequence>
                     <element name="uom" type="swe:UnitReference">
                         <annotation>
-                            <documentation>Unit of measure used to express the value of this data component</documentation>
+                            <documentation>Unit of measure used to express the value of this data component
+                            </documentation>
                         </annotation>
                     </element>
                     <element maxOccurs="1" minOccurs="0" name="constraint" type="swe:AllowedValuesPropertyType"/>
                     <element maxOccurs="1" minOccurs="0" name="value" type="double">
                         <annotation>
-                            <documentation>Value is optional, to enable structure to act as a schema for values provided using other encodings</documentation>
+                            <documentation>Value is optional, to enable structure to act as a schema for values provided
+                                using other encodings
+                            </documentation>
                         </annotation>
                     </element>
                 </sequence>
@@ -310,7 +364,8 @@
         </sequence>
         <attributeGroup ref="swe:AssociationAttributeGroup"/>
     </complexType><!-- ================================================= -->
-    <element abstract="true" name="AbstractDataComponent" substitutionGroup="swe:AbstractSWEIdentifiable" type="swe:AbstractDataComponentType">
+    <element abstract="true" name="AbstractDataComponent" substitutionGroup="swe:AbstractSWEIdentifiable"
+             type="swe:AbstractDataComponentType">
         <annotation>
             <documentation>Abstract base class for all data components</documentation>
         </annotation>
@@ -320,17 +375,21 @@
             <extension base="swe:AbstractSWEIdentifiableType">
                 <attribute name="updatable" type="boolean" use="optional">
                     <annotation>
-                        <documentation>Specifies if the value of a data component can be updated externally (i.e. is variable)</documentation>
+                        <documentation>Specifies if the value of a data component can be updated externally (i.e. is
+                            variable)
+                        </documentation>
                     </annotation>
                 </attribute>
                 <attribute default="false" name="optional" type="boolean" use="optional">
                     <annotation>
-                        <documentation>Specifies that data for this component can be omitted in the datastream</documentation>
+                        <documentation>Specifies that data for this component can be omitted in the datastream
+                        </documentation>
                     </annotation>
                 </attribute>
                 <attribute name="definition" type="anyURI" use="optional">
                     <annotation>
-                        <documentation>Reference to semantic information defining the precise nature of the component</documentation>
+                        <documentation>Reference to semantic information defining the precise nature of the component
+                        </documentation>
                     </annotation>
                 </attribute>
             </extension>
@@ -354,7 +413,9 @@
                     <element maxOccurs="1" minOccurs="0" name="constraint" type="swe:AllowedValuesPropertyType"/>
                     <element maxOccurs="1" minOccurs="0" name="value" type="swe:IntegerPair">
                         <annotation>
-                            <documentation>Value is a pair of integer numbers separated by a space. It is optional, to enable structure to act as a schema for values provided using other encodings</documentation>
+                            <documentation>Value is a pair of integer numbers separated by a space. It is optional, to
+                                enable structure to act as a schema for values provided using other encodings
+                            </documentation>
                         </annotation>
                     </element>
                 </sequence>
@@ -385,7 +446,9 @@
     </complexType><!-- ================================================= -->
     <element name="AllowedTokens" substitutionGroup="swe:AbstractSWE" type="swe:AllowedTokensType">
         <annotation>
-            <documentation>Defines permitted values for the component, as an enumerated list of tokens or a regular expression pattern</documentation>
+            <documentation>Defines permitted values for the component, as an enumerated list of tokens or a regular
+                expression pattern
+            </documentation>
         </annotation>
     </element>
     <complexType name="AllowedTokensType">
@@ -411,7 +474,9 @@
     </complexType><!-- ================================================= -->
     <element name="AllowedValues" substitutionGroup="swe:AbstractSWE" type="swe:AllowedValuesType">
         <annotation>
-            <documentation>Defines the permitted values for the component as an enumerated list and/or a list of inclusive ranges</documentation>
+            <documentation>Defines the permitted values for the component as an enumerated list and/or a list of
+                inclusive ranges
+            </documentation>
         </annotation>
     </element>
     <complexType name="AllowedValuesType">
@@ -438,7 +503,9 @@
     </complexType><!-- ================================================= -->
     <element name="AllowedTimes" substitutionGroup="swe:AbstractSWE" type="swe:AllowedTimesType">
         <annotation>
-            <documentation>Defines the permitted values for the component, as a time range or an enumerated list of time values</documentation>
+            <documentation>Defines the permitted values for the component, as a time range or an enumerated list of time
+                values
+            </documentation>
         </annotation>
     </element>
     <complexType name="AllowedTimesType">
@@ -465,7 +532,10 @@
     </complexType><!-- ================================================= -->
     <group name="Quality">
         <annotation>
-            <documentation>Provides an indication of the reliability of the parent component value in the form of a decimal number (ex: relative accuracy), a range (ex: bidirectional tolerance), a categorical value (ex: good, bad) or plain textual statement</documentation>
+            <documentation>Provides an indication of the reliability of the parent component value in the form of a
+                decimal number (ex: relative accuracy), a range (ex: bidirectional tolerance), a categorical value (ex:
+                good, bad) or plain textual statement
+            </documentation>
         </annotation>
         <choice>
             <element ref="swe:Quantity"/>

@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
+
 import org.apache.wicket.Page;
 import org.apache.wicket.feedback.FeedbackMessage;
 import org.apache.wicket.markup.html.form.DropDownChoice;
@@ -39,7 +40,9 @@ import org.geotools.arcsde.session.SessionWrapper;
 import org.geotools.arcsde.session.UnavailableConnectionException;
 import org.junit.Test;
 
-/** @author Gabriel Roldan */
+/**
+ * @author Gabriel Roldan
+ */
 public class ArcSDECoverageStoreEditPanelTest extends GeoServerWicketTestSupport {
 
     private Page page;
@@ -146,7 +149,9 @@ public class ArcSDECoverageStoreEditPanelTest extends GeoServerWicketTestSupport
                 base + "tableNamePanel:border:border_body:paramValue", "FAKE.TABLE");
     }
 
-    /** Connection parameters are not properly set and the refresh raster tables button is hit */
+    /**
+     * Connection parameters are not properly set and the refresh raster tables button is hit
+     */
     @Test
     public void testRefreshRasterTableListBadConnectionParams() {
         startPanelForNewStore();

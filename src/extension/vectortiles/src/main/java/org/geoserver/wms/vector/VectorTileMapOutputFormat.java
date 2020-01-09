@@ -9,6 +9,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import static org.geotools.renderer.lite.VectorMapRenderUtils.getStyleQuery;
 
 import com.google.common.base.Stopwatch;
+
 import java.awt.Rectangle;
 import java.io.IOException;
 import java.util.Arrays;
@@ -16,6 +17,7 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.geoserver.platform.ServiceException;
 import org.geoserver.wms.MapProducerCapabilities;
 import org.geoserver.wms.WMSMapContent;
@@ -46,7 +48,9 @@ import org.opengis.referencing.crs.CoordinateReferenceSystem;
 
 public class VectorTileMapOutputFormat extends AbstractMapOutputFormat {
 
-    /** A logger for this class. */
+    /**
+     * A logger for this class.
+     */
     private static final Logger LOGGER = Logging.getLogger(VectorTileMapOutputFormat.class);
 
     private final VectorTileBuilderFactory tileBuilderFactory;
@@ -86,7 +90,9 @@ public class VectorTileMapOutputFormat extends AbstractMapOutputFormat {
         this.clipToMapBounds = clip;
     }
 
-    /** Does this format use screen coordinates 此格式是否使用屏幕坐标 */
+    /**
+     * Does this format use screen coordinates 此格式是否使用屏幕坐标
+     */
     public void setTransformToScreenCoordinates(boolean useScreenCoords) {
         this.transformToScreenCoordinates = useScreenCoords;
     }
@@ -290,7 +296,9 @@ public class VectorTileMapOutputFormat extends AbstractMapOutputFormat {
         }
     }
 
-    /** @return {@code null}，不是光栅格式。 */
+    /**
+     * @return {@code null}，不是光栅格式。
+     */
     @Override
     public MapProducerCapabilities getCapabilities(String format) {
         return null;

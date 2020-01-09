@@ -21,7 +21,9 @@ public class InvalidColumnTest extends AbstractAppSchemaTestSupport {
         return new InvalidColumnTestData();
     }
 
-    /** Test whether GetFeature returns ows:ExceptionReport. */
+    /**
+     * Test whether GetFeature returns ows:ExceptionReport.
+     */
     @Test
     public void testGetFeature() {
         Document doc = getAsDOM("wfs?request=GetFeature&version=1.1.0&typeName=gsml:GeologicUnit");

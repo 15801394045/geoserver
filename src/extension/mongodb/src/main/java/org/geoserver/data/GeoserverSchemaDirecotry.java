@@ -5,12 +5,15 @@
 package org.geoserver.data;
 
 import java.io.File;
+
 import org.geoserver.platform.resource.DataDirectoryResourceStore;
 import org.geoserver.platform.resource.Resource;
 import org.geotools.data.mongodb.data.SchemaStoreDirectory;
 import org.geotools.data.mongodb.data.SchemaStoreDirectoryProvider;
 
-/** This class provides a location for MongoDB HTTP schemas inside GeoServer data directory. */
+/**
+ * This class provides a location for MongoDB HTTP schemas inside GeoServer data directory.
+ */
 public class GeoserverSchemaDirecotry implements SchemaStoreDirectory {
 
     private File workspaceDirectory;

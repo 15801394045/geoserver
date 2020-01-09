@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+
 import org.apache.commons.exec.CommandLine;
 import org.geoserver.importer.FileData;
 import org.geoserver.importer.ImportData;
@@ -106,7 +107,9 @@ public class GdalAddoTransform extends AbstractCommandLinePreTransform implement
         return Collections.singletonList("--version");
     }
 
-    /** @return the levels */
+    /**
+     * @return the levels
+     */
     public List<Integer> getLevels() {
         return levels;
     }

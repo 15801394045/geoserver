@@ -12,6 +12,7 @@ import java.beans.PropertyDescriptor;
 import java.io.StringWriter;
 import java.util.HashMap;
 import java.util.Map;
+
 import org.geoserver.importer.ImportContext;
 import org.geoserver.importer.ImportTask;
 import org.geoserver.importer.Importer;
@@ -26,7 +27,9 @@ import org.springframework.web.context.request.AbstractRequestAttributes;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 
-/** @author Ian Schneider <ischneider@opengeo.org> */
+/**
+ * @author Ian Schneider <ischneider@opengeo.org>
+ */
 public abstract class TransformTestSupport extends DataTestCase {
 
     public TransformTestSupport() {
@@ -91,10 +94,12 @@ public abstract class TransformTestSupport extends DataTestCase {
         }
 
         @Override
-        protected void updateAccessedSessionAttributes() {}
+        protected void updateAccessedSessionAttributes() {
+        }
 
         @Override
-        public void registerDestructionCallback(String name, Runnable callback, int scope) {}
+        public void registerDestructionCallback(String name, Runnable callback, int scope) {
+        }
 
         @Override
         public Object resolveReference(String key) {

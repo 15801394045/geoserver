@@ -8,6 +8,7 @@ import static org.custommonkey.xmlunit.XMLAssert.assertXpathEvaluatesTo;
 import static org.custommonkey.xmlunit.XMLAssert.assertXpathExists;
 
 import java.util.Arrays;
+
 import org.geoserver.catalog.LayerGroupInfo;
 import org.geoserver.catalog.PublishedInfo;
 import org.geoserver.data.test.SystemTestData;
@@ -15,7 +16,9 @@ import org.geotools.csw.CSWConfiguration;
 import org.junit.Test;
 import org.w3c.dom.Document;
 
-/** @author Niels Charlier */
+/**
+ * @author Niels Charlier
+ */
 public class LayerGroupTest extends CSWInternalTestSupport {
 
     private static String NAME_FORESTSANDSTREAMS = "Forests and Streams";

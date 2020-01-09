@@ -12,10 +12,12 @@ import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.ListMultimap;
+
 import java.awt.Rectangle;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Map;
+
 import no.ecc.vectortile.VectorTileDecoder;
 import no.ecc.vectortile.VectorTileDecoder.Feature;
 import org.geoserver.wms.WMSMapContent;

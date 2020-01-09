@@ -9,6 +9,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 
 import javax.xml.namespace.QName;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 import org.geoserver.catalog.CoverageStoreInfo;

@@ -8,6 +8,7 @@ package org.geoserver.wps.resource;
 import java.io.File;
 import java.util.Collections;
 import java.util.List;
+
 import org.geoserver.platform.resource.Files;
 import org.geoserver.platform.resource.Resource;
 

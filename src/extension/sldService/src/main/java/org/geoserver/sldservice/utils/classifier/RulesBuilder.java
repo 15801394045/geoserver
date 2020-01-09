@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.geotools.factory.CommonFactoryFinder;
 import org.geotools.feature.FeatureCollection;
 import org.geotools.filter.function.Classifier;
@@ -111,7 +112,9 @@ public class RulesBuilder {
         return null;
     }
 
-    /** Generate a List of rules using quantile classification Sets up only filter not symbolizer */
+    /**
+     * Generate a List of rules using quantile classification Sets up only filter not symbolizer
+     */
     public List<Rule> quantileClassification(
             FeatureCollection features,
             String property,
@@ -403,7 +406,7 @@ public class RulesBuilder {
             PropertyName property, Class<?> propertyType, boolean normalize) {
         if (normalize
                 && (Integer.class.isAssignableFrom(propertyType)
-                        || Long.class.isAssignableFrom(propertyType))) {
+                || Long.class.isAssignableFrom(propertyType))) {
             return FF.function("parseDouble", property);
         }
         return property;

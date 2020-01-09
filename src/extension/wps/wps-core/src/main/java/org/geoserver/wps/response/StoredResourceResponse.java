@@ -9,6 +9,7 @@ package org.geoserver.wps.response;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+
 import org.apache.commons.io.IOUtils;
 import org.geoserver.ows.Response;
 import org.geoserver.platform.Operation;
@@ -35,7 +36,7 @@ public class StoredResourceResponse extends Response {
     public boolean canHandle(Operation operation) {
         String operationId = operation.getId();
         return ("GetExecutionStatus".equalsIgnoreCase(operationId)
-                        || "GetExecutionResult".equalsIgnoreCase(operationId))
+                || "GetExecutionResult".equalsIgnoreCase(operationId))
                 && operation.getService().getId().equals("wps");
     }
 

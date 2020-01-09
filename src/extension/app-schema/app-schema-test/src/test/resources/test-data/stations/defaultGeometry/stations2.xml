@@ -32,7 +32,8 @@
             <sourceType>stations_${GML_PREFIX}</sourceType>
             <targetElement>st_${GML_PREFIX}:StationWithMeasurements_${GML_PREFIX}
             </targetElement>
-            <defaultGeometry>st_${GML_PREFIX}:measurements/ms_${GML_PREFIX}:Measurement_${GML_PREFIX}/ms_${GML_PREFIX}:sampledArea/ms_${GML_PREFIX}:SampledArea/ms_${GML_PREFIX}:geometry
+            <defaultGeometry>
+                st_${GML_PREFIX}:measurements/ms_${GML_PREFIX}:Measurement_${GML_PREFIX}/ms_${GML_PREFIX}:sampledArea/ms_${GML_PREFIX}:SampledArea/ms_${GML_PREFIX}:geometry
             </defaultGeometry>
             <attributeMappings>
                 <AttributeMapping>

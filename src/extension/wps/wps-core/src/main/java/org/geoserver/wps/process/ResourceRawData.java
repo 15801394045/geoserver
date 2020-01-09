@@ -7,6 +7,7 @@ package org.geoserver.wps.process;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+
 import org.geoserver.platform.resource.Resource;
 
 /**

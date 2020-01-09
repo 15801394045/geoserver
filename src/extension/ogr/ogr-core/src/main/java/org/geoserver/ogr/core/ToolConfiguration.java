@@ -18,7 +18,8 @@ public class ToolConfiguration {
     protected Map<String, String> environment;
     protected Format[] formats;
 
-    public ToolConfiguration() {}
+    public ToolConfiguration() {
+    }
 
     public ToolConfiguration(String executable, Map<String, String> environment, Format[] formats) {
         super();
@@ -27,32 +28,44 @@ public class ToolConfiguration {
         this.formats = formats;
     }
 
-    /** @return the executable */
+    /**
+     * @return the executable
+     */
     public String getExecutable() {
         return executable;
     }
 
-    /** @param executable the executable to set */
+    /**
+     * @param executable the executable to set
+     */
     public void setExecutable(String executable) {
         this.executable = executable;
     }
 
-    /** @return the environment */
+    /**
+     * @return the environment
+     */
     public Map<String, String> getEnvironment() {
         return environment;
     }
 
-    /** @param environment the environment to set */
+    /**
+     * @param environment the environment to set
+     */
     public void setEnvironment(Map<String, String> environment) {
         this.environment = environment;
     }
 
-    /** @return the formats */
+    /**
+     * @return the formats
+     */
     public Format[] getFormats() {
         return formats;
     }
 
-    /** @param formats the formats to set */
+    /**
+     * @param formats the formats to set
+     */
     public void setFormats(Format[] formats) {
         this.formats = formats;
     }

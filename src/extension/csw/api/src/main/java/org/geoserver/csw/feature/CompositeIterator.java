@@ -9,6 +9,7 @@ import java.io.Closeable;
 import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
+
 import org.geotools.feature.FeatureCollection;
 import org.geotools.feature.FeatureIterator;
 import org.opengis.feature.Feature;

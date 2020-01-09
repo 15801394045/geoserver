@@ -6,12 +6,16 @@
 package org.geoserver.map.turbojpeg;
 
 import it.geosolutions.imageio.plugins.turbojpeg.TurboJpegUtilities;
+
 import java.util.Optional;
+
 import org.geoserver.platform.ModuleStatus;
 import org.geotools.util.Version;
 import org.geotools.util.factory.GeoTools;
 
-/** @author David Blasby - Boundless */
+/**
+ * @author David Blasby - Boundless
+ */
 public class TurboJpegStatus implements ModuleStatus {
 
     @Override

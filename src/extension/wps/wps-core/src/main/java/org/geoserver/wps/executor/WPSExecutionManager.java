@@ -19,6 +19,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import net.opengis.wps10.ExecuteResponseType;
 import org.geoserver.config.GeoServer;
 import org.geoserver.ows.XmlObjectEncodingResponse;
@@ -67,19 +68,29 @@ public class WPSExecutionManager
      */
     private ExecutorService executors = Executors.newCachedThreadPool();
 
-    /** Used to do run-time lookups of extension points */
+    /**
+     * Used to do run-time lookups of extension points
+     */
     ApplicationContext applicationContext;
 
-    /** The resource manager, the source of execution ids */
+    /**
+     * The resource manager, the source of execution ids
+     */
     private WPSResourceManager resourceManager;
 
-    /** The classes that will actually run the process once the inputs are parsed */
+    /**
+     * The classes that will actually run the process once the inputs are parsed
+     */
     private volatile List<ProcessManager> processManagers;
 
-    /** Objects listening to the process lifecycles */
+    /**
+     * Objects listening to the process lifecycles
+     */
     private List<ProcessListener> listeners;
 
-    /** The HTTP connection timeout for remote resources */
+    /**
+     * The HTTP connection timeout for remote resources
+     */
     private int connectionTimeout;
 
     /**
@@ -88,17 +99,25 @@ public class WPSExecutionManager
      */
     private ProcessStatusTracker statusTracker;
 
-    /** The currently running processes */
+    /**
+     * The currently running processes
+     */
     private Map<String, ProcessListenerNotifier> localProcesses =
             new ConcurrentHashMap<String, ProcessListenerNotifier>();
 
-    /** The timer informing the status tracker of the currently executing processes */
+    /**
+     * The timer informing the status tracker of the currently executing processes
+     */
     private Timer heartbeatTimer;
 
-    /** The delay between one heartbeat and the next */
+    /**
+     * The delay between one heartbeat and the next
+     */
     private int heartbeatDelay;
 
-    /** Used to retrieve the current WPSInfo */
+    /**
+     * Used to retrieve the current WPSInfo
+     */
     private GeoServer geoServer;
 
     public WPSExecutionManager(
@@ -264,7 +283,9 @@ public class WPSExecutionManager
                 "Could not find a ProcessManager able to run this process: " + processName);
     }
 
-    /** Returns the HTTP connection timeout for remote resource fetching */
+    /**
+     * Returns the HTTP connection timeout for remote resource fetching
+     */
     public int getConnectionTimeout() {
         return connectionTimeout;
     }

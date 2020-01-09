@@ -6,7 +6,9 @@ package org.geoserver.importer.rest;
 
 import freemarker.template.ObjectWrapper;
 import freemarker.template.Template;
+
 import java.lang.reflect.Type;
+
 import org.apache.commons.lang3.NotImplementedException;
 import org.geoserver.importer.ImportTask;
 import org.geoserver.importer.Importer;
@@ -28,8 +30,8 @@ import org.springframework.web.util.UriComponentsBuilder;
 @RestController
 @ControllerAdvice
 @RequestMapping(
-    path = RestBaseController.ROOT_PATH + "/imports/{importId}",
-    produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.TEXT_HTML_VALUE}
+        path = RestBaseController.ROOT_PATH + "/imports/{importId}",
+        produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.TEXT_HTML_VALUE}
 )
 public class ImportTransformController extends ImportBaseController {
 
@@ -83,8 +85,8 @@ public class ImportTransformController extends ImportBaseController {
     }
 
     @PutMapping(
-        path = {"/tasks/{taskId}/transforms/{transformId}"},
-        consumes = {MediaType.APPLICATION_JSON_VALUE, MediaTypeExtensions.TEXT_JSON_VALUE}
+            path = {"/tasks/{taskId}/transforms/{transformId}"},
+            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaTypeExtensions.TEXT_JSON_VALUE}
     )
     public ImportWrapper putTransform(
             @PathVariable Long importId,

@@ -33,6 +33,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import javax.xml.namespace.QName;
+
 import net.opengis.ows11.BoundingBoxType;
 import org.apache.commons.codec.binary.Base64;
 import org.custommonkey.xmlunit.XMLUnit;
@@ -348,7 +349,7 @@ public class ExecuteTest extends WPSTestSupport {
                 "wps?service=WPS&version=1.0.0&request=Execute&Identifier=JTS:buffer"
                         + "&DataInputs="
                         + urlEncode(
-                                "geom=POLYGON((1 1, 2 1, 2 2, 1 2, 1 1))@mimetype=application/wkt;distance=1")
+                        "geom=POLYGON((1 1, 2 1, 2 2, 1 2, 1 1))@mimetype=application/wkt;distance=1")
                         + "&RawDataOutput="
                         + urlEncode("result=@mimetype=application/wkt");
         MockHttpServletResponse response = getAsServletResponse(request);
@@ -513,9 +514,9 @@ public class ExecuteTest extends WPSTestSupport {
                 "wps?service=WPS&version=1.0.0&request=Execute&Identifier=gs:BufferFeatureCollection"
                         + "&DataInputs="
                         + urlEncode(
-                                "features="
-                                        + readFileIntoString("states-FeatureCollection.xml")
-                                        + "@mimetype=application/wfs-collection-1.1;distance=10")
+                        "features="
+                                + readFileIntoString("states-FeatureCollection.xml")
+                                + "@mimetype=application/wfs-collection-1.1;distance=10")
                         + "&ResponseDocument="
                         + urlEncode("result");
 
@@ -585,9 +586,9 @@ public class ExecuteTest extends WPSTestSupport {
                 "wps?service=WPS&version=1.0.0&request=Execute&Identifier=gs:BufferFeatureCollection"
                         + "&DataInputs="
                         + urlEncode(
-                                "features="
-                                        + readFileIntoString("states-FeatureCollection.xml")
-                                        + "@mimetype=application/wfs-collection-1.1;distance=10")
+                        "features="
+                                + readFileIntoString("states-FeatureCollection.xml")
+                                + "@mimetype=application/wfs-collection-1.1;distance=10")
                         + "&ResponseDocument="
                         + urlEncode("result=@asReference=true");
 
@@ -710,9 +711,9 @@ public class ExecuteTest extends WPSTestSupport {
                 "wps?service=WPS&version=1.0.0&request=Execute&Identifier=gs:BufferFeatureCollection"
                         + "&DataInputs="
                         + urlEncode(
-                                "features=@mimetype=application/wfs-collection-1.1@xlink:href="
-                                        + collectionURL.toExternalForm()
-                                        + ";distance=10")
+                        "features=@mimetype=application/wfs-collection-1.1@xlink:href="
+                                + collectionURL.toExternalForm()
+                                + ";distance=10")
                         + "&ResponseDocument="
                         + urlEncode("result");
 
@@ -735,9 +736,9 @@ public class ExecuteTest extends WPSTestSupport {
                 "wps?service=WPS&version=1.0.0&request=Execute&Identifier=gs:BufferFeatureCollection"
                         + "&DataInputs="
                         + urlEncode(
-                                "features=@mimetype=application/wfs-collection-1.1@xlink:href="
-                                        + collectionURL.toExternalForm()
-                                        + ";distance=10")
+                        "features=@mimetype=application/wfs-collection-1.1@xlink:href="
+                                + collectionURL.toExternalForm()
+                                + ";distance=10")
                         + "&ResponseDocument="
                         + urlEncode("result");
 
@@ -859,7 +860,7 @@ public class ExecuteTest extends WPSTestSupport {
 
         MockHttpServletResponse r = postAsServletResponse("wps", xml);
         assertEquals("application/zip", r.getContentType());
-        checkShapefileIntegrity(new String[] {"states"}, getBinaryInputStream(r));
+        checkShapefileIntegrity(new String[]{"states"}, getBinaryInputStream(r));
     }
 
     /**
@@ -933,7 +934,9 @@ public class ExecuteTest extends WPSTestSupport {
         checkStreamsProcessBounds(dom);
     }
 
-    /** Tests a process grabbing a remote layer */
+    /**
+     * Tests a process grabbing a remote layer
+     */
     @Test
     public void testRemoteGetWFS10Layer() throws Exception {
         String request =
@@ -957,7 +960,9 @@ public class ExecuteTest extends WPSTestSupport {
         executeState1BoundsTest(request, "GET WFS 1.0");
     }
 
-    /** Tests a process grabbing a remote layer */
+    /**
+     * Tests a process grabbing a remote layer
+     */
     @Test
     public void testRemotePostWFS10Layer() throws Exception {
         String request =
@@ -998,7 +1003,9 @@ public class ExecuteTest extends WPSTestSupport {
         executeState1BoundsTest(request, "POST WFS 1.0");
     }
 
-    /** Tests a process grabbing a remote layer */
+    /**
+     * Tests a process grabbing a remote layer
+     */
     @Test
     public void testRemoteBodyReferencePostWFS10Layer() throws Exception {
         URL getFeatureURL = getClass().getResource("getFeature.xml");
@@ -1027,7 +1034,9 @@ public class ExecuteTest extends WPSTestSupport {
         executeState1BoundsTest(request, "POST WFS 1.0");
     }
 
-    /** Tests a process grabbing a remote layer */
+    /**
+     * Tests a process grabbing a remote layer
+     */
     @Test
     public void testRemoteGetWFS11Layer() throws Exception {
         String request =
@@ -1052,7 +1061,9 @@ public class ExecuteTest extends WPSTestSupport {
         executeState1BoundsTest(request, "GET WFS 1.1");
     }
 
-    /** Tests a process grabbing a remote layer */
+    /**
+     * Tests a process grabbing a remote layer
+     */
     @Test
     public void testRemotePostWFS11Layer() throws Exception {
         String request =
@@ -1267,7 +1278,9 @@ public class ExecuteTest extends WPSTestSupport {
         assertXpathExists("//wps:ProcessSucceeded", dom);
     }
 
-    /** https://osgeo-org.atlassian.net/browse/GEOS-5208 */
+    /**
+     * https://osgeo-org.atlassian.net/browse/GEOS-5208
+     */
     @Test
     public void testChainedProgress() throws Exception {
         String request =
@@ -1331,7 +1344,9 @@ public class ExecuteTest extends WPSTestSupport {
         waitForProcessEnd(statusLocation, 60);
     }
 
-    /** https://osgeo-org.atlassian.net/browse/GEOS-5208 */
+    /**
+     * https://osgeo-org.atlassian.net/browse/GEOS-5208
+     */
     @Test
     public void testTripleChainedProgress() throws Exception {
         String request =
@@ -2134,7 +2149,7 @@ public class ExecuteTest extends WPSTestSupport {
         ZipInputStream zis = new ZipInputStream(in);
         ZipEntry entry = null;
 
-        final String[] extensions = new String[] {".shp", ".shx", ".dbf", ".prj", ".cst"};
+        final String[] extensions = new String[]{".shp", ".shx", ".dbf", ".prj", ".cst"};
         Set names = new HashSet();
         for (String name : typeNames) {
             for (String extension : extensions) {
@@ -2150,7 +2165,9 @@ public class ExecuteTest extends WPSTestSupport {
         zis.close();
     }
 
-    /** Tests WPS service disabled on layer-resource */
+    /**
+     * Tests WPS service disabled on layer-resource
+     */
     @Test
     public void testDisableLayerService() throws Exception {
         disableWPSOnStreams();
@@ -2162,7 +2179,9 @@ public class ExecuteTest extends WPSTestSupport {
         enableWPSOnStreams();
     }
 
-    /** Tests WPS service enabled on layer-resource */
+    /**
+     * Tests WPS service enabled on layer-resource
+     */
     @Test
     public void testEnableLayerService() throws Exception {
         enableWPSOnStreams();

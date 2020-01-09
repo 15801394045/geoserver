@@ -13,6 +13,6 @@
 
 
     <!-- IP blacklist filter -->
-    <bean id="ipBlacklistFilter" class="org.geoserver.flow.controller.IpBlacklistFilter" />
-	
+    <bean id="ipBlacklistFilter" class="org.geoserver.flow.controller.IpBlacklistFilter"/>
+
 </beans>

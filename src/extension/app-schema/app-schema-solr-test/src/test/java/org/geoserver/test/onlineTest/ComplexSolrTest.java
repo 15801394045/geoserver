@@ -21,6 +21,7 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.logging.Level;
 import javax.imageio.ImageIO;
+
 import org.apache.solr.client.solrj.impl.HttpSolrClient;
 import org.custommonkey.xmlunit.SimpleNamespaceContext;
 import org.custommonkey.xmlunit.XMLUnit;
@@ -265,7 +266,9 @@ public final class ComplexSolrTest extends GeoServerSystemTestSupport {
         return loadFixtureProperties(fixFile);
     }
 
-    /** Gets the fixture file for GeoServer Apache Solr integration tests. */
+    /**
+     * Gets the fixture file for GeoServer Apache Solr integration tests.
+     */
     private static File getFixtureFile() {
         File directory = new File(System.getProperty("user.home") + "/.geoserver");
         if (!directory.exists()) {
@@ -275,7 +278,9 @@ public final class ComplexSolrTest extends GeoServerSystemTestSupport {
         return new File(directory, "solr.properties");
     }
 
-    /** Helper method that just loads the fixture files properties. */
+    /**
+     * Helper method that just loads the fixture files properties.
+     */
     private static Properties loadFixtureProperties(File fixtureFile) {
         Properties properties = new Properties();
         try (InputStream input = new FileInputStream(fixtureFile)) {
@@ -335,7 +340,9 @@ public final class ComplexSolrTest extends GeoServerSystemTestSupport {
         }
     }
 
-    /** Helper method that reads the content of a resource to a string. */
+    /**
+     * Helper method that reads the content of a resource to a string.
+     */
     private static String readResourceContent(String resource) {
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         try (InputStream input = ComplexSolrTest.class.getResourceAsStream(resource)) {

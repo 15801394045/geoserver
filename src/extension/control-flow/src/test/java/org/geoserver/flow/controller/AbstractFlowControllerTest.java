@@ -9,6 +9,7 @@ import static org.junit.Assert.fail;
 
 import java.lang.Thread.State;
 import javax.servlet.http.Cookie;
+
 import org.geoserver.flow.controller.FlowControllerTestingThread.ThreadState;
 import org.geoserver.ows.Request;
 import org.springframework.mock.web.MockHttpServletRequest;
@@ -26,7 +27,7 @@ public abstract class AbstractFlowControllerTest {
     /**
      * Waits until the thread enters in WAITING or TIMED_WAITING state
      *
-     * @param t the thread
+     * @param t       the thread
      * @param maxWait max amount of time we'll wait
      */
     void waitBlocked(Thread t, long maxWait) {
@@ -45,7 +46,7 @@ public abstract class AbstractFlowControllerTest {
     /**
      * Waits until the thread is terminated
      *
-     * @param t the thread
+     * @param t       the thread
      * @param maxWait max amount of time we'll wait
      */
     void waitTerminated(Thread t, long maxWait) {

@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Properties;
+
 import org.apache.commons.io.FileUtils;
 import org.geoserver.platform.resource.Files;
 import org.geoserver.security.impl.GeoServerUser;
@@ -28,14 +29,16 @@ import org.springframework.util.StringUtils;
  *   <li>userkey2=username2
  *   <li>...
  * </ul>
- *
+ * <p>
  * The file will be automatically reloaded when modified
  *
  * @author Andrea Aime - GeoSolutions
  */
 public class PropertyAuthenticationKeyMapper extends AbstractAuthenticationKeyMapper {
 
-    /** Name of the file used to store the authentication keys */
+    /**
+     * Name of the file used to store the authentication keys
+     */
     public static final String AUTHKEYS_FILE = "authkeys.properties";
 
     PropertyFileWatcher fileWatcher;
@@ -54,7 +57,7 @@ public class PropertyAuthenticationKeyMapper extends AbstractAuthenticationKeyMa
         }
 
         if (fileWatcher.isStale()) // reload if necessary
-        authKeyProps = fileWatcher.getProperties();
+            authKeyProps = fileWatcher.getProperties();
 
         String userName = authKeyProps.getProperty(key);
         if (StringUtils.hasLength(userName) == false) {

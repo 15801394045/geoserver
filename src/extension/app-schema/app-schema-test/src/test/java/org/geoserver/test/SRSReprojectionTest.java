@@ -11,6 +11,7 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assume.assumeTrue;
 
 import java.io.IOException;
+
 import org.geoserver.catalog.Catalog;
 import org.geoserver.catalog.FeatureTypeInfo;
 import org.geoserver.catalog.ProjectionPolicy;
@@ -60,7 +61,9 @@ public class SRSReprojectionTest extends AbstractAppSchemaTestSupport {
         return new SRSReprojectionMockData();
     }
 
-    /** Tests re-projection of NonFeatureTypeProxy. */
+    /**
+     * Tests re-projection of NonFeatureTypeProxy.
+     */
     @Test
     public void testNonFeatureTypeProxy() {
         Document doc = null;
@@ -122,7 +125,7 @@ public class SRSReprojectionTest extends AbstractAppSchemaTestSupport {
     @Test
     public void testChainingReprojection()
             throws NoSuchAuthorityCodeException, FactoryException, MismatchedDimensionException,
-                    TransformException {
+            TransformException {
         Document doc = getAsDOM("wfs?request=GetFeature&version=1.1.0&typename=ex:geomContainer");
         LOGGER.info("WFS GetFeature&typename=ex:geomContainer response:\n" + prettyString(doc));
         // Generate test geometries and its results after re-projection.
@@ -135,12 +138,12 @@ public class SRSReprojectionTest extends AbstractAppSchemaTestSupport {
                         factory.createLinearRing(
                                 factory.getCoordinateSequenceFactory()
                                         .create(
-                                                new Coordinate[] {
-                                                    new Coordinate(-1.2, 52.5),
-                                                    new Coordinate(-1.2, 52.6),
-                                                    new Coordinate(-1.1, 52.6),
-                                                    new Coordinate(-1.1, 52.5),
-                                                    new Coordinate(-1.2, 52.5)
+                                                new Coordinate[]{
+                                                        new Coordinate(-1.2, 52.5),
+                                                        new Coordinate(-1.2, 52.6),
+                                                        new Coordinate(-1.1, 52.6),
+                                                        new Coordinate(-1.1, 52.5),
+                                                        new Coordinate(-1.2, 52.5)
                                                 })),
                         null);
         Polygon targetPolygon = (Polygon) JTS.transform(srcPolygon, transform);
@@ -245,12 +248,12 @@ public class SRSReprojectionTest extends AbstractAppSchemaTestSupport {
                         factory.createLinearRing(
                                 factory.getCoordinateSequenceFactory()
                                         .create(
-                                                new Coordinate[] {
-                                                    new Coordinate(-1.2, 52.5),
-                                                    new Coordinate(-1.2, 52.6),
-                                                    new Coordinate(-1.1, 52.6),
-                                                    new Coordinate(-1.1, 52.5),
-                                                    new Coordinate(-1.2, 52.5)
+                                                new Coordinate[]{
+                                                        new Coordinate(-1.2, 52.5),
+                                                        new Coordinate(-1.2, 52.6),
+                                                        new Coordinate(-1.1, 52.6),
+                                                        new Coordinate(-1.1, 52.5),
+                                                        new Coordinate(-1.2, 52.5)
                                                 })),
                         null);
         Envelope bounds = srcPolygon.getEnvelopeInternal();
@@ -286,7 +289,9 @@ public class SRSReprojectionTest extends AbstractAppSchemaTestSupport {
         assertTrue(encodedFilter.contains("EXISTS"));
     }
 
-    /** Tests reprojection from native to declared for complex features. */
+    /**
+     * Tests reprojection from native to declared for complex features.
+     */
     @Test
     public void testReprojection() throws Exception {
         final Catalog catalog = getCatalog();

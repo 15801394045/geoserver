@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <as:AppSchemaDataAccess xmlns:as="http://www.geotools.org/app-schema"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.geotools.org/app-schema AppSchemaDataAccess.xsd">
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                        xsi:schemaLocation="http://www.geotools.org/app-schema AppSchemaDataAccess.xsd">
     <namespaces>
         <Namespace>
             <prefix>gml</prefix>
@@ -34,45 +34,45 @@
             <sourceType>GeologicUnit</sourceType>
             <targetElement>gsml:GeologicUnit</targetElement>
             <attributeMappings>
-				<AttributeMapping>
-					<targetAttribute>
+                <AttributeMapping>
+                    <targetAttribute>
                         gsml:GeologicUnit
-					</targetAttribute>
-					<idExpression>
-						<OCQL>GML_ID</OCQL>
-					</idExpression>				
-				</AttributeMapping>
-				<AttributeMapping>
-					<targetAttribute>
+                    </targetAttribute>
+                    <idExpression>
+                        <OCQL>GML_ID</OCQL>
+                    </idExpression>
+                </AttributeMapping>
+                <AttributeMapping>
+                    <targetAttribute>
                         gml:description
-					</targetAttribute>
-					<sourceExpression>
-						<OCQL>TEXTDESCRIPTION</OCQL>						
-					</sourceExpression>					
-				</AttributeMapping>				
-				<AttributeMapping>
-					<targetAttribute>
+                    </targetAttribute>
+                    <sourceExpression>
+                        <OCQL>TEXTDESCRIPTION</OCQL>
+                    </sourceExpression>
+                </AttributeMapping>
+                <AttributeMapping>
+                    <targetAttribute>
                         gml:name
-					</targetAttribute>
-					<sourceExpression>
-						<OCQL>NAME</OCQL>						
-					</sourceExpression>
-					<ClientProperty>
-						<name>codeSpace</name>
-						<value>'urn:ietf:rfc:2141'</value>
-					</ClientProperty>
-					<isMultiple>true</isMultiple>
-				</AttributeMapping>			
-				<AttributeMapping>
-					<targetAttribute>
-                       gsml:occurrence/gsml:MappedFeature/gml:description
-					</targetAttribute>
-					<sourceExpression>
-						<OCQL>TEXTDESCRIPTION</OCQL>									
-					</sourceExpression>	
-					<isMultiple>true</isMultiple>
-				</AttributeMapping> 
+                    </targetAttribute>
+                    <sourceExpression>
+                        <OCQL>NAME</OCQL>
+                    </sourceExpression>
+                    <ClientProperty>
+                        <name>codeSpace</name>
+                        <value>'urn:ietf:rfc:2141'</value>
+                    </ClientProperty>
+                    <isMultiple>true</isMultiple>
+                </AttributeMapping>
+                <AttributeMapping>
+                    <targetAttribute>
+                        gsml:occurrence/gsml:MappedFeature/gml:description
+                    </targetAttribute>
+                    <sourceExpression>
+                        <OCQL>TEXTDESCRIPTION</OCQL>
+                    </sourceExpression>
+                    <isMultiple>true</isMultiple>
+                </AttributeMapping>
             </attributeMappings>
-        </FeatureTypeMapping>		
+        </FeatureTypeMapping>
     </typeMappings>
 </as:AppSchemaDataAccess>

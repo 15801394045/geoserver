@@ -8,6 +8,7 @@ package org.geoserver.flow.controller;
 import static org.junit.Assert.*;
 
 import javax.servlet.http.Cookie;
+
 import org.geoserver.flow.controller.FlowControllerTestingThread.ThreadState;
 import org.geoserver.ows.Request;
 import org.springframework.mock.web.MockHttpServletResponse;

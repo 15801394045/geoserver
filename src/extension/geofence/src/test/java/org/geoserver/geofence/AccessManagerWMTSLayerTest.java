@@ -8,6 +8,7 @@ import static org.junit.Assert.assertTrue;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.net.URL;
+
 import org.geoserver.catalog.*;
 import org.geoserver.data.test.SystemTestData;
 import org.geoserver.ows.Dispatcher;
@@ -32,7 +33,8 @@ public class AccessManagerWMTSLayerTest extends GeofenceBaseTest {
 
     private static final String LAYER_NAME = "AMSR2_Snow_Water_Equivalent";
 
-    @Rule public TestHttpClientRule clientMocker = new TestHttpClientRule();
+    @Rule
+    public TestHttpClientRule clientMocker = new TestHttpClientRule();
 
     @Override
     protected void onSetUp(SystemTestData testData) throws Exception {

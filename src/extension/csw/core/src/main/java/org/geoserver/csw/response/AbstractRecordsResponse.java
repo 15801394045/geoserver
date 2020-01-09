@@ -10,6 +10,7 @@ import java.io.OutputStream;
 import java.util.Collections;
 import java.util.Set;
 import javax.xml.transform.TransformerException;
+
 import net.opengis.cat.csw20.GetRecordByIdType;
 import net.opengis.cat.csw20.GetRecordsType;
 import net.opengis.cat.csw20.RequestBaseType;

@@ -14,6 +14,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+
 import org.geoserver.wps.process.RawData;
 import org.geoserver.wps.resource.WPSResourceManager;
 import org.junit.Test;
@@ -23,7 +24,7 @@ public class RawDataPPIOTest {
     @Test
     public void testInputStreamClosed() throws Exception {
         try (TestInputStream is = new TestInputStream();
-                OutputStream os = new ByteArrayOutputStream(); ) {
+             OutputStream os = new ByteArrayOutputStream();) {
             RawDataPPIO ppio = buildRawDataPPIOWithMockManager();
             RawData rawData = mockRawDataWithInputStream(is);
 

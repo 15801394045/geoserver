@@ -7,6 +7,7 @@
 package org.geoserver.security;
 
 import java.io.IOException;
+
 import org.geoserver.config.util.XStreamPersister;
 import org.geoserver.security.config.SecurityNamedServiceConfig;
 import org.geoserver.security.filter.AbstractFilterProvider;

@@ -11,6 +11,7 @@ import java.util.Collections;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.geotools.util.logging.Logging;
 
 public class Ogr2OgrTestUtil {

@@ -18,7 +18,9 @@ import org.geoserver.platform.GeoServerExtensions;
 import org.geoserver.web.publish.PublishedConfigurationPanel;
 import org.geoserver.web.util.MetadataMapModel;
 
-/** A configuration panel for CoverageInfo properties that related to CSW publication */
+/**
+ * A configuration panel for CoverageInfo properties that related to CSW publication
+ */
 public class CSWLayerConfig extends PublishedConfigurationPanel<LayerInfo> {
 
     private static final long serialVersionUID = 6204512572932860227L;

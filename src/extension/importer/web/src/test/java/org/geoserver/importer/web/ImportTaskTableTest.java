@@ -7,6 +7,7 @@ package org.geoserver.importer.web;
 
 import java.io.File;
 import java.io.InputStream;
+
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.util.tester.FormTester;
 import org.geoserver.importer.Archive;
@@ -21,21 +22,24 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 
-/** @author Kevin Smith, Boundless */
+/**
+ * @author Kevin Smith, Boundless
+ */
 public class ImportTaskTableTest extends GeoServerWicketTestSupport {
     private ImportData data;
     private ImportContext context;
     private GeoServerDataProvider<ImportTask> provider;
     private FeedbackPanel feedback;
 
-    @Rule public TemporaryFolder temp = new TemporaryFolder();
+    @Rule
+    public TemporaryFolder temp = new TemporaryFolder();
 
     @Before
     public void setUp() throws Exception {
         // Create a test file.
         File file = temp.newFile("twoShapefilesNoPrj.zip");
         try (InputStream rin =
-                ImportTaskTableTest.class.getResourceAsStream("twoShapefilesNoPrj.zip"); ) {
+                     ImportTaskTableTest.class.getResourceAsStream("twoShapefilesNoPrj.zip");) {
             IOUtils.copy(rin, file);
         }
 

@@ -11,10 +11,12 @@ import com.sun.media.jai.codecimpl.JPEGImageDecoder;
 import com.sun.media.jai.codecimpl.JPEGImageEncoder;
 import com.sun.media.jai.codecimpl.PNGImageDecoder;
 import com.sun.media.jai.codecimpl.PNGImageEncoder;
+
 import java.awt.image.RenderedImage;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+
 import org.geoserver.wps.WPSException;
 
 public abstract class ImagePPIO extends BinaryPPIO {

@@ -16,13 +16,17 @@ import org.w3c.dom.Document;
  */
 public class EncodeIfEmptyTest extends AbstractAppSchemaTestSupport {
 
-    /** @see org.geoserver.test.AbstractAppSchemaTestSupport#buildTestData() */
+    /**
+     * @see org.geoserver.test.AbstractAppSchemaTestSupport#buildTestData()
+     */
     @Override
     protected EncodeIfEmptyMockData createTestData() {
         return new EncodeIfEmptyMockData();
     }
 
-    /** Test whether GetFeature returns wfs:FeatureCollection. */
+    /**
+     * Test whether GetFeature returns wfs:FeatureCollection.
+     */
     @Test
     public void testEncodeIfEmpty() {
         String path = "wfs?request=GetFeature&typename=om:OM_Observation&outputFormat=gml32";

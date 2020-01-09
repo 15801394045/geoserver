@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.LogRecord;
+
 import org.geoserver.catalog.Catalog;
 import org.geoserver.catalog.LayerInfo;
 import org.geoserver.catalog.StoreInfo;
@@ -28,7 +29,9 @@ import org.geoserver.importer.transform.TransformChain;
  */
 public class ImportTask implements Serializable {
 
-    /** serialVersionUID */
+    /**
+     * serialVersionUID
+     */
     private static final long serialVersionUID = 1L;
 
     public static enum State {
@@ -44,49 +47,79 @@ public class ImportTask implements Serializable {
         COMPLETE
     }
 
-    /** task id */
+    /**
+     * task id
+     */
     long id;
 
-    /** the context this task is part of */
+    /**
+     * the context this task is part of
+     */
     ImportContext context;
 
-    /** source of data for the import */
+    /**
+     * source of data for the import
+     */
     ImportData data;
 
-    /** The target store for the import */
+    /**
+     * The target store for the import
+     */
     StoreInfo store;
 
-    /** state */
+    /**
+     * state
+     */
     State state = State.PENDING;
 
-    /** id generator for items */
+    /**
+     * id generator for items
+     */
     int itemid = 0;
 
-    /** flag signalling direct/indirect import */
+    /**
+     * flag signalling direct/indirect import
+     */
     boolean direct;
 
-    /** how data should be applied to the target, during ingest/indirect import */
+    /**
+     * how data should be applied to the target, during ingest/indirect import
+     */
     UpdateMode updateMode;
 
-    /** The original layer name assigned to the task */
+    /**
+     * The original layer name assigned to the task
+     */
     String originalLayerName;
 
-    /** the layer/resource */
+    /**
+     * the layer/resource
+     */
     LayerInfo layer;
 
-    /** Any error associated with the resource */
+    /**
+     * Any error associated with the resource
+     */
     Exception error;
 
-    /** transform to apply to this import item */
+    /**
+     * transform to apply to this import item
+     */
     TransformChain transform;
 
-    /** messages logged during proessing */
+    /**
+     * messages logged during proessing
+     */
     List<LogRecord> messages = new ArrayList<LogRecord>();
 
-    /** various metadata */
+    /**
+     * various metadata
+     */
     transient Map<Object, Object> metadata;
 
-    /** used to track progress */
+    /**
+     * used to track progress
+     */
     transient volatile int totalToProcess;
 
     transient volatile int numberProcessed;

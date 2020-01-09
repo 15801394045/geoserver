@@ -15,6 +15,7 @@ import static org.geoserver.inspire.InspireSchema.DLS_NAMESPACE;
 import static org.geoserver.inspire.InspireSchema.DLS_SCHEMA;
 
 import java.io.IOException;
+
 import org.geoserver.catalog.MetadataMap;
 import org.geoserver.inspire.UniqueResourceIdentifier;
 import org.geoserver.inspire.UniqueResourceIdentifiers;
@@ -30,7 +31,7 @@ public class WFSExtendedCapabilitiesProvider
 
     @Override
     public String[] getSchemaLocations(String schemaBaseURL) {
-        return new String[] {DLS_NAMESPACE, DLS_SCHEMA};
+        return new String[]{DLS_NAMESPACE, DLS_SCHEMA};
     }
 
     @Override

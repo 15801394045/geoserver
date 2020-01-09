@@ -36,7 +36,8 @@ public class WPSLifecycleHandler implements GeoServerLifecycleHandler {
     }
 
     @Override
-    public void onDispose() {}
+    public void onDispose() {
+    }
 
     @Override
     public void onReload() {

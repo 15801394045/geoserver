@@ -15,7 +15,9 @@ import org.junit.Test;
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpServletResponse;
 
-/** @author Emanuele Tajariol (etj at geo-solutions.it) */
+/**
+ * @author Emanuele Tajariol (etj at geo-solutions.it)
+ */
 public class GeoFenceControllerTest extends GeoServerSystemTestSupport {
 
     protected static Catalog catalog;

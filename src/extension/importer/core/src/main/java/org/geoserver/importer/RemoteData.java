@@ -7,6 +7,7 @@ package org.geoserver.importer;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+
 import org.apache.commons.vfs2.FileObject;
 import org.apache.commons.vfs2.FileSystem;
 import org.apache.commons.vfs2.FileSystemManager;
@@ -62,22 +63,30 @@ public class RemoteData extends ImportData {
         return location;
     }
 
-    /** @return the username */
+    /**
+     * @return the username
+     */
     public String getUsername() {
         return username;
     }
 
-    /** @param username the username to set */
+    /**
+     * @param username the username to set
+     */
     public void setUsername(String username) {
         this.username = username;
     }
 
-    /** @return the password */
+    /**
+     * @return the password
+     */
     public String getPassword() {
         return password;
     }
 
-    /** @param password the password to set */
+    /**
+     * @param password the password to set
+     */
     public void setPassword(String password) {
         this.password = password;
     }
@@ -114,12 +123,16 @@ public class RemoteData extends ImportData {
         return target;
     }
 
-    /** @return the domain */
+    /**
+     * @return the domain
+     */
     public String getDomain() {
         return domain;
     }
 
-    /** @param domain the domain to set */
+    /**
+     * @param domain the domain to set
+     */
     public void setDomain(String domain) {
         this.domain = domain;
     }

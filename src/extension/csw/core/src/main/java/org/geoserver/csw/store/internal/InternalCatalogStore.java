@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.geoserver.config.GeoServer;
 import org.geoserver.csw.GetRecords;
 import org.geoserver.csw.records.RecordDescriptor;
@@ -63,7 +64,7 @@ public class InternalCatalogStore extends AbstractCatalogStore implements Applic
      * Add a Mapping to the Internal Catalog Store
      *
      * @param typeName record type name for mapping
-     * @param mapping the mapping
+     * @param mapping  the mapping
      */
     public void addMapping(String typeName, CatalogStoreMapping mapping) {
         mappings.put(typeName, mapping);

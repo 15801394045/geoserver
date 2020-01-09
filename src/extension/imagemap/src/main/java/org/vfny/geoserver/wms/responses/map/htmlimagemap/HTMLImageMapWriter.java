@@ -21,6 +21,7 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.geoserver.wms.GetMapRequest;
 import org.geoserver.wms.WMSMapContent;
 import org.geotools.data.DataSourceException;
@@ -70,24 +71,30 @@ public class HTMLImageMapWriter extends OutputStreamWriter {
 
     GeometryFactory gFac = new GeometryFactory();
 
-    /** map of geometry class to writer */
+    /**
+     * map of geometry class to writer
+     */
     private Map<Class<?>, HTMLImageMapFeatureWriter> writers;
 
     WMSMapContent mapContent = null;
 
-    /** rect representing screen coordinates space * */
+    /**
+     * rect representing screen coordinates space *
+     */
     Rectangle mapArea = null;
 
     ReferencedEnvelope mapEnv = null;
     Polygon clippingBox = null;
 
-    /** Transformation from layer (world) coordinates to "screen" coordinates. */
+    /**
+     * Transformation from layer (world) coordinates to "screen" coordinates.
+     */
     private AffineTransform worldToScreen = null;
 
     /**
      * Creates a new HTMLImageMapWriter object.
      *
-     * @param out stream to encode the layer to
+     * @param out        stream to encode the layer to
      * @param mapContent current wms context
      * @throws ClassCastException
      * @throws UnsupportedEncodingException
@@ -116,18 +123,20 @@ public class HTMLImageMapWriter extends OutputStreamWriter {
     private Polygon envToGeometry(ReferencedEnvelope env) {
 
         Coordinate[] coordinates =
-                new Coordinate[] {
-                    new Coordinate(env.getMinX(), env.getMinY()),
-                    new Coordinate(env.getMaxX(), env.getMinY()),
-                    new Coordinate(env.getMaxX(), env.getMaxY()),
-                    new Coordinate(env.getMinX(), env.getMaxY()),
-                    new Coordinate(env.getMinX(), env.getMinY())
+                new Coordinate[]{
+                        new Coordinate(env.getMinX(), env.getMinY()),
+                        new Coordinate(env.getMaxX(), env.getMinY()),
+                        new Coordinate(env.getMaxX(), env.getMaxY()),
+                        new Coordinate(env.getMinX(), env.getMaxY()),
+                        new Coordinate(env.getMinX(), env.getMinY())
                 };
         LinearRing bbox = gFac.createLinearRing(coordinates);
-        return gFac.createPolygon(bbox, new LinearRing[] {});
+        return gFac.createPolygon(bbox, new LinearRing[]{});
     }
 
-    /** Initializes every type of writer (one for every kind of geometry). */
+    /**
+     * Initializes every type of writer (one for every kind of geometry).
+     */
     private void initWriters() {
         writers = new HashMap<Class<?>, HTMLImageMapFeatureWriter>();
         writers.put(Point.class, new PointWriter());
@@ -150,9 +159,9 @@ public class HTMLImageMapWriter extends OutputStreamWriter {
     /**
      * Encodes a single layer (FeatureCollection) using the supplied style.
      *
-     * @param fColl layer to encode
+     * @param fColl   layer to encode
      * @param ftsList the feature type styles to use for encoding
-     * @throws IOException if an error occurs during encoding
+     * @throws IOException      if an error occurs during encoding
      * @throws AbortedException if the operation is aborted
      */
     public void writeFeatures(SimpleFeatureCollection fColl, FeatureTypeStyle[] ftsList)
@@ -205,11 +214,11 @@ public class HTMLImageMapWriter extends OutputStreamWriter {
      *   <li><code>rule.getFilter()</code> matches <code>feature</code>, or:
      *   <li>the rule defines an "ElseFilter", and the feature matches no other rules.
      * </ol>
-     *
+     * <p>
      * This method returns an empty array in the case of which no rules match.
      *
      * @param featureTypeStyle The feature type style containing the rules.
-     * @param feature The feature being filtered against.
+     * @param feature          The feature being filtered against.
      */
     List<Rule> filterRules(FeatureTypeStyle featureTypeStyle, SimpleFeature feature) {
         List<Rule> filtered = new ArrayList<Rule>();
@@ -288,7 +297,7 @@ public class HTMLImageMapWriter extends OutputStreamWriter {
          * geometry encoding 5) actual geometry encoding 6) post geometry encoding 7) end feature
          * encoding
          *
-         * @param ft feature to encode
+         * @param ft  feature to encode
          * @param fts "cached" ftss matching the FeatureType of the feature
          * @throws IOException if an error occurs during encoding
          */
@@ -347,7 +356,7 @@ public class HTMLImageMapWriter extends OutputStreamWriter {
          * geometry. a) start feature encoding b) pre geometry encoding c) actual geometry encoding
          * d) post geometry encoding e) end feature encoding
          *
-         * @param ft feature to encode
+         * @param ft  feature to encode
          * @param fts "cached" ftss matching the FeatureType of the feature
          * @throws IOException if an error occurs during encoding
          */
@@ -389,8 +398,8 @@ public class HTMLImageMapWriter extends OutputStreamWriter {
          * Encodes the feature starting tag (area).
          *
          * @param feature feature to encode
-         * @param suffix (optional) suffix to append to the tag id (useful to have different ids in
-         *     the multigeometry scenario.
+         * @param suffix  (optional) suffix to append to the tag id (useful to have different ids in
+         *                the multigeometry scenario.
          * @throws IOException if an error occures during encoding
          */
         protected void startElement(SimpleFeature feature, String suffix) throws IOException {
@@ -469,10 +478,10 @@ public class HTMLImageMapWriter extends OutputStreamWriter {
         /**
          * Analyze the supplied style and process any matching rule.
          *
-         * @param ft feature to which the style is going to be applied
+         * @param ft      feature to which the style is going to be applied
          * @param ftsList cached fts matching the feature
          * @return true if the supplied feature has to be included in the output according to style
-         *     filters.
+         * filters.
          * @throws IOException if an error occurs during the process
          */
         protected boolean processStyle(SimpleFeature ft, FeatureTypeStyle[] ftsList)
@@ -494,7 +503,7 @@ public class HTMLImageMapWriter extends OutputStreamWriter {
         /**
          * Process a single style rule and apply meaningful style to the feature
          *
-         * @param ft feature to which the rule has to be applied
+         * @param ft   feature to which the rule has to be applied
          * @param rule rule to process
          * @throws IOException if an error occurs during the process
          */
@@ -506,13 +515,14 @@ public class HTMLImageMapWriter extends OutputStreamWriter {
                 processSymbolizer(ft, rule, symbolizer);
             }
         }
+
         /**
          * Process a single style symbolizer and apply meaningful style to the feature. The default
          * implementation processes TextSymbolizer, using Label definition to apply textual
          * attributes to the area tag.
          *
-         * @param ft feature to which the symbolizer has to be applied
-         * @param rule current rule to analyze
+         * @param ft         feature to which the symbolizer has to be applied
+         * @param rule       current rule to analyze
          * @param symbolizer current symbolizer to analyze
          * @throws IOException if an error occurs during the process
          */
@@ -611,15 +621,22 @@ public class HTMLImageMapWriter extends OutputStreamWriter {
         }
     }
 
-    /** FeatureWriter for point geometry features. Currently supports circle WellKnownName Marks. */
+    /**
+     * FeatureWriter for point geometry features. Currently supports circle WellKnownName Marks.
+     */
     private class PointWriter extends HTMLImageMapFeatureWriter {
         // size of the symbol
         double size = 2;
 
-        /** Creates a new PointWriter object. */
-        public PointWriter() {}
+        /**
+         * Creates a new PointWriter object.
+         */
+        public PointWriter() {
+        }
 
-        /** The shape for points is a circle. */
+        /**
+         * The shape for points is a circle.
+         */
         protected String getShape() throws IOException {
             return "circle";
         }
@@ -660,12 +677,19 @@ public class HTMLImageMapWriter extends OutputStreamWriter {
         }
     }
 
-    /** FeatureWriter for multipoint geometry features. */
+    /**
+     * FeatureWriter for multipoint geometry features.
+     */
     private class MultiPointWriter extends PointWriter {
-        /** Creates a new MultiPointWriter object. */
-        public MultiPointWriter() {}
+        /**
+         * Creates a new MultiPointWriter object.
+         */
+        public MultiPointWriter() {
+        }
 
-        /** Uses writeMultiFeature. */
+        /**
+         * Uses writeMultiFeature.
+         */
         protected void writeFeature(SimpleFeature ft, FeatureTypeStyle[] fts) throws IOException {
             writeMultiFeature(ft, fts);
         }
@@ -680,10 +704,16 @@ public class HTMLImageMapWriter extends OutputStreamWriter {
     private class LineStringWriter extends HTMLImageMapFeatureWriter {
         // default buffer size (in screen coordinates)
         int buffer = 2;
-        /** Creates a new LineStringWriter object. */
-        public LineStringWriter() {}
 
-        /** The shape for lines is a poly. */
+        /**
+         * Creates a new LineStringWriter object.
+         */
+        public LineStringWriter() {
+        }
+
+        /**
+         * The shape for lines is a poly.
+         */
         protected String getShape() throws IOException {
             return "poly";
         }
@@ -736,22 +766,37 @@ public class HTMLImageMapWriter extends OutputStreamWriter {
         }
     }
 
-    /** FeatureWriter for multiline geometry features. */
+    /**
+     * FeatureWriter for multiline geometry features.
+     */
     private class MultiLineStringWriter extends LineStringWriter {
-        /** Creates a new MultiLineStringWriter object. */
-        public MultiLineStringWriter() {}
+        /**
+         * Creates a new MultiLineStringWriter object.
+         */
+        public MultiLineStringWriter() {
+        }
 
-        /** Uses writeMultiFeature. */
+        /**
+         * Uses writeMultiFeature.
+         */
         protected void writeFeature(SimpleFeature ft, FeatureTypeStyle[] fts) throws IOException {
             writeMultiFeature(ft, fts);
         }
     }
 
-    /** FeatureWriter for Polygon geometry features. */
+    /**
+     * FeatureWriter for Polygon geometry features.
+     */
     private class PolygonWriter extends HTMLImageMapFeatureWriter {
-        /** Creates a new PolygonWriter object. */
-        public PolygonWriter() {}
-        /** The shape for polygons is a poly. */
+        /**
+         * Creates a new PolygonWriter object.
+         */
+        public PolygonWriter() {
+        }
+
+        /**
+         * The shape for polygons is a poly.
+         */
         protected String getShape() throws IOException {
             return "poly";
         }
@@ -783,24 +828,36 @@ public class HTMLImageMapWriter extends OutputStreamWriter {
         }
     }
 
-    /** FeatureWriter for multipolygon geometry features. */
+    /**
+     * FeatureWriter for multipolygon geometry features.
+     */
     private class MultiPolygonWriter extends PolygonWriter {
-        /** Creates a new MultiPolygonWriter object. */
-        public MultiPolygonWriter() {}
+        /**
+         * Creates a new MultiPolygonWriter object.
+         */
+        public MultiPolygonWriter() {
+        }
 
-        /** Uses writeMultiFeature. */
+        /**
+         * Uses writeMultiFeature.
+         */
         protected void writeFeature(SimpleFeature ft, FeatureTypeStyle[] fts) throws IOException {
             writeMultiFeature(ft, fts);
         }
     }
 
-    /** FeatureWriter for multipolygon geometry features. */
+    /**
+     * FeatureWriter for multipolygon geometry features.
+     */
     private class GeometryCollectionWriter extends HTMLImageMapFeatureWriter {
 
         HTMLImageMapFeatureWriter delegateWriter = null;
 
-        /** Creates a new MultiPolygonWriter object. */
-        public GeometryCollectionWriter() {}
+        /**
+         * Creates a new MultiPolygonWriter object.
+         */
+        public GeometryCollectionWriter() {
+        }
 
         /**
          * Encodes the GeometryCollection.
@@ -812,7 +869,7 @@ public class HTMLImageMapWriter extends OutputStreamWriter {
          * these phases. The delegate is a specific FeatureWriter for the single geometry, during
          * the loop.
          *
-         * @param ft feature to encode
+         * @param ft  feature to encode
          * @param fts "cached" ftss matching the FeatureType of the feature
          * @throws IOException if an error occurs during encoding
          */
@@ -861,7 +918,7 @@ public class HTMLImageMapWriter extends OutputStreamWriter {
         /**
          * Analyze the supplied style and process any matching rule.
          *
-         * @param ft feature to which the style is going to be applied
+         * @param ft      feature to which the style is going to be applied
          * @param ftsList cached fts matching the feature
          * @return true if the style filters "accept" the feature
          * @throws IOException if an error occurs during the process
@@ -878,7 +935,9 @@ public class HTMLImageMapWriter extends OutputStreamWriter {
             } else return false;
         }
 
-        /** Actually write the geometry (through the delegate). */
+        /**
+         * Actually write the geometry (through the delegate).
+         */
         protected void writeGeometry(Geometry geom, StringBuffer buf) throws IOException {
             if (geom != null) delegateWriter.writeGeometry(geom, buf);
             else throw new IOException("null geometry");

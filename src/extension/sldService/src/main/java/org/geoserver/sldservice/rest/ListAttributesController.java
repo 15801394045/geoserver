@@ -11,6 +11,7 @@ import com.thoughtworks.xstream.converters.MarshallingContext;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -19,6 +20,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import javax.servlet.http.HttpServletResponse;
+
 import org.geoserver.catalog.Catalog;
 import org.geoserver.catalog.FeatureTypeInfo;
 import org.geoserver.catalog.LayerInfo;
@@ -45,7 +47,7 @@ import org.springframework.web.bind.annotation.RestController;
  * ListAttributesController.
  *
  * @author kappu
- *     <p>Should get all Attributes related to a featureType we have internal Style add external SLD
+ * <p>Should get all Attributes related to a featureType we have internal Style add external SLD
  */
 @RestController
 @ControllerAdvice
@@ -68,16 +70,16 @@ public class ListAttributesController extends AbstractCatalogController {
         XStream xstream = persister.getXStream();
         xstream.alias("Attributes", LayerAttributesList.class);
         xstream.registerConverter(new LayerAttributesListConverter());
-        xstream.allowTypes(new Class[] {LayerAttributesList.class});
+        xstream.allowTypes(new Class[]{LayerAttributesList.class});
     }
 
     @GetMapping(
-        path = "/{layerName}/attributes",
-        produces = {
-            MediaType.APPLICATION_JSON_VALUE,
-            MediaType.APPLICATION_XML_VALUE,
-            MediaType.TEXT_HTML_VALUE
-        }
+            path = "/{layerName}/attributes",
+            produces = {
+                    MediaType.APPLICATION_JSON_VALUE,
+                    MediaType.APPLICATION_XML_VALUE,
+                    MediaType.TEXT_HTML_VALUE
+            }
     )
     public Object attributes(
             @PathVariable String layerName,
@@ -126,7 +128,9 @@ public class ListAttributesController extends AbstractCatalogController {
         private static final long serialVersionUID = 7641473348901661113L;
     }
 
-    /** @author Fabiani */
+    /**
+     * @author Fabiani
+     */
     public class LayerAttributesList {
         private String layerName;
 
@@ -170,13 +174,17 @@ public class ListAttributesController extends AbstractCatalogController {
             return attributes.get(name);
         }
 
-        /** @return the layerName */
+        /**
+         * @return the layerName
+         */
         public String getLayerName() {
             return layerName;
         }
     }
 
-    /** @author Fabiani */
+    /**
+     * @author Fabiani
+     */
     public class LayerAttributesListConverter implements Converter {
 
         /**
@@ -187,9 +195,9 @@ public class ListAttributesController extends AbstractCatalogController {
         }
 
         /**
-         * @see com.thoughtworks.xstream.converters.Converter#marshal(java.lang.Object ,
-         *     com.thoughtworks.xstream.io.HierarchicalStreamWriter,
-         *     com.thoughtworks.xstream.converters.MarshallingContext)
+         * @see com.thoughtworks.xstream.converters.Converter#marshal(java.lang.Object,
+         * com.thoughtworks.xstream.io.HierarchicalStreamWriter,
+         * com.thoughtworks.xstream.converters.MarshallingContext)
          */
         public void marshal(
                 Object value, HierarchicalStreamWriter writer, MarshallingContext context) {
@@ -215,8 +223,8 @@ public class ListAttributesController extends AbstractCatalogController {
 
         /**
          * @see com.thoughtworks.xstream.converters.Converter#unmarshal(com.thoughtworks
-         *     .xstream.io.HierarchicalStreamReader,
-         *     com.thoughtworks.xstream.converters.UnmarshallingContext)
+         * .xstream.io.HierarchicalStreamReader,
+         * com.thoughtworks.xstream.converters.UnmarshallingContext)
          */
         public Object unmarshal(HierarchicalStreamReader arg0, UnmarshallingContext arg1) {
             // TODO Auto-generated method stub

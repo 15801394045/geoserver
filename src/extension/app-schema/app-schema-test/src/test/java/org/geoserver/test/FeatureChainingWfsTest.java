@@ -29,6 +29,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
 import net.sf.json.JSON;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -86,42 +87,58 @@ public class FeatureChainingWfsTest extends AbstractAppSchemaTestSupport {
                     + AbstractAppSchemaMockData.GSML_SCHEMA_LOCATION_URL //
                     + "\""; // end of schemaLocation
 
-    /** Return the root of the test fixture data directory. */
+    /**
+     * Return the root of the test fixture data directory.
+     */
     private File getDataDir() {
         return getTestData().getDataDirectoryRoot();
     }
 
-    /** Return first ex schema file. */
+    /**
+     * Return first ex schema file.
+     */
     private File getExSchemaOne() {
         return findFile("featureTypes/ex_FirstParentFeature/simpleContent.xsd", getDataDir());
     }
 
-    /** Return first ex schema location. */
+    /**
+     * Return first ex schema location.
+     */
     private String getExSchemaOneLocation() {
         return URLs.fileToUrl(getExSchemaOne()).toString();
     }
 
-    /** Return second ex schema file. */
+    /**
+     * Return second ex schema file.
+     */
     private File getExSchemaTwo() {
         return findFile("featureTypes/ex_SecondParentFeature/simpleContent.xsd", getDataDir());
     }
 
-    /** Return second ex schema location. */
+    /**
+     * Return second ex schema location.
+     */
     private String getExSchemaTwoLocation() {
         return URLs.fileToUrl(getExSchemaTwo()).toString();
     }
 
-    /** Return third ex schema file. */
+    /**
+     * Return third ex schema file.
+     */
     private File getExSchemaThree() {
         return findFile("featureTypes/ex_ParentFeature/NonValidNestedGML.xsd", getDataDir());
     }
 
-    /** Return third ex schema location. */
+    /**
+     * Return third ex schema location.
+     */
     private String getExSchemaThreeLocation() {
         return URLs.fileToUrl(getExSchemaThree()).toString();
     }
 
-    /** Test that ex schemas are found and the files exist. */
+    /**
+     * Test that ex schemas are found and the files exist.
+     */
     @Test
     public void testExSchemas() {
         assertNotNull(getExSchemaOne());
@@ -130,7 +147,9 @@ public class FeatureChainingWfsTest extends AbstractAppSchemaTestSupport {
         assertTrue(getExSchemaTwo().exists());
     }
 
-    /** Test whether GetCapabilities returns wfs:WFS_Capabilities. */
+    /**
+     * Test whether GetCapabilities returns wfs:WFS_Capabilities.
+     */
     @Test
     public void testGetCapabilities() {
         Document doc = getAsDOM("wfs?request=GetCapabilities&version=1.1.0");
@@ -165,7 +184,9 @@ public class FeatureChainingWfsTest extends AbstractAppSchemaTestSupport {
         assertTrue(featureTypeNames.contains("om:Observation"));
     }
 
-    /** Test DescribeFeatureType response for gsml:MappedFeature. */
+    /**
+     * Test DescribeFeatureType response for gsml:MappedFeature.
+     */
     @Test
     public void testDescribeFeatureTypeMappedFeature() {
         Document doc =
@@ -192,7 +213,9 @@ public class FeatureChainingWfsTest extends AbstractAppSchemaTestSupport {
         assertXpathCount(0, "//xsd:element", doc);
     }
 
-    /** Test DescribeFeatureType response for gsml:GeologicUnit. */
+    /**
+     * Test DescribeFeatureType response for gsml:GeologicUnit.
+     */
     @Test
     public void testDescribeFeatureTypeGeologicUnit() {
         Document doc =
@@ -271,7 +294,9 @@ public class FeatureChainingWfsTest extends AbstractAppSchemaTestSupport {
         assertXpathCount(0, "//xsd:element", doc);
     }
 
-    /** Test DescribeFeatureType response for mixed namespaces. */
+    /**
+     * Test DescribeFeatureType response for mixed namespaces.
+     */
     @Test
     public void testDescribeFeatureTypeMixedNamespaces() {
         Document doc =
@@ -283,7 +308,9 @@ public class FeatureChainingWfsTest extends AbstractAppSchemaTestSupport {
         checkGsmlExDescribeFeatureType(doc);
     }
 
-    /** Test DescribeFeatureType response for many types. */
+    /**
+     * Test DescribeFeatureType response for many types.
+     */
     @Test
     public void testDescribeFeatureTypeManyTypes() {
         Document doc =
@@ -321,7 +348,9 @@ public class FeatureChainingWfsTest extends AbstractAppSchemaTestSupport {
         assertXpathCount(0, "//xsd:element", doc);
     }
 
-    /** Test DescribeFeatureType response when no types are specified. */
+    /**
+     * Test DescribeFeatureType response when no types are specified.
+     */
     @Test
     public void testDescribeFeatureTypeNoTypes() {
         Document doc = getAsDOM("wfs?request=DescribeFeatureType&version=1.1.0");
@@ -476,7 +505,9 @@ public class FeatureChainingWfsTest extends AbstractAppSchemaTestSupport {
         assertXpathEvaluatesTo(GSML_SCHEMA_LOCATION_URL, "//xsd:import/@schemaLocation", doc);
     }
 
-    /** Test whether GetFeature returns wfs:FeatureCollection. */
+    /**
+     * Test whether GetFeature returns wfs:FeatureCollection.
+     */
     @Test
     public void testGetFeatureGML() {
         Document doc = getAsDOM("wfs?request=GetFeature&version=1.1.0&typename=gsml:MappedFeature");
@@ -595,7 +626,9 @@ public class FeatureChainingWfsTest extends AbstractAppSchemaTestSupport {
         testJsonRequest("ex:FirstParentFeature", "/test-data/FirstParentFeature.json");
     }
 
-    /** Test content of GetFeature response. */
+    /**
+     * Test content of GetFeature response.
+     */
     @Test
     public void testGetFeatureContent() throws Exception {
         Document doc = getAsDOM("wfs?request=GetFeature&version=1.1.0&typename=gsml:MappedFeature");
@@ -1522,7 +1555,9 @@ public class FeatureChainingWfsTest extends AbstractAppSchemaTestSupport {
         }
     }
 
-    /** Test if we can get mf4 by its name. */
+    /**
+     * Test if we can get mf4 by its name.
+     */
     @Test
     public void testGetFeaturePropertyFilter() {
         String xml = //
@@ -1542,7 +1577,9 @@ public class FeatureChainingWfsTest extends AbstractAppSchemaTestSupport {
         checkGetMf4Only(xml);
     }
 
-    /** Test if we can get mf4 with a FeatureId fid filter. */
+    /**
+     * Test if we can get mf4 with a FeatureId fid filter.
+     */
     @Test
     public void testGetFeatureWithFeatureIdFilter() {
         String xml = //
@@ -1559,7 +1596,9 @@ public class FeatureChainingWfsTest extends AbstractAppSchemaTestSupport {
         checkGetMf4Only(xml);
     }
 
-    /** Test if we can get mf4 with a GmlObjectId gml:id filter. */
+    /**
+     * Test if we can get mf4 with a GmlObjectId gml:id filter.
+     */
     @Test
     public void testGetFeatureWithGmlObjectIdFilter() {
         String xml = //
@@ -1658,7 +1697,9 @@ public class FeatureChainingWfsTest extends AbstractAppSchemaTestSupport {
                 id, "(//om:Observation)[4]/om:result/gsml:MappedFeature/@gml:id", doc);
     }
 
-    /** Making sure attributes that are encoded as xlink:href can still be queried in filters. */
+    /**
+     * Making sure attributes that are encoded as xlink:href can still be queried in filters.
+     */
     @Test
     public void testFilteringXlinkHref() {
         String xml = //
@@ -1807,7 +1848,9 @@ public class FeatureChainingWfsTest extends AbstractAppSchemaTestSupport {
         assertXpathEvaluatesTo("mf4", "//gsml:MappedFeature/@gml:id", doc);
     }
 
-    /** Test that denormalized data reports the correct number of features */
+    /**
+     * Test that denormalized data reports the correct number of features
+     */
     @Test
     public void testDenormalisedFeaturesCount() {
         Document doc =
@@ -1829,7 +1872,9 @@ public class FeatureChainingWfsTest extends AbstractAppSchemaTestSupport {
         assertXpathEvaluatesTo(id, "(//gsml:GeologicUnit)[3]/@gml:id", doc);
     }
 
-    /** Test FeatureCollection is encoded with multiple featureMember elements */
+    /**
+     * Test FeatureCollection is encoded with multiple featureMember elements
+     */
     @Test
     public void testEncodeFeatureMember() throws Exception {
         // change fixture settings (must restore this at end)
@@ -1893,7 +1938,9 @@ public class FeatureChainingWfsTest extends AbstractAppSchemaTestSupport {
         getGeoServer().save(wfs);
     }
 
-    /** Test FeatureCollection is encoded with one featureMembers element */
+    /**
+     * Test FeatureCollection is encoded with one featureMembers element
+     */
     @Test
     public void testEncodeFeatureMembersGML() throws Exception {
         // change fixture settings (must restore this at end)
@@ -2193,7 +2240,9 @@ public class FeatureChainingWfsTest extends AbstractAppSchemaTestSupport {
         assertThat(resultJson, is(expectedJson));
     }
 
-    /** Helper method that just reads a JSON object from a resource file. */
+    /**
+     * Helper method that just reads a JSON object from a resource file.
+     */
     private JSONObject readJsonObject(String resourcePath) throws Exception {
         // read the JSON file content
         InputStream input = this.getClass().getResourceAsStream(resourcePath);

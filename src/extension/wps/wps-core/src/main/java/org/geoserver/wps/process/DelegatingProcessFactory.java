@@ -15,6 +15,7 @@ package org.geoserver.wps.process;
 import java.awt.RenderingHints.Key;
 import java.util.Map;
 import java.util.Set;
+
 import org.geotools.data.Parameter;
 import org.geotools.process.Process;
 import org.geotools.process.ProcessFactory;
@@ -78,7 +79,9 @@ public abstract class DelegatingProcessFactory implements ProcessFactory {
         return delegate.supportsProgress(name);
     }
 
-    /** Returns the original process factory */
+    /**
+     * Returns the original process factory
+     */
     public ProcessFactory getDelegate() {
         return delegate;
     }

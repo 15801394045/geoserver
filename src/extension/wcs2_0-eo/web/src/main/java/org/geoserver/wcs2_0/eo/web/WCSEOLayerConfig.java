@@ -6,6 +6,7 @@
 package org.geoserver.wcs2_0.eo.web;
 
 import java.io.IOException;
+
 import org.apache.wicket.markup.html.form.CheckBox;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
@@ -17,7 +18,9 @@ import org.geoserver.web.publish.PublishedConfigurationPanel;
 import org.geoserver.web.util.MapModel;
 import org.geotools.coverage.grid.io.StructuredGridCoverage2DReader;
 
-/** A configuration panel for CoverageInfo properties that related to WCS publication */
+/**
+ * A configuration panel for CoverageInfo properties that related to WCS publication
+ */
 public class WCSEOLayerConfig extends PublishedConfigurationPanel<LayerInfo> {
 
     private static final long serialVersionUID = 5069332181659419455L;

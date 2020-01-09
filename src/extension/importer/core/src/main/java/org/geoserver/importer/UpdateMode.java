@@ -24,9 +24,13 @@ public enum UpdateMode {
      */
     REPLACE,
 
-    /** All features in the input will be appended to the existing store. */
+    /**
+     * All features in the input will be appended to the existing store.
+     */
     APPEND,
 
-    /** Based upon FID of input features, update any existing features. */
+    /**
+     * Based upon FID of input features, update any existing features.
+     */
     UPDATE
 }

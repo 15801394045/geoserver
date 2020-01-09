@@ -6,6 +6,7 @@
 package org.geoserver.flow.controller;
 
 import java.util.concurrent.CountDownLatch;
+
 import org.geoserver.flow.FlowController;
 import org.geoserver.ows.Request;
 
@@ -15,7 +16,9 @@ public class FlowControllerTestingThread extends Thread {
         TIMED_OUT,
         PROCESSING,
         COMPLETE
-    };
+    }
+
+    ;
 
     FlowController[] controllers;
     boolean proceed;

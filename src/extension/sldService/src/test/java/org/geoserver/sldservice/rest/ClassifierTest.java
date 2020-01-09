@@ -34,6 +34,7 @@ import java.util.TreeSet;
 import java.util.stream.Collectors;
 import javax.media.jai.PlanarImage;
 import javax.xml.namespace.QName;
+
 import org.geoserver.catalog.Catalog;
 import org.geoserver.catalog.CatalogBuilder;
 import org.geoserver.catalog.CoverageInfo;
@@ -1366,7 +1367,9 @@ public class ClassifierTest extends SLDServiceBaseTest {
         return (RasterSymbolizer) symbolizers.get(0);
     }
 
-    /** Parses the DOM, check there is just one feature type style and returns all rules in it */
+    /**
+     * Parses the DOM, check there is just one feature type style and returns all rules in it
+     */
     private List<Rule> getRules(Document dom) {
         SLDParser parser = new SLDParser(CommonFactoryFinder.getStyleFactory());
         StyledLayerDescriptor sld = parser.parseDescriptor(dom.getDocumentElement());
@@ -1423,7 +1426,7 @@ public class ClassifierTest extends SLDServiceBaseTest {
         // expect the bands selection
         assertThat(parameters.keySet(), Matchers.hasItem(AbstractGridFormat.BANDS));
         int[] bands = (int[]) parameters.get(AbstractGridFormat.BANDS);
-        assertArrayEquals(new int[] {0}, bands);
+        assertArrayEquals(new int[]{0}, bands);
 
         RenderedImage image = reader.getImage();
         assertEquals(1, image.getSampleModel().getNumBands());

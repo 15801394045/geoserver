@@ -13,6 +13,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
 import junit.framework.TestCase;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
@@ -24,7 +25,7 @@ public class DirectoryTest extends TestCase {
         File unpack = ImporterTestUtils.unpack("mosaic/bm.zip");
 
         // all types of junk!
-        String[] aux = new String[] {"aux", "rrd", "xml", "tif.aux.xml", "tfw"};
+        String[] aux = new String[]{"aux", "rrd", "xml", "tif.aux.xml", "tfw"};
         File[] tifs = unpack.listFiles();
         for (int i = 0; i < tifs.length; i++) {
             File file = tifs[i];

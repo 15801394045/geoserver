@@ -7,6 +7,7 @@ package org.geoserver.filter.function;
 
 import java.util.Iterator;
 import java.util.List;
+
 import org.geotools.filter.FunctionImpl;
 import org.geotools.filter.capability.FunctionNameImpl;
 import org.geotools.geometry.jts.GeometryCollector;

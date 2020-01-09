@@ -17,6 +17,7 @@ import java.util.Map;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.dom.DOMSource;
+
 import org.apache.commons.io.IOUtils;
 import org.custommonkey.xmlunit.SimpleNamespaceContext;
 import org.custommonkey.xmlunit.XMLUnit;
@@ -54,7 +55,9 @@ public abstract class CSWTestSupport extends GeoServerSystemTestSupport {
         namespaces.put("xs", "http://www.w3.org/2001/XMLSchema");
 
         XMLUnit.setXpathNamespaceContext(new SimpleNamespaceContext(namespaces));
-    };
+    }
+
+    ;
 
     protected String root() {
         return "csw?";

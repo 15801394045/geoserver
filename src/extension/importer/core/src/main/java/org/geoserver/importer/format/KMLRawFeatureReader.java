@@ -8,6 +8,7 @@ package org.geoserver.importer.format;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.NoSuchElementException;
+
 import org.geotools.data.FeatureReader;
 import org.opengis.feature.simple.SimpleFeature;
 import org.opengis.feature.simple.SimpleFeatureType;

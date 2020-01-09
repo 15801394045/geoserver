@@ -12,6 +12,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
 import org.geoserver.platform.GeoServerExtensions;
 import org.geotools.data.Parameter;
 import org.geotools.geometry.jts.ReferencedEnvelope;
@@ -38,15 +39,25 @@ public abstract class ProcessParameterIO {
      * </ul>
      */
     public enum PPIODirection {
-        /** Only encoding supported, PPIO suitable only for outputs */
+        /**
+         * Only encoding supported, PPIO suitable only for outputs
+         */
         ENCODING,
-        /** Only decoding supported, PPIO suitable only for inputs */
+        /**
+         * Only decoding supported, PPIO suitable only for inputs
+         */
         DECODING,
-        /** Both encoding and decoding supported */
+        /**
+         * Both encoding and decoding supported
+         */
         BOTH
-    };
+    }
 
-    /** list of default ppios supported out of the box */
+    ;
+
+    /**
+     * list of default ppios supported out of the box
+     */
     static List<ProcessParameterIO> defaults;
 
     static {
@@ -238,13 +249,19 @@ public abstract class ProcessParameterIO {
         }
     }
 
-    /** java class of parameter when reading and writing i/o. */
+    /**
+     * java class of parameter when reading and writing i/o.
+     */
     protected final Class externalType;
 
-    /** java class of parameter when running internal process. */
+    /**
+     * java class of parameter when running internal process.
+     */
     protected final Class internalType;
 
-    /** identifier for the parameter */
+    /**
+     * identifier for the parameter
+     */
     protected String identifer;
 
     protected ProcessParameterIO(Class externalType, Class internalType) {
@@ -275,7 +292,9 @@ public abstract class ProcessParameterIO {
         return internalType;
     }
 
-    /** The identifier for the parameter, this value may be null. */
+    /**
+     * The identifier for the parameter, this value may be null.
+     */
     public final String getIdentifer() {
         return identifer;
     }

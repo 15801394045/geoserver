@@ -9,12 +9,16 @@ import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.Geometry;
 import org.locationtech.jts.geom.GeometryFactory;
 
-/** A chainable unary operation on a geometry. */
+/**
+ * A chainable unary operation on a geometry.
+ */
 public abstract class Pipeline {
 
     protected static final Geometry EMPTY = new GeometryFactory().createPoint((Coordinate) null);
 
-    /** Pipeline terminator which returns the geometry without change. 管道终止符，返回几何图形而不做更改。 */
+    /**
+     * Pipeline terminator which returns the geometry without change. 管道终止符，返回几何图形而不做更改。
+     */
     static final Pipeline END =
             new Pipeline() {
 

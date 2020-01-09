@@ -112,8 +112,8 @@ public class ImportBaseController extends RestBaseController {
             return "self".equalsIgnoreCase(ex)
                     ? 1
                     : "all".equalsIgnoreCase(ex)
-                            ? Integer.MAX_VALUE
-                            : "none".equalsIgnoreCase(ex) ? 0 : Integer.parseInt(ex);
+                    ? Integer.MAX_VALUE
+                    : "none".equalsIgnoreCase(ex) ? 0 : Integer.parseInt(ex);
         } catch (NumberFormatException e) {
             return def;
         }

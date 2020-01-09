@@ -11,12 +11,15 @@ import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
 import java.util.Collections;
+
 import org.geoserver.catalog.FeatureTypeInfo;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.mock.web.MockHttpServletResponse;
 
-/** Validates that reprojection and axis flipping are correctly handled. */
+/**
+ * Validates that reprojection and axis flipping are correctly handled.
+ */
 public final class ReprojectionAxisFlipTest extends AbstractAppSchemaTestSupport {
 
     private static final String STATIONS_PREFIX = "st";
@@ -28,7 +31,9 @@ public final class ReprojectionAxisFlipTest extends AbstractAppSchemaTestSupport
         return new MockData();
     }
 
-    /** Helper class that will setup custom complex feature types using the stations data set. */
+    /**
+     * Helper class that will setup custom complex feature types using the stations data set.
+     */
     private static final class MockData extends StationsMockData {
 
         @Override

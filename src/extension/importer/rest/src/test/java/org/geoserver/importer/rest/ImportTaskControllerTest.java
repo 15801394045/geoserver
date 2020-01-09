@@ -14,6 +14,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.commons.httpclient.methods.PostMethod;
@@ -48,7 +49,9 @@ import org.springframework.security.core.context.SecurityContextImpl;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
-/** @author Ian Schneider <ischneider@opengeo.org> */
+/**
+ * @author Ian Schneider <ischneider@opengeo.org>
+ */
 public class ImportTaskControllerTest extends ImporterTestSupport {
     JDBCDataStore jdbcStore;
 
@@ -283,11 +286,11 @@ public class ImportTaskControllerTest extends ImporterTestSupport {
         File dir = unpack("shape/archsites_epsg_prj.zip");
 
         Part[] parts =
-                new Part[] {
-                    new FilePart("archsites.shp", new File(dir, "archsites.shp")),
-                    new FilePart("archsites.dbf", new File(dir, "archsites.dbf")),
-                    new FilePart("archsites.shx", new File(dir, "archsites.shx")),
-                    new FilePart("archsites.prj", new File(dir, "archsites.prj"))
+                new Part[]{
+                        new FilePart("archsites.shp", new File(dir, "archsites.shp")),
+                        new FilePart("archsites.dbf", new File(dir, "archsites.dbf")),
+                        new FilePart("archsites.shx", new File(dir, "archsites.shx")),
+                        new FilePart("archsites.prj", new File(dir, "archsites.prj"))
                 };
 
         MultipartRequestEntity multipart =

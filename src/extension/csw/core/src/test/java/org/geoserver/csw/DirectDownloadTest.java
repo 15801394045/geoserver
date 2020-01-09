@@ -15,6 +15,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 import javax.xml.namespace.QName;
+
 import org.custommonkey.xmlunit.SimpleNamespaceContext;
 import org.custommonkey.xmlunit.XMLUnit;
 import org.custommonkey.xmlunit.XpathEngine;
@@ -71,7 +72,9 @@ public class DirectDownloadTest extends GeoServerSystemTestSupport {
         TEST_NAMESPACES.put("xs", "http://www.w3.org/2001/XMLSchema");
 
         XMLUnit.setXpathNamespaceContext(new SimpleNamespaceContext(TEST_NAMESPACES));
-    };
+    }
+
+    ;
 
     public static String CSW_PREFIX = "csw";
 
@@ -255,7 +258,7 @@ public class DirectDownloadTest extends GeoServerSystemTestSupport {
     /**
      * Return the flattened value corresponding to an XPath expression from a document.
      *
-     * @param xpath XPath expression
+     * @param xpath    XPath expression
      * @param document the document under test
      * @return flattened string value
      */
@@ -270,7 +273,7 @@ public class DirectDownloadTest extends GeoServerSystemTestSupport {
     /**
      * Return the list of nodes in a document that match an XPath expression.
      *
-     * @param xpath XPath expression
+     * @param xpath    XPath expression
      * @param document the document under test
      * @return list of matching nodes
      */

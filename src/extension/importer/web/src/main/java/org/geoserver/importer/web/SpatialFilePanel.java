@@ -7,6 +7,7 @@ package org.geoserver.importer.web;
 
 import java.io.File;
 import java.io.IOException;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxSubmitLink;
@@ -46,7 +47,9 @@ public class SpatialFilePanel extends ImportSourcePanel {
     public ImportData createImportSource() throws IOException {
         File file = new File(this.file);
         return FileData.createFromFile(file);
-    };
+    }
+
+    ;
 
     Component chooserButton(Form form) {
         AjaxSubmitLink link =

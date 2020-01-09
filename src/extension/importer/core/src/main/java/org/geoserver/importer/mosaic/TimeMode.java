@@ -6,6 +6,7 @@
 package org.geoserver.importer.mosaic;
 
 import java.util.Date;
+
 import org.geoserver.importer.Dates;
 
 /**
@@ -14,7 +15,9 @@ import org.geoserver.importer.Dates;
  * @author Justin Deoliveira, OpenGeo
  */
 public enum TimeMode {
-    /** Extract the timestamp from the filename, via {@link FilenameTimeHandler} */
+    /**
+     * Extract the timestamp from the filename, via {@link FilenameTimeHandler}
+     */
     FILENAME,
     MANUAL,
     AUTO,

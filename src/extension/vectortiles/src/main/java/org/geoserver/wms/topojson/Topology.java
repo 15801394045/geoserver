@@ -7,6 +7,7 @@ package org.geoserver.wms.topojson;
 import java.awt.geom.AffineTransform;
 import java.util.List;
 import java.util.Map;
+
 import org.geoserver.wms.topojson.TopoGeom.GeometryColleciton;
 import org.locationtech.jts.geom.Envelope;
 import org.locationtech.jts.geom.LineString;

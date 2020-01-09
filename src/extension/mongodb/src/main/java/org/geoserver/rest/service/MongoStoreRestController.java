@@ -12,6 +12,7 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.apache.commons.lang3.StringUtils;
 import org.geoserver.catalog.DataStoreInfo;
 import org.geoserver.catalog.WorkspaceInfo;
@@ -44,16 +45,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-/** Rest controller for handling operations over MongoDB datastores. */
+/**
+ * Rest controller for handling operations over MongoDB datastores.
+ */
 @RestController
 @ControllerAdvice
 @RequestMapping(
-    path = RestBaseController.ROOT_PATH + "/workspaces/{workspaceName}",
-    produces = {
-        MediaType.APPLICATION_JSON_VALUE,
-        MediaType.TEXT_HTML_VALUE,
-        MediaType.APPLICATION_XML_VALUE
-    }
+        path = RestBaseController.ROOT_PATH + "/workspaces/{workspaceName}",
+        produces = {
+                MediaType.APPLICATION_JSON_VALUE,
+                MediaType.TEXT_HTML_VALUE,
+                MediaType.APPLICATION_XML_VALUE
+        }
 )
 public class MongoStoreRestController extends AbstractGeoServerController {
 
@@ -71,7 +74,9 @@ public class MongoStoreRestController extends AbstractGeoServerController {
         return new ResponseEntity<Object>(ex.toString(), headers, ex.getStatus());
     }
 
-    /** Clears schema files and entries for the provided MongoDB store. */
+    /**
+     * Clears schema files and entries for the provided MongoDB store.
+     */
     @PostMapping(value = "/appschemastores/{appschemaStoreName}/datastores/{storeId}/cleanSchemas")
     public ResponseEntity<?> clearSchema(
             @PathVariable String workspaceName,
@@ -136,7 +141,9 @@ public class MongoStoreRestController extends AbstractGeoServerController {
         return appSchemaStoreInfo;
     }
 
-    /** Clears schema files and entries for all internal MongoDB stores. */
+    /**
+     * Clears schema files and entries for all internal MongoDB stores.
+     */
     @PostMapping(value = "/appschemastores/{appschemaStoreName}/cleanSchemas")
     public ResponseEntity<?> clearAllSchemas(
             @PathVariable String workspaceName, @PathVariable String appschemaStoreName)
@@ -175,7 +182,9 @@ public class MongoStoreRestController extends AbstractGeoServerController {
         return ResponseEntity.ok().build();
     }
 
-    /** Rebuilds schema files and entries for all internal MongoDB stores. */
+    /**
+     * Rebuilds schema files and entries for all internal MongoDB stores.
+     */
     @PostMapping(value = "/appschemastores/{appschemaStoreName}/rebuildMongoSchemas")
     public ResponseEntity<?> rebuildAllSchemas(
             @PathVariable String workspaceName,
@@ -209,7 +218,7 @@ public class MongoStoreRestController extends AbstractGeoServerController {
             MongoSchemaInitParams schemaInitParams =
                     MongoSchemaInitParams.builder()
                             .maxObjects(max != null ? max : 1)
-                            .ids(StringUtils.isNotBlank(ids) ? ids.split(",") : new String[] {})
+                            .ids(StringUtils.isNotBlank(ids) ? ids.split(",") : new String[]{})
                             .build();
             String storeId = getStoreId(appSchemaStore, st);
             if (storeId == null) {
@@ -261,9 +270,11 @@ public class MongoStoreRestController extends AbstractGeoServerController {
         }
     }
 
-    /** Clears schema files and entries for the provided MongoDB store. */
+    /**
+     * Clears schema files and entries for the provided MongoDB store.
+     */
     @PostMapping(
-        value = "/appschemastores/{appschemaStoreName}/datastores/{storeId}/rebuildMongoSchemas"
+            value = "/appschemastores/{appschemaStoreName}/datastores/{storeId}/rebuildMongoSchemas"
     )
     public ResponseEntity<?> rebuildSchema(
             @PathVariable String workspaceName,
@@ -294,7 +305,7 @@ public class MongoStoreRestController extends AbstractGeoServerController {
         MongoSchemaInitParams schemaInitParams =
                 MongoSchemaInitParams.builder()
                         .maxObjects(max != null ? max : 1)
-                        .ids(StringUtils.isNotBlank(ids) ? ids.split(",") : new String[] {})
+                        .ids(StringUtils.isNotBlank(ids) ? ids.split(",") : new String[]{})
                         .build();
         final Set<String> usedSchemas = extractUsedSchemas(appSchemaStore, storeId);
         List<String> typeNames = mongoStore.getSchemaStore().typeNames();

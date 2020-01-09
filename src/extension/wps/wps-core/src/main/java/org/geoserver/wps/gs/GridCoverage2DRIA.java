@@ -6,6 +6,7 @@
 package org.geoserver.wps.gs;
 
 import com.sun.media.jai.util.ImageUtil;
+
 import java.awt.Rectangle;
 import java.awt.RenderingHints;
 import java.awt.geom.AffineTransform;
@@ -29,6 +30,7 @@ import javax.media.jai.RasterAccessor;
 import javax.media.jai.RasterFormatTag;
 import javax.media.jai.iterator.RandomIter;
 import javax.media.jai.iterator.RandomIterFactory;
+
 import org.geotools.coverage.grid.GridCoverage2D;
 import org.geotools.coverage.grid.GridEnvelope2D;
 import org.geotools.coverage.grid.GridGeometry2D;
@@ -52,7 +54,9 @@ import org.opengis.referencing.operation.TransformException;
 @SuppressWarnings("unchecked")
 public class GridCoverage2DRIA extends GeometricOpImage {
 
-    /** DEFAULT_BORDEREXTENDER */
+    /**
+     * DEFAULT_BORDEREXTENDER
+     */
     public static final BorderExtender DEFAULT_BORDEREXTENDER =
             BorderExtender.createInstance(BorderExtender.BORDER_COPY);
 
@@ -74,11 +78,15 @@ public class GridCoverage2DRIA extends GeometricOpImage {
 
     private MathTransform dst2srcCRSTransform;
 
-    /** Color table representing source's IndexColorModel. */
+    /**
+     * Color table representing source's IndexColorModel.
+     */
     // just for keeping compiler quiet: let's see if we really need it
     private byte[][] ctable = null;
 
-    /** Do we need a reprojection. */
+    /**
+     * Do we need a reprojection.
+     */
     private boolean needReprojection;
 
     private AffineTransform concatenatedForwardTransform;
@@ -108,10 +116,10 @@ public class GridCoverage2DRIA extends GeometricOpImage {
      * The resulting RenderedImage will contain the data in src, and will be accessible via the grid
      * specs of dst,
      *
-     * @param src the data coverage to be remapped on dst grid
-     * @param dst the provider of the final grid
+     * @param src    the data coverage to be remapped on dst grid
+     * @param dst    the provider of the final grid
      * @param nodata the nodata value to set for cells not covered by src but included in dst. All
-     *     bands will share the same nodata value.
+     *               bands will share the same nodata value.
      * @return an instance of Coverage2RenderedImageAdapter
      */
     public static GridCoverage2DRIA create(
@@ -126,10 +134,10 @@ public class GridCoverage2DRIA extends GeometricOpImage {
      * The resulting RenderedImage will contain the data in src, and will be accessible via the grid
      * specs of dst,
      *
-     * @param src the data coverage to be remapped on dst grid
+     * @param src             the data coverage to be remapped on dst grid
      * @param dstGridGeometry the final {@link GridGeometry2D}
-     * @param nodata the nodata value to set for cells not covered by src but included in dst. All
-     *     bands will share the same nodata value.
+     * @param nodata          the nodata value to set for cells not covered by src but included in dst. All
+     *                        bands will share the same nodata value.
      * @return an instance of Coverage2RenderedImageAdapter
      */
     public static GridCoverage2DRIA create(
@@ -162,7 +170,7 @@ public class GridCoverage2DRIA extends GeometricOpImage {
         // to check for region overlapping and return a nodata value by hand,
         // so to avoid problems with interpolation at source raster borders.
         //
-        BorderExtender extender = new BorderExtenderConstant(new double[] {nodata});
+        BorderExtender extender = new BorderExtenderConstant(new double[]{nodata});
 
         // add tile caching to the mix
         final RenderingHints hints =
@@ -176,7 +184,7 @@ public class GridCoverage2DRIA extends GeometricOpImage {
                 false,
                 extender,
                 Interpolation.getInstance(Interpolation.INTERP_NEAREST),
-                new double[] {nodata});
+                new double[]{nodata});
     }
 
     @SuppressWarnings("rawtypes")
@@ -204,7 +212,9 @@ public class GridCoverage2DRIA extends GeometricOpImage {
         initIterator();
     }
 
-    /** */
+    /**
+     *
+     */
     private void initIterator() {
 
         // --- check interpolation
@@ -301,7 +311,9 @@ public class GridCoverage2DRIA extends GeometricOpImage {
         }
     }
 
-    /** Maps the provided point from source space to destination space for the provided source. */
+    /**
+     * Maps the provided point from source space to destination space for the provided source.
+     */
     @Override
     public Point2D mapSourcePoint(Point2D srcPt, int sourceIndex) {
         if (srcPt == null) {
@@ -310,7 +322,7 @@ public class GridCoverage2DRIA extends GeometricOpImage {
             throw new IndexOutOfBoundsException("Bad src"); // JaiI18N.getString("Generic1"));
         }
 
-        double coords[] = new double[] {srcPt.getX(), srcPt.getY()};
+        double coords[] = new double[]{srcPt.getX(), srcPt.getY()};
 
         try {
             mapSourcePoint(coords);
@@ -328,13 +340,13 @@ public class GridCoverage2DRIA extends GeometricOpImage {
             LOGGER.log(
                     Level.WARNING,
                     "{0} mapped to {1} lies outside {2},{3}+{4}x{5}",
-                    new Object[] {
-                        srcPt,
-                        ret,
-                        dstGridGeometry.getGridRange2D().x,
-                        dstGridGeometry.getGridRange2D().y,
-                        dstGridGeometry.getGridRange2D().width + dstGridGeometry.getGridRange2D().x,
-                        dstGridGeometry.getGridRange2D().height + dstGridGeometry.getGridRange2D().y
+                    new Object[]{
+                            srcPt,
+                            ret,
+                            dstGridGeometry.getGridRange2D().x,
+                            dstGridGeometry.getGridRange2D().y,
+                            dstGridGeometry.getGridRange2D().width + dstGridGeometry.getGridRange2D().x,
+                            dstGridGeometry.getGridRange2D().height + dstGridGeometry.getGridRange2D().y
                     });
             return null;
         }
@@ -359,11 +371,11 @@ public class GridCoverage2DRIA extends GeometricOpImage {
      * </pre>
      *
      * @param pxRect the <code>Rectangle</code> in source coordinates.
-     * @param i the index of the source image.
+     * @param i      the index of the source image.
      * @return a <code>Rectangle</code> indicating the destination bounding box, or <code>null
-     *     </code> if the bounding box is unknown.
+     * </code> if the bounding box is unknown.
      * @throws IllegalArgumentException if <code>sourceIndex</code> is negative or greater than the
-     *     index of the last source.
+     *                                  index of the last source.
      * @throws IllegalArgumentException if <code>sourceRect</code> is <code>null</code>.
      */
     @Override
@@ -389,7 +401,9 @@ public class GridCoverage2DRIA extends GeometricOpImage {
         return srcRect; // .intersection(src.getGridGeometry().getGridRange2D());
     }
 
-    /** Maps the provided point from destination space to source space for the provided source. */
+    /**
+     * Maps the provided point from destination space to source space for the provided source.
+     */
     @Override
     public Point2D mapDestPoint(Point2D destPt, int sourceIndex) {
         if (destPt == null) {
@@ -399,7 +413,7 @@ public class GridCoverage2DRIA extends GeometricOpImage {
             throw new IndexOutOfBoundsException("Bad src"); // JaiI18N.getString("Generic1"));
         }
 
-        double coords[] = new double[] {destPt.getX(), destPt.getY()};
+        double coords[] = new double[]{destPt.getX(), destPt.getY()};
 
         try {
             mapDestPoint(coords);
@@ -414,7 +428,9 @@ public class GridCoverage2DRIA extends GeometricOpImage {
         else return null;
     }
 
-    /** Maps the provided point from destination space to source space for the provided source. */
+    /**
+     * Maps the provided point from destination space to source space for the provided source.
+     */
     private void mapDestPoint(double[] coords) throws TransformException {
         final int npoints = coords.length / 2;
         // == optimized route
@@ -431,7 +447,9 @@ public class GridCoverage2DRIA extends GeometricOpImage {
         w2gs.transform(coords, 0, coords, 0, npoints); // from model to raster in source space
     }
 
-    /** Maps the provided point from source space to destination space for the provided source. */
+    /**
+     * Maps the provided point from source space to destination space for the provided source.
+     */
     private void mapSourcePoint(double[] coords) throws TransformException {
         final int npoints = coords.length / 2;
 
@@ -475,12 +493,12 @@ public class GridCoverage2DRIA extends GeometricOpImage {
      *
      * </pre>
      *
-     * @param destRect the <code>Rectangle</code> in destination coordinates.
+     * @param destRect    the <code>Rectangle</code> in destination coordinates.
      * @param sourceIndex the index of the source image.
      * @return a <code>Rectangle</code> indicating the source bounding box, or <code>null</code> if
-     *     the bounding box is unknown.
+     * the bounding box is unknown.
      * @throws IllegalArgumentException if <code>sourceIndex</code> is negative or greater than the
-     *     index of the last source.
+     *                                  index of the last source.
      * @throws IllegalArgumentException if <code>destRect</code> is <code>null</code>.
      */
     @Override
@@ -506,7 +524,7 @@ public class GridCoverage2DRIA extends GeometricOpImage {
         float dw = (float) (rect.width);
         float dh = (float) (rect.height);
 
-        return new float[] {dx0, dy0, (dx0 + dw), dy0, (dx0 + dw), (dy0 + dh), dx0, (dy0 + dh)};
+        return new float[]{dx0, dy0, (dx0 + dw), dy0, (dx0 + dw), (dy0 + dh), dx0, (dy0 + dh)};
     }
 
     private Rectangle pointArr2Rect(float[] points) {
@@ -1174,24 +1192,26 @@ public class GridCoverage2DRIA extends GeometricOpImage {
         }
     }
 
-    /** Returns the "floor" value of a double. */
+    /**
+     * Returns the "floor" value of a double.
+     */
     private static final int floor(double f) {
         return f >= 0 ? (int) f : (int) f - 1;
     }
 
     /**
-     * @param x0 The minimum X coordinate of the destination region.
-     * @param y0 The minimum Y coordinate of the destination region.
-     * @param width The width of the destination region.
-     * @param height The height of the destination region.
-     * @param periodX The horizontal sampling period.
-     * @param periodY The vertical sampling period.
+     * @param x0       The minimum X coordinate of the destination region.
+     * @param y0       The minimum Y coordinate of the destination region.
+     * @param width    The width of the destination region.
+     * @param height   The height of the destination region.
+     * @param periodX  The horizontal sampling period.
+     * @param periodY  The vertical sampling period.
      * @param destRect A <code>float</code> array containing at least <code>
-     *     2*((width+periodX-1)/periodX)*
-     *                ((height+periodY-1)/periodY)</code> elements, or <code>null</code>. If <code>
-     *     null</code>, a new array will be constructed.
+     *                 2*((width+periodX-1)/periodX)*
+     *                 ((height+periodY-1)/periodY)</code> elements, or <code>null</code>. If <code>
+     *                 null</code>, a new array will be constructed.
      * @return A reference to the <code>destRect</code> parameter if it is non-<code>null</code>, or
-     *     a new <code>float</code> array otherwise.
+     * a new <code>float</code> array otherwise.
      */
     public float[] warpSparseRect(
             int x0, int y0, int width, int height, int periodX, int periodY, float[] destRect) {
@@ -1201,8 +1221,8 @@ public class GridCoverage2DRIA extends GeometricOpImage {
             destRect =
                     new float
                             [((width + periodX - 1) / periodX)
-                                    * ((height + periodY - 1) / periodY)
-                                    * 2];
+                            * ((height + periodY - 1) / periodY)
+                            * 2];
         }
 
         width += x0;

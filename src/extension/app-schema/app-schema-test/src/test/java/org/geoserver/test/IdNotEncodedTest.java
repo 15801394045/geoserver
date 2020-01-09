@@ -9,7 +9,9 @@ package org.geoserver.test;
 import org.junit.Test;
 import org.w3c.dom.Document;
 
-/** @author Niels Charlier (Curtin University of Technology) */
+/**
+ * @author Niels Charlier (Curtin University of Technology)
+ */
 public class IdNotEncodedTest extends AbstractAppSchemaTestSupport {
 
     @Override
@@ -17,7 +19,9 @@ public class IdNotEncodedTest extends AbstractAppSchemaTestSupport {
         return new IdNotEncodedMockData();
     }
 
-    /** Test whether GetFeature */
+    /**
+     * Test whether GetFeature
+     */
     @Test
     public void testGetFeature() {
         Document doc =

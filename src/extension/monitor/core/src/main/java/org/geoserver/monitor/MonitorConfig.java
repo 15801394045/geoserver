@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.geoserver.config.GeoServerPluginConfigurator;
 import org.geoserver.platform.GeoServerExtensions;
 import org.geoserver.platform.GeoServerResourceLoader;
@@ -192,7 +193,7 @@ public class MonitorConfig implements GeoServerPluginConfigurator, ApplicationCo
      * supposed to use the plugin.property naming convention, passing both a prefix and a name
      *
      * @param prefix namespace prefix
-     * @param name name
+     * @param name   name
      * @param target Class for conversion
      */
     public <T> T getProperty(String prefix, String name, Class<T> target) {

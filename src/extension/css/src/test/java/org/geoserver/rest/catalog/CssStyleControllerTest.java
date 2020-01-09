@@ -12,6 +12,7 @@ import static org.junit.Assert.*;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.util.Collections;
+
 import org.geoserver.catalog.Catalog;
 import org.geoserver.catalog.SLDHandler;
 import org.geoserver.catalog.StyleInfo;

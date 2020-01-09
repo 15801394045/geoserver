@@ -8,13 +8,21 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-/** The various states in which the execution of a process can find itself into */
+/**
+ * The various states in which the execution of a process can find itself into
+ */
 public enum ProcessState {
-    /** Queued for execution, not yet started */
+    /**
+     * Queued for execution, not yet started
+     */
     QUEUED(false),
-    /** Execution undergoing */
+    /**
+     * Execution undergoing
+     */
     RUNNING(false, QUEUED),
-    /** Execution completed successfully, (full output encoding included) */
+    /**
+     * Execution completed successfully, (full output encoding included)
+     */
     SUCCEEDED(true, RUNNING),
 
     /**
@@ -22,7 +30,9 @@ public enum ProcessState {
      */
     DISMISSING(false, QUEUED, RUNNING),
 
-    /** The process failed during execution/output encoding */
+    /**
+     * The process failed during execution/output encoding
+     */
     FAILED(true, QUEUED, RUNNING, DISMISSING);
 
     private boolean executionCompleted;

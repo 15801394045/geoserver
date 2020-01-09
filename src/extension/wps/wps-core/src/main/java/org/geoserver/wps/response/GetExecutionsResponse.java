@@ -7,6 +7,7 @@ package org.geoserver.wps.response;
 import java.io.IOException;
 import java.io.OutputStream;
 import javax.xml.transform.TransformerException;
+
 import org.geoserver.ows.Response;
 import org.geoserver.platform.Operation;
 import org.geoserver.wps.GetExecutionsTransformer;
@@ -18,7 +19,9 @@ import org.geoserver.wps.GetExecutionsTransformer;
  */
 public class GetExecutionsResponse extends Response {
 
-    /** MIME_TYPE */
+    /**
+     * MIME_TYPE
+     */
     private static final String MIME_TYPE = "application/xml";
 
     public GetExecutionsResponse() {

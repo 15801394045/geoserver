@@ -7,19 +7,19 @@
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
 
 <beans>
-  <bean class="org.geoserver.netcdf.NetCDFStatus"/>  
+    <bean class="org.geoserver.netcdf.NetCDFStatus"/>
 
-  <bean id="netcdfStorePanel" class="org.geoserver.web.data.resource.DataStorePanelInfo">
-    <property name="id" value="netcdfRaster" />
-    <property name="factoryClass" value="org.geotools.coverage.io.netcdf.NetCDFFormat" />
-    <property name="iconBase" value="org.geoserver.web.GeoServerApplication" />
-    <property name="icon" value="img/icons/geosilk/page_white_raster.png" />
-    <property name="componentClass"
-      value="org.geoserver.web.data.store.raster.NetCDFRasterEditPanel" />
-  </bean>
-  
-  <bean id="netcdfUnitConfigurator" class="org.geoserver.netcdf.NetCDFUnitsConfigurator">
-    <constructor-arg ref="resourceLoader"/>
-  </bean>
- 
+    <bean id="netcdfStorePanel" class="org.geoserver.web.data.resource.DataStorePanelInfo">
+        <property name="id" value="netcdfRaster"/>
+        <property name="factoryClass" value="org.geotools.coverage.io.netcdf.NetCDFFormat"/>
+        <property name="iconBase" value="org.geoserver.web.GeoServerApplication"/>
+        <property name="icon" value="img/icons/geosilk/page_white_raster.png"/>
+        <property name="componentClass"
+                  value="org.geoserver.web.data.store.raster.NetCDFRasterEditPanel"/>
+    </bean>
+
+    <bean id="netcdfUnitConfigurator" class="org.geoserver.netcdf.NetCDFUnitsConfigurator">
+        <constructor-arg ref="resourceLoader"/>
+    </bean>
+
 </beans>

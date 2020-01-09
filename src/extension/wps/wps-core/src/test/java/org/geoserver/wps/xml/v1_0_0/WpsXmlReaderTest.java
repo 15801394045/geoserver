@@ -10,6 +10,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.StringReader;
 import java.util.Map;
+
 import net.opengis.wfs.GetFeatureType;
 import net.opengis.wps10.ExecuteType;
 import net.opengis.wps10.InputType;

@@ -106,7 +106,9 @@ public class WPSAdminPage extends BaseServiceAdminPage<WPSInfo> {
         super.handleSubmit(info);
     }
 
-    /** Validator that checks that the total time is greater than the execution time */
+    /**
+     * Validator that checks that the total time is greater than the execution time
+     */
     class TotalTimeValidator extends AbstractFormValidator {
 
         private static final long serialVersionUID = 1L;
@@ -122,7 +124,7 @@ public class WPSAdminPage extends BaseServiceAdminPage<WPSInfo> {
 
         @Override
         public FormComponent<?>[] getDependentFormComponents() {
-            return new FormComponent[] {totalTime, executionTime};
+            return new FormComponent[]{totalTime, executionTime};
         }
 
         @Override

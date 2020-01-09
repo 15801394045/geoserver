@@ -6,6 +6,7 @@
 package org.geoserver.wcs2_0.eo.response;
 
 import it.geosolutions.imageio.maskband.DatasetLayout;
+
 import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import javax.media.jai.ImageLayout;
+
 import org.geoserver.util.ISO8601Formatter;
 import org.geotools.coverage.grid.GridCoverage2D;
 import org.geotools.coverage.grid.io.DimensionDescriptor;

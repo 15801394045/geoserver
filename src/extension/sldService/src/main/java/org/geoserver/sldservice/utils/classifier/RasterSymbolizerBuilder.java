@@ -13,6 +13,7 @@ import it.geosolutions.jaiext.classbreaks.Classification;
 import it.geosolutions.jaiext.classbreaks.ClassificationMethod;
 import it.geosolutions.jaiext.stats.Statistics;
 import it.geosolutions.jaiext.stats.Statistics.StatsType;
+
 import java.awt.*;
 import java.awt.image.DataBuffer;
 import java.awt.image.RenderedImage;
@@ -25,6 +26,7 @@ import javax.media.jai.Histogram;
 import javax.media.jai.JAI;
 import javax.media.jai.ParameterBlockJAI;
 import javax.media.jai.RenderedOp;
+
 import org.geotools.factory.CommonFactoryFinder;
 import org.geotools.filter.function.RangedClassifier;
 import org.geotools.image.ImageWorker;
@@ -44,7 +46,9 @@ public class RasterSymbolizerBuilder {
     private static StyleFactory SF =
             CommonFactoryFinder.getStyleFactory(GeoTools.getDefaultHints());
 
-    /** Number of histogram bins, if not specified via system variable */
+    /**
+     * Number of histogram bins, if not specified via system variable
+     */
     private static final int NUM_HISTOGRAM_BINS =
             Integer.getInteger("org.geoserver.sldService.histogramBins", 256);
 
@@ -77,7 +81,9 @@ public class RasterSymbolizerBuilder {
         this.maxPixels = maxPixels;
     }
 
-    /** Default constructor */
+    /**
+     * Default constructor
+     */
     public RasterSymbolizerBuilder() {
         this.maxPixels = DEFAULT_MAX_PIXELS;
     }
@@ -85,9 +91,9 @@ public class RasterSymbolizerBuilder {
     /**
      * Builds a {@link ColorMap} of type "values" from the unique values in the raster
      *
-     * @param image The source image
+     * @param image        The source image
      * @param maxIntervals The maximum number of intervals that should be returned, above which an
-     *     exception should be thrown
+     *                     exception should be thrown
      */
     public ColorMap uniqueIntervalClassification(RenderedImage image, Integer maxIntervals) {
         int low, high;
@@ -121,7 +127,7 @@ public class RasterSymbolizerBuilder {
         // compute the histogram
         Histogram histogram =
                 iw.getHistogram(
-                        new int[] {high - low + 1}, new double[] {low}, new double[] {high});
+                        new int[]{high - low + 1}, new double[]{low}, new double[]{high});
         int[] bins = histogram.getBins(0);
 
         // turn the histogram into a ColorMap (just values, no colors, those will be added later)
@@ -177,8 +183,8 @@ public class RasterSymbolizerBuilder {
      * Builds a {@link ColorMap} based on equal intervals between the min and max value found in the
      * raster
      *
-     * @param image The source image
-     * @param intervals Number of resulting intervals
+     * @param image      The source image
+     * @param intervals  Number of resulting intervals
      * @param open
      * @param continuous If the resulting ColorMap should be of type interval (discrete) or of type
      */
@@ -202,8 +208,8 @@ public class RasterSymbolizerBuilder {
     /**
      * Builds a {@link ColorMap} based on equal pixel count intervals
      *
-     * @param image The source image
-     * @param intervals Number of resulting intervals
+     * @param image      The source image
+     * @param intervals  Number of resulting intervals
      * @param open
      * @param continuous If the resulting ColorMap should be of type interval (discrete) or of type
      */
@@ -221,8 +227,8 @@ public class RasterSymbolizerBuilder {
     /**
      * Builds a {@link ColorMap} based on equal pixel count intervals
      *
-     * @param image The source image
-     * @param intervals Number of resulting intervals
+     * @param image      The source image
+     * @param intervals  Number of resulting intervals
      * @param open
      * @param continuous If the resulting ColorMap should be of type interval (discrete) or of type
      */
@@ -324,7 +330,7 @@ public class RasterSymbolizerBuilder {
         pb.set(intervals, 0);
         pb.set(classificationMethod, 1);
         pb.set(iw.getROI(), 3);
-        pb.set(new Integer[] {0}, 4); /* band, it was pre-selected */
+        pb.set(new Integer[]{0}, 4); /* band, it was pre-selected */
         pb.set(iw.getXPeriod(), 5);
         pb.set(iw.getYPeriod(), 6);
         pb.set(noData, 7);
@@ -348,7 +354,9 @@ public class RasterSymbolizerBuilder {
         return c.getBreaks()[0];
     }
 
-    /** Applies the given color ramp to the color map */
+    /**
+     * Applies the given color ramp to the color map
+     */
     public void applyColorRamp(
             ColorMap colorMap, ColorRamp colorRamp, boolean skipFirst, boolean reverse)
             throws Exception {
@@ -401,7 +409,7 @@ public class RasterSymbolizerBuilder {
             pb.setSource(iw.getRenderedImage(), 0);
             if (JAIExt.isJAIExtOperation("Stats")) {
                 StatsType[] stats =
-                        new StatsType[] {StatsType.MEAN, StatsType.DEV_STD, StatsType.EXTREMA};
+                        new StatsType[]{StatsType.MEAN, StatsType.DEV_STD, StatsType.EXTREMA};
 
                 // Image parameters
                 pb.set(iw.getXPeriod(), 0); // xPeriod

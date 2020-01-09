@@ -20,6 +20,7 @@ import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 import com.thoughtworks.xstream.mapper.ClassAliasingMapper;
 import com.thoughtworks.xstream.mapper.Mapper;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -27,6 +28,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.geoserver.catalog.MetadataMap;
 import org.geoserver.config.GeoServer;
 import org.geoserver.config.util.XStreamPersister;
@@ -169,7 +171,9 @@ public class WPSXStreamLoader extends XStreamServiceLoader<WPSInfo> {
         return service;
     }
 
-    /** Converter for {@link Name} */
+    /**
+     * Converter for {@link Name}
+     */
     public static class NameConverter extends AbstractSingleValueConverter {
 
         @Override

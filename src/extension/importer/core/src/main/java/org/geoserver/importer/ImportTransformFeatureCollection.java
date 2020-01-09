@@ -5,6 +5,7 @@
 package org.geoserver.importer;
 
 import java.util.NoSuchElementException;
+
 import org.geoserver.importer.job.ProgressMonitor;
 import org.geoserver.importer.transform.VectorTransformChain;
 import org.geotools.data.DataStore;
@@ -149,7 +150,9 @@ class ImportTransformFeatureCollection extends DecoratingFeatureCollection {
             this.monitor = monitor;
         }
 
-        /** if cancelled, then report no more features */
+        /**
+         * if cancelled, then report no more features
+         */
         @Override
         public boolean hasNext() {
             if (monitor.isCanceled()) {

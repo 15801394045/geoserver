@@ -14,6 +14,7 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.util.List;
 import java.util.zip.ZipOutputStream;
+
 import org.apache.commons.io.output.ByteArrayOutputStream;
 import org.geoserver.catalog.DataStoreInfo;
 import org.geoserver.catalog.FeatureTypeInfo;
@@ -33,7 +34,9 @@ import org.junit.Test;
 import org.opengis.feature.type.Name;
 import org.springframework.mock.web.MockHttpServletResponse;
 
-/** Contains tests that invoke REST resources that will use H2 data store. */
+/**
+ * Contains tests that invoke REST resources that will use H2 data store.
+ */
 public final class RestTest extends GeoServerSystemTestSupport {
 
     private static final String WORKSPACE_NAME = "h2-tests";
@@ -148,7 +151,9 @@ public final class RestTest extends GeoServerSystemTestSupport {
         return output.toByteArray();
     }
 
-    /** Helper method that zips the H2 data directory and returns it as an array of bytes. */
+    /**
+     * Helper method that zips the H2 data directory and returns it as an array of bytes.
+     */
     private static byte[] readSqLiteDatabaseDir() throws Exception {
         // copy database file to database directory
         File outputFile = new File(DATABASE_DIR, "test-database.data.db");

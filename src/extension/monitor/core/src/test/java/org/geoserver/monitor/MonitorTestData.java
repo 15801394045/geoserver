@@ -16,6 +16,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
+
 import org.geoserver.monitor.RequestData.Status;
 import org.geotools.util.Converters;
 
@@ -197,7 +198,8 @@ public class MonitorTestData {
         return data;
     }
 
-    protected void addTestData(List<RequestData> datas) throws ParseException {}
+    protected void addTestData(List<RequestData> datas) throws ParseException {
+    }
 
     public static Date toDate(String s) {
         return Converters.convert(s, Date.class);

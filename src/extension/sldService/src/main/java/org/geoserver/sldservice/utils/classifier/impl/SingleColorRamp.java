@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
 import org.geoserver.sldservice.utils.classifier.ColorRamp;
 
 public abstract class SingleColorRamp implements ColorRamp {
@@ -46,7 +47,7 @@ public abstract class SingleColorRamp implements ColorRamp {
      * Creates the color for the i-th class, using the provided color step
      *
      * @param step The color step
-     * @param i The class counter
+     * @param i    The class counter
      * @return A color for this combination
      */
     protected abstract Color getColorForIndex(double step, int i);

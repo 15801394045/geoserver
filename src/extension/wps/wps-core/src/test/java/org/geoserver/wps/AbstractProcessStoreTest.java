@@ -8,6 +8,7 @@ import static org.junit.Assert.*;
 
 import java.io.IOException;
 import java.util.List;
+
 import org.geoserver.wps.executor.ExecutionStatus;
 import org.geoserver.wps.executor.ProcessState;
 import org.geotools.data.Query;
@@ -69,7 +70,9 @@ public abstract class AbstractProcessStoreTest {
      */
     protected abstract ProcessStatusStore buildStore() throws IOException;
 
-    /** Puts all the test statuses in the store */
+    /**
+     * Puts all the test statuses in the store
+     */
     protected void fillStore() {
         store.save(s1);
         store.save(s2);

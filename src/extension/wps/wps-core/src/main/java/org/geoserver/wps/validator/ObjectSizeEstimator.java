@@ -6,7 +6,9 @@ package org.geoserver.wps.validator;
 
 public interface ObjectSizeEstimator {
 
-    /** The value returned when the size is unknowns */
+    /**
+     * The value returned when the size is unknowns
+     */
     public static long UNKNOWN_SIZE = 0;
 
     /**

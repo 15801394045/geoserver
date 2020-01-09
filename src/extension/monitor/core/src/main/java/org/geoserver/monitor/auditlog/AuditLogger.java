@@ -12,6 +12,7 @@ import static org.apache.commons.io.filefilter.FileFilterUtils.suffixFileFilter;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -29,6 +30,7 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.geoserver.monitor.MemoryMonitorDAO;
 import org.geoserver.monitor.MonitorConfig;
 import org.geoserver.monitor.RequestData;
@@ -219,7 +221,9 @@ public class AuditLogger implements RequestDataListener, ApplicationListener<App
          */
         BlockingQueue<RequestData> queue = new ArrayBlockingQueue<RequestData>(10000);
 
-        /** The {@link File} where we audit to. */
+        /**
+         * The {@link File} where we audit to.
+         */
         private File logFile;
 
         private File path;
@@ -258,7 +262,9 @@ public class AuditLogger implements RequestDataListener, ApplicationListener<App
             start();
         }
 
-        /** Loop to be run during the virtual machine lifetime. */
+        /**
+         * Loop to be run during the virtual machine lifetime.
+         */
         @Override
         public void run() {
 

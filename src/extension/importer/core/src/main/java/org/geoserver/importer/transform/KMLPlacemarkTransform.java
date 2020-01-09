@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+
 import org.apache.commons.lang3.StringUtils;
 import org.geoserver.importer.FeatureDataConverter;
 import org.geoserver.importer.ImportTask;
@@ -24,7 +25,9 @@ import org.opengis.feature.type.AttributeDescriptor;
 
 public class KMLPlacemarkTransform extends AbstractTransform implements InlineVectorTransform {
 
-    /** serialVersionUID */
+    /**
+     * serialVersionUID
+     */
     private static final long serialVersionUID = 1L;
 
     public SimpleFeatureType convertFeatureType(SimpleFeatureType oldFeatureType) {

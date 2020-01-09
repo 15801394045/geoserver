@@ -14,17 +14,21 @@ import com.sleepycat.bind.EntryBinding;
 import com.sleepycat.bind.serial.SerialBase;
 import com.sleepycat.je.DatabaseEntry;
 import com.sleepycat.util.FastOutputStream;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.logging.Logger;
+
 import org.apache.commons.io.output.TeeOutputStream;
 import org.geoserver.config.util.XStreamPersister;
 import org.geotools.util.logging.Logging;
 
-/** @param <T> */
+/**
+ * @param <T>
+ */
 public class XStreamInfoSerialBinding<T> extends SerialBase implements EntryBinding<T> {
 
     private static final Logger LOGGER = Logging.getLogger(XStreamInfoSerialBinding.class);

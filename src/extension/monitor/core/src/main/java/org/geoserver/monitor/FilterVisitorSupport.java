@@ -31,5 +31,6 @@ public class FilterVisitorSupport implements FilterVisitor {
         }
     }
 
-    protected void handleFilter(Filter f) {}
+    protected void handleFilter(Filter f) {
+    }
 }

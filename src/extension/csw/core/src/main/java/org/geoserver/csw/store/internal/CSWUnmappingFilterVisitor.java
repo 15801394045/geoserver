@@ -36,7 +36,7 @@ public class CSWUnmappingFilterVisitor extends DuplicatingFilterVisitor {
      * Create CSW Unmapping Filter Visitor
      *
      * @param mapping The Mapping
-     * @param rd The Record Descriptor
+     * @param rd      The Record Descriptor
      */
     public CSWUnmappingFilterVisitor(CatalogStoreMapping mapping, RecordDescriptor rd) {
         this.mapping = mapping;

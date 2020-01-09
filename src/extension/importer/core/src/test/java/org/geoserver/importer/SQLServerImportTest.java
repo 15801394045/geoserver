@@ -6,6 +6,7 @@
 package org.geoserver.importer;
 
 import java.sql.Statement;
+
 import org.junit.Ignore;
 
 @Ignore

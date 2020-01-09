@@ -5,14 +5,18 @@
  */
 package org.geoserver.test;
 
-/** @author Xiangtan Lin, CSIRO Information Management and Technology */
+/**
+ * @author Xiangtan Lin, CSIRO Information Management and Technology
+ */
 public class PropertyEncodingOrderMockData extends AbstractAppSchemaMockData {
 
     protected static final String ER_PREFIX = "er";
 
     protected static final String ER_URI = "urn:cgi:xmlns:GGIC:EarthResource:1.1";
 
-    /** @see org.geoserver.test.AbstractAppSchemaMockData#addContent() */
+    /**
+     * @see org.geoserver.test.AbstractAppSchemaMockData#addContent()
+     */
     @Override
     public void addContent() {
         putNamespace(ER_PREFIX, ER_URI);

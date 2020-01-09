@@ -10,4 +10,5 @@ package org.geoserver.importer;
  *
  * @author Justin Deoliveira, OpenGeo
  */
-public abstract class RasterFormat extends DataFormat {}
+public abstract class RasterFormat extends DataFormat {
+}

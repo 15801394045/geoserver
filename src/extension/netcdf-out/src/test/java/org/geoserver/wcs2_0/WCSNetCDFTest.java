@@ -16,6 +16,7 @@ import java.util.Arrays;
 import java.util.EnumSet;
 import java.util.Map;
 import javax.xml.namespace.QName;
+
 import net.opengis.wcs20.GetCoverageType;
 import org.apache.commons.io.FileUtils;
 import org.geoserver.catalog.CoverageInfo;
@@ -61,14 +62,16 @@ public class WCSNetCDFTest extends WCSNetCDFBaseTest {
     public static QName SAMPLEKM =
             new QName(CiteTestData.WCS_URI, "samplekm", CiteTestData.WCS_PREFIX);
 
-    /** Only setup coverages */
+    /**
+     * Only setup coverages
+     */
     protected void setUpTestData(SystemTestData testData) throws Exception {
         super.setUpTestData(testData);
     }
 
     private void setFinalStaticField(String fieldName, boolean value)
             throws NoSuchFieldException, SecurityException, IllegalArgumentException,
-                    IllegalAccessException {
+            IllegalAccessException {
         // Playing with System.Properties and Static boolean fields can raises issues
         // when running Junit tests via Maven, due to initialization orders.
         // So let's change the fields via reflections for these tests
@@ -198,7 +201,9 @@ public class WCSNetCDFTest extends WCSNetCDFBaseTest {
         setInputLimit(-1);
     }
 
-    /** Test NetCDF output from a NetCDF file with a rotated pole projection. */
+    /**
+     * Test NetCDF output from a NetCDF file with a rotated pole projection.
+     */
     @Test
     public void testNetcdfRotatedPole() throws Exception {
         MockHttpServletResponse response =
@@ -232,7 +237,7 @@ public class WCSNetCDFTest extends WCSNetCDFBaseTest {
             assertEquals("grid_longitude", rlonVar.findAttribute("standard_name").getStringValue());
             assertEquals("degrees", rlonVar.findAttribute("units").getStringValue());
             assertArrayEquals(
-                    new float[] {-30, -20, -10, 0, 10, 20, 30},
+                    new float[]{-30, -20, -10, 0, 10, 20, 30},
                     (float[]) rlonVar.read().copyTo1DJavaArray(),
                     (float) DELTA);
             Variable rlatVar = dataset.findVariable("rlat");
@@ -243,7 +248,7 @@ public class WCSNetCDFTest extends WCSNetCDFBaseTest {
             assertEquals("grid_latitude", rlatVar.findAttribute("standard_name").getStringValue());
             assertEquals("degrees", rlatVar.findAttribute("units").getStringValue());
             assertArrayEquals(
-                    new float[] {-20, -10, 0, 10, 20},
+                    new float[]{-20, -10, 0, 10, 20},
                     (float[]) rlatVar.read().copyTo1DJavaArray(),
                     (float) DELTA);
             // check projection variable
@@ -275,10 +280,10 @@ public class WCSNetCDFTest extends WCSNetCDFBaseTest {
             assertEquals(rlatDim, tempVar.getDimensions().get(0));
             assertEquals(rlonDim, tempVar.getDimensions().get(1));
             assertArrayEquals(
-                    new float[] {
-                        300, 299, 298, 297, 296, 295, 294, 299, 300, 299, 298, 297, 296, 295, 298,
-                        299, 300, 299, 298, 297, 296, 297, 298, 299, 300, 299, 298, 297, 296, 297,
-                        298, 299, 300, 299, 298
+                    new float[]{
+                            300, 299, 298, 297, 296, 295, 294, 299, 300, 299, 298, 297, 296, 295, 298,
+                            299, 300, 299, 298, 297, 296, 297, 298, 299, 300, 299, 298, 297, 296, 297,
+                            298, 299, 300, 299, 298
                     },
                     (float[]) tempVar.read().copyTo1DJavaArray(),
                     (float) DELTA);
@@ -324,7 +329,7 @@ public class WCSNetCDFTest extends WCSNetCDFBaseTest {
             assertEquals("grid_longitude", rlonVar.findAttribute("standard_name").getStringValue());
             assertEquals("degrees", rlonVar.findAttribute("units").getStringValue());
             assertArrayEquals(
-                    new float[] {-30, -20, -10, 0, 10, 20, 30},
+                    new float[]{-30, -20, -10, 0, 10, 20, 30},
                     (float[]) rlonVar.read().copyTo1DJavaArray(),
                     (float) DELTA);
             Variable rlatVar = dataset.findVariable("rlat");
@@ -335,7 +340,7 @@ public class WCSNetCDFTest extends WCSNetCDFBaseTest {
             assertEquals("grid_latitude", rlatVar.findAttribute("standard_name").getStringValue());
             assertEquals("degrees", rlatVar.findAttribute("units").getStringValue());
             assertArrayEquals(
-                    new float[] {-20, -10, 0, 10, 20},
+                    new float[]{-20, -10, 0, 10, 20},
                     (float[]) rlatVar.read().copyTo1DJavaArray(),
                     (float) DELTA);
             // check projection variable
@@ -367,10 +372,10 @@ public class WCSNetCDFTest extends WCSNetCDFBaseTest {
             assertEquals(rlatDim, dataVar.getDimensions().get(0));
             assertEquals(rlonDim, dataVar.getDimensions().get(1));
             assertArrayEquals(
-                    new float[] {
-                        300, 299, 298, 297, 296, 295, 294, 299, 300, 299, 298, 297, 296, 295, 298,
-                        299, 300, 299, 298, 297, 296, 297, 298, 299, 300, 299, 298, 297, 296, 297,
-                        298, 299, 300, 299, 298
+                    new float[]{
+                            300, 299, 298, 297, 296, 295, 294, 299, 300, 299, 298, 297, 296, 295, 298,
+                            299, 300, 299, 298, 297, 296, 297, 298, 299, 300, 299, 298, 297, 296, 297,
+                            298, 299, 300, 299, 298
                     },
                     (float[]) dataVar.read().copyTo1DJavaArray(),
                     (float) DELTA);
@@ -415,7 +420,7 @@ public class WCSNetCDFTest extends WCSNetCDFBaseTest {
             assertEquals("grid_longitude", rlonVar.findAttribute("standard_name").getStringValue());
             assertEquals("degrees", rlonVar.findAttribute("units").getStringValue());
             assertArrayEquals(
-                    new float[] {-18, -8, 2, 12, 22},
+                    new float[]{-18, -8, 2, 12, 22},
                     (float[]) rlonVar.read().copyTo1DJavaArray(),
                     (float) DELTA);
             Variable rlatVar = dataset.findVariable("rlat");
@@ -426,7 +431,7 @@ public class WCSNetCDFTest extends WCSNetCDFBaseTest {
             assertEquals("grid_latitude", rlatVar.findAttribute("standard_name").getStringValue());
             assertEquals("degrees", rlatVar.findAttribute("units").getStringValue());
             assertArrayEquals(
-                    new float[] {-20, -10, 0, 10, 20},
+                    new float[]{-20, -10, 0, 10, 20},
                     (float[]) rlatVar.read().copyTo1DJavaArray(),
                     (float) DELTA);
             // check projection variable
@@ -457,9 +462,9 @@ public class WCSNetCDFTest extends WCSNetCDFBaseTest {
             assertEquals(rlatDim, dataVar.getDimensions().get(0));
             assertEquals(rlonDim, dataVar.getDimensions().get(1));
             assertArrayEquals(
-                    new float[] {
-                        100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114,
-                        115, 116, 117, 118, 119, 120, 121, 122, 123, 124
+                    new float[]{
+                            100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114,
+                            115, 116, 117, 118, 119, 120, 121, 122, 123, 124
                     },
                     (float[]) dataVar.read().copyTo1DJavaArray(),
                     (float) DELTA);
@@ -507,8 +512,8 @@ public class WCSNetCDFTest extends WCSNetCDFBaseTest {
                     EnumSet.of(NetcdfDataset.Enhance.CoordSystems);
             enhanceMode.add(NetcdfDataset.Enhance.ScaleMissing);
             try (NetcdfDataset dataset =
-                    NetcdfDataset.openDataset(
-                            file.getAbsolutePath(), enhanceMode, 4096, null, null)) {
+                         NetcdfDataset.openDataset(
+                                 file.getAbsolutePath(), enhanceMode, 4096, null, null)) {
                 assertNotNull(dataset);
                 final Variable variable = dataset.findVariable("O3");
                 // not read as packed this time

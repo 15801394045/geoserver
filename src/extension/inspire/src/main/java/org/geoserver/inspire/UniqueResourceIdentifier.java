@@ -21,7 +21,8 @@ public class UniqueResourceIdentifier implements Serializable {
 
     private String metadataURL;
 
-    public UniqueResourceIdentifier() {}
+    public UniqueResourceIdentifier() {
+    }
 
     public UniqueResourceIdentifier(String code) {
         this.code = code;

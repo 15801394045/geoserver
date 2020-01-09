@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
@@ -121,10 +122,12 @@ public class WPSAccessRulePage extends AbstractSecurityPage {
                                             "roles",
                                             (IModel<String>) property.getModel(itemModel)) {
                                         public <C extends Object>
-                                                org.apache.wicket.util.convert.IConverter<C>
-                                                        getConverter(java.lang.Class<C> type) {
+                                        org.apache.wicket.util.convert.IConverter<C>
+                                        getConverter(java.lang.Class<C> type) {
                                             return new RolesConverter(availableRoles);
-                                        };
+                                        }
+
+                                        ;
                                     };
                             StringBuilder selectedRoles = new StringBuilder();
                             IAutoCompleteRenderer<String> roleRenderer =

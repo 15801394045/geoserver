@@ -19,6 +19,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Properties;
 import javax.servlet.Filter;
+
 import org.custommonkey.xmlunit.SimpleNamespaceContext;
 import org.custommonkey.xmlunit.XMLUnit;
 import org.custommonkey.xmlunit.XpathEngine;
@@ -187,11 +188,11 @@ public class AuthencationKeyOWSTest extends GeoServerSystemTestSupport {
                         > 1);
         assertTrue(
                 engine.getMatchingNodes("//Layer/Name[starts-with(text(), 'cdf:')]", doc)
-                                .getLength()
+                        .getLength()
                         > 1);
         assertTrue(
                 engine.getMatchingNodes("//Layer/Name[starts-with(text(), 'cite:')]", doc)
-                                .getLength()
+                        .getLength()
                         > 1);
 
         // check the authentication key has been propagated
@@ -211,7 +212,7 @@ public class AuthencationKeyOWSTest extends GeoServerSystemTestSupport {
                         > 1);
         assertTrue(
                 engine.getMatchingNodes("//Layer/Name[starts-with(text(), 'cite:')]", doc)
-                                .getLength()
+                        .getLength()
                         > 1);
         assertEquals(
                 0,

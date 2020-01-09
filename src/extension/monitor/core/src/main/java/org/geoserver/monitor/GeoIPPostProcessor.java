@@ -7,6 +7,7 @@ package org.geoserver.monitor;
 
 import com.maxmind.geoip.Location;
 import com.maxmind.geoip.LookupService;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -14,6 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.geoserver.platform.GeoServerResourceLoader;
 import org.geotools.util.logging.Logging;
 
@@ -21,7 +23,9 @@ public class GeoIPPostProcessor implements RequestPostProcessor {
 
     static Logger LOGGER = Logging.getLogger("org.geoserver.montior");
 
-    /** cached geoip lookup service */
+    /**
+     * cached geoip lookup service
+     */
     static volatile LookupService geoIPLookup;
 
     // TODO: cache by IP address

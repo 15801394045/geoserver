@@ -7,6 +7,7 @@ package org.geoserver.monitor.web;
 
 import java.util.HashMap;
 import java.util.Map;
+
 import org.geoserver.monitor.Monitor;
 import org.geoserver.monitor.Query;
 import org.geoserver.monitor.Query.Comparison;

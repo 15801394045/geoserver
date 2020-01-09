@@ -87,17 +87,23 @@ public class OWSRequestMatcher implements Predicate<Request> {
         return true;
     }
 
-    /** Returns the matched service (case insensitive) */
+    /**
+     * Returns the matched service (case insensitive)
+     */
     public String getService() {
         return service;
     }
 
-    /** Returns the matched method (case insensitive) */
+    /**
+     * Returns the matched method (case insensitive)
+     */
     public String getMethod() {
         return method;
     }
 
-    /** Returns the matched output format (case insensitive) */
+    /**
+     * Returns the matched output format (case insensitive)
+     */
     public String getOutputFormat() {
         return outputFormat;
     }

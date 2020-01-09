@@ -7,6 +7,7 @@
 package org.geoserver.security.cas;
 
 import java.util.logging.Logger;
+
 import org.geoserver.config.util.XStreamPersister;
 import org.geoserver.security.ConstantFilterChain;
 import org.geoserver.security.GeoServerSecurityFilterChain;

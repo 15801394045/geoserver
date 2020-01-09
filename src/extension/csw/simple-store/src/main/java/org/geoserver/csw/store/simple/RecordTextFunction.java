@@ -8,6 +8,7 @@ package org.geoserver.csw.store.simple;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 import org.geoserver.csw.records.CSWRecordDescriptor;
 import org.geotools.filter.FunctionExpressionImpl;
 import org.geotools.filter.capability.FunctionNameImpl;

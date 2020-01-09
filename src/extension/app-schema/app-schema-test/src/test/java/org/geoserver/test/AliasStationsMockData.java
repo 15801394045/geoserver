@@ -5,10 +5,13 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+
 import org.geoserver.data.test.MockData;
 import org.locationtech.jts.geom.Envelope;
 
-/** Mock data for testing Type Alias on complex features. */
+/**
+ * Mock data for testing Type Alias on complex features.
+ */
 public class AliasStationsMockData extends StationsMockData {
 
     private String layerNamePrefix;
@@ -58,9 +61,9 @@ public class AliasStationsMockData extends StationsMockData {
      * <p>Stolen from {@link MockData}.
      *
      * @param namespacePrefix namespace prefix of the WFS feature type
-     * @param typeName namespace prefix of the WFS feature type
-     * @param featureTypeDir feature type directory
-     * @param dataStoreName data store directory name
+     * @param typeName        namespace prefix of the WFS feature type
+     * @param featureTypeDir  feature type directory
+     * @param dataStoreName   data store directory name
      */
     protected void writeInfoFileInternal(
             String namespacePrefix, String typeName, File featureTypeDir, String dataStoreName) {

@@ -21,7 +21,9 @@ public class ValidationTest extends AbstractAppSchemaTestSupport {
         return new ValidationTestMockData();
     }
 
-    /** Test that when minOccur=0 the validation should let it pass */
+    /**
+     * Test that when minOccur=0 the validation should let it pass
+     */
     @Test
     public void testAttributeMinOccur0() {
         Document doc = null;
@@ -117,7 +119,9 @@ public class ValidationTest extends AbstractAppSchemaTestSupport {
                 "3", "//er:Commodity[@gml:id='er.commodity.gu.3']/er:commodityRank", doc);
     }
 
-    /** Test minOccur=1 and the attribute should always be encoded even when empty. */
+    /**
+     * Test minOccur=1 and the attribute should always be encoded even when empty.
+     */
     @Test
     public void testAttributeMinOccur1() {
         Document doc = getAsDOM("wfs?request=GetFeature&version=1.1.0&typename=gsml:MappedFeature");

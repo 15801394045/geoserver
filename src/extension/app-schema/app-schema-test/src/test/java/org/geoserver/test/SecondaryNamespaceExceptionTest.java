@@ -24,7 +24,9 @@ public class SecondaryNamespaceExceptionTest extends AbstractAppSchemaTestSuppor
         return new SecondaryNamespaceExceptionMockData();
     }
 
-    /** Test encoding of sa namespace. */
+    /**
+     * Test encoding of sa namespace.
+     */
     @Test
     public void testNamespaces() {
         Document doc = getAsDOM("wfs?request=GetFeature&typeName=ex:ShapeContent");

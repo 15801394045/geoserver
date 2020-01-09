@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.logging.Level;
+
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxSubmitLink;
 import org.apache.wicket.markup.html.basic.Label;
@@ -45,7 +46,9 @@ public class GeofencePage extends GeoServerSecuredPage {
 
     private static final long serialVersionUID = 5845823599005718408L;
 
-    /** Configuration object. */
+    /**
+     * Configuration object.
+     */
     private GeoFenceConfiguration config;
 
     private CacheConfiguration cacheParams;
@@ -68,15 +71,15 @@ public class GeofencePage extends GeoServerSecuredPage {
         add(form);
         form.add(
                 new TextField<String>(
-                                "instanceName",
-                                new PropertyModel<String>(configModel, "instanceName"))
+                        "instanceName",
+                        new PropertyModel<String>(configModel, "instanceName"))
                         .setRequired(true));
         // .setVisible(!config.isInternal());
         form.add(
                 new TextField<String>(
-                                "servicesUrl",
-                                new ExtPropertyModel<String>(configModel, "servicesUrl")
-                                        .setReadOnly(config.isInternal()))
+                        "servicesUrl",
+                        new ExtPropertyModel<String>(configModel, "servicesUrl")
+                                .setReadOnly(config.isInternal()))
                         .setRequired(true)
                         .setEnabled(!config.isInternal()));
 
@@ -97,8 +100,8 @@ public class GeofencePage extends GeoServerSecuredPage {
 
                             info(
                                     new StringResourceModel(
-                                                    GeofencePage.class.getSimpleName()
-                                                            + ".connectionSuccessful")
+                                            GeofencePage.class.getSimpleName()
+                                                    + ".connectionSuccessful")
                                             .getObject());
                         } catch (Exception e) {
                             error(e);
@@ -180,14 +183,14 @@ public class GeofencePage extends GeoServerSecuredPage {
 
         form.add(
                 new TextField<Long>(
-                                "cacheRefresh",
-                                new PropertyModel<Long>(cacheModel, "refreshMilliSec"))
+                        "cacheRefresh",
+                        new PropertyModel<Long>(cacheModel, "refreshMilliSec"))
                         .setRequired(true));
 
         form.add(
                 new TextField<Long>(
-                                "cacheExpire",
-                                new PropertyModel<Long>(cacheModel, "expireMilliSec"))
+                        "cacheExpire",
+                        new PropertyModel<Long>(cacheModel, "expireMilliSec"))
                         .setRequired(true));
 
         CachedRuleReader cacheRuleReader = GeoServerExtensions.bean(CachedRuleReader.class);
@@ -213,8 +216,8 @@ public class GeofencePage extends GeoServerSecuredPage {
                         cacheRuleReader.invalidateAll();
                         info(
                                 new StringResourceModel(
-                                                GeofencePage.class.getSimpleName()
-                                                        + ".cacheInvalidated")
+                                        GeofencePage.class.getSimpleName()
+                                                + ".cacheInvalidated")
                                         .getObject());
                         updateStatsValues(cacheRuleReader);
                         for (Label label : statsLabels) {
@@ -305,12 +308,16 @@ public class GeofencePage extends GeoServerSecuredPage {
         statsValues.put(KEY_USER_EVICTION, "" + cacheRuleReader.getUserStats().evictionCount());
     }
 
-    /** Creates a new wicket model from the configuration object. */
+    /**
+     * Creates a new wicket model from the configuration object.
+     */
     private IModel<GeoFenceConfiguration> getGeoFenceConfigModel() {
         return new Model<GeoFenceConfiguration>(config);
     }
 
-    /** Creates a new wicket model from the configuration object. */
+    /**
+     * Creates a new wicket model from the configuration object.
+     */
     private IModel<CacheConfiguration> getCacheConfigModel() {
         return new Model<CacheConfiguration>(cacheParams);
     }

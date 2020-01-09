@@ -160,16 +160,24 @@ public enum DataPacking {
 
     private static final Integer LONG_RESERVED = -((int) Math.pow(2, 63));
 
-    /** Return the denominator to be used in computing the scale_factor */
+    /**
+     * Return the denominator to be used in computing the scale_factor
+     */
     public abstract Integer getDenominator();
 
-    /** Return a reserved value (it can be used to represent fillValue) */
+    /**
+     * Return a reserved value (it can be used to represent fillValue)
+     */
     public abstract Integer getReservedValue();
 
-    /** Return the Variable's {@link DataType} for the specific packing */
+    /**
+     * Return the Variable's {@link DataType} for the specific packing
+     */
     public abstract DataType getDataType();
 
-    /** Get the default DataPacker */
+    /**
+     * Get the default DataPacker
+     */
     public DataPacker getDataPacker(DataStats stats) {
         double min = stats.getMin();
         double max = stats.getMax();
@@ -178,7 +186,9 @@ public enum DataPacking {
         return new DataPacker(offset, scale, getReservedValue());
     }
 
-    /** A {@link DataPacker} instance used to pack data. */
+    /**
+     * A {@link DataPacker} instance used to pack data.
+     */
     public static class DataPacker {
         private double offset;
         private double scale;
@@ -198,7 +208,9 @@ public enum DataPacking {
             return offset;
         }
 
-        /** Return the reservedValue. */
+        /**
+         * Return the reservedValue.
+         */
         public int getReservedValue() {
             return reservedValue;
         }

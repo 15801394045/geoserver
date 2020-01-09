@@ -22,7 +22,9 @@ public class SubstitutionGroupTest extends AbstractAppSchemaTestSupport {
         return new SubstitutionGroupMockData();
     }
 
-    /** Test GetFeature . */
+    /**
+     * Test GetFeature .
+     */
     @Test
     public void testGetFeature() {
         Document doc = getAsDOM("wfs?request=GetFeature&version=1.1.0&typeName=gsml:MappedFeature");

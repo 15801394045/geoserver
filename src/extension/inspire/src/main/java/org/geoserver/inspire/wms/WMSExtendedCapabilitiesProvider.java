@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
+
 import org.geoserver.catalog.MetadataMap;
 import org.geoserver.catalog.PublishedInfo;
 import org.geoserver.inspire.ViewServicesUtils;
@@ -33,7 +34,7 @@ public class WMSExtendedCapabilitiesProvider implements ExtendedCapabilitiesProv
 
     @Override
     public String[] getSchemaLocations(String schemaBaseURL) {
-        return new String[] {VS_NAMESPACE, VS_SCHEMA};
+        return new String[]{VS_NAMESPACE, VS_SCHEMA};
     }
 
     /**

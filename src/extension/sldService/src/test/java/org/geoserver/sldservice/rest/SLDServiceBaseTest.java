@@ -11,6 +11,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.io.StringReader;
+
 import org.geoserver.data.test.SystemTestData;
 import org.geoserver.rest.catalog.CatalogRESTTestSupport;
 import org.geotools.factory.CommonFactoryFinder;

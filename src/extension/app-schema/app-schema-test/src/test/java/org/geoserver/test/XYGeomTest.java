@@ -25,7 +25,9 @@ public class XYGeomTest extends AbstractAppSchemaTestSupport {
         return new XYGeomMockData();
     }
 
-    /** Test whether DescribeFeatureType returns xsd:schema. */
+    /**
+     * Test whether DescribeFeatureType returns xsd:schema.
+     */
     @Test
     public void testDescribeFeatureType() {
         Document doc = getAsDOM("wfs?request=DescribeFeatureType&typename=test:PointFeature");
@@ -33,7 +35,9 @@ public class XYGeomTest extends AbstractAppSchemaTestSupport {
         assertEquals("xsd:schema", doc.getDocumentElement().getNodeName());
     }
 
-    /** Test whether GetFeature returns wfs:FeatureCollection. */
+    /**
+     * Test whether GetFeature returns wfs:FeatureCollection.
+     */
     @Test
     public void testGetFeature() {
         Document doc = getAsDOM("wfs?request=GetFeature&version=1.1.0&typename=test:PointFeature");
@@ -41,7 +45,9 @@ public class XYGeomTest extends AbstractAppSchemaTestSupport {
         assertEquals("wfs:FeatureCollection", doc.getDocumentElement().getNodeName());
     }
 
-    /** Test content of GetFeature response. */
+    /**
+     * Test content of GetFeature response.
+     */
     @Test
     public void testGetFeatureContent() {
         Document doc = getAsDOM("wfs?request=GetFeature&version=1.1.0&typename=test:PointFeature");

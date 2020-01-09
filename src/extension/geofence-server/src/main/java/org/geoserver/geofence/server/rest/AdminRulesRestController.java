@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.geoserver.geofence.core.model.AdminRule;
 import org.geoserver.geofence.rest.xml.JaxbAdminRule;
 import org.geoserver.geofence.rest.xml.JaxbAdminRuleList;
@@ -63,11 +64,12 @@ public class AdminRulesRestController extends RestBaseController {
     }
 
     @RequestMapping(
-        value = "/adminrules",
-        method = RequestMethod.GET,
-        produces = {"application/xml", "application/json"}
+            value = "/adminrules",
+            method = RequestMethod.GET,
+            produces = {"application/xml", "application/json"}
     )
-    public @ResponseBody JaxbAdminRuleList get(
+    public @ResponseBody
+    JaxbAdminRuleList get(
             @RequestParam(value = "page", required = false) Integer page,
             @RequestParam(value = "entries", required = false) Integer entries,
             @RequestParam(value = "full", required = false, defaultValue = "false") boolean full,
@@ -85,20 +87,22 @@ public class AdminRulesRestController extends RestBaseController {
     }
 
     @RequestMapping(
-        value = "/adminrules/id/{id}",
-        method = RequestMethod.GET,
-        produces = {"application/xml", "application/json"}
+            value = "/adminrules/id/{id}",
+            method = RequestMethod.GET,
+            produces = {"application/xml", "application/json"}
     )
-    public @ResponseBody JaxbAdminRule get(@PathVariable("id") Long id) {
+    public @ResponseBody
+    JaxbAdminRule get(@PathVariable("id") Long id) {
         return new JaxbAdminRule(adminService.get(id));
     }
 
     @RequestMapping(
-        value = "/adminrules/count",
-        method = RequestMethod.GET,
-        produces = {"application/xml", "application/json"}
+            value = "/adminrules/count",
+            method = RequestMethod.GET,
+            produces = {"application/xml", "application/json"}
     )
-    public @ResponseBody JaxbAdminRuleList count(
+    public @ResponseBody
+    JaxbAdminRuleList count(
             @RequestParam(value = "userName", required = false) String userName,
             @RequestParam(value = "userAny", required = false) Boolean userDefault,
             @RequestParam(value = "roleName", required = false) String roleName,
@@ -124,11 +128,12 @@ public class AdminRulesRestController extends RestBaseController {
     }
 
     @RequestMapping(
-        value = "/adminrules/id/{id}",
-        method = RequestMethod.POST,
-        produces = MediaType.TEXT_PLAIN_VALUE
+            value = "/adminrules/id/{id}",
+            method = RequestMethod.POST,
+            produces = MediaType.TEXT_PLAIN_VALUE
     )
-    public @ResponseStatus(HttpStatus.OK) void update(
+    public @ResponseStatus(HttpStatus.OK)
+    void update(
             @PathVariable("id") Long id, @RequestBody JaxbAdminRule rule) {
         if (rule.getPriority() != null) {
             ShortAdminRule priorityRule = adminService.getRuleByPriority(rule.getPriority());
@@ -140,7 +145,8 @@ public class AdminRulesRestController extends RestBaseController {
     }
 
     @RequestMapping(value = "/adminrules/id/{id}", method = RequestMethod.DELETE)
-    public @ResponseStatus(HttpStatus.OK) void delete(@PathVariable("id") Long id) {
+    public @ResponseStatus(HttpStatus.OK)
+    void delete(@PathVariable("id") Long id) {
         adminService.delete(id);
     }
 
@@ -182,11 +188,12 @@ public class AdminRulesRestController extends RestBaseController {
      * an incremented priority value.
      */
     @RequestMapping(
-        value = "/adminrules/move",
-        method = RequestMethod.GET,
-        produces = {"application/xml", "application/json"}
+            value = "/adminrules/move",
+            method = RequestMethod.GET,
+            produces = {"application/xml", "application/json"}
     )
-    public @ResponseBody ResponseEntity<JaxbAdminRuleList> move(
+    public @ResponseBody
+    ResponseEntity<JaxbAdminRuleList> move(
             @RequestParam(value = "targetPriority", required = true) int targetPriority,
             @RequestParam(value = "rulesIds", required = true) String rulesIds) {
         // let's find the rules that need to be moved
@@ -207,7 +214,9 @@ public class AdminRulesRestController extends RestBaseController {
         return ResponseEntity.ok(new JaxbAdminRuleList(rules));
     }
 
-    /** Helper method that will parse and retrieve the provided rules sorted by their priority. */
+    /**
+     * Helper method that will parse and retrieve the provided rules sorted by their priority.
+     */
     private List<AdminRule> findRules(String rulesIds) {
         return Arrays.stream(rulesIds.split(","))
                 .map(
@@ -231,5 +240,6 @@ public class AdminRulesRestController extends RestBaseController {
     }
 
     @ResponseStatus(value = HttpStatus.BAD_REQUEST, reason = "Invalid adminrules ids")
-    private class InvalidRulesIds extends RuntimeException {}
+    private class InvalidRulesIds extends RuntimeException {
+    }
 }

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-    <!--  This is to test polymorphism in app-schema (https://osgeo-org.atlassian.net/browse/GEOT-2674) -->
+<!--  This is to test polymorphism in app-schema (https://osgeo-org.atlassian.net/browse/GEOT-2674) -->
 <as:AppSchemaDataAccess xmlns:as="http://www.geotools.org/app-schema"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.geotools.org/app-schema AppSchemaDataAccess.xsd">
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                        xsi:schemaLocation="http://www.geotools.org/app-schema AppSchemaDataAccess.xsd">
     <namespaces>
         <Namespace>
             <prefix>ex</prefix>
@@ -38,19 +39,20 @@
             <targetElement>ex:PolymorphicFeature</targetElement>
             <attributeMappings>
                 <AttributeMapping>
-			        <targetAttribute>ex:PolymorphicFeature</targetAttribute>			        							
-					<idExpression>
+                    <targetAttribute>ex:PolymorphicFeature</targetAttribute>
+                    <idExpression>
                         <OCQL>ID</OCQL>
                     </idExpression>
-			    </AttributeMapping>
+                </AttributeMapping>
                 <AttributeMapping>
                     <!-- Test feature chaining and polymorphism -->
                     <targetAttribute>ex:firstValue</targetAttribute>
                     <sourceExpression>
                         <OCQL>VALUE_ID</OCQL>
                         <linkElement>
-						    Recode(CLASS_TEXT, 'numeric', 'NumericType', 'literal', toXlinkHref(strConcat('urn:value::', VALUE_ID)))
-						</linkElement>
+                            Recode(CLASS_TEXT, 'numeric', 'NumericType', 'literal', toXlinkHref(strConcat('urn:value::',
+                            VALUE_ID)))
+                        </linkElement>
                         <linkField>FEATURE_LINK</linkField>
                     </sourceExpression>
                     <isMultiple>true</isMultiple>
@@ -60,9 +62,9 @@
                     <targetAttribute>ex:secondValue</targetAttribute>
                     <sourceExpression>
                         <linkElement>
-						    if_then_else(isNull(CLASS_TEXT), Expression.NIL,
-						       if_then_else(equalTo(CLASS_TEXT, 'numeric'), 'NumericType', 'TermValue2'))
-						</linkElement>
+                            if_then_else(isNull(CLASS_TEXT), Expression.NIL,
+                            if_then_else(equalTo(CLASS_TEXT, 'numeric'), 'NumericType', 'TermValue2'))
+                        </linkElement>
                     </sourceExpression>
                 </AttributeMapping>
                 <AttributeMapping>
@@ -88,9 +90,9 @@
                     <targetAttribute>ex:fourthValue</targetAttribute>
                     <sourceExpression>
                         <linkElement>
-						    if_then_else(lessEqualThan(NUMERIC_VALUE, 999), toXlinkHref('urn:ogc:def:nil:OGC::missing'),
-						        'NumericType')
-						</linkElement>
+                            if_then_else(lessEqualThan(NUMERIC_VALUE, 999), toXlinkHref('urn:ogc:def:nil:OGC::missing'),
+                            'NumericType')
+                        </linkElement>
                     </sourceExpression>
                 </AttributeMapping>
                 <AttributeMapping>
@@ -99,10 +101,10 @@
                     <sourceExpression>
                         <OCQL>ID</OCQL>
                         <linkElement>
-						    if_then_else(lessEqualThan(NUMERIC_VALUE, 1), toXlinkHref('urn:ogc:def:nil:OGC::missing'),
-						        'NumericType')
-						</linkElement>
-						<linkField>FEATURE_LINK</linkField>
+                            if_then_else(lessEqualThan(NUMERIC_VALUE, 1), toXlinkHref('urn:ogc:def:nil:OGC::missing'),
+                            'NumericType')
+                        </linkElement>
+                        <linkField>FEATURE_LINK</linkField>
                     </sourceExpression>
                 </AttributeMapping>
                 <AttributeMapping>
@@ -110,10 +112,10 @@
                     <targetAttribute>ex:anyValue</targetAttribute>
                     <sourceExpression>
                         <linkElement>
-						   Recode(CLASS_TEXT, Expression.NIL, toXlinkHref('urn:ogc:def:nil:OGC::missing'),
-						       'numeric', toXlinkHref(strConcat('urn:numeric-value::', NUMERIC_VALUE)),
-						       'literal', 'TermValue2')
-						</linkElement>
+                            Recode(CLASS_TEXT, Expression.NIL, toXlinkHref('urn:ogc:def:nil:OGC::missing'),
+                            'numeric', toXlinkHref(strConcat('urn:numeric-value::', NUMERIC_VALUE)),
+                            'literal', 'TermValue2')
+                        </linkElement>
                     </sourceExpression>
                 </AttributeMapping>
             </attributeMappings>
@@ -126,7 +128,9 @@
             <attributeMappings>
                 <AttributeMapping>
                     <targetAttribute>gsml:CGI_TermValue</targetAttribute>
-                    <idExpression><OCQL>strConcat('termvalue_', ID)</OCQL></idExpression>
+                    <idExpression>
+                        <OCQL>strConcat('termvalue_', ID)</OCQL>
+                    </idExpression>
                     <!-- GEOT-3304: Test client property with polymorphism -->
                     <ClientProperty>
                         <name>gsml:qualifier</name>
@@ -147,9 +151,11 @@
             <sourceType>PolymorphicFeature</sourceType>
             <targetElement>gsml:CGI_NumericValue</targetElement>
             <attributeMappings>
-                 <AttributeMapping>
+                <AttributeMapping>
                     <targetAttribute>gsml:CGI_NumericValue</targetAttribute>
-                    <idExpression><OCQL>strConcat('numericvalue_', ID)</OCQL></idExpression>
+                    <idExpression>
+                        <OCQL>strConcat('numericvalue_', ID)</OCQL>
+                    </idExpression>
                 </AttributeMapping>
                 <AttributeMapping>
                     <targetAttribute>gsml:principalValue</targetAttribute>
@@ -163,8 +169,8 @@
                 </AttributeMapping>
                 <AttributeMapping>
                     <targetAttribute>
-			            FEATURE_LINK
-  		            </targetAttribute>
+                        FEATURE_LINK
+                    </targetAttribute>
                     <sourceExpression>
                         <OCQL>ID</OCQL>
                     </sourceExpression>

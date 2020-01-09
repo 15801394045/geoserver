@@ -6,6 +6,7 @@ package org.geoserver.monitor.rest;
 
 import java.io.IOException;
 import java.util.Date;
+
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRichTextString;
 import org.apache.poi.hssf.usermodel.HSSFRow;
@@ -19,7 +20,9 @@ import org.springframework.http.HttpOutputMessage;
 import org.springframework.http.converter.HttpMessageNotWritableException;
 import org.springframework.stereotype.Component;
 
-/** Convert MonitorResutls to an Excel spreadsheet. */
+/**
+ * Convert MonitorResutls to an Excel spreadsheet.
+ */
 @Component
 public class ExcelMonitorConverter extends BaseMonitorConverter {
 

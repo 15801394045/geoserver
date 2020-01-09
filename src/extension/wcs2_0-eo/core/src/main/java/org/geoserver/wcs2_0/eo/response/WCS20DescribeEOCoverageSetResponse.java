@@ -8,6 +8,7 @@ package org.geoserver.wcs2_0.eo.response;
 import java.io.IOException;
 import java.io.OutputStream;
 import javax.xml.transform.TransformerException;
+
 import org.geoserver.ows.Response;
 import org.geoserver.platform.Operation;
 import org.geotools.xml.transform.TransformerBase;
@@ -18,7 +19,9 @@ import org.geotools.xml.transform.TransformerBase;
  * @author Andrea Aime - GeoSolutions
  */
 public class WCS20DescribeEOCoverageSetResponse extends Response {
-    /** MIME_TYPE */
+    /**
+     * MIME_TYPE
+     */
     private static final String MIME_TYPE = "application/xml";
 
     public WCS20DescribeEOCoverageSetResponse() {

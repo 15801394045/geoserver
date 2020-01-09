@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import net.opengis.wps10.ComplexDataType;
 import net.opengis.wps10.DataType;
 import net.opengis.wps10.InputReferenceType;
@@ -209,8 +210,8 @@ public class DataTransformer {
 
             if (false
                     == ((ComplexTransmuter) transmuter)
-                            .getSchema(this.urlBase)
-                            .equalsIgnoreCase(schema)) {
+                    .getSchema(this.urlBase)
+                    .equalsIgnoreCase(schema)) {
                 continue;
             }
 

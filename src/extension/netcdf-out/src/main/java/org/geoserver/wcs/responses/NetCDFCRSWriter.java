@@ -16,6 +16,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.geoserver.wcs.responses.NetCDFDimensionsManager.NetCDFDimensionMapping;
 import org.geoserver.wcs.responses.NetCDFDimensionsManager.NetCDFDimensionMapping.DimensionValuesArray;
 import org.geoserver.wcs2_0.response.DimensionBean;
@@ -67,10 +68,14 @@ class NetCDFCRSWriter {
 
     public static final Logger LOGGER = Logging.getLogger(NetCDFCRSWriter.class);
 
-    /** the NetCDF CoordinateReferenceSystem holder */
+    /**
+     * the NetCDF CoordinateReferenceSystem holder
+     */
     private NetCDFCoordinateReferenceSystemType netcdfCrsType;
 
-    /** the NetCDF File writer */
+    /**
+     * the NetCDF File writer
+     */
     private NetcdfFileWriter writer;
 
     /**
@@ -79,14 +84,20 @@ class NetCDFCRSWriter {
      */
     private GridCoverage2D sampleGranule;
 
-    /** A map to assign a Dimension Mapping to each coordinate */
+    /**
+     * A map to assign a Dimension Mapping to each coordinate
+     */
     private Map<String, NetCDFDimensionMapping> coordinatesDimensions =
             new LinkedHashMap<String, NetCDFDimensionMapping>();
 
-    /** The underlying CoordinateReferenceSystem */
+    /**
+     * The underlying CoordinateReferenceSystem
+     */
     private CoordinateReferenceSystem crs;
 
-    /** The Grid2World transformation, used to setup geoTransformation */
+    /**
+     * The Grid2World transformation, used to setup geoTransformation
+     */
     private MathTransform transform;
 
     public NetCDFCRSWriter(NetcdfFileWriter writer, GridCoverage2D sampleGranule) {
@@ -177,7 +188,7 @@ class NetCDFCRSWriter {
 
         // Create the dimension
         final Dimension dimension = writer.addDimension(null, dimensionName, size);
-        final ArrayFloat dimensionData = new ArrayFloat(new int[] {size});
+        final ArrayFloat dimensionData = new ArrayFloat(new int[]{size});
         final Index index = dimensionData.getIndex();
 
         // Create the related coordinate variable
@@ -300,7 +311,9 @@ class NetCDFCRSWriter {
         }
     }
 
-    /** Setup proper projection information to the output NetCDF */
+    /**
+     * Setup proper projection information to the output NetCDF
+     */
     private void setGridMappingVariableAttributes(
             NetcdfFileWriter writer,
             CoordinateReferenceSystem crs,

@@ -12,34 +12,37 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
 import org.custommonkey.xmlunit.XpathEngine;
 import org.geoserver.data.test.SystemTestData;
 import org.junit.Before;
 import org.w3c.dom.Document;
 
-/** Test support for GML 3.1 and GML 3.2 Stations data use case */
+/**
+ * Test support for GML 3.1 and GML 3.2 Stations data use case
+ */
 public abstract class StationsAppSchemaTestSupport extends AbstractAppSchemaTestSupport {
 
     protected final Map<String, String> GML31_PARAMETERS =
             Collections.unmodifiableMap(
                     Stream.of(
-                                    new SimpleEntry<>("GML_PREFIX", "gml31"),
-                                    new SimpleEntry<>(
-                                            "GML_NAMESPACE", "http://www.opengis.net/gml"),
-                                    new SimpleEntry<>(
-                                            "GML_LOCATION",
-                                            "http://schemas.opengis.net/gml/3.1.1/base/gml.xsd"))
+                            new SimpleEntry<>("GML_PREFIX", "gml31"),
+                            new SimpleEntry<>(
+                                    "GML_NAMESPACE", "http://www.opengis.net/gml"),
+                            new SimpleEntry<>(
+                                    "GML_LOCATION",
+                                    "http://schemas.opengis.net/gml/3.1.1/base/gml.xsd"))
                             .collect(Collectors.toMap((e) -> e.getKey(), (e) -> e.getValue())));
 
     protected final Map<String, String> GML32_PARAMETERS =
             Collections.unmodifiableMap(
                     Stream.of(
-                                    new SimpleEntry<>("GML_PREFIX", "gml32"),
-                                    new SimpleEntry<>(
-                                            "GML_NAMESPACE", "http://www.opengis.net/gml/3.2"),
-                                    new SimpleEntry<>(
-                                            "GML_LOCATION",
-                                            "http://schemas.opengis.net/gml/3.2.1/gml.xsd"))
+                            new SimpleEntry<>("GML_PREFIX", "gml32"),
+                            new SimpleEntry<>(
+                                    "GML_NAMESPACE", "http://www.opengis.net/gml/3.2"),
+                            new SimpleEntry<>(
+                                    "GML_LOCATION",
+                                    "http://schemas.opengis.net/gml/3.2.1/gml.xsd"))
                             .collect(Collectors.toMap((e) -> e.getKey(), (e) -> e.getValue())));
 
     // xpath engines used to check WFS responses
@@ -71,7 +74,9 @@ public abstract class StationsAppSchemaTestSupport extends AbstractAppSchemaTest
         super.onSetUp(testData);
     }
 
-    /** * GetFeature tests ** */
+    /**
+     * GetFeature tests **
+     */
     @Override
     protected StationsMockData createTestData() {
         // instantiate our custom complex types

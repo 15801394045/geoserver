@@ -17,9 +17,9 @@ public interface ImportTransform extends Serializable {
     /**
      * Should this transform stop on an error.
      *
-     * @todo example of why it shouldn't?
      * @param e The error in question
      * @return true if processing should stop, false otherwise
+     * @todo example of why it shouldn't?
      */
     boolean stopOnError(Exception e);
 

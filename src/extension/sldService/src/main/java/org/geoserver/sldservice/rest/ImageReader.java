@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 import org.geoserver.catalog.CoverageInfo;
 import org.geoserver.data.util.CoverageUtils;
 import org.geoserver.rest.RestException;
@@ -179,7 +180,7 @@ class ImageReader {
                             CoverageUtils.mergeParameter(
                                     parameterDescriptors,
                                     readParameters,
-                                    new int[] {selectedBand - 1},
+                                    new int[]{selectedBand - 1},
                                     AbstractGridFormat.BANDS.getName().getCode());
                     bandSelected = true;
                 }
@@ -198,7 +199,7 @@ class ImageReader {
         if (readEnvelope != null && isUncut(coverage, readGeometry)) {
             ReferencedEnvelope bounds = ReferencedEnvelope.reference(readGeometry.getEnvelope2D());
             Polygon polygon = JTS.toGeometry(bounds);
-            Geometry roi = polygon.getFactory().createMultiPolygon(new Polygon[] {polygon});
+            Geometry roi = polygon.getFactory().createMultiPolygon(new Polygon[]{polygon});
 
             // perform the crops
             final ParameterValueGroup param =
@@ -218,7 +219,7 @@ class ImageReader {
             verifyBandSelection(selectedBand, sampleModel);
             ImageWorker iw = new ImageWorker(image);
             // this param is zero based, the service is like SLD, 1-based
-            iw.retainBands(new int[] {selectedBand - 1});
+            iw.retainBands(new int[]{selectedBand - 1});
             image = iw.getRenderedImage();
             bandSelected = true;
         }
@@ -255,8 +256,8 @@ class ImageReader {
         for (GeneralParameterValue readParameter : readParameters) {
             if (readParameter instanceof ParameterValue
                     && ImageMosaicFormat.FILTER
-                            .getName()
-                            .equals(readParameter.getDescriptor().getName())) {
+                    .getName()
+                    .equals(readParameter.getDescriptor().getName())) {
                 ParameterValue pv = (ParameterValue) readParameter;
                 Filter filter = (Filter) pv.getValue();
                 return (Filter) filter.accept(new SimplifyingFilterVisitor(), null);
@@ -289,7 +290,9 @@ class ImageReader {
         return bandSelected;
     }
 
-    /** Returns the image to be classified */
+    /**
+     * Returns the image to be classified
+     */
     public RenderedImage getImage() {
         return image;
     }

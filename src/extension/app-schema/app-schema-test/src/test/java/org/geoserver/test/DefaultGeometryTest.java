@@ -11,6 +11,7 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 import javax.imageio.ImageIO;
+
 import org.custommonkey.xmlunit.XpathEngine;
 import org.junit.Before;
 import org.junit.Test;
@@ -354,7 +355,7 @@ public class DefaultGeometryTest extends AbstractAppSchemaTestSupport {
 
         layer = STATION_FEATURE.replace("${GML_PREFIX}", GML32_PREFIX);
         try (InputStream is =
-                getBinary(buildGetMapUrl("st_gml32:Station_gml32", "Default_Point"))) {
+                     getBinary(buildGetMapUrl("st_gml32:Station_gml32", "Default_Point"))) {
             BufferedImage imageBuffer = ImageIO.read(is);
             assertNotBlank("app-schema test getmap nested default geom", imageBuffer, Color.WHITE);
         }

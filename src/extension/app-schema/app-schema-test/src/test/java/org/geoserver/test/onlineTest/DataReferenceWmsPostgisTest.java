@@ -8,7 +8,9 @@ package org.geoserver.test.onlineTest;
 import org.geoserver.data.test.SystemTestData;
 import org.geotools.data.complex.AppSchemaDataAccessRegistry;
 
-/** @author Niels Charlier */
+/**
+ * @author Niels Charlier
+ */
 public class DataReferenceWmsPostgisTest extends DataReferenceWmsPostgisWithJoiningTest {
 
     public DataReferenceWmsPostgisTest() throws Exception {

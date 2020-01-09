@@ -9,6 +9,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxSubmitLink;
 import org.apache.wicket.markup.html.form.CheckBox;
@@ -61,9 +62,9 @@ public class CasAuthFilterPanel
                             testURL("casServerUrlPrefix", GeoServerCasConstants.LOGOUT_URI);
                             info(
                                     new StringResourceModel(
-                                                    "casConnectionSuccessful",
-                                                    CasAuthFilterPanel.this,
-                                                    null)
+                                            "casConnectionSuccessful",
+                                            CasAuthFilterPanel.this,
+                                            null)
                                             .getObject());
                         } catch (Exception e) {
                             error(e);
@@ -82,9 +83,9 @@ public class CasAuthFilterPanel
                             testURL("proxyCallbackUrlPrefix", null);
                             info(
                                     new StringResourceModel(
-                                                    "casProxyCallbackSuccessful",
-                                                    CasAuthFilterPanel.this,
-                                                    null)
+                                            "casProxyCallbackSuccessful",
+                                            CasAuthFilterPanel.this,
+                                            null)
                                             .getObject());
                         } catch (Exception e) {
                             error(e);
@@ -107,9 +108,9 @@ public class CasAuthFilterPanel
                             testURL("urlInCasLogoutPage", null);
                             info(
                                     new StringResourceModel(
-                                                    "urlInCasLogoutPageSuccessful",
-                                                    CasAuthFilterPanel.this,
-                                                    null)
+                                            "urlInCasLogoutPageSuccessful",
+                                            CasAuthFilterPanel.this,
+                                            null)
                                             .getObject());
                         } catch (Exception e) {
                             error(e);

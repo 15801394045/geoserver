@@ -17,7 +17,9 @@ import org.geoserver.data.test.MockData;
  */
 public class IdFunctionMockData extends AbstractAppSchemaMockData {
 
-    /** @see org.geoserver.test.AbstractAppSchemaMockData#addContent() */
+    /**
+     * @see org.geoserver.test.AbstractAppSchemaMockData#addContent()
+     */
     @Override
     public void addContent() {
         addFeatureType(

@@ -13,7 +13,9 @@ package org.geoserver.test;
  */
 public class GUChainNoIDMFTestMockData extends AbstractAppSchemaMockData {
 
-    /** @see org.geoserver.test.AbstractAppSchemaMockData#addContent() */
+    /**
+     * @see org.geoserver.test.AbstractAppSchemaMockData#addContent()
+     */
     @Override
     public void addContent() {
         addFeatureType(

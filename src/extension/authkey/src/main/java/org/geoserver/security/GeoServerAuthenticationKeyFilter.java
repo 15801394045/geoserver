@@ -17,6 +17,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.geoserver.platform.GeoServerExtensions;
 import org.geoserver.security.config.SecurityNamedServiceConfig;
 import org.geoserver.security.filter.AuthenticationCachingFilter;
@@ -188,19 +189,25 @@ public class GeoServerAuthenticationKeyFilter extends GeoServerSecurityFilter
         return null;
     }
 
-    /** The cache key is the authentication key (global identifier) */
+    /**
+     * The cache key is the authentication key (global identifier)
+     */
     @Override
     public String getCacheKey(HttpServletRequest req) {
         return getAuthKey(req);
     }
 
-    /** @see org.geoserver.security.filter.GeoServerAuthenticationFilter#applicableForHtml() */
+    /**
+     * @see org.geoserver.security.filter.GeoServerAuthenticationFilter#applicableForHtml()
+     */
     @Override
     public boolean applicableForHtml() {
         return true;
     }
 
-    /** @see org.geoserver.security.filter.GeoServerAuthenticationFilter#applicableForServices() */
+    /**
+     * @see org.geoserver.security.filter.GeoServerAuthenticationFilter#applicableForServices()
+     */
     @Override
     public boolean applicableForServices() {
         return true;

@@ -16,6 +16,7 @@ import java.util.Set;
 import java.util.TimeZone;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.io.FilenameUtils;
 import org.geoserver.catalog.CatalogInfo;
@@ -37,7 +38,9 @@ import org.geotools.util.Range;
 import org.geotools.util.factory.GeoTools;
 import org.geotools.util.logging.Logging;
 
-/** Class delegated to setup direct download links for a {@link CatalogInfo} instance. */
+/**
+ * Class delegated to setup direct download links for a {@link CatalogInfo} instance.
+ */
 public class DownloadLinkHandler {
 
     private static Set<String> STANDARD_DOMAINS;
@@ -54,7 +57,9 @@ public class DownloadLinkHandler {
         STANDARD_DOMAINS.add(Utils.BBOX);
     }
 
-    /** An implementation of {@link CloseableIterator} for links creation */
+    /**
+     * An implementation of {@link CloseableIterator} for links creation
+     */
     static class CloseableLinksIterator<T> implements CloseableIterator<String> {
 
         private static final String DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
@@ -68,7 +73,9 @@ public class DownloadLinkHandler {
 
         private String baseLink;
 
-        /** The underlying iterator providing files */
+        /**
+         * The underlying iterator providing files
+         */
         private CloseableIterator<FileGroup> dataIterator;
 
         @Override
@@ -155,8 +162,8 @@ public class DownloadLinkHandler {
         /**
          * Append a coverage domain (time, elevation, custom) to the direct download link.
          *
-         * @param key the name of the parameter domain to be added
-         * @param domain the value of the domain
+         * @param key     the name of the parameter domain to be added
+         * @param domain  the value of the domain
          * @param builder the builder currently used for Link construction
          */
         private void appendRangeToLink(String key, Object domain, StringBuilder builder) {
@@ -192,7 +199,9 @@ public class DownloadLinkHandler {
         }
     }
 
-    /** Template download link to be updated with actual values */
+    /**
+     * Template download link to be updated with actual values
+     */
     protected static String LINK =
             "ows?service=CSW&version=${version}&request="
                     + "DirectDownload&"

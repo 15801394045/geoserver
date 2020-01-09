@@ -11,6 +11,7 @@ import static org.junit.Assert.assertTrue;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+
 import org.geoserver.wps.WPSTestSupport;
 import org.geotools.feature.DefaultFeatureCollection;
 import org.geotools.feature.simple.SimpleFeatureBuilder;
@@ -62,7 +63,7 @@ public class DXFPPIOTest extends WPSTestSupport {
         ppio.encode(features, os);
         assertNotNull(os.toByteArray());
         String dxf = new String(os.toByteArray(), "UTF-8");
-        checkSequence(dxf, new String[] {"BLOCKS", "LWPOLYLINE"}, 0);
+        checkSequence(dxf, new String[]{"BLOCKS", "LWPOLYLINE"}, 0);
     }
 
     @Test
@@ -91,7 +92,7 @@ public class DXFPPIOTest extends WPSTestSupport {
     public void testDecodeInputStream() {
         boolean error = false;
         try {
-            ppio.decode(new ByteArrayInputStream(new byte[] {}));
+            ppio.decode(new ByteArrayInputStream(new byte[]{}));
         } catch (Exception e) {
             error = true;
         }

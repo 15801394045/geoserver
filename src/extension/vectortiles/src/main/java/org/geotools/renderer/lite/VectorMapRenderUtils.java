@@ -5,6 +5,7 @@
 package org.geotools.renderer.lite;
 
 import com.google.common.base.Preconditions;
+
 import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Stream;
+
 import org.geoserver.wms.WMSMapContent;
 import org.geotools.data.DataUtilities;
 import org.geotools.data.FeatureSource;
@@ -161,8 +163,8 @@ public class VectorMapRenderUtils {
             pixelSize =
                     Decimator.computeGeneralizationDistances(
                             ProjectiveTransform.create(
-                                            RendererUtilities.worldToScreenTransform(
-                                                    renderingArea, screenSize))
+                                    RendererUtilities.worldToScreenTransform(
+                                            renderingArea, screenSize))
                                     .inverse(),
                             screenSize,
                             1.0);
@@ -171,9 +173,9 @@ public class VectorMapRenderUtils {
                 LOGGER.log(Level.WARNING, "Error while computing pixel size", ex);
             }
             pixelSize =
-                    new double[] {
-                        renderingArea.getWidth() / screenSize.getWidth(),
-                        renderingArea.getHeight() / screenSize.getHeight()
+                    new double[]{
+                            renderingArea.getWidth() / screenSize.getWidth(),
+                            renderingArea.getHeight() / screenSize.getHeight()
                     };
         }
         return pixelSize;
@@ -245,6 +247,7 @@ public class VectorMapRenderUtils {
         Filter reprojected = (Filter) defaulted.accept(reprojector, null);
         return reprojected;
     }
+
     /**
      * Builds the transform from sourceCRS to destCRS/
      *
@@ -257,7 +260,7 @@ public class VectorMapRenderUtils {
      * @param sourceCRS
      * @param destCRS
      * @return the transform from {@code sourceCRS} to {@code destCRS}, will be an identity
-     *     transform if the the two crs are equal
+     * transform if the the two crs are equal
      * @throws FactoryException If no transform is available to the destCRS
      */
     public static MathTransform buildTransform(
@@ -331,7 +334,7 @@ public class VectorMapRenderUtils {
             // look at each featuretypestyle
             for (LiteFeatureTypeStyle style : styles) {
                 if (style.elseRules.length > 0) // uh-oh has elseRule
-                return;
+                    return;
                 // look at each rule in the featuretypestyle
                 for (Rule r : style.ruleList) {
                     if (r.getFilter() == null) return; // uh-oh has no filter (want all rows)
@@ -420,7 +423,7 @@ public class VectorMapRenderUtils {
         }
 
         @SuppressWarnings("unchecked")
-        List<Rule>[] ret = new List[] {ruleList, elseRuleList};
+        List<Rule>[] ret = new List[]{ruleList, elseRuleList};
         return ret;
     }
 

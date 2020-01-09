@@ -20,7 +20,9 @@ public class Gsml30MockData extends AbstractAppSchemaMockData {
         super(GML32_NAMESPACES);
     }
 
-    /** @see org.geoserver.test.AbstractAppSchemaMockData#addContent() */
+    /**
+     * @see org.geoserver.test.AbstractAppSchemaMockData#addContent()
+     */
     @Override
     public void addContent() {
         addFeatureType(

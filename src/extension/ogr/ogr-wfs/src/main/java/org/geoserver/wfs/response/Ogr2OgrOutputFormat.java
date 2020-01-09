@@ -20,6 +20,7 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Level;
 import java.util.zip.ZipOutputStream;
+
 import org.geoserver.config.GeoServer;
 import org.geoserver.ogr.core.Format;
 import org.geoserver.ogr.core.FormatConverter;
@@ -57,7 +58,9 @@ import org.opengis.referencing.crs.CoordinateReferenceSystem;
 
 public class Ogr2OgrOutputFormat extends WFSGetFeatureOutputFormat implements FormatConverter {
 
-    /** The types of geometries a shapefile can handle */
+    /**
+     * The types of geometries a shapefile can handle
+     */
     private static final Set<Class> SHAPEFILE_GEOM_TYPES =
             new HashSet<Class>() {
                 {
@@ -71,7 +74,9 @@ public class Ogr2OgrOutputFormat extends WFSGetFeatureOutputFormat implements Fo
                 }
             };
 
-    /** Factory to create the ogr2ogr wrapper. */
+    /**
+     * Factory to create the ogr2ogr wrapper.
+     */
     ToolWrapperFactory ogrWrapperFactory;
 
     /**
@@ -80,10 +85,14 @@ public class Ogr2OgrOutputFormat extends WFSGetFeatureOutputFormat implements Fo
      */
     String ogrPath = null;
 
-    /** The full path to ogr2ogr */
+    /**
+     * The full path to ogr2ogr
+     */
     String ogrExecutable = "ogr2ogr";
 
-    /** The environment variables to set before invoking ogr2ogr */
+    /**
+     * The environment variables to set before invoking ogr2ogr
+     */
     Map<String, String> environment = null;
 
     /**
@@ -100,7 +109,9 @@ public class Ogr2OgrOutputFormat extends WFSGetFeatureOutputFormat implements Fo
         this.environment = new HashMap<String, String>();
     }
 
-    /** Returns the ogr2ogr executable full path */
+    /**
+     * Returns the ogr2ogr executable full path
+     */
     @Override
     public String getExecutable() {
         return ogrExecutable;
@@ -117,7 +128,9 @@ public class Ogr2OgrOutputFormat extends WFSGetFeatureOutputFormat implements Fo
         this.ogrExecutable = ogrExecutable;
     }
 
-    /** Returns the environment variables that are set prior to invoking ogr2ogr */
+    /**
+     * Returns the environment variables that are set prior to invoking ogr2ogr
+     */
     @Override
     public Map<String, String> getEnvironment() {
         return environment;
@@ -137,7 +150,9 @@ public class Ogr2OgrOutputFormat extends WFSGetFeatureOutputFormat implements Fo
         }
     }
 
-    /** @see WFSGetFeatureOutputFormat#getMimeType(Object, Operation) */
+    /**
+     * @see WFSGetFeatureOutputFormat#getMimeType(Object, Operation)
+     */
     public String getMimeType(Object value, Operation operation) throws ServiceException {
         GetFeatureRequest request = GetFeatureRequest.adapt(operation.getParameters()[0]);
         String outputFormat = request.getOutputFormat();
@@ -213,7 +228,9 @@ public class Ogr2OgrOutputFormat extends WFSGetFeatureOutputFormat implements Fo
         formats.put(parameters.getGeoserverFormat(), parameters);
     }
 
-    /** Get a list of supported ogr formats */
+    /**
+     * Get a list of supported ogr formats
+     */
     @Override
     public List<Format> getFormats() {
         return new ArrayList<Format>(formats.values());

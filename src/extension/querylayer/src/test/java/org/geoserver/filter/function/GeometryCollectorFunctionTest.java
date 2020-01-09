@@ -10,6 +10,7 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
 import org.geoserver.test.GeoServerSystemTestSupport;
 import org.geotools.factory.CommonFactoryFinder;
 import org.junit.Test;

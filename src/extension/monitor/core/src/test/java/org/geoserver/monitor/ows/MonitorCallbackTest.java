@@ -16,6 +16,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 import javax.xml.namespace.QName;
+
 import net.opengis.ows11.CodeType;
 import net.opengis.ows11.Ows11Factory;
 import net.opengis.wcs10.DescribeCoverageType;
@@ -374,7 +375,7 @@ public class MonitorCallbackTest {
 
         CoordinateReferenceSystem crs = CRS.decode("EPSG:4326");
         GeneralEnvelope env =
-                new GeneralEnvelope(new double[] {-123.4, 48.2}, new double[] {-120.9, 50.1});
+                new GeneralEnvelope(new double[]{-123.4, 48.2}, new double[]{-120.9, 50.1});
         env.setCoordinateReferenceSystem(crs);
         BoundingBox bbox = new ReferencedEnvelope(env);
 
@@ -411,7 +412,7 @@ public class MonitorCallbackTest {
 
         CoordinateReferenceSystem crs = CRS.decode("EPSG:4326");
         GeneralEnvelope env =
-                new GeneralEnvelope(new double[] {48.2, -123.4}, new double[] {50.1, -120.9});
+                new GeneralEnvelope(new double[]{48.2, -123.4}, new double[]{50.1, -120.9});
         env.setCoordinateReferenceSystem(crs);
         BoundingBox bbox = new ReferencedEnvelope(env);
         net.opengis.ows11.BoundingBoxType wcsBbox =
@@ -456,7 +457,7 @@ public class MonitorCallbackTest {
                 name,
                 new Service(service, null, new Version(version), null),
                 null,
-                new Object[] {request});
+                new Object[]{request});
     }
 
     @Test
@@ -471,8 +472,8 @@ public class MonitorCallbackTest {
         CoordinateReferenceSystem logCrs = CRS.decode("EPSG:4326", false);
         GeneralEnvelope env =
                 new GeneralEnvelope(
-                        new double[] {5988504.35, 851278.90},
-                        new double[] {7585113.55, 1950872.01});
+                        new double[]{5988504.35, 851278.90},
+                        new double[]{7585113.55, 1950872.01});
         env.setCoordinateReferenceSystem(crs);
         BoundingBox bbox = new ReferencedEnvelope(42.2802, 53.73, -95.1193, -71.295, logCrs);
 

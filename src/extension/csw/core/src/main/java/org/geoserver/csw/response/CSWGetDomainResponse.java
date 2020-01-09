@@ -8,6 +8,7 @@ package org.geoserver.csw.response;
 import java.io.IOException;
 import java.io.OutputStream;
 import javax.xml.transform.TransformerException;
+
 import net.opengis.cat.csw20.GetDomainType;
 import net.opengis.cat.csw20.RequestBaseType;
 import org.geoserver.catalog.util.CloseableIterator;

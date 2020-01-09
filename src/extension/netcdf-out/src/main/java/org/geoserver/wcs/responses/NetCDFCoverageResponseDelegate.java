@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
+
 import org.apache.commons.io.FileUtils;
 import org.geoserver.config.GeoServer;
 import org.geoserver.platform.GeoServerExtensions;
@@ -121,7 +122,7 @@ public class NetCDFCoverageResponseDelegate extends BaseCoverageResponseDelegate
     /**
      * Stream back the content of the temporary file to the output stream
      *
-     * @param file the temporary file containing the NetCDF output.
+     * @param file   the temporary file containing the NetCDF output.
      * @param output the outputStream where to write the output
      * @throws IOException
      */

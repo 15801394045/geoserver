@@ -7,6 +7,7 @@ package org.geoserver.csw;
 
 import java.io.File;
 import java.util.List;
+
 import net.opengis.cat.csw20.CapabilitiesType;
 import net.opengis.cat.csw20.DescribeRecordType;
 import net.opengis.cat.csw20.GetCapabilitiesType;
@@ -119,7 +120,9 @@ public class DefaultWebCatalogService implements WebCatalogService, ApplicationC
         return new DirectDownload(getServiceInfo(), this.store).run(request);
     }
 
-    /** Checks we have a store to use */
+    /**
+     * Checks we have a store to use
+     */
     private void checkStore() {
         if (store == null) {
             throw new ServiceException(

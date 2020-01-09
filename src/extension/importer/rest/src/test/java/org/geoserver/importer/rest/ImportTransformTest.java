@@ -11,6 +11,7 @@ import static org.junit.Assert.assertTrue;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
 import net.sf.json.JSON;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -152,7 +153,7 @@ public class ImportTransformTest extends ImporterTestSupport {
      *     }
      * }
      * </pre>
-     *
+     * <p>
      * For the above example, this will check the structure and types and then return:
      *
      * <pre>

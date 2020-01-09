@@ -9,6 +9,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.io.InputStream;
+
 import org.geoserver.data.test.MockData;
 import org.geoserver.data.test.SystemTestData;
 import org.geoserver.wps.WPSTestSupport;
@@ -20,7 +21,9 @@ import org.junit.Test;
 import org.locationtech.jts.geom.Envelope;
 import org.springframework.mock.web.MockHttpServletResponse;
 
-/** @author Daniele Romagnoli, GeoSolutions */
+/**
+ * @author Daniele Romagnoli, GeoSolutions
+ */
 public class BinaryProcessingsTest extends WPSTestSupport {
 
     private static final double DELTA = 1E-6;

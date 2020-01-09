@@ -196,8 +196,8 @@ public class UniqueResourceIdentifiersEditor extends FormComponentPanel<UniqueRe
                             ValidationError error = new ValidationError();
                             String message =
                                     new ParamResourceModel(
-                                                    "noSpatialDatasetIdentifiers",
-                                                    UniqueResourceIdentifiersEditor.this)
+                                            "noSpatialDatasetIdentifiers",
+                                            UniqueResourceIdentifiersEditor.this)
                                             .getString();
                             error.setMessage(message);
                             validatable.error(error);

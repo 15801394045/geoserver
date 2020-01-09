@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <as:AppSchemaDataAccess xmlns:as="http://www.geotools.org/app-schema"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.geotools.org/app-schema AppSchemaDataAccess.xsd">
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                        xsi:schemaLocation="http://www.geotools.org/app-schema AppSchemaDataAccess.xsd">
     <namespaces>
         <Namespace>
             <prefix>er</prefix>
@@ -39,16 +40,16 @@
             <attributeMappings>
                 <AttributeMapping>
                     <targetAttribute>
-						er:MineralOccurrence
-					</targetAttribute>					
-					<idExpression>
+                        er:MineralOccurrence
+                    </targetAttribute>
+                    <idExpression>
                         <OCQL>ID</OCQL>
                     </idExpression>
                 </AttributeMapping>
                 <AttributeMapping>
                     <targetAttribute>
-						er:planarOrientation
-					</targetAttribute>
+                        er:planarOrientation
+                    </targetAttribute>
                     <sourceExpression>
                         <OCQL>SITE_ID</OCQL>
                         <linkElement>gsml:CGI_PlanarOrientation</linkElement>
@@ -58,8 +59,8 @@
                 </AttributeMapping>
                 <AttributeMapping>
                     <targetAttribute>
-			            gml:name
-  		            </targetAttribute>
+                        gml:name
+                    </targetAttribute>
                     <sourceExpression>
                         <OCQL>NAME_VALUE</OCQL>
                     </sourceExpression>

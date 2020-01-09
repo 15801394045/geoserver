@@ -10,6 +10,7 @@ import java.io.OutputStream;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
+
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CreationHelper;
 import org.apache.poi.ss.usermodel.RichTextString;
@@ -32,7 +33,7 @@ import org.opengis.feature.type.AttributeDescriptor;
  * Abstract base class for Excel WFS output format
  *
  * @author Sebastian Benthall, OpenGeo, seb@opengeo.org and Shane StClair, Axiom Consulting,
- *     shane@axiomalaska.com
+ * shane@axiomalaska.com
  */
 public abstract class ExcelOutputFormat extends WFSGetFeatureOutputFormat {
 
@@ -54,7 +55,9 @@ public abstract class ExcelOutputFormat extends WFSGetFeatureOutputFormat {
 
     protected abstract Workbook getNewWorkbook();
 
-    /** @return mime type; */
+    /**
+     * @return mime type;
+     */
     @Override
     public String getMimeType(Object value, Operation operation) throws ServiceException {
         return mimeType;
@@ -73,7 +76,9 @@ public abstract class ExcelOutputFormat extends WFSGetFeatureOutputFormat {
         return DISPOSITION_ATTACH;
     }
 
-    /** @see WFSGetFeatureOutputFormat#write(Object, OutputStream, Operation) */
+    /**
+     * @see WFSGetFeatureOutputFormat#write(Object, OutputStream, Operation)
+     */
     @Override
     protected void write(
             FeatureCollectionResponse featureCollection, OutputStream output, Operation getFeature)
@@ -159,10 +164,10 @@ public abstract class ExcelOutputFormat extends WFSGetFeatureOutputFormat {
                                             TRUNCATE_WARNING
                                                     + " "
                                                     + stringVal.substring(
-                                                            0,
-                                                            CELL_CHAR_LIMIT
-                                                                    - TRUNCATE_WARNING.length()
-                                                                    - 1);
+                                                    0,
+                                                    CELL_CHAR_LIMIT
+                                                            - TRUNCATE_WARNING.length()
+                                                            - 1);
                                     cell.setCellStyle(styles.getWarningStyle());
                                 }
                                 cell.setCellValue(helper.createRichTextString(stringVal));

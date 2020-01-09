@@ -11,4 +11,5 @@ package org.geoserver.wps.gs;
  *
  * @author Andrea Aime - OpenGeo
  */
-public interface GeoServerProcess {}
+public interface GeoServerProcess {
+}

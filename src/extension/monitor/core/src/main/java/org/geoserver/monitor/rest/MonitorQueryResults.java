@@ -6,7 +6,9 @@ package org.geoserver.monitor.rest;
 
 import org.geoserver.monitor.Monitor;
 
-/** Wrapper class for REST monitor request results */
+/**
+ * Wrapper class for REST monitor request results
+ */
 public class MonitorQueryResults {
 
     Object result;

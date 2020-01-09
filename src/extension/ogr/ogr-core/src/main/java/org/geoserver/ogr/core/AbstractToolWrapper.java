@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import org.apache.commons.io.FileUtils;
 import org.opengis.referencing.crs.CoordinateReferenceSystem;
 
@@ -113,11 +114,11 @@ public abstract class AbstractToolWrapper implements ToolWrapper {
      * <p>May be overridden by subclasses, e.g. to support commands that modify the input file
      * inline and thus need no output parameter.
      *
-     * @param cmd the command to run and its arguments
-     * @param inputData the input file
+     * @param cmd             the command to run and its arguments
+     * @param inputData       the input file
      * @param outputDirectory the output directory
-     * @param typeName the type name
-     * @param format the format descriptor
+     * @param typeName        the type name
+     * @param format          the format descriptor
      * @return the name of the (main) output file
      */
     protected String setInputOutput(
@@ -173,7 +174,7 @@ public abstract class AbstractToolWrapper implements ToolWrapper {
      * <p>Default implementation does nothing at all. May be implemented by subclasses to append
      * additional arguments to <code>cmd</code>.
      *
-     * @param cmd the command to run and its arguments
+     * @param cmd             the command to run and its arguments
      * @param inputData
      * @param outputDirectory
      * @param typeName
@@ -212,7 +213,7 @@ public abstract class AbstractToolWrapper implements ToolWrapper {
      * code.
      *
      * @param cmd the command to run and its arguments
-     * @param sb command output is appended here
+     * @param sb  command output is appended here
      * @return the exit code of the invoked command. Usually, 0 indicates normal termination
      * @throws IOException
      * @throws InterruptedException

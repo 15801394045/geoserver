@@ -7,6 +7,7 @@ package org.geoserver.inspire.web;
 
 import java.util.Arrays;
 import java.util.List;
+
 import org.apache.wicket.model.IModel;
 import org.geoserver.inspire.UniqueResourceIdentifier;
 import org.geoserver.inspire.UniqueResourceIdentifiers;

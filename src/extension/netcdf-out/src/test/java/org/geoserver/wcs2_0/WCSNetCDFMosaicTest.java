@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.logging.Level;
 import javax.xml.namespace.QName;
+
 import org.apache.commons.io.FileUtils;
 import org.geoserver.catalog.Catalog;
 import org.geoserver.catalog.CatalogBuilder;
@@ -636,7 +637,9 @@ public class WCSNetCDFMosaicTest extends WCSNetCDFBaseTest {
         coverageView = new CoverageView("dummyView", coverageBands);
     }
 
-    /** Configure NetCDF output settings for <code>Temperature_surface</code>. */
+    /**
+     * Configure NetCDF output settings for <code>Temperature_surface</code>.
+     */
     private void configureTemperatureSurface() {
         NetCDFLayerSettingsContainer container = new NetCDFLayerSettingsContainer();
         container.setCopyAttributes(true);
@@ -721,7 +724,7 @@ public class WCSNetCDFMosaicTest extends WCSNetCDFBaseTest {
                     "seconds since 1970-01-01 00:00:00 UTC",
                     timeVar.findAttribute("units").getStringValue());
             assertArrayEquals(
-                    new double[] {1461664800, 1461708000},
+                    new double[]{1461664800, 1461708000},
                     (double[]) timeVar.read().copyTo1DJavaArray(),
                     (double) DELTA);
             Variable rlonVar = dataset.findVariable("rlon");
@@ -732,7 +735,7 @@ public class WCSNetCDFMosaicTest extends WCSNetCDFBaseTest {
             assertEquals("grid_longitude", rlonVar.findAttribute("standard_name").getStringValue());
             assertEquals("degrees", rlonVar.findAttribute("units").getStringValue());
             assertArrayEquals(
-                    new float[] {-30, -20, -10, 0, 10, 20, 30},
+                    new float[]{-30, -20, -10, 0, 10, 20, 30},
                     (float[]) rlonVar.read().copyTo1DJavaArray(),
                     (float) DELTA);
             Variable rlatVar = dataset.findVariable("rlat");
@@ -743,7 +746,7 @@ public class WCSNetCDFMosaicTest extends WCSNetCDFBaseTest {
             assertEquals("grid_latitude", rlatVar.findAttribute("standard_name").getStringValue());
             assertEquals("degrees", rlatVar.findAttribute("units").getStringValue());
             assertArrayEquals(
-                    new float[] {-20, -10, 0, 10, 20},
+                    new float[]{-20, -10, 0, 10, 20},
                     (float[]) rlatVar.read().copyTo1DJavaArray(),
                     (float) DELTA);
             // check projection variable
@@ -776,12 +779,12 @@ public class WCSNetCDFMosaicTest extends WCSNetCDFBaseTest {
             assertEquals(rlatDim, tempVar.getDimensions().get(1));
             assertEquals(rlonDim, tempVar.getDimensions().get(2));
             assertArrayEquals(
-                    new float[] {
-                        300, 299, 298, 297, 296, 295, 294, 299, 300, 299, 298, 297, 296, 295, 298,
-                        299, 300, 299, 298, 297, 296, 297, 298, 299, 300, 299, 298, 297, 296, 297,
-                        298, 299, 300, 299, 298, 301, 300, 299, 298, 297, 296, 295, 300, 301, 300,
-                        299, 298, 297, 296, 299, 300, 301, 300, 299, 298, 297, 298, 299, 300, 301,
-                        300, 299, 298, 297, 298, 299, 300, 301, 300, 299
+                    new float[]{
+                            300, 299, 298, 297, 296, 295, 294, 299, 300, 299, 298, 297, 296, 295, 298,
+                            299, 300, 299, 298, 297, 296, 297, 298, 299, 300, 299, 298, 297, 296, 297,
+                            298, 299, 300, 299, 298, 301, 300, 299, 298, 297, 296, 295, 300, 301, 300,
+                            299, 298, 297, 296, 299, 300, 301, 300, 299, 298, 297, 298, 299, 300, 301,
+                            300, 299, 298, 297, 298, 299, 300, 301, 300, 299
                     },
                     (float[]) tempVar.read().copyTo1DJavaArray(),
                     (float) DELTA);
@@ -813,7 +816,7 @@ public class WCSNetCDFMosaicTest extends WCSNetCDFBaseTest {
             assertEquals(
                     "GRIB reference time", reftimeVar.findAttribute("long_name").getStringValue());
             assertArrayEquals(
-                    new double[] {6, 3},
+                    new double[]{6, 3},
                     (double[]) reftimeVar.read().copyTo1DJavaArray(),
                     (double) DELTA);
             // scalar extra variable copied from source with dimensions ""

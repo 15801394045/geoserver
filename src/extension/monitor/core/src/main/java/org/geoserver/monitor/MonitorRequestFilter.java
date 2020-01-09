@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import javax.servlet.http.HttpServletRequest;
+
 import org.geoserver.platform.FileWatcher;
 import org.geoserver.platform.GeoServerResourceLoader;
 import org.geoserver.platform.resource.Paths;
@@ -65,7 +66,9 @@ public class MonitorRequestFilter {
         return false;
     }
 
-    /** FileWatcher used to parse List<Filter> from text file. */
+    /**
+     * FileWatcher used to parse List<Filter> from text file.
+     */
     private final class FilterPropertyFileWatcher extends FileWatcher<List<Filter>> {
 
         private FilterPropertyFileWatcher(Resource resource) {
@@ -86,7 +89,9 @@ public class MonitorRequestFilter {
         }
     }
 
-    /** Match path contents based on AntPathMatcher pattern */
+    /**
+     * Match path contents based on AntPathMatcher pattern
+     */
     static class Filter {
 
         AntPathMatcher matcher = new AntPathMatcher();

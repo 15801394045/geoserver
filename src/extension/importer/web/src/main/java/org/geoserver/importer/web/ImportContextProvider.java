@@ -7,6 +7,7 @@ package org.geoserver.importer.web;
 
 import java.util.Arrays;
 import java.util.List;
+
 import org.apache.commons.collections.IteratorUtils;
 import org.apache.wicket.model.IModel;
 import org.geoserver.importer.ImportContext;

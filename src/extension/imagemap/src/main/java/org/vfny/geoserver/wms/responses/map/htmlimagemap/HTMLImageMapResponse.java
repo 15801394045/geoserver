@@ -7,6 +7,7 @@ package org.vfny.geoserver.wms.responses.map.htmlimagemap;
 
 import java.io.IOException;
 import java.io.OutputStream;
+
 import org.geoserver.ows.Response;
 import org.geoserver.platform.Operation;
 import org.geoserver.platform.ServiceException;

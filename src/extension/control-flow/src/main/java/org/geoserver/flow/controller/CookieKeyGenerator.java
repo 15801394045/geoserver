@@ -6,6 +6,7 @@ package org.geoserver.flow.controller;
 
 import java.rmi.server.UID;
 import javax.servlet.http.Cookie;
+
 import org.geoserver.ows.Request;
 
 /**
@@ -20,7 +21,9 @@ public class CookieKeyGenerator implements KeyGenerator {
 
     static String COOKIE_PREFIX = "GS_CFLOW_";
 
-    /** Returns an id that can be associated uniquely to this user */
+    /**
+     * Returns an id that can be associated uniquely to this user
+     */
     public String getUserKey(Request request) {
         // check if this client already made other connections
         Cookie idCookie = null;

@@ -6,21 +6,27 @@
 package org.geoserver.map.turbojpeg;
 
 import it.geosolutions.imageio.plugins.turbojpeg.TurboJpegUtilities;
+
 import java.awt.image.RenderedImage;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.geoserver.wms.MapProducerCapabilities;
 import org.geoserver.wms.WMS;
 import org.geoserver.wms.WMSMapContent;
 import org.geoserver.wms.map.JPEGMapResponse;
 import org.geoserver.wms.map.RenderedImageMapResponse;
 
-/** @author Simone Giannecchini, GeoSolutions SAS */
+/**
+ * @author Simone Giannecchini, GeoSolutions SAS
+ */
 public class TurboJPEGMapResponse extends RenderedImageMapResponse {
 
-    /** Logger. */
+    /**
+     * Logger.
+     */
     private static final Logger LOGGER =
             org.geotools.util.logging.Logging.getLogger(TurboJPEGMapResponse.class.toString());
 
@@ -50,7 +56,9 @@ public class TurboJPEGMapResponse extends RenderedImageMapResponse {
     private static MapProducerCapabilities CAPABILITIES =
             new MapProducerCapabilities(true, false, false, false, null);
 
-    /** the only MIME type this map producer supports */
+    /**
+     * the only MIME type this map producer supports
+     */
     private static final String MIME_TYPE = "image/jpeg";
 
     private final JPEGMapResponse fallback;

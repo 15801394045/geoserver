@@ -5,6 +5,7 @@
 package org.geoserver.geofence.config;
 
 import com.google.common.collect.Lists;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +39,9 @@ public class GeoFenceConfiguration implements Serializable, Cloneable {
 
     private String defaultUserGroupServiceName;
 
-    /** Remote GeoFence services url. */
+    /**
+     * Remote GeoFence services url.
+     */
     public String getServicesUrl() {
         return servicesUrl;
     }
@@ -79,7 +82,9 @@ public class GeoFenceConfiguration implements Serializable, Cloneable {
         this.allowRemoteAndInlineLayers = allowRemoteAndInlineLayers;
     }
 
-    /** Flag to allow usage of remote and inline layers in SLDs. */
+    /**
+     * Flag to allow usage of remote and inline layers in SLDs.
+     */
     public boolean isAllowRemoteAndInlineLayers() {
         return allowRemoteAndInlineLayers;
     }
@@ -99,7 +104,7 @@ public class GeoFenceConfiguration implements Serializable, Cloneable {
      * access.
      *
      * @param grantWriteToWorkspacesToAuthenticatedUsers the
-     *     grantWriteToWorkspacesToAuthenticatedUsers to set
+     *                                                   grantWriteToWorkspacesToAuthenticatedUsers to set
      */
     public void setGrantWriteToWorkspacesToAuthenticatedUsers(
             boolean grantWriteToWorkspacesToAuthenticatedUsers) {
@@ -158,27 +163,37 @@ public class GeoFenceConfiguration implements Serializable, Cloneable {
         return servicesUrl.startsWith(URL_INTERNAL);
     }
 
-    /** @return */
+    /**
+     * @return
+     */
     public String getGwcContextSuffix() {
         return gwcContextSuffix;
     }
 
-    /** @param gwcContextSuffix the gwcContextSuffix to set */
+    /**
+     * @param gwcContextSuffix the gwcContextSuffix to set
+     */
     public void setGwcContextSuffix(String gwcContextSuffix) {
         this.gwcContextSuffix = gwcContextSuffix;
     }
 
-    /** @param defaultUserGroupServiceName the defaultUserGroupServiceName to set */
+    /**
+     * @param defaultUserGroupServiceName the defaultUserGroupServiceName to set
+     */
     public void setDefaultUserGroupServiceName(String defaultUserGroupServiceName) {
         this.defaultUserGroupServiceName = defaultUserGroupServiceName;
     }
 
-    /** @return */
+    /**
+     * @return
+     */
     public String getDefaultUserGroupServiceName() {
         return defaultUserGroupServiceName;
     }
 
-    /** Creates a copy of the configuration object. */
+    /**
+     * Creates a copy of the configuration object.
+     */
     @Override
     public GeoFenceConfiguration clone() {
         try {

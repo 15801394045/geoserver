@@ -25,12 +25,14 @@ import com.sleepycat.je.Sequence;
 import com.sleepycat.je.SequenceConfig;
 import com.sleepycat.je.StatsConfig;
 import com.sleepycat.je.Transaction;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
+
 import org.apache.commons.collections.Predicate;
 import org.apache.commons.collections.iterators.FilterIterator;
 import org.geoserver.catalog.Catalog;
@@ -347,11 +349,14 @@ public class BDBImportStore implements ImportStore {
     }
 
     abstract static class ImportBinding {
-        void initDb(DatabaseConfig dbConfig, Environment env) {}
+        void initDb(DatabaseConfig dbConfig, Environment env) {
+        }
 
-        void closeDb(Environment env) {}
+        void closeDb(Environment env) {
+        }
 
-        void destroyDb(Environment env) {}
+        void destroyDb(Environment env) {
+        }
 
         protected abstract EntryBinding<ImportContext> createImportBinding(Importer importer);
     }

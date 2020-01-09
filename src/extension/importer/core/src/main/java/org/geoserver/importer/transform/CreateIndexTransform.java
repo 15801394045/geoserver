@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
+
 import org.geoserver.catalog.DataStoreInfo;
 import org.geoserver.importer.ImportData;
 import org.geoserver.importer.ImportTask;
@@ -16,7 +17,9 @@ import org.geotools.data.DataAccess;
 import org.geotools.data.Transaction;
 import org.geotools.jdbc.JDBCDataStore;
 
-/** @author Ian Schneider <ischneider@opengeo.org> */
+/**
+ * @author Ian Schneider <ischneider@opengeo.org>
+ */
 public class CreateIndexTransform extends AbstractTransform
         implements PostTransform, VectorTransform {
 

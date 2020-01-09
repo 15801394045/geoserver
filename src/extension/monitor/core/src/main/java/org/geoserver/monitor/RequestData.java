@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
+
 import org.geoserver.platform.ServiceException;
 import org.opengis.geometry.BoundingBox;
 
@@ -26,7 +27,9 @@ public class RequestData implements Serializable {
 
     private static AtomicLong COUNTER = new AtomicLong();
 
-    /** Enumeration describing the status of a request. */
+    /**
+     * Enumeration describing the status of a request.
+     */
     public static enum Status {
         WAITING,
         RUNNING,
@@ -35,27 +38,41 @@ public class RequestData implements Serializable {
         FINISHED,
         CANCELLED,
         INTERRUPTED
-    };
+    }
 
-    /** Enumeration describing the category of a request. */
+    ;
+
+    /**
+     * Enumeration describing the category of a request.
+     */
     public static enum Category {
         OWS,
         REST,
         OTHER
-    };
+    }
+
+    ;
 
     public long internalid = COUNTER.getAndIncrement();
 
-    /** request id */
+    /**
+     * request id
+     */
     private long id = -1;
 
-    /** Request status / state */
+    /**
+     * Request status / state
+     */
     private Status status = Status.WAITING;
 
-    /** Request category */
+    /**
+     * Request category
+     */
     private Category category = Category.OTHER;
 
-    /** The path of the request URL. */
+    /**
+     * The path of the request URL.
+     */
     private String path;
 
     /**
@@ -64,16 +81,24 @@ public class RequestData implements Serializable {
      */
     private String queryString;
 
-    /** The body of the request in the case of a PUT or POST */
+    /**
+     * The body of the request in the case of a PUT or POST
+     */
     private byte[] body;
 
-    /** The length of the request body in teh case of a PUT or POST */
+    /**
+     * The length of the request body in teh case of a PUT or POST
+     */
     private long bodyContentLength;
 
-    /** The mime type of the request body */
+    /**
+     * The mime type of the request body
+     */
     private String bodyContentType;
 
-    /** The HTTP method of the request */
+    /**
+     * The HTTP method of the request
+     */
     private String httpMethod;
 
     /**
@@ -88,10 +113,14 @@ public class RequestData implements Serializable {
      */
     private Date endTime;
 
-    /** The total time, in milliseconds, the request took to complete */
+    /**
+     * The total time, in milliseconds, the request took to complete
+     */
     private long totalTime;
 
-    /** The Internet Protocol (IP) address of the client or last proxy that sent the request. */
+    /**
+     * The Internet Protocol (IP) address of the client or last proxy that sent the request.
+     */
     private String remoteAddr;
 
     /**
@@ -101,64 +130,104 @@ public class RequestData implements Serializable {
      */
     private String remoteHost;
 
-    /** Username (if available) specified with the request */
+    /**
+     * Username (if available) specified with the request
+     */
     private String remoteUser;
 
-    /** Remote user agent (user-agent header from request) */
+    /**
+     * Remote user agent (user-agent header from request)
+     */
     private String remoteUserAgent;
 
-    /** Country request originated from (if available), obtained via geoip lookup. */
+    /**
+     * Country request originated from (if available), obtained via geoip lookup.
+     */
     private String remoteCountry;
 
-    /** City request originated from (if available), obtained via geoip lookup */
+    /**
+     * City request originated from (if available), obtained via geoip lookup
+     */
     private String remoteCity;
 
-    /** Latitude request originated from (if available), obtained via geoip lookup */
+    /**
+     * Latitude request originated from (if available), obtained via geoip lookup
+     */
     private double remoteLat;
 
-    /** Longitude request originated from (if available), obtained via geoip lookup */
+    /**
+     * Longitude request originated from (if available), obtained via geoip lookup
+     */
     private double remoteLon;
 
-    /** The server host (useful in case we are dealing with a cluster of GeoServer instances) */
+    /**
+     * The server host (useful in case we are dealing with a cluster of GeoServer instances)
+     */
     private String host;
 
-    /** The internal server host (to the internal network) */
+    /**
+     * The internal server host (to the internal network)
+     */
     private String internalHost;
 
-    /** The service name, in the case of ows this is WMS, WFS, WCS, WPS, etc... */
+    /**
+     * The service name, in the case of ows this is WMS, WFS, WCS, WPS, etc...
+     */
     private String service;
 
-    /** The operation name, such as GetMap, GetFeature, etc... */
+    /**
+     * The operation name, such as GetMap, GetFeature, etc...
+     */
     private String operation;
 
-    /** The OWS service version, specific to ows requests */
+    /**
+     * The OWS service version, specific to ows requests
+     */
     private String owsVersion;
 
-    /** The sub operation, example for WFS transaction being INSERT, UPDATE, etc... */
+    /**
+     * The sub operation, example for WFS transaction being INSERT, UPDATE, etc...
+     */
     private String subOperation;
 
-    /** The requested resources */
+    /**
+     * The requested resources
+     */
     private List<String> resources = new ArrayList<String>(1);
 
-    /** The HTTP response length, in bytes */
+    /**
+     * The HTTP response length, in bytes
+     */
     private long responseLength;
 
-    /** The response content MIME type, might be {@code null} */
+    /**
+     * The response content MIME type, might be {@code null}
+     */
     private String responseContentType;
 
-    /** The {@link ServiceException} message, or {@code null} */
+    /**
+     * The {@link ServiceException} message, or {@code null}
+     */
     private String errorMessage;
 
-    /** The exception that occurred while processing the request, if any. */
+    /**
+     * The exception that occurred while processing the request, if any.
+     */
     private Throwable error;
 
-    /** The response status */
+    /**
+     * The response status
+     */
     Integer responseStatus;
 
-    /** The Referer of the HTTP request, if any */
+    /**
+     * The Referer of the HTTP request, if any
+     */
     private String httpReferer;
 
-    /** A bounding box for the region the request covers if any (May be approximate) */
+    /**
+     * A bounding box for the region the request covers if any (May be approximate)
+     */
     private BoundingBox bbox;
 
     /**
@@ -166,7 +235,9 @@ public class RequestData implements Serializable {
      */
     private String cacheResult;
 
-    /** If there was a cache miss, the reason for it */
+    /**
+     * If there was a cache miss, the reason for it
+     */
     private String missReason;
 
     public long getId() {

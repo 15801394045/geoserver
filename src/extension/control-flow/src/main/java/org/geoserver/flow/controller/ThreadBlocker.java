@@ -6,7 +6,9 @@ package org.geoserver.flow.controller;
 
 import org.geoserver.ows.Request;
 
-/** Mechanism to block a thread on flow controllers. */
+/**
+ * Mechanism to block a thread on flow controllers.
+ */
 public interface ThreadBlocker {
 
     /**
@@ -15,7 +17,7 @@ public interface ThreadBlocker {
      * @param request new request
      * @param timeout maximum time the request can be blocked
      * @return True if the request was processed successfully, false if the request timed out during
-     *     the wait
+     * the wait
      */
     boolean requestIncoming(Request request, long timeout) throws InterruptedException;
 

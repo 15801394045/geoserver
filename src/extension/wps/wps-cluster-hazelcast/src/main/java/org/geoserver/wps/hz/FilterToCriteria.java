@@ -8,8 +8,10 @@ import static com.hazelcast.query.Predicates.*;
 
 import com.hazelcast.query.Predicate;
 import com.hazelcast.query.TruePredicate;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import org.apache.commons.collections.functors.FalsePredicate;
 import org.geotools.filter.LikeToRegexConverter;
 import org.opengis.filter.And;

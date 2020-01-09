@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
 import org.apache.wicket.ajax.markup.html.form.AjaxSubmitLink;
@@ -108,8 +109,8 @@ public class AuthenticationKeyFilterPanel
                             int numberOfNewKeys = mapper.synchronize();
                             info(
                                     new StringResourceModel(
-                                                    "synchronizeSuccessful",
-                                                    AuthenticationKeyFilterPanel.this)
+                                            "synchronizeSuccessful",
+                                            AuthenticationKeyFilterPanel.this)
                                             .setParameters(numberOfNewKeys)
                                             .getObject());
                         } catch (Exception e) {
@@ -157,7 +158,8 @@ public class AuthenticationKeyFilterPanel
                     });
         }
 
-        public void resetModel() {}
+        public void resetModel() {
+        }
     }
 
     private ParamsPanel createParamsPanel(

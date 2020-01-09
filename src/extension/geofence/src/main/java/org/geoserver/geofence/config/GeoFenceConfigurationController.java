@@ -5,10 +5,13 @@
 package org.geoserver.geofence.config;
 
 import java.io.IOException;
+
 import org.geoserver.geofence.cache.CacheConfiguration;
 import org.geoserver.geofence.cache.CachedRuleReader;
 
-/** @author ETj (etj at geo-solutions.it) */
+/**
+ * @author ETj (etj at geo-solutions.it)
+ */
 public class GeoFenceConfigurationController {
 
     private GeoFenceConfigurationManager configurationManager;

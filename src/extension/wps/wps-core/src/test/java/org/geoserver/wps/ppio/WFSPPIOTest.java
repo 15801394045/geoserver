@@ -22,6 +22,7 @@ import static org.junit.Assert.fail;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
+
 import org.geoserver.data.test.SystemTestData;
 import org.geoserver.platform.GeoServerExtensions;
 import org.geoserver.wps.WPSTestSupport;
@@ -32,7 +33,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.opengis.feature.type.AttributeDescriptor;
 
-/** @author ian */
+/**
+ * @author ian
+ */
 public class WFSPPIOTest extends WPSTestSupport {
 
     private InputStream is;

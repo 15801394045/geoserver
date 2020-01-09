@@ -16,13 +16,17 @@ import org.w3c.dom.Document;
  */
 public class Gsml32BoreholeWfsTest extends AbstractAppSchemaTestSupport {
 
-    /** @see org.geoserver.test.AbstractAppSchemaTestSupport#buildTestData() */
+    /**
+     * @see org.geoserver.test.AbstractAppSchemaTestSupport#buildTestData()
+     */
     @Override
     protected Gsml32BoreholeMockData createTestData() {
         return new Gsml32BoreholeMockData();
     }
 
-    /** Test content of GetFeature response. */
+    /**
+     * Test content of GetFeature response.
+     */
     @Test
     public void testGetFeatureContent() throws Exception {
         String path = "wfs?request=GetFeature&typename=gsmlbh:Borehole&outputFormat=gml32";

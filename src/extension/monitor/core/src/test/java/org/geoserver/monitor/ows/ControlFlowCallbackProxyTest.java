@@ -8,6 +8,7 @@ package org.geoserver.monitor.ows;
 import static org.junit.Assert.*;
 
 import java.lang.reflect.Proxy;
+
 import org.geoserver.monitor.MemoryMonitorDAO;
 import org.geoserver.monitor.Monitor;
 import org.geoserver.monitor.MonitorDAO;
@@ -67,7 +68,8 @@ public class ControlFlowCallbackProxyTest {
                         return null;
                     }
 
-                    public void finished(Request request) {}
+                    public void finished(Request request) {
+                    }
                 };
 
         callback = createProxy(callback);
@@ -93,7 +95,7 @@ public class ControlFlowCallbackProxyTest {
         ControlFlowCallbackProxy proxy = new ControlFlowCallbackProxy(monitor, callback);
         return (DispatcherCallback)
                 Proxy.newProxyInstance(
-                        getClass().getClassLoader(), new Class[] {DispatcherCallback.class}, proxy);
+                        getClass().getClassLoader(), new Class[]{DispatcherCallback.class}, proxy);
     }
 
     public static class MyDispatcherCallback implements DispatcherCallback {
@@ -127,6 +129,7 @@ public class ControlFlowCallbackProxyTest {
             return null;
         }
 
-        public void finished(Request request) {}
+        public void finished(Request request) {
+        }
     }
 }

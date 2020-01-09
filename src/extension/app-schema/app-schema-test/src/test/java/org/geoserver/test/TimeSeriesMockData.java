@@ -17,17 +17,23 @@ import org.geoserver.data.test.MockData;
  */
 public class TimeSeriesMockData extends AbstractAppSchemaMockData {
 
-    /** Prefix for csml namespace. */
+    /**
+     * Prefix for csml namespace.
+     */
     protected static final String CSML_PREFIX = "csml";
 
-    /** URI for csml namespace. */
+    /**
+     * URI for csml namespace.
+     */
     protected static final String CSML_URI = "http://ndg.nerc.ac.uk/csml";
 
     public TimeSeriesMockData() {
         super(GML32_NAMESPACES);
     }
 
-    /** @see org.geoserver.test.AbstractAppSchemaMockData#addContent() */
+    /**
+     * @see org.geoserver.test.AbstractAppSchemaMockData#addContent()
+     */
     @Override
     public void addContent() {
         putNamespace(CSML_PREFIX, CSML_URI);

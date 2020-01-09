@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.apache.commons.io.FilenameUtils;
 import org.geotools.util.logging.Logging;
 
@@ -16,10 +17,14 @@ public class FileData extends ImportData {
 
     static Logger LOGGER = Logging.getLogger(FileData.class);
 
-    /** serialVersionUID */
+    /**
+     * serialVersionUID
+     */
     private static final long serialVersionUID = 1L;
 
-    /** the file handle */
+    /**
+     * the file handle
+     */
     protected File file;
 
     public FileData(File file) {

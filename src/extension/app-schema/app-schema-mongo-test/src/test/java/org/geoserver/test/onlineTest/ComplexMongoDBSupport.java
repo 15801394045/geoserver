@@ -12,6 +12,7 @@ import com.mongodb.BasicDBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientOptions;
 import com.mongodb.ServerAddress;
+
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -30,6 +31,7 @@ import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+
 import org.custommonkey.xmlunit.SimpleNamespaceContext;
 import org.custommonkey.xmlunit.XMLUnit;
 import org.custommonkey.xmlunit.XpathEngine;
@@ -378,7 +380,9 @@ public abstract class ComplexMongoDBSupport extends GeoServerSystemTestSupport {
         }
     }
 
-    /** Helper method that setup stations data set mappings files and schemas. */
+    /**
+     * Helper method that setup stations data set mappings files and schemas.
+     */
     private void setupStationsMappings() throws Exception {
         // check that a fixture file was provided
         File fixtureFile = getFixtureFile();
@@ -435,7 +439,9 @@ public abstract class ComplexMongoDBSupport extends GeoServerSystemTestSupport {
         insertJson(STATIONS_DATA_BASE_NAME, STATIONS_COLLECTION_NAME, stationsContent2);
     }
 
-    /** Load MongoDB connection properties. */
+    /**
+     * Load MongoDB connection properties.
+     */
     private static Properties loadFixtureProperties(File fixtureFile) {
         Properties properties = new Properties();
         try (InputStream input = new FileInputStream(fixtureFile)) {
@@ -450,7 +456,9 @@ public abstract class ComplexMongoDBSupport extends GeoServerSystemTestSupport {
         }
     }
 
-    /** Write fixture example file for MongoDB, if the file already exists nothing will be done. */
+    /**
+     * Write fixture example file for MongoDB, if the file already exists nothing will be done.
+     */
     private static void createFixtureExample(File fixtureFile) {
         // example fixture file
         File exampleFixtureFile = new File(fixtureFile.getAbsolutePath() + ".example");
@@ -476,7 +484,9 @@ public abstract class ComplexMongoDBSupport extends GeoServerSystemTestSupport {
         }
     }
 
-    /** Gets the fixture file for MongoDB, parent directories are created if needed. */
+    /**
+     * Gets the fixture file for MongoDB, parent directories are created if needed.
+     */
     private static File getFixtureFile() {
         File directory = new File(System.getProperty("user.home") + File.separator + ".geoserver");
         if (!directory.exists()) {
@@ -486,7 +496,9 @@ public abstract class ComplexMongoDBSupport extends GeoServerSystemTestSupport {
         return new File(directory, "mongodb.properties");
     }
 
-    /** Helper method that reads the content of a resource to a string. */
+    /**
+     * Helper method that reads the content of a resource to a string.
+     */
     private static String readResourceContent(String resourcePath) {
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         try (InputStream input = ComplexMongoDBSupport.class.getResourceAsStream(resourcePath)) {
@@ -498,7 +510,9 @@ public abstract class ComplexMongoDBSupport extends GeoServerSystemTestSupport {
         }
     }
 
-    /** Helper method that creates a temporary directory taking care of the IO exception. */
+    /**
+     * Helper method that creates a temporary directory taking care of the IO exception.
+     */
     private static Path createTempDir() {
         try {
             return Files.createTempDirectory("app-schema-mongo");
@@ -515,7 +529,7 @@ public abstract class ComplexMongoDBSupport extends GeoServerSystemTestSupport {
         // create the output file
         File outputFile = new File(ROOT_DIRECTORY.toFile(), resourceName);
         try (InputStream input = ComplexMongoDBSupport.class.getResourceAsStream(resourcePath);
-                OutputStream output = new FileOutputStream(outputFile)) {
+             OutputStream output = new FileOutputStream(outputFile)) {
             // copy the resource content to the output file
             IOUtils.copy(input, output);
         } catch (Exception exception) {

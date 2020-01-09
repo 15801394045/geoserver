@@ -21,7 +21,9 @@ public class BBox3DTest extends AbstractAppSchemaTestSupport {
         return new BBox3DMockData();
     }
 
-    /** Tests re-projection of NonFeatureTypeProxy. */
+    /**
+     * Tests re-projection of NonFeatureTypeProxy.
+     */
     @Test
     public void testBbox1() {
         Document doc =
@@ -48,7 +50,9 @@ public class BBox3DTest extends AbstractAppSchemaTestSupport {
                 doc);
     }
 
-    /** Tests re-projection of NonFeatureTypeProxy. */
+    /**
+     * Tests re-projection of NonFeatureTypeProxy.
+     */
     @Test
     public void testBbox2() throws Exception {
         Document doc =
@@ -76,7 +80,9 @@ public class BBox3DTest extends AbstractAppSchemaTestSupport {
                 doc);
     }
 
-    /** Tests re-projection of NonFeatureTypeProxy. */
+    /**
+     * Tests re-projection of NonFeatureTypeProxy.
+     */
     @Test
     public void testBboxPost() {
         String xml = //

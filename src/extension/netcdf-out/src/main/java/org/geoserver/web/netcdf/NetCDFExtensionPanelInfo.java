@@ -6,5 +6,8 @@ package org.geoserver.web.netcdf;
 
 import org.geoserver.web.ComponentInfo;
 
-/** Extension point for plugins to contribute additional panels to the NetCDF page */
-public class NetCDFExtensionPanelInfo extends ComponentInfo<NetCDFExtensionPanel> {}
+/**
+ * Extension point for plugins to contribute additional panels to the NetCDF page
+ */
+public class NetCDFExtensionPanelInfo extends ComponentInfo<NetCDFExtensionPanel> {
+}

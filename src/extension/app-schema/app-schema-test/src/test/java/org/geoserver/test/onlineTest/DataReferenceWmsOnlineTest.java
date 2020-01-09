@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.InputStream;
 import javax.imageio.ImageIO;
+
 import org.geoserver.test.onlineTest.support.AbstractDataReferenceWfsTest;
 import org.geotools.image.test.ImageAssert;
 import org.geotools.util.URLs;
@@ -17,7 +18,7 @@ import org.w3c.dom.Document;
 
 /**
  * @author Niels Charlier
- *     <p>Base class for wms online tests
+ * <p>Base class for wms online tests
  */
 public abstract class DataReferenceWmsOnlineTest extends AbstractDataReferenceWfsTest {
 

@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
+
 import org.apache.log4j.Logger;
 import org.geotools.jdbc.JDBCDataStoreFactory;
 import org.geotools.jdbc.JDBCTestSetup;
@@ -28,7 +29,9 @@ import org.opengis.referencing.crs.CoordinateReferenceSystem;
  */
 public abstract class AbstractReferenceDataSetup extends JDBCTestSetup {
 
-    /** System property set to totally disable any online tests */
+    /**
+     * System property set to totally disable any online tests
+     */
     public static final String ONLINE_TEST_PROFILE = "onlineTestProfile";
 
     protected Logger LOGGER = Logger.getLogger(AbstractReferenceDataSetup.class);
@@ -62,7 +65,9 @@ public abstract class AbstractReferenceDataSetup extends JDBCTestSetup {
         return found;
     }
 
-    /** Load fixture configuration. Create example if absent. */
+    /**
+     * Load fixture configuration. Create example if absent.
+     */
     protected void configureFixture() {
         if (fixture == null) {
             String fixtureId = getDatabaseID();

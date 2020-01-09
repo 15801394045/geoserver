@@ -15,6 +15,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import javax.imageio.ImageIO;
+
 import org.geotools.image.test.ImageAssert;
 import org.geotools.util.URLs;
 import org.junit.Test;
@@ -314,7 +315,7 @@ public class PagingTest extends AbstractAppSchemaTestSupport {
 
     private void checkMf4Values(Document doc, String epsgId)
             throws NoSuchAuthorityCodeException, FactoryException, MismatchedDimensionException,
-                    TransformException {
+            TransformException {
         assertXpathEvaluatesTo(
                 "MURRADUC BASALT", "//gsml:MappedFeature[@gml:id='mf4']/gml:name", doc);
         String srsName = "urn:ogc:def:crs:EPSG::" + (epsgId == null ? "4326" : epsgId);
@@ -410,7 +411,7 @@ public class PagingTest extends AbstractAppSchemaTestSupport {
     @Test
     public void testWfs110GetFeature()
             throws MismatchedDimensionException, NoSuchAuthorityCodeException, FactoryException,
-                    TransformException {
+            TransformException {
         Document doc =
                 getAsDOM(
                         "wfs?request=GetFeature&version=1.1.0&typename=gsml:MappedFeature&outputFormat=gml32&maxFeatures=2&startIndex=2");
@@ -485,7 +486,7 @@ public class PagingTest extends AbstractAppSchemaTestSupport {
     @Test
     public void testGetFeatureSortBy()
             throws MismatchedDimensionException, NoSuchAuthorityCodeException, FactoryException,
-                    TransformException {
+            TransformException {
         Document doc =
                 getAsDOM(
                         "wfs?request=GetFeature&version=1.1.0&typename=gsml:MappedFeature&outputFormat=gml32&maxFeatures=2&startIndex=2&sortBy=gsml:specification");
@@ -592,7 +593,7 @@ public class PagingTest extends AbstractAppSchemaTestSupport {
     @Test
     public void testGetFeatureReproject()
             throws MismatchedDimensionException, NoSuchAuthorityCodeException, FactoryException,
-                    TransformException {
+            TransformException {
         Document doc = null;
         doc =
                 getAsDOM(
@@ -606,7 +607,7 @@ public class PagingTest extends AbstractAppSchemaTestSupport {
     @Test
     public void testGetFeatureWithFilter()
             throws MismatchedDimensionException, NoSuchAuthorityCodeException, FactoryException,
-                    TransformException {
+            TransformException {
         String xml = //
                 "<wfs:GetFeature "
                         + "service=\"WFS\" " //

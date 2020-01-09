@@ -6,8 +6,10 @@
 package org.geoserver.flow.controller;
 
 import com.google.common.base.Predicate;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.geoserver.flow.ControlFlowCallback;
 import org.geoserver.flow.FlowController;
 import org.geoserver.ows.Request;

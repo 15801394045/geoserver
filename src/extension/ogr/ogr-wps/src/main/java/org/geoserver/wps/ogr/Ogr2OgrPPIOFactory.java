@@ -8,6 +8,7 @@ package org.geoserver.wps.ogr;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 import net.opengis.wfs.GetFeatureType;
 import net.opengis.wfs.WfsFactory;
 import org.geoserver.ogr.core.Format;
@@ -18,7 +19,9 @@ import org.geoserver.wps.ppio.PPIOFactory;
 import org.geoserver.wps.ppio.ProcessParameterIO;
 import org.geotools.util.Version;
 
-/** Factory to create an output PPIO for each OGR format managed by ogr2ogr libraries. */
+/**
+ * Factory to create an output PPIO for each OGR format managed by ogr2ogr libraries.
+ */
 public class Ogr2OgrPPIOFactory implements PPIOFactory {
 
     private Ogr2OgrOutputFormat ogr2OgrOutputFormat;
@@ -46,7 +49,7 @@ public class Ogr2OgrPPIOFactory implements PPIOFactory {
                             new Service(
                                     "WFS", null, new Version("1.1.0"), Arrays.asList("GetFeature")),
                             null,
-                            new Object[] {gft});
+                            new Object[]{gft});
             // String computedMimeType = of.mimeType;
             // if (computedMimeType == null || computedMimeType.isEmpty()) {
             String computedMimeType = ogr2OgrOutputFormat.getMimeType(null, operation);

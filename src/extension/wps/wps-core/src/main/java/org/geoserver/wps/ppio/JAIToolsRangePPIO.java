@@ -42,12 +42,16 @@ public class JAIToolsRangePPIO extends LiteralPPIO {
         super(Range.class);
     }
 
-    /** Decodes the parameter (as a string) to its internal object implementation. */
+    /**
+     * Decodes the parameter (as a string) to its internal object implementation.
+     */
     public Object decode(String value) throws Exception {
         return parseRange(value);
     }
 
-    /** Encodes the internal object representation of a parameter as a string. */
+    /**
+     * Encodes the internal object representation of a parameter as a string.
+     */
     public String encode(Object value) throws Exception {
         throw new UnsupportedOperationException("JaiTools range not supported out of the box");
     }

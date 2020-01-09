@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.apache.commons.lang3.StringUtils;
 import org.geoserver.wps.ProcessDismissedException;
 import org.geoserver.wps.ProcessEvent;
@@ -121,7 +122,9 @@ public class ProcessListenerNotifier {
         }
     }
 
-    /** Notifies all listeners that the process is being dismissed */
+    /**
+     * Notifies all listeners that the process is being dismissed
+     */
     public void dismiss() {
         this.status.phase = ProcessState.DISMISSING;
         ProcessEvent event = new ProcessEvent(status, inputs, outputs);
@@ -130,7 +133,9 @@ public class ProcessListenerNotifier {
         }
     }
 
-    /** Notifies all listeners that the process is being dismissed */
+    /**
+     * Notifies all listeners that the process is being dismissed
+     */
     public void fireDismissed() {
         this.status.phase = ProcessState.FAILED;
         ProcessEvent event = new ProcessEvent(status, inputs, outputs);
@@ -231,7 +236,9 @@ public class ProcessListenerNotifier {
         return progressListener;
     }
 
-    /** Throws a process cancelled exception if the process has been cancelled */
+    /**
+     * Throws a process cancelled exception if the process has been cancelled
+     */
     public void checkDismissed() {
         if (status.getPhase() == ProcessState.DISMISSING) {
             throw new ProcessDismissedException();

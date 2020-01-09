@@ -75,22 +75,30 @@ public class GetExecutionsType {
         this.orderBy = orderBy;
     }
 
-    /** @return the startIndex */
+    /**
+     * @return the startIndex
+     */
     public Integer getStartIndex() {
         return startIndex;
     }
 
-    /** @param startIndex the startIndex to set */
+    /**
+     * @param startIndex the startIndex to set
+     */
     public void setStartIndex(Integer startIndex) {
         this.startIndex = startIndex;
     }
 
-    /** @return the maxFeatures */
+    /**
+     * @return the maxFeatures
+     */
     public Integer getMaxFeatures() {
         return maxFeatures;
     }
 
-    /** @param maxFeatures the maxFeatures to set */
+    /**
+     * @param maxFeatures the maxFeatures to set
+     */
     public void setMaxFeatures(Integer maxFeatures) {
         this.maxFeatures = maxFeatures;
     }

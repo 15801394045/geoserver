@@ -8,7 +8,9 @@ package org.geoserver.test.onlineTest;
 import org.geoserver.data.test.SystemTestData;
 import org.geotools.data.complex.AppSchemaDataAccessRegistry;
 
-/** @author Victor Tey(CSIRO Earth Science and Resource Engineering) */
+/**
+ * @author Victor Tey(CSIRO Earth Science and Resource Engineering)
+ */
 public class DataReferenceWfsPostgisTest extends DataReferenceWfsPostgisWithJoiningTest {
 
     public DataReferenceWfsPostgisTest() throws Exception {

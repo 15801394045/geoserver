@@ -13,6 +13,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.apache.commons.lang3.StringUtils;
 import org.geoserver.csw.records.RecordDescriptor;
 import org.geotools.data.complex.util.XPathUtil;
@@ -103,8 +104,11 @@ public class CatalogStoreMapping {
 
     protected boolean includeEnvelope = true;
 
-    /** Create new Catalog Store Mapping */
-    protected CatalogStoreMapping() {}
+    /**
+     * Create new Catalog Store Mapping
+     */
+    protected CatalogStoreMapping() {
+    }
 
     /**
      * Return Collection of all Elements
@@ -138,7 +142,7 @@ public class CatalogStoreMapping {
      * Create a submapping from a list of property names Required properties will also be included.
      *
      * @param properties list of property names to be included in submapping
-     * @param rd Record Descriptor
+     * @param rd         Record Descriptor
      */
     public CatalogStoreMapping subMapping(List<PropertyName> properties, RecordDescriptor rd) {
         Set<String> paths = new HashSet<String>();

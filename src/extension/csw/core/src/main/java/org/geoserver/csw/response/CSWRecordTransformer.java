@@ -7,6 +7,7 @@ package org.geoserver.csw.response;
 
 import java.util.Collection;
 import java.util.List;
+
 import net.opengis.cat.csw20.RequestBaseType;
 import org.geoserver.csw.records.CSWRecordDescriptor;
 import org.geoserver.csw.records.GenericRecordBuilder;

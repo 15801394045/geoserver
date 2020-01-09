@@ -12,6 +12,7 @@ import static org.easymock.EasyMock.verify;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+
 import org.easymock.EasyMock;
 import org.geoserver.wcs.CoverageCleanerCallback;
 import org.geoserver.wps.ProcessEvent;

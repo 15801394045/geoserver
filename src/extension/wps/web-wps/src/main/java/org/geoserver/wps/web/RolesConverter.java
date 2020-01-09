@@ -8,13 +8,18 @@ package org.geoserver.wps.web;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+
 import org.apache.commons.lang3.StringUtils;
 import org.apache.wicket.util.convert.IConverter;
 
-/** Converts roles list as ";" separated string */
+/**
+ * Converts roles list as ";" separated string
+ */
 public class RolesConverter implements IConverter {
 
-    /** serialVersionUID */
+    /**
+     * serialVersionUID
+     */
     private static final long serialVersionUID = -7814332099119849464L;
 
     private List<String> availableRoles;

@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 import java.util.Set;
+
 import org.opengis.referencing.crs.CoordinateReferenceSystem;
 
 /**
@@ -17,13 +18,19 @@ import org.opengis.referencing.crs.CoordinateReferenceSystem;
  */
 public interface ToolWrapper {
 
-    /** Returns the full path to the executable to run. */
+    /**
+     * Returns the full path to the executable to run.
+     */
     public String getExecutable();
 
-    /** Returns the environment variables that should be set prior to invoking the tool. */
+    /**
+     * Returns the environment variables that should be set prior to invoking the tool.
+     */
     public Map<String, String> getEnvironment();
 
-    /** Returns the command line parameter used to specify the output format. */
+    /**
+     * Returns the command line parameter used to specify the output format.
+     */
     public String getToolFormatParameter();
 
     /**
@@ -34,20 +41,24 @@ public interface ToolWrapper {
      */
     public boolean isInputFirst();
 
-    /** Returns a list of the tool supported formats */
+    /**
+     * Returns a list of the tool supported formats
+     */
     public Set<String> getSupportedFormats();
 
-    /** Returns true if the specified executable command is available and can be run. */
+    /**
+     * Returns true if the specified executable command is available and can be run.
+     */
     public boolean isAvailable();
 
     /**
      * Performs the conversion, returns the (main) output file
      *
-     * @param inputData the input file
+     * @param inputData       the input file
      * @param outputDirectory the output directory
-     * @param typeName the type name
-     * @param format the format descriptor
-     * @param crs the coordinate reference system of the output
+     * @param typeName        the type name
+     * @param format          the format descriptor
+     * @param crs             the coordinate reference system of the output
      * @return the output file
      * @throws IOException
      * @throws InterruptedException

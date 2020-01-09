@@ -175,7 +175,7 @@ public class BBoxFilterTest extends AbstractAppSchemaTestSupport {
     @Test
     public void testQueryBboxLatLongSrs4283()
             throws NoSuchAuthorityCodeException, FactoryException, MismatchedDimensionException,
-                    TransformException {
+            TransformException {
         Document doc = getAsDOM(WFS_GET_FEATURE + LATLONG + "&srsName=urn:x-ogc:def:crs:EPSG:4283");
         LOGGER.info(WFS_GET_FEATURE_LOG + LONGLAT + prettyString(doc));
 

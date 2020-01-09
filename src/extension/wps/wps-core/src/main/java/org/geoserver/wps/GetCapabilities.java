@@ -11,6 +11,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 import java.util.logging.Logger;
+
 import net.opengis.ows11.KeywordsType;
 import net.opengis.ows11.OperationType;
 import net.opengis.ows11.OperationsMetadataType;
@@ -37,7 +38,9 @@ import org.geotools.util.logging.Logging;
 import org.opengis.feature.type.Name;
 import org.springframework.context.ApplicationContext;
 
-/** @author Lucas Reed, Refractions Research Inc */
+/**
+ * @author Lucas Reed, Refractions Research Inc
+ */
 public class GetCapabilities {
     public WPSInfo wps;
 

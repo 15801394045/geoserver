@@ -6,6 +6,7 @@ package org.geoserver.importer.rest.converters;
 
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+
 import org.geoserver.importer.ImportContext;
 import org.geoserver.importer.Importer;
 import org.geoserver.importer.rest.converters.ImportJSONWriter.FlushableJSONBuilder;
@@ -16,7 +17,9 @@ import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageNotWritableException;
 import org.springframework.stereotype.Component;
 
-/** Convert {@link ImportContext} to HTML. */
+/**
+ * Convert {@link ImportContext} to HTML.
+ */
 @Component
 public class ImportContextHTMLMessageConverter extends BaseMessageConverter<ImportContext> {
 

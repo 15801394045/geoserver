@@ -17,10 +17,14 @@ import org.opengis.referencing.crs.CoordinateReferenceSystem;
  */
 class EPSGCodeLookupCache {
 
-    /** Marker for failed lookups */
+    /**
+     * Marker for failed lookups
+     */
     static final Integer FAILED_LOOKUP = Integer.MIN_VALUE;
 
-    /** The lookup cache */
+    /**
+     * The lookup cache
+     */
     SoftValueHashMap<CoordinateReferenceSystem, Integer> cache =
             new SoftValueHashMap<CoordinateReferenceSystem, Integer>(100);
 

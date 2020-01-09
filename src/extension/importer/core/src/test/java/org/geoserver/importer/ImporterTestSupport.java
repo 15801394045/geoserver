@@ -22,6 +22,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import net.sf.json.JSONObject;
 import net.sf.json.util.JSONBuilder;
 import org.apache.commons.io.FileUtils;
@@ -210,7 +211,9 @@ public abstract class ImporterTestSupport extends GeoServerSystemTestSupport {
         return ds;
     }
 
-    /** Adding special treatment for H2 databases, we want to also kill the db itself */
+    /**
+     * Adding special treatment for H2 databases, we want to also kill the db itself
+     */
     @Override
     protected void removeStore(String workspaceName, String name) {
         Catalog cat = getCatalog();

@@ -7,6 +7,7 @@
 package org.geoserver.test;
 
 import java.util.Map;
+
 import org.geoserver.data.test.TestData;
 
 /**

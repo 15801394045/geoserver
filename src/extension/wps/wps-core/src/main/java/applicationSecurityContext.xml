@@ -5,12 +5,12 @@
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
 <beans>
 
-  <bean id="securityProcessFilter" class="org.geoserver.wps.security.SecurityProcessFilter">
-  </bean>
+    <bean id="securityProcessFilter" class="org.geoserver.wps.security.SecurityProcessFilter">
+    </bean>
 
-  <bean id="wpsAccessRuleDAO" class="org.geoserver.wps.security.WpsAccessRuleDAO">
-    <constructor-arg ref="geoServer" />
-  </bean>
+    <bean id="wpsAccessRuleDAO" class="org.geoserver.wps.security.WpsAccessRuleDAO">
+        <constructor-arg ref="geoServer"/>
+    </bean>
 
 
 </beans>

@@ -12,6 +12,7 @@ import com.hazelcast.map.EntryProcessor;
 import com.hazelcast.query.PagingPredicate;
 import com.hazelcast.query.Predicate;
 import com.hazelcast.query.TruePredicate;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -20,6 +21,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.apache.commons.beanutils.BeanComparator;
 import org.geoserver.wps.CompositeComparator;
 import org.geoserver.wps.ProcessStatusStore;
@@ -47,7 +49,9 @@ public class HazelcastStatusStore implements ProcessStatusStore {
 
     static final Logger LOGGER = Logging.getLogger(HazelcastStatusStore.class);
 
-    /** Name of the distributed map that will hold the process statuses */
+    /**
+     * Name of the distributed map that will hold the process statuses
+     */
     public static final String EXECUTION_STATUS_MAP = "wpsExecutionStatusMap";
 
     private static FilterCapabilities FILTER_CAPABILITIES;
@@ -65,7 +69,9 @@ public class HazelcastStatusStore implements ProcessStatusStore {
         FILTER_CAPABILITIES.addType(Before.class);
     }
 
-    /** The distributed map holding the various statuses */
+    /**
+     * The distributed map holding the various statuses
+     */
     IMap<String, ExecutionStatus> statuses;
 
     public HazelcastStatusStore(HazelcastLoader loader) {

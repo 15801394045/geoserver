@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
+
 import org.geoserver.geofence.services.RuleReaderService;
 import org.geoserver.geofence.services.dto.AuthUser;
 import org.geoserver.security.GeoServerAuthenticationProvider;
@@ -68,14 +69,15 @@ public class GeoFenceAuthenticationProvider extends GeoServerAuthenticationProvi
                 authUser = ruleReaderService.authorize(username, inTok.getCredentials().toString());
             } catch (Exception e) {
                 LOGGER.log(Level.SEVERE, "Error in authenticating with GeoFence", e);
-                throw new AuthenticationException("Error in GeoFence communication", e) {};
+                throw new AuthenticationException("Error in GeoFence communication", e) {
+                };
             }
 
             if (authUser != null) {
                 LOGGER.log(
                         Level.FINE,
                         "User {0} authenticated: {1}",
-                        new Object[] {username, authUser});
+                        new Object[]{username, authUser});
 
                 List<GrantedAuthority> roles = new ArrayList<GrantedAuthority>();
                 roles.addAll(inTok.getAuthorities());

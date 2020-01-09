@@ -16,6 +16,7 @@ import java.io.InputStream;
 import java.net.URL;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+
 import org.apache.commons.io.FileUtils;
 import org.custommonkey.xmlunit.XMLAssert;
 import org.geoserver.catalog.impl.WorkspaceInfoImpl;
@@ -242,7 +243,9 @@ public class WPSXStreamLoaderTest extends WPSTestSupport {
         }
     }
 
-    /** Helper method tha reads a WPS configuration from a XML file and return that info. */
+    /**
+     * Helper method tha reads a WPS configuration from a XML file and return that info.
+     */
     private WPSInfo loadFromXml(String resource) throws Exception {
         XStreamPersisterFactory factory = GeoServerExtensions.bean(XStreamPersisterFactory.class);
         XStreamPersister xp = factory.createXMLPersister();

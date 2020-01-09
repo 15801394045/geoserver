@@ -13,10 +13,14 @@ package org.geoserver.test;
  */
 public class Observation_2_0_MockData extends AbstractAppSchemaMockData {
 
-    /** Prefix for om namespace. */
+    /**
+     * Prefix for om namespace.
+     */
     protected static final String OM_PREFIX = "om";
 
-    /** URI for om namespace. */
+    /**
+     * URI for om namespace.
+     */
     protected static final String OM_URI = "http://www.opengis.net/om/2.0";
 
     public Observation_2_0_MockData() {
@@ -25,7 +29,9 @@ public class Observation_2_0_MockData extends AbstractAppSchemaMockData {
         setSchemaCatalog("schemas/wml2dr_catalog.xml");
     }
 
-    /** @see org.geoserver.test.AbstractAppSchemaMockData#addContent() */
+    /**
+     * @see org.geoserver.test.AbstractAppSchemaMockData#addContent()
+     */
     @Override
     public void addContent() {
         putNamespace(OM_PREFIX, OM_URI);

@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
 import java.net.URISyntaxException;
+
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.StringResourceModel;
@@ -46,7 +47,9 @@ public class GeofencePageTest extends GeoServerWicketTestSupport {
         tester.startPage(GeofencePage.class);
     }
 
-    /** @FIXME This test fails in 2.6 */
+    /**
+     * @FIXME This test fails in 2.6
+     */
     @Test
     public void testSave() throws URISyntaxException, IOException {
         GeofenceTestUtils.emptyFile("test-config.properties");
@@ -60,7 +63,9 @@ public class GeofencePageTest extends GeoServerWicketTestSupport {
         assertTrue(GeofenceTestUtils.readConfig(configFile).length() > 0);
     }
 
-    /** @FIXME This test fails in 2.6 */
+    /**
+     * @FIXME This test fails in 2.6
+     */
     @Test
     public void testCancel() throws URISyntaxException, IOException {
         GeofenceTestUtils.emptyFile("test-config.properties");
@@ -130,6 +135,6 @@ public class GeofencePageTest extends GeoServerWicketTestSupport {
         String success =
                 new StringResourceModel(GeofencePage.class.getSimpleName() + ".cacheInvalidated")
                         .getObject();
-        tester.assertInfoMessages((Serializable[]) new String[] {success});
+        tester.assertInfoMessages((Serializable[]) new String[]{success});
     }
 }

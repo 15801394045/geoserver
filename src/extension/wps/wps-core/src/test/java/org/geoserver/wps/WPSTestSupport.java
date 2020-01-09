@@ -24,6 +24,7 @@ import javax.xml.namespace.QName;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.dom.DOMSource;
+
 import org.custommonkey.xmlunit.SimpleNamespaceContext;
 import org.custommonkey.xmlunit.XMLUnit;
 import org.custommonkey.xmlunit.XpathEngine;
@@ -112,9 +113,11 @@ public abstract class WPSTestSupport extends GeoServerSystemTestSupport {
 
     }
 
-    protected final void setUpUsers(Properties props) {}
+    protected final void setUpUsers(Properties props) {
+    }
 
-    protected final void setUpLayerRoles(Properties properties) {}
+    protected final void setUpLayerRoles(Properties properties) {
+    }
 
     //    @Before
     //    public void login() throws Exception {
@@ -224,9 +227,9 @@ public abstract class WPSTestSupport extends GeoServerSystemTestSupport {
             // are we still waiting for termination?
             if (xpath.getMatchingNodes("//wps:Status/wps:ProcessAccepted", dom).getLength() > 0
                     || xpath.getMatchingNodes("//wps:Status/wps:ProcessStarted", dom).getLength()
-                            > 0
+                    > 0
                     || xpath.getMatchingNodes("//wps:Status/wps:ProcessQueued", dom).getLength()
-                            > 0) {
+                    > 0) {
                 Thread.sleep(100);
             } else {
                 return dom;
@@ -268,9 +271,9 @@ public abstract class WPSTestSupport extends GeoServerSystemTestSupport {
             // are we still waiting for termination?
             if (xpath.getMatchingNodes("//wps:Status/wps:ProcessAccepted", dom).getLength() > 0
                     || xpath.getMatchingNodes("//wps:Status/wps:ProcessStarted", dom).getLength()
-                            > 0
+                    > 0
                     || xpath.getMatchingNodes("//wps:Status/wps:ProcessQueued", dom).getLength()
-                            > 0) {
+                    > 0) {
                 waitAction.call();
             } else {
                 return dom;
@@ -297,7 +300,7 @@ public abstract class WPSTestSupport extends GeoServerSystemTestSupport {
             // are we still waiting for termination?
             if (xpath.getMatchingNodes("//wps:Status/wps:ProcessAccepted", dom).getLength() > 0
                     || xpath.getMatchingNodes("//wps:Status/wps:ProcessQueued", dom).getLength()
-                            > 0) {
+                    > 0) {
                 Thread.sleep(100);
             } else {
                 return dom;

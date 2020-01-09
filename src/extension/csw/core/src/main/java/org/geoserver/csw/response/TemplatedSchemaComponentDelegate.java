@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Writer;
 import java.nio.charset.Charset;
+
 import net.opengis.cat.csw20.DescribeRecordType;
 import org.geoserver.config.GeoServer;
 import org.geoserver.csw.CSWInfo;
@@ -68,10 +69,10 @@ public class TemplatedSchemaComponentDelegate implements SchemaComponentDelegate
         }
 
         try (BufferedReader reader =
-                new BufferedReader(
-                        new InputStreamReader(
-                                getClass().getResourceAsStream(schemaPath),
-                                Charset.forName("UTF-8")))) {
+                     new BufferedReader(
+                             new InputStreamReader(
+                                     getClass().getResourceAsStream(schemaPath),
+                                     Charset.forName("UTF-8")))) {
 
             String line;
             while ((line = reader.readLine()) != null) {

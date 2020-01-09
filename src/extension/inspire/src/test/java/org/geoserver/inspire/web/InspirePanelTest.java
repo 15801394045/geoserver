@@ -18,6 +18,7 @@ import static org.junit.Assert.fail;
 
 import java.io.Serializable;
 import java.util.List;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.feedback.FeedbackMessage;
 import org.apache.wicket.markup.html.form.CheckBox;

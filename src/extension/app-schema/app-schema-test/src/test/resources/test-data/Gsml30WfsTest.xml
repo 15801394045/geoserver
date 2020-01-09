@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <as:AppSchemaDataAccess xmlns:as="http://www.geotools.org/app-schema"
-    xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.geotools.org/app-schema AppSchemaDataAccess.xsd">
+                        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                        xsi:schemaLocation="http://www.geotools.org/app-schema AppSchemaDataAccess.xsd">
     <namespaces>
         <Namespace>
             <prefix>cgu</prefix>
@@ -45,7 +46,9 @@
     </sourceDataStores>
     <targetTypes>
         <FeatureType>
-            <schemaUri>https://www.seegrid.csiro.au/subversion/GeoSciML/branches/3.0.0_rc1_gml3.2/geosciml-core/3.0.0/xsd/geosciml-core.xsd</schemaUri>
+            <schemaUri>
+                https://www.seegrid.csiro.au/subversion/GeoSciML/branches/3.0.0_rc1_gml3.2/geosciml-core/3.0.0/xsd/geosciml-core.xsd
+            </schemaUri>
         </FeatureType>
     </targetTypes>
     <typeMappings>
@@ -100,7 +103,8 @@
                     </sourceExpression>
                 </AttributeMapping>
                 <AttributeMapping>
-                    <targetAttribute>gsml:resolutionScale/gmd:MD_RepresentativeFraction/gmd:denominator/gco:Integer</targetAttribute>
+                    <targetAttribute>gsml:resolutionScale/gmd:MD_RepresentativeFraction/gmd:denominator/gco:Integer
+                    </targetAttribute>
                     <sourceExpression>
                         <OCQL>250000</OCQL>
                     </sourceExpression>

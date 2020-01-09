@@ -94,7 +94,7 @@ public class GeofenceServerAdminPage extends GeoServerSecuredPage {
                             AjaxRequestTarget target, Transfer transfer, Location location) {
                         if (location == null
                                 || !(location.getComponent().getDefaultModel().getObject()
-                                        instanceof ShortAdminRule)) {
+                                instanceof ShortAdminRule)) {
                             return;
                         }
                         ShortAdminRule movedRule = transfer.getData();

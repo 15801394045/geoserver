@@ -13,6 +13,7 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.namespace.QName;
+
 import net.opengis.cat.csw20.DescribeRecordType;
 import org.geoserver.csw.records.RecordDescriptor;
 import org.geoserver.csw.store.CatalogStore;
@@ -62,7 +63,9 @@ public class DescribeRecord {
         return attds;
     }
 
-    /** Returns the requested feature types */
+    /**
+     * Returns the requested feature types
+     */
     public AttributeDescriptor[] run(DescribeRecordType request) {
         try {
             // check we are not asked for a schema language we do not support

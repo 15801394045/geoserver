@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
+
 import org.apache.commons.exec.CommandLine;
 import org.apache.commons.exec.DefaultExecutor;
 import org.apache.commons.exec.PumpStreamHandler;
@@ -92,7 +93,7 @@ public abstract class AbstractCommandLinePreTransform extends AbstractCommandLin
             // grab at least some part of the outputs
             int limit = 16 * 1024;
             try (OutputStream os = new BoundedOutputStream(new ByteArrayOutputStream(), limit);
-                    OutputStream es = new BoundedOutputStream(new ByteArrayOutputStream(), limit)) {
+                 OutputStream es = new BoundedOutputStream(new ByteArrayOutputStream(), limit)) {
                 PumpStreamHandler streamHandler = new PumpStreamHandler(os, es);
                 executor.setStreamHandler(streamHandler);
                 int result = executor.execute(cmd);
@@ -157,7 +158,9 @@ public abstract class AbstractCommandLinePreTransform extends AbstractCommandLin
      */
     protected abstract List<String> getReplacementTargetNames(ImportData data) throws IOException;
 
-    /** Returns true if the command line manipulates the input file directly */
+    /**
+     * Returns true if the command line manipulates the input file directly
+     */
     protected boolean isInline() {
         return false;
     }
@@ -196,7 +199,9 @@ public abstract class AbstractCommandLinePreTransform extends AbstractCommandLin
         return tempFile;
     }
 
-    /** Implementors must provide the executable to be run */
+    /**
+     * Implementors must provide the executable to be run
+     */
     protected abstract File getExecutable() throws IOException;
 
     /**

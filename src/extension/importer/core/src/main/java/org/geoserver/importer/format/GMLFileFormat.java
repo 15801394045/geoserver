@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+
 import org.apache.commons.io.FilenameUtils;
 import org.geoserver.catalog.AttributeTypeInfo;
 import org.geoserver.catalog.Catalog;
@@ -65,7 +66,7 @@ import org.xmlpull.v1.XmlPullParserFactory;
 public class GMLFileFormat extends VectorFormat {
 
     private static final Class[] TYPE_GUESS_TARGETS =
-            new Class[] {Integer.class, Long.class, Double.class, Boolean.class, Date.class};
+            new Class[]{Integer.class, Long.class, Double.class, Boolean.class, Date.class};
 
     private static final HashSet<Class> VALID_ATTRIBUTE_TYPES =
             new HashSet<>(
@@ -106,7 +107,9 @@ public class GMLFileFormat extends VectorFormat {
         public Configuration getConfiguration() {
             return configuration;
         }
-    };
+    }
+
+    ;
 
     @Override
     public FeatureReader read(ImportData data, ImportTask task) throws IOException {

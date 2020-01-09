@@ -18,6 +18,7 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+
 import org.geoserver.monitor.MonitorConfig;
 import org.geoserver.monitor.RequestData;
 import org.geoserver.platform.GeoServerExtensions;
@@ -32,7 +33,8 @@ import org.springframework.context.support.GenericApplicationContext;
 
 public class AuditLoggerTest {
 
-    @Rule public TemporaryFolder directory = new TemporaryFolder();
+    @Rule
+    public TemporaryFolder directory = new TemporaryFolder();
 
     private File bad;
     private File good;

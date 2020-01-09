@@ -8,6 +8,7 @@ package org.geoserver.wps;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import net.opengis.wps10.DescribeProcessType;
 import net.opengis.wps10.ExecuteResponseType;
 import net.opengis.wps10.ExecuteType;
@@ -21,13 +22,19 @@ import org.geoserver.platform.resource.Resource;
  * @author Justin Deoliveira, OpenGEO
  */
 public interface WebProcessingService {
-    /** Generates a XML object for the return of the getCapabilities request */
+    /**
+     * Generates a XML object for the return of the getCapabilities request
+     */
     WPSCapabilitiesType getCapabilities(GetCapabilitiesType request) throws WPSException;
 
-    /** Generates a XML object for the return of the describeProcess request */
+    /**
+     * Generates a XML object for the return of the describeProcess request
+     */
     ProcessDescriptionsType describeProcess(DescribeProcessType request) throws WPSException;
 
-    /** Executes a execute request and writes output to the Servlet response */
+    /**
+     * Executes a execute request and writes output to the Servlet response
+     */
     ExecuteResponseType execute(ExecuteType request) throws WPSException;
 
     /**
@@ -72,6 +79,8 @@ public interface WebProcessingService {
      */
     ExecuteResponseType dismiss(DismissType request) throws WPSException;
 
-    /** WPS service configuration. */
+    /**
+     * WPS service configuration.
+     */
     WPSInfo getServiceInfo();
 }

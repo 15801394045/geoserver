@@ -7,6 +7,7 @@ package org.geoserver.importer.web;
 
 import java.io.Serializable;
 import java.util.List;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.html.basic.Label;

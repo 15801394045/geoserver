@@ -10,6 +10,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.StringReader;
 import java.util.Map;
+
 import net.opengis.wfs20.StoredQueryDescriptionType;
 import org.apache.commons.io.IOUtils;
 import org.geoserver.catalog.impl.NamespaceInfoImpl;
@@ -93,7 +94,9 @@ public final class NamespacesWfsTest extends StationsAppSchemaTestSupport {
         checkWfs20StationsGetFeatureResult(document);
     }
 
-    /** * GetPropertyValue tests ** */
+    /**
+     * GetPropertyValue tests **
+     */
     @Test
     public void globalServiceGetPropertyValueNamespacesGml32() {
         Document document =
@@ -110,7 +113,9 @@ public final class NamespacesWfsTest extends StationsAppSchemaTestSupport {
         checkGml32StationsGetPropertyValueResult(document);
     }
 
-    /** * StoredQuery tests ** */
+    /**
+     * StoredQuery tests **
+     */
     @Test
     public void globalServiceStoredQueryNamespacesGml32() throws Exception {
         StoredQueryProvider storedQueryProvider = new StoredQueryProvider(getCatalog());
@@ -222,7 +227,9 @@ public final class NamespacesWfsTest extends StationsAppSchemaTestSupport {
         return processedString;
     }
 
-    /** Check the result of a WFS 1.1 (GML 3.1) get feature request targeting stations data set. */
+    /**
+     * Check the result of a WFS 1.1 (GML 3.1) get feature request targeting stations data set.
+     */
     private void checkWfs11StationsGetFeatureResult(Document document) {
         checkCount(
                 WFS11_XPATH_ENGINE,
@@ -238,7 +245,9 @@ public final class NamespacesWfsTest extends StationsAppSchemaTestSupport {
                         + "st_gml31:Station_gml31[@gml:id='st.1']/st_gml31:location/gml:Point[gml:pos='1 -1']");
     }
 
-    /** Check the result of a WFS 2.0 (GML 3.2) get feature request targeting stations data set. */
+    /**
+     * Check the result of a WFS 2.0 (GML 3.2) get feature request targeting stations data set.
+     */
     private void checkWfs20StationsGetFeatureResult(Document document) {
         checkCount(
                 WFS20_XPATH_ENGINE,

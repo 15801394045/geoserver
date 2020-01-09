@@ -6,6 +6,7 @@
 package org.geoserver.filter.function;
 
 import java.util.Set;
+
 import org.geoserver.config.GeoServer;
 import org.geoserver.config.GeoServerInitializer;
 import org.geoserver.config.impl.GeoServerLifecycleHandler;

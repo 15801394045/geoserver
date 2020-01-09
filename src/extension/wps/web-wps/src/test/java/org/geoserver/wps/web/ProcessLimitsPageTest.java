@@ -7,6 +7,7 @@ package org.geoserver.wps.web;
 import static org.junit.Assert.assertEquals;
 
 import java.util.List;
+
 import org.apache.wicket.markup.repeater.OddEvenItem;
 import org.geoserver.data.test.SystemTestData;
 import org.geoserver.wps.ProcessGroupInfo;

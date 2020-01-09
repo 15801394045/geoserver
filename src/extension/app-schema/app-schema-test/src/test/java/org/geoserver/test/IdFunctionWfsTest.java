@@ -11,6 +11,7 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
 import org.geoserver.data.test.SystemTestData;
 import org.geotools.data.complex.AppSchemaDataAccessRegistry;
 import org.junit.Test;
@@ -60,7 +61,9 @@ public class IdFunctionWfsTest extends AbstractAppSchemaTestSupport {
         super.setUpTestData(testData);
     }
 
-    /** Test whether GetFeature returns wfs:FeatureCollection. */
+    /**
+     * Test whether GetFeature returns wfs:FeatureCollection.
+     */
     @Test
     public void testGetFeature() {
         Document doc = getAsDOM("wfs?request=GetFeature&version=1.1.0&typename=gsml:MappedFeature");
@@ -68,7 +71,9 @@ public class IdFunctionWfsTest extends AbstractAppSchemaTestSupport {
         assertEquals("wfs:FeatureCollection", doc.getDocumentElement().getNodeName());
     }
 
-    /** Test content of GetFeature response. */
+    /**
+     * Test content of GetFeature response.
+     */
     @Test
     public void testGetFeatureContent() throws Exception {
         Document doc = getAsDOM("wfs?request=GetFeature&version=1.1.0&typename=gsml:MappedFeature");

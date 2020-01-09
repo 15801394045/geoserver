@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
+
 import org.custommonkey.xmlunit.SimpleNamespaceContext;
 import org.custommonkey.xmlunit.XMLUnit;
 import org.custommonkey.xmlunit.XpathEngine;
@@ -97,8 +98,11 @@ public abstract class GeofenceBaseTest extends GeoServerSystemTestSupport {
         }
     }
 
-    /** subclass hook to register additional namespaces. */
-    protected void registerNamespaces(Map<String, String> namespaces) {}
+    /**
+     * subclass hook to register additional namespaces.
+     */
+    protected void registerNamespaces(Map<String, String> namespaces) {
+    }
 
     @After
     public void after() {

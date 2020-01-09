@@ -7,6 +7,7 @@ package org.geoserver.wps.process;
 
 import java.io.IOException;
 import java.io.InputStream;
+
 import org.apache.commons.io.IOUtils;
 
 /**

@@ -6,7 +6,9 @@ package org.geoserver.importer.rest;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterators;
+
 import java.util.NoSuchElementException;
+
 import org.geoserver.importer.*;
 import org.geoserver.importer.rest.converters.ImportJSONWriter;
 import org.geoserver.rest.RestBaseController;
@@ -21,8 +23,8 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @ControllerAdvice
 @RequestMapping(
-    path = RestBaseController.ROOT_PATH + "/imports/{importId}",
-    produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypeExtensions.TEXT_JSON_VALUE}
+        path = RestBaseController.ROOT_PATH + "/imports/{importId}",
+        produces = {MediaType.APPLICATION_JSON_VALUE, MediaTypeExtensions.TEXT_JSON_VALUE}
 )
 public class ImportDataController extends ImportBaseController {
 
@@ -33,10 +35,10 @@ public class ImportDataController extends ImportBaseController {
     protected ImportJSONWriter converterWriter;
 
     @GetMapping(
-        value = {
-            "/data",
-            "/tasks/{taskId}/data",
-        }
+            value = {
+                    "/data",
+                    "/tasks/{taskId}/data",
+            }
     )
     public ImportData getData(
             @PathVariable Long importId, @PathVariable(required = false) Integer taskId)
@@ -60,10 +62,10 @@ public class ImportDataController extends ImportBaseController {
 
     // We need to force spring to ignore the .shp here (we don't want a .shp encoded response!
     @GetMapping(
-        value = {
-            "/data/files", "/tasks/{taskId}/data/files",
-            "/data/files/{fileName:.+}", "/tasks/{taskId}/data/files/{fileName:\\.+}"
-        }
+            value = {
+                    "/data/files", "/tasks/{taskId}/data/files",
+                    "/data/files/{fileName:.+}", "/tasks/{taskId}/data/files/{fileName:\\.+}"
+            }
     )
     public ImportData getDirectory(
             @PathVariable Long importId,
@@ -76,7 +78,7 @@ public class ImportDataController extends ImportBaseController {
 
     // We need to force spring to ignore the .shp here (we don't want a .shp encoded response!
     @DeleteMapping(
-        value = {"/data/files/{fileName:.+}", "/tasks/{taskId}/data/files/{fileName:\\.+}"}
+            value = {"/data/files/{fileName:.+}", "/tasks/{taskId}/data/files/{fileName:\\.+}"}
     )
     public ResponseEntity deleteDirectory(
             @PathVariable Long importId,

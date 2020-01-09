@@ -11,6 +11,7 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import javax.xml.namespace.QName;
+
 import org.geoserver.data.test.MockData;
 import org.geoserver.data.test.SystemTestData;
 import org.geoserver.data.test.SystemTestData.LayerProperty;
@@ -66,7 +67,7 @@ public abstract class BaseRasterToVectorTest extends WPSTestSupport {
      *
      * <p>Make sure the provided files ends with .shp.
      *
-     * @param fc the {@link SimpleFeatureCollection} to be encoded as a shapefile.
+     * @param fc          the {@link SimpleFeatureCollection} to be encoded as a shapefile.
      * @param destination the {@link File} where we want to write the shapefile.
      * @throws IOException in case an {@link IOException} is thrown by the underlying code.
      */

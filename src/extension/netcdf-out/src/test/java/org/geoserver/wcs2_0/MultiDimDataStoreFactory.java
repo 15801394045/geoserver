@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.Map;
+
 import org.geotools.data.DataStore;
 import org.geotools.data.DataStoreFactorySpi;
 
@@ -44,7 +45,7 @@ public class MultiDimDataStoreFactory implements DataStoreFactorySpi {
 
     @Override
     public Param[] getParametersInfo() {
-        return new DataStoreFactorySpi.Param[] {new Param("ParentLocation")};
+        return new DataStoreFactorySpi.Param[]{new Param("ParentLocation")};
     }
 
     @Override

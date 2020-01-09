@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 import java.util.logging.Level;
+
 import org.geoserver.data.test.LiveDbmsData;
 import org.geoserver.data.test.SystemTestData;
 
@@ -26,7 +27,8 @@ public abstract class ImporterDbTestSupport extends ImporterTestSupport {
         return new DbmsTestData(getDataDirectory().root(), getFixtureId(), null);
     }
 
-    protected void doSetUpInternal() throws Exception {}
+    protected void doSetUpInternal() throws Exception {
+    }
 
     protected abstract String getFixtureId();
 

@@ -18,6 +18,7 @@ import javax.mail.Multipart;
 import javax.mail.Session;
 import javax.mail.internet.MimeMessage;
 import javax.xml.namespace.QName;
+
 import org.custommonkey.xmlunit.SimpleNamespaceContext;
 import org.custommonkey.xmlunit.XMLUnit;
 import org.custommonkey.xmlunit.XpathEngine;
@@ -76,7 +77,9 @@ public abstract class WCSEOTestSupport extends GeoServerSystemTestSupport {
         IS_WINDOWS = windows;
     }
 
-    /** @return The global wcs instance from the application context. */
+    /**
+     * @return The global wcs instance from the application context.
+     */
     protected WCSInfo getWCS() {
         return getGeoServer().getService(WCSInfo.class);
     }

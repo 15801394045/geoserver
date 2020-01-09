@@ -5,12 +5,15 @@
 package org.geoserver.wps.property;
 
 import java.lang.reflect.InvocationTargetException;
+
 import org.apache.commons.beanutils.BeanUtils;
 import org.geoserver.wps.WPSException;
 import org.geotools.filter.expression.PropertyAccessor;
 import org.geotools.util.Converters;
 
-/** Extracts a property from any JavaBean using Spring bean utilities */
+/**
+ * Extracts a property from any JavaBean using Spring bean utilities
+ */
 public class BeanPropertyAccessor implements PropertyAccessor {
 
     @Override

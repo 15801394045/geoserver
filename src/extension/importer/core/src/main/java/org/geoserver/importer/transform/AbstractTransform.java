@@ -6,6 +6,7 @@
 package org.geoserver.importer.transform;
 
 import java.util.logging.Logger;
+
 import org.geotools.util.logging.Logging;
 
 public abstract class AbstractTransform implements ImportTransform {

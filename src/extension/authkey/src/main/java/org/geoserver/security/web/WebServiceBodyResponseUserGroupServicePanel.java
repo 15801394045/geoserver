@@ -11,11 +11,15 @@ import org.geoserver.security.web.role.RoleServiceChoice;
 import org.geoserver.security.web.usergroup.UserGroupServicePanel;
 import org.geoserver.web.wicket.HelpLink;
 
-/** @author Alessio Fabiani, GeoSolutions S.A.S. */
+/**
+ * @author Alessio Fabiani, GeoSolutions S.A.S.
+ */
 public class WebServiceBodyResponseUserGroupServicePanel
         extends UserGroupServicePanel<WebServiceBodyResponseUserGroupServiceConfig> {
 
-    /** serialVersionUID */
+    /**
+     * serialVersionUID
+     */
     private static final long serialVersionUID = -5204330095571014979L;
 
     public WebServiceBodyResponseUserGroupServicePanel(

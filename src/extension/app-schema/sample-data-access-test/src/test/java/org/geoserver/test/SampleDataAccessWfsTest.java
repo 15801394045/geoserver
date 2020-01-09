@@ -17,6 +17,7 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+
 import org.custommonkey.xmlunit.SimpleNamespaceContext;
 import org.custommonkey.xmlunit.XMLAssert;
 import org.custommonkey.xmlunit.XMLUnit;
@@ -50,9 +51,12 @@ public class SampleDataAccessWfsTest extends SampleDataAccessTestSupport {
     }
 
     @Override
-    protected void onTearDown(SystemTestData testData) throws Exception {}
+    protected void onTearDown(SystemTestData testData) throws Exception {
+    }
 
-    /** Test whether GetCapabilities returns wfs:WFS_Capabilities. */
+    /**
+     * Test whether GetCapabilities returns wfs:WFS_Capabilities.
+     */
     @Test
     public void testGetCapabilities() throws Exception {
         Document doc = getAsDOM("wfs?request=GetCapabilities&version=1.1.0");
@@ -60,7 +64,9 @@ public class SampleDataAccessWfsTest extends SampleDataAccessTestSupport {
         assertEquals("wfs:WFS_Capabilities", doc.getDocumentElement().getNodeName());
     }
 
-    /** Test whether DescribeFeatureType returns xsd:schema. */
+    /**
+     * Test whether DescribeFeatureType returns xsd:schema.
+     */
     @Test
     public void testDescribeFeatureType() throws Exception {
         Document doc =
@@ -70,7 +76,9 @@ public class SampleDataAccessWfsTest extends SampleDataAccessTestSupport {
         assertEquals("xsd:schema", doc.getDocumentElement().getNodeName());
     }
 
-    /** Test whether GetFeature returns wfs:FeatureCollection. */
+    /**
+     * Test whether GetFeature returns wfs:FeatureCollection.
+     */
     @Test
     public void testGetFeature() throws Exception {
         Document doc = getAsDOM("wfs?request=GetFeature&version=1.1.0&typename=gsml:MappedFeature");
@@ -78,7 +86,9 @@ public class SampleDataAccessWfsTest extends SampleDataAccessTestSupport {
         assertEquals("wfs:FeatureCollection", doc.getDocumentElement().getNodeName());
     }
 
-    /** Test content of GetFeature response. */
+    /**
+     * Test content of GetFeature response.
+     */
     @Test
     public void testGetFeatureContent() throws Exception {
         Document doc = getAsDOM("wfs?request=GetFeature&version=1.1.0&typename=gsml:MappedFeature");
@@ -129,7 +139,7 @@ public class SampleDataAccessWfsTest extends SampleDataAccessTestSupport {
      *
      * @param count expected number of matches
      * @param xpath xpath expression
-     * @param doc document under test
+     * @param doc   document under test
      */
     public void assertXpathCount(int count, String xpath, Document doc) throws Exception {
         XpathEngine engine = XMLUnit.newXpathEngine();

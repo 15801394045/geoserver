@@ -14,10 +14,14 @@ import org.geoserver.web.netcdf.NetCDFSettingsContainer;
 import org.geoserver.web.publish.PublishedEditTabPanel;
 import org.geoserver.web.util.MetadataMapModel;
 
-/** {@link LayerEditTabPanel} implementation for configuring NetCDF output settings */
+/**
+ * {@link LayerEditTabPanel} implementation for configuring NetCDF output settings
+ */
 public class NetCDFOutTabPanel extends PublishedEditTabPanel<LayerInfo> {
 
-    /** serialVersionUID */
+    /**
+     * serialVersionUID
+     */
     private static final long serialVersionUID = 1L;
 
     public NetCDFOutTabPanel(

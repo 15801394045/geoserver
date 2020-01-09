@@ -9,6 +9,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.geoserver.catalog.StoreInfo;
@@ -29,7 +30,9 @@ import org.junit.Test;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
 
-/** @author Ian Schneider <ischneider@opengeo.org> */
+/**
+ * @author Ian Schneider <ischneider@opengeo.org>
+ */
 public class ImportJSONIOTest extends ImporterTestSupport {
 
     private ImportJSONWriter writer;

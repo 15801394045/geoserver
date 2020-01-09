@@ -10,8 +10,8 @@ import java.util.Iterator;
 /**
  * Data access interface for persisting imports.
  *
- * @todo refactor various queries into query object
  * @author Justin Deoliveira, OpenGeo
+ * @todo refactor various queries into query object
  */
 public interface ImportStore {
 

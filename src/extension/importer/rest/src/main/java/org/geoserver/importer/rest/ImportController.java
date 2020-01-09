@@ -7,6 +7,7 @@ package org.geoserver.importer.rest;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.Iterator;
+
 import org.geoserver.catalog.StoreInfo;
 import org.geoserver.catalog.WorkspaceInfo;
 import org.geoserver.importer.ImportContext;
@@ -35,8 +36,8 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @RequestMapping(
-    path = RestBaseController.ROOT_PATH + "/imports",
-    produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.TEXT_HTML_VALUE}
+        path = RestBaseController.ROOT_PATH + "/imports",
+        produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.TEXT_HTML_VALUE}
 )
 public class ImportController extends ImportBaseController {
 

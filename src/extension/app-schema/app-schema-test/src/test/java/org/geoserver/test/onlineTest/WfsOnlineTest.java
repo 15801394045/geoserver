@@ -16,10 +16,14 @@ public abstract class WfsOnlineTest extends AbstractDataReferenceWfsTest {
         super();
     }
 
-    /** URI for om namespace. */
+    /**
+     * URI for om namespace.
+     */
     protected static final String OM_URI = "http://www.opengis.net/om/1.0";
 
-    /** Schema URL for observation and measurements */
+    /**
+     * Schema URL for observation and measurements
+     */
     protected static final String OM_SCHEMA_LOCATION_URL =
             "http://schemas.opengis.net/om/1.0.0/observation.xsd";
 

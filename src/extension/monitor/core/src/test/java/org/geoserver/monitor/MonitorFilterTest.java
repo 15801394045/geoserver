@@ -17,6 +17,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -63,7 +64,8 @@ public class MonitorFilterTest {
     }
 
     @After
-    public void tearDown() throws Exception {}
+    public void tearDown() throws Exception {
+    }
 
     @Test
     public void testSimple() throws Exception {

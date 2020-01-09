@@ -7,6 +7,7 @@ package org.geoserver.monitor.web;
 
 import java.util.Calendar;
 import java.util.Date;
+
 import org.geoserver.monitor.Monitor;
 import org.jfree.data.time.Day;
 import org.jfree.data.time.RegularTimePeriod;
@@ -29,7 +30,7 @@ public class MonthlyActivityPanel extends ActivityChartBasePanel {
         then.set(Calendar.MINUTE, 0);
         then.set(Calendar.SECOND, 0);
 
-        return new Date[] {then.getTime(), now};
+        return new Date[]{then.getTime(), now};
     }
 
     @Override

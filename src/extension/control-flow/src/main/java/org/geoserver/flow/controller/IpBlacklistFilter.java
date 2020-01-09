@@ -19,6 +19,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.geoserver.filters.GeoServerFilter;
 import org.geoserver.platform.GeoServerExtensions;
 import org.geoserver.platform.GeoServerResourceLoader;
@@ -54,7 +55,9 @@ public class IpBlacklistFilter implements GeoServerFilter {
         configFile = null;
     }
 
-    /** Default constructor */
+    /**
+     * Default constructor
+     */
     public IpBlacklistFilter() {
         try {
             GeoServerResourceLoader loader =
@@ -69,7 +72,9 @@ public class IpBlacklistFilter implements GeoServerFilter {
         }
     }
 
-    /** Filters ip black list */
+    /**
+     * Filters ip black list
+     */
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {

@@ -18,7 +18,9 @@ import org.opengis.feature.type.GeometryDescriptor;
 public class AttributesToPointGeometryTransform extends AbstractTransform
         implements InlineVectorTransform {
 
-    /** serialVersionUID */
+    /**
+     * serialVersionUID
+     */
     private static final long serialVersionUID = 1L;
 
     private static final String POINT_NAME = "location";

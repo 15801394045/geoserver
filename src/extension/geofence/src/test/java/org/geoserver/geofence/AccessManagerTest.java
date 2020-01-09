@@ -14,6 +14,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import org.geoserver.catalog.LayerInfo;
 import org.geoserver.catalog.PublishedInfo;
 import org.geoserver.catalog.StoreInfo;
@@ -66,8 +67,8 @@ public class AccessManagerTest extends GeofenceBaseTest {
                         "admin",
                         "geoserver",
                         Arrays.asList(
-                                new GrantedAuthority[] {
-                                    new SimpleGrantedAuthority("ROLE_ADMINISTRATOR")
+                                new GrantedAuthority[]{
+                                        new SimpleGrantedAuthority("ROLE_ADMINISTRATOR")
                                 }));
 
         // check workspace access
@@ -97,8 +98,8 @@ public class AccessManagerTest extends GeofenceBaseTest {
                         "cite",
                         "cite",
                         Arrays.asList(
-                                new GrantedAuthority[] {
-                                    new SimpleGrantedAuthority("ROLE_AUTHENTICATED")
+                                new GrantedAuthority[]{
+                                        new SimpleGrantedAuthority("ROLE_AUTHENTICATED")
                                 }));
 
         // check workspace access
@@ -120,8 +121,8 @@ public class AccessManagerTest extends GeofenceBaseTest {
                         "cite",
                         "cite",
                         Arrays.asList(
-                                new GrantedAuthority[] {
-                                    new SimpleGrantedAuthority("ROLE_AUTHENTICATED")
+                                new GrantedAuthority[]{
+                                        new SimpleGrantedAuthority("ROLE_AUTHENTICATED")
                                 }));
 
         // check workspace access
@@ -355,8 +356,8 @@ public class AccessManagerTest extends GeofenceBaseTest {
                         "admin",
                         "geoserver",
                         Arrays.asList(
-                                new GrantedAuthority[] {
-                                    new SimpleGrantedAuthority("ROLE_ADMINISTRATOR")
+                                new GrantedAuthority[]{
+                                        new SimpleGrantedAuthority("ROLE_ADMINISTRATOR")
                                 }));
         SecurityContextHolder.getContext().setAuthentication(user);
         List<MapLayerInfo> mapLayersInfos = new ArrayList<>();

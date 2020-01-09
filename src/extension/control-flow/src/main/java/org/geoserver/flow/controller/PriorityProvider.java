@@ -17,7 +17,7 @@ public interface PriorityProvider {
      *
      * @param request The request whose priority needs to be evaluated
      * @return A priority value (any number will do, higher number, higher priority, this is a user
-     *     visible parameter so using a obvious order instead of a computer friendly one)
+     * visible parameter so using a obvious order instead of a computer friendly one)
      */
     int getPriority(Request request);
 }

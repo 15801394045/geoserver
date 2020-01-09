@@ -9,11 +9,14 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 import java.util.Collections;
+
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 import org.springframework.mock.web.MockHttpServletResponse;
 
-/** Checks having two nested attributes with the same xpath and different FEATURE_LINK */
+/**
+ * Checks having two nested attributes with the same xpath and different FEATURE_LINK
+ */
 public class SameNestedAttributeTest extends AbstractAppSchemaTestSupport {
 
     private static final String STATIONS_PREFIX = "st";

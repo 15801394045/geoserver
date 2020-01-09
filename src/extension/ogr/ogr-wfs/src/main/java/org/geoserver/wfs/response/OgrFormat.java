@@ -7,6 +7,7 @@ package org.geoserver.wfs.response;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+
 import org.geoserver.ogr.core.Format;
 import org.geoserver.ogr.core.OutputType;
 
@@ -58,7 +59,9 @@ public class OgrFormat extends Format {
                 options);
     }
 
-    /** The -f parameter */
+    /**
+     * The -f parameter
+     */
     private String ogrFormat;
 
     private String formatName;

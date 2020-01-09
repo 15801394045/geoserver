@@ -13,10 +13,13 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+
 import org.apache.commons.io.IOUtils;
 import org.w3c.dom.Document;
 
-/** Tests Resources Utils */
+/**
+ * Tests Resources Utils
+ */
 public final class Resources {
 
     public static final String TEST_DATA_DIR = "test-data";
@@ -49,5 +52,6 @@ public final class Resources {
         return output;
     }
 
-    private Resources() {}
+    private Resources() {
+    }
 }

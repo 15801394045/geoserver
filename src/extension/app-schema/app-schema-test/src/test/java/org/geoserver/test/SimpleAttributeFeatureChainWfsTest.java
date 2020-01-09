@@ -12,6 +12,7 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assume.assumeTrue;
 
 import java.io.IOException;
+
 import org.geoserver.catalog.FeatureTypeInfo;
 import org.geotools.appschema.filter.FilterFactoryImplNamespaceAware;
 import org.geotools.appschema.jdbc.NestedFilterToSQL;
@@ -42,7 +43,9 @@ public class SimpleAttributeFeatureChainWfsTest extends AbstractAppSchemaTestSup
         return new SimpleAttributeFeatureChainMockData();
     }
 
-    /** Test that feature chaining for gml:name works. */
+    /**
+     * Test that feature chaining for gml:name works.
+     */
     @Test
     public void testGetFeature() {
         String path = "wfs?request=GetFeature&version=1.1.0&typeName=gsml:MappedFeature";
@@ -116,7 +119,9 @@ public class SimpleAttributeFeatureChainWfsTest extends AbstractAppSchemaTestSup
                 doc);
     }
 
-    /** Test reprojecting with feature chained geometry. */
+    /**
+     * Test reprojecting with feature chained geometry.
+     */
     @Test
     public void testReprojecting() {
         String path =
@@ -193,7 +198,9 @@ public class SimpleAttributeFeatureChainWfsTest extends AbstractAppSchemaTestSup
                 doc);
     }
 
-    /** Test that filtering feature chained values works. */
+    /**
+     * Test that filtering feature chained values works.
+     */
     @Test
     public void testAttributeFilter() {
         // filter by name
@@ -296,7 +303,9 @@ public class SimpleAttributeFeatureChainWfsTest extends AbstractAppSchemaTestSup
                 doc);
     }
 
-    /** Test filtering client properties. */
+    /**
+     * Test filtering client properties.
+     */
     @Test
     public void testClientPropertiesFilter() {
         // filter by codespace coming from parent table
@@ -570,7 +579,9 @@ public class SimpleAttributeFeatureChainWfsTest extends AbstractAppSchemaTestSup
         assertContainsFeatures(fs.getFeatures(notEquals), "mf1", "mf2", "mf3", "mf4");
     }
 
-    /** Checks a nested OR condition with UNION improvement on and off */
+    /**
+     * Checks a nested OR condition with UNION improvement on and off
+     */
     @Test
     public void testUnionImprovement() throws IOException, FilterToSQLException {
         FeatureTypeInfo ftInfo = getCatalog().getFeatureTypeByName("gsml", "MappedFeature");

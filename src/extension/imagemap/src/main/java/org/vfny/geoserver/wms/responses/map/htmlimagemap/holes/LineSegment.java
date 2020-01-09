@@ -6,6 +6,7 @@
 package org.vfny.geoserver.wms.responses.map.htmlimagemap.holes;
 
 import javax.vecmath.GVector;
+
 import org.locationtech.jts.geom.Coordinate;
 
 /**
@@ -17,7 +18,8 @@ public class LineSegment {
     public Vertex A;
     public Vertex B;
 
-    public LineSegment() {}
+    public LineSegment() {
+    }
 
     public LineSegment(Vertex a, Vertex b) {
         A = a;
@@ -34,11 +36,11 @@ public class LineSegment {
     public Float intersectsWithRay(Coordinate origin, Coordinate direction) {
         float largestDistance =
                 Math.max(
-                                (float) (A.getPosition().x - origin.x),
-                                (float) (B.getPosition().x - origin.x))
+                        (float) (A.getPosition().x - origin.x),
+                        (float) (B.getPosition().x - origin.x))
                         * 2f;
-        GVector v = new GVector(new double[] {origin.x, origin.y});
-        GVector d = new GVector(new double[] {direction.x, direction.y});
+        GVector v = new GVector(new double[]{origin.x, origin.y});
+        GVector d = new GVector(new double[]{direction.x, direction.y});
         d.scale(largestDistance);
         v.add(d);
         LineSegment raySegment =
@@ -49,8 +51,8 @@ public class LineSegment {
         Float value = null;
 
         if (intersection != null) {
-            v = new GVector(new double[] {origin.x, origin.y});
-            v.sub(new GVector(new double[] {intersection.x, intersection.y}));
+            v = new GVector(new double[]{origin.x, origin.y});
+            v.sub(new GVector(new double[]{intersection.x, intersection.y}));
             double dist = v.norm();
             value = Float.valueOf((float) dist);
         }
@@ -83,8 +85,8 @@ public class LineSegment {
         double ub = ubNum / denom;
 
         if (clamp(ua, 0f, 1f) != ua || clamp(ub, 0f, 1f) != ub) return null;
-        GVector v = new GVector(new double[] {a.A.getPosition().x, a.A.getPosition().y});
-        GVector d = new GVector(new double[] {a.B.getPosition().x, a.B.getPosition().y});
+        GVector v = new GVector(new double[]{a.A.getPosition().x, a.A.getPosition().y});
+        GVector d = new GVector(new double[]{a.B.getPosition().x, a.B.getPosition().y});
         d.sub(v);
         d.scale(ua);
         d.add(v);

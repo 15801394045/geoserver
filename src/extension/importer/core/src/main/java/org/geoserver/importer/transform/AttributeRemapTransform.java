@@ -22,10 +22,14 @@ public class AttributeRemapTransform extends AbstractTransform implements Inline
 
     private static final long serialVersionUID = 1L;
 
-    /** field to remap */
+    /**
+     * field to remap
+     */
     protected String field;
 
-    /** type to remap to */
+    /**
+     * type to remap to
+     */
     protected Class type;
 
     public AttributeRemapTransform(String field, Class type) {
@@ -33,7 +37,8 @@ public class AttributeRemapTransform extends AbstractTransform implements Inline
         this.type = type;
     }
 
-    protected AttributeRemapTransform() {}
+    protected AttributeRemapTransform() {
+    }
 
     public String getField() {
         return field;

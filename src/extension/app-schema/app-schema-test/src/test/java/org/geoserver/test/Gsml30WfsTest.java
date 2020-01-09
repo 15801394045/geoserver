@@ -19,13 +19,17 @@ import org.w3c.dom.Document;
  */
 public class Gsml30WfsTest extends AbstractAppSchemaTestSupport {
 
-    /** @see org.geoserver.test.AbstractAppSchemaTestSupport#buildTestData() */
+    /**
+     * @see org.geoserver.test.AbstractAppSchemaTestSupport#buildTestData()
+     */
     @Override
     protected Gsml30MockData createTestData() {
         return new Gsml30MockData();
     }
 
-    /** Test DescribeFeatureType response. */
+    /**
+     * Test DescribeFeatureType response.
+     */
     @Test
     public void testDescribeFeatureType() {
         String path = "wfs?request=DescribeFeatureType&typename=gsml:MappedFeature&version=1.1.0";
@@ -47,7 +51,9 @@ public class Gsml30WfsTest extends AbstractAppSchemaTestSupport {
         assertXpathCount(0, "//xsd:element", doc);
     }
 
-    /** Test whether GetFeature returns wfs:FeatureCollection. */
+    /**
+     * Test whether GetFeature returns wfs:FeatureCollection.
+     */
     @Test
     public void testGetFeature() {
         String path = "wfs?request=GetFeature&typename=gsml:MappedFeature&outputFormat=gml32";
@@ -58,7 +64,9 @@ public class Gsml30WfsTest extends AbstractAppSchemaTestSupport {
         assertEquals("FeatureCollection", doc.getDocumentElement().getLocalName());
     }
 
-    /** Test whether GetFeature response is schema-valid. */
+    /**
+     * Test whether GetFeature response is schema-valid.
+     */
     @Test
     public void testGetFeatureValid() {
         String path = "wfs?request=GetFeature&typename=gsml:MappedFeature&outputFormat=gml32";
@@ -68,7 +76,9 @@ public class Gsml30WfsTest extends AbstractAppSchemaTestSupport {
         validateGet(path);
     }
 
-    /** Test content of GetFeature response. */
+    /**
+     * Test content of GetFeature response.
+     */
     @Test
     public void testGetFeatureContent() throws Exception {
         String path = "wfs?request=GetFeature&typename=gsml:MappedFeature&outputFormat=gml32";
@@ -93,7 +103,9 @@ public class Gsml30WfsTest extends AbstractAppSchemaTestSupport {
                 doc);
     }
 
-    /** Test namespace of GetFeature response. */
+    /**
+     * Test namespace of GetFeature response.
+     */
     @Test
     public void testNamespace() throws Exception {
         String path = "wfs?request=GetFeature&typename=gsml:MappedFeature&outputFormat=gml32";

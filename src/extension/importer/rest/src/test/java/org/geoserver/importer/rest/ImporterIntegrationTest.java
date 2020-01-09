@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+
 import net.sf.json.JSONObject;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.SystemUtils;
@@ -617,13 +618,13 @@ public class ImporterIntegrationTest extends ImporterTestSupport {
         props.put("SPI", "org.geotools.data.h2.H2DataStoreFactory");
         props.put("database", "empty");
         try (FileOutputStream fos =
-                new FileOutputStream(new File(mosaicRoot, "datastore.properties"))) {
+                     new FileOutputStream(new File(mosaicRoot, "datastore.properties"))) {
             props.store(fos, null);
         }
         props.clear();
         props.put("CanBeEmpty", "true");
         try (FileOutputStream fos =
-                new FileOutputStream(new File(mosaicRoot, "indexer.properties"))) {
+                     new FileOutputStream(new File(mosaicRoot, "indexer.properties"))) {
             props.store(fos, null);
         }
         CatalogBuilder cb = new CatalogBuilder(catalog);
@@ -1120,6 +1121,7 @@ public class ImporterIntegrationTest extends ImporterTestSupport {
                 polygon.getId(),
                 catalog.getLayerByName(basicPolygonsName).getDefaultStyle().getId());
     }
+
     // GEOS-9073
     @Test
     public void testCharsetEncodingOption() throws Exception {

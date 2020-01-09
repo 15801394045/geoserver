@@ -6,6 +6,7 @@
 package org.geoserver.wps.gs;
 
 import com.google.common.base.Splitter;
+
 import java.awt.*;
 import java.awt.image.ColorModel;
 import java.awt.image.ComponentColorModel;
@@ -31,6 +32,7 @@ import java.util.regex.Pattern;
 import javax.media.jai.ImageLayout;
 import javax.media.jai.JAI;
 import javax.media.jai.operator.ConstantDescriptor;
+
 import org.apache.commons.io.IOUtils;
 import org.geoserver.wps.WPSException;
 import org.geoserver.wps.resource.WPSFileResource;
@@ -60,8 +62,8 @@ import org.opengis.referencing.crs.CoordinateReferenceSystem;
  * @author Andrea Aime, GeoSolutions SAS
  */
 @DescribeProcess(
-    title = "Georectify Coverage",
-    description = "Georectifies a raster via Ground Control Points using gdal_warp"
+        title = "Georectify Coverage",
+        description = "Georectifies a raster via Ground Control Points using gdal_warp"
 )
 public class GeorectifyCoverage implements GeoServerProcess {
 
@@ -87,72 +89,73 @@ public class GeorectifyCoverage implements GeoServerProcess {
         this.config = config;
     }
 
-    public GeorectifyCoverage() {}
+    public GeorectifyCoverage() {
+    }
 
     @DescribeResults({
-        @DescribeResult(
-            name = "result",
-            description = "Georectified raster",
-            type = GridCoverage2D.class
-        ),
-        @DescribeResult(
-            name = "path",
-            description = "Pathname of the generated raster on the server",
-            type = String.class
-        )
+            @DescribeResult(
+                    name = "result",
+                    description = "Georectified raster",
+                    type = GridCoverage2D.class
+            ),
+            @DescribeResult(
+                    name = "path",
+                    description = "Pathname of the generated raster on the server",
+                    type = String.class
+            )
     })
     public Map<String, Object> execute(
             @DescribeParameter(name = "data", description = "Input raster") GridCoverage2D coverage,
             @DescribeParameter(
-                        name = "gcp",
-                        description =
-                                "List of Ground control points.  Points are specified as [x,y] or [x,y,z]."
-                    )
+                    name = "gcp",
+                    description =
+                            "List of Ground control points.  Points are specified as [x,y] or [x,y,z]."
+            )
                     String gcps,
             @DescribeParameter(name = "bbox", description = "Bounding box for output", min = 0)
                     Envelope bbox,
             @DescribeParameter(
-                        name = "targetCRS",
-                        description = "Coordinate reference system to use for the output raster"
-                    )
+                    name = "targetCRS",
+                    description = "Coordinate reference system to use for the output raster"
+            )
                     CoordinateReferenceSystem crs,
             @DescribeParameter(
-                        name = "width",
-                        description = "Width of output raster in pixels",
-                        min = 0
-                    )
+                    name = "width",
+                    description = "Width of output raster in pixels",
+                    min = 0
+            )
                     Integer width,
             @DescribeParameter(
-                        name = "height",
-                        description = "Height of output raster in pixels",
-                        min = 0
-                    )
+                    name = "height",
+                    description = "Height of output raster in pixels",
+                    min = 0
+            )
                     Integer height,
             @DescribeParameter(
-                        name = "warpOrder",
-                        min = 0,
-                        description = "Order of the warping polynomial (1 to 3)"
-                    )
+                    name = "warpOrder",
+                    min = 0,
+                    description = "Order of the warping polynomial (1 to 3)"
+            )
                     Integer warpOrder,
             @DescribeParameter(
-                        name = "transparent",
-                        min = 0,
-                        description = "Force output to have transparent background",
-                        defaultValue = "true"
-                    )
+                    name = "transparent",
+                    min = 0,
+                    description = "Force output to have transparent background",
+                    defaultValue = "true"
+            )
                     Boolean transparent,
             @DescribeParameter(
-                        name = "store",
-                        min = 0,
-                        description = "Indicates whether to keep the output file after processing",
-                        defaultValue = "false"
-                    )
+                    name = "store",
+                    min = 0,
+                    description = "Indicates whether to keep the output file after processing",
+                    defaultValue = "false"
+            )
                     Boolean store,
             @DescribeParameter(
-                        name = "outputPath",
-                        min = 0,
-                        description = "Pathname where the output file is stored"
-                    )
+                    name = "outputPath",
+                    min = 0,
+                    description = "Pathname where the output file is stored"
+            )
                     String outputPath)
             throws IOException {
 
@@ -196,7 +199,7 @@ public class GeorectifyCoverage implements GeoServerProcess {
                             ConstantDescriptor.create(
                                     Float.valueOf(image.getWidth()),
                                     Float.valueOf(image.getHeight()),
-                                    new Byte[] {Byte.valueOf((byte) 255)},
+                                    new Byte[]{Byte.valueOf((byte) 255)},
                                     new RenderingHints(JAI.KEY_IMAGE_LAYOUT, tempLayout));
                     iw.addBand(alpha, false);
                     image = iw.getRenderedImage();
@@ -375,11 +378,11 @@ public class GeorectifyCoverage implements GeoServerProcess {
     }
 
     /**
-     * @param originalFile {@link File} referring the dataset to be warped
+     * @param originalFile   {@link File} referring the dataset to be warped
      * @param targetEnvelope the target envelope
-     * @param width the final image's width
-     * @param height the final image's height
-     * @param targetCRS the target coordinate reference system
+     * @param width          the final image's width
+     * @param height         the final image's height
+     * @param targetCRS      the target coordinate reference system
      * @throws IOException
      */
     private File warpFile(
@@ -419,11 +422,11 @@ public class GeorectifyCoverage implements GeoServerProcess {
      * A simple utility method setting up the command arguments for gdalWarp
      *
      * @param targetEnvelope the target envelope in the form: xmin ymin xmax ymax
-     * @param width the target image width
-     * @param height the target image height
-     * @param targetCrs the target crs
-     * @param order the warping polynomial order
-     * @param inputFilePath the path of the file referring to the dataset to be warped
+     * @param width          the target image width
+     * @param height         the target image height
+     * @param targetCrs      the target crs
+     * @param order          the warping polynomial order
+     * @param inputFilePath  the path of the file referring to the dataset to be warped
      * @param outputFilePath the path of the file referring to the produced dataset
      */
     @SuppressWarnings("serial")
@@ -463,8 +466,8 @@ public class GeorectifyCoverage implements GeoServerProcess {
     private static String getError(File logFile) throws IOException {
         StringBuilder message = new StringBuilder();
         try (InputStream stream = new FileInputStream(logFile);
-                InputStreamReader streamReader = new InputStreamReader(stream);
-                BufferedReader reader = new BufferedReader(streamReader)) {
+             InputStreamReader streamReader = new InputStreamReader(stream);
+             BufferedReader reader = new BufferedReader(streamReader)) {
             String strLine;
             while ((strLine = reader.readLine()) != null) {
                 message.append(strLine);
@@ -511,7 +514,7 @@ public class GeorectifyCoverage implements GeoServerProcess {
      * input file.
      *
      * @param originalFilePath the path of the file referring to the original image.
-     * @param gcp the Ground Control Points option to be attached to the translating command.
+     * @param gcp              the Ground Control Points option to be attached to the translating command.
      * @return a File containing the translated dataset.
      * @throws IOException
      */
@@ -519,8 +522,7 @@ public class GeorectifyCoverage implements GeoServerProcess {
             final String originalFilePath, final List<String> gcp, final List<String> parameters)
             throws IOException {
         final File vrtFile = File.createTempFile("vrt_", ".vrt", config.getTempFolder());
-        @SuppressWarnings("serial")
-        final List<String> arguments =
+        @SuppressWarnings("serial") final List<String> arguments =
                 new ArrayList<String>() {
                     {
                         add("-of");
@@ -541,8 +543,7 @@ public class GeorectifyCoverage implements GeoServerProcess {
 
     private File expandRgba(final String originalFilePath) throws IOException {
         final File expandedFile = File.createTempFile("rgba", ".tif", config.getTempFolder());
-        @SuppressWarnings("serial")
-        final List<String> arguments =
+        @SuppressWarnings("serial") final List<String> arguments =
                 new ArrayList<String>() {
                     {
                         addAll(splitToList("-expand RGBA -co TILED=yes -co COMPRESS=LZW"));

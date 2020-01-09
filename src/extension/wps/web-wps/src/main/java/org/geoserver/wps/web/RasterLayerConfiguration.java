@@ -6,6 +6,7 @@
 package org.geoserver.wps.web;
 
 import java.io.Serializable;
+
 import org.geotools.geometry.jts.ReferencedEnvelope;
 
 /**

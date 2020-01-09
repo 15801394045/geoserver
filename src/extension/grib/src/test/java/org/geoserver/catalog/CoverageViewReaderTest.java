@@ -16,6 +16,7 @@ import java.util.Collections;
 import java.util.List;
 import javax.media.jai.ImageLayout;
 import javax.xml.namespace.QName;
+
 import org.geoserver.catalog.CoverageView.CompositionType;
 import org.geoserver.catalog.CoverageView.CoverageBand;
 import org.geoserver.catalog.CoverageView.InputCoverageBand;
@@ -176,7 +177,9 @@ public class CoverageViewReaderTest extends GeoServerSystemTestSupport {
         multiBandCoverageView = new CoverageView("multiband_select", coverageBands);
     }
 
-    /** */
+    /**
+     *
+     */
     @Test
     public void testCoverageView() throws Exception {
         createCoverageView();
@@ -242,7 +245,7 @@ public class CoverageViewReaderTest extends GeoServerSystemTestSupport {
         ((GridCoverage2D) coverage).dispose(true);
         final GridCoverageReader reader =
                 resPool.getGridCoverageReader(coverageInfo, "multiband_select", null);
-        int[] bandIndices = new int[] {2, 0, 1, 0, 2, 2, 2, 3};
+        int[] bandIndices = new int[]{2, 0, 1, 0, 2, 2, 2, 3};
         Parameter<int[]> bandIndicesParam = null;
 
         if (bandIndices != null) {
@@ -316,7 +319,7 @@ public class CoverageViewReaderTest extends GeoServerSystemTestSupport {
         ((GridCoverage2D) coverage).dispose(true);
         final GridCoverageReader reader =
                 resPool.getGridCoverageReader(coverageInfo, "multiband_select", null);
-        int[] bandIndices = new int[] {2, 0, 1, 0, 2, 2, 2, 3, 4, 0, 1, 0, 4, 2, 3};
+        int[] bandIndices = new int[]{2, 0, 1, 0, 2, 2, 2, 3, 4, 0, 1, 0, 4, 2, 3};
         Parameter<int[]> bandIndicesParam = null;
 
         if (bandIndices != null) {

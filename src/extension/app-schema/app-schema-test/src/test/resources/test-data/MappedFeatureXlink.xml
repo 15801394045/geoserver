@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <as:AppSchemaDataAccess xmlns:as="http://www.geotools.org/app-schema"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.geotools.org/app-schema AppSchemaDataAccess.xsd">
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                        xsi:schemaLocation="http://www.geotools.org/app-schema AppSchemaDataAccess.xsd">
     <namespaces>
         <Namespace>
             <prefix>xlink</prefix>
@@ -36,14 +37,14 @@
             <sourceDataStore>MappedFeaturePropertyfile</sourceDataStore>
             <sourceType>MappedFeaturePropertyfile</sourceType>
             <targetElement>
-				gsml:MappedFeature
-			</targetElement>
+                gsml:MappedFeature
+            </targetElement>
             <attributeMappings>
                 <AttributeMapping>
                     <targetAttribute>
-						gsml:MappedFeature
-					</targetAttribute>					
-					<idExpression>
+                        gsml:MappedFeature
+                    </targetAttribute>
+                    <idExpression>
                         <OCQL>ID</OCQL>
                     </idExpression>
                 </AttributeMapping>

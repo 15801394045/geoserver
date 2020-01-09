@@ -10,6 +10,7 @@ import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+
 import org.geoserver.geoserver.authentication.auth.GeoFenceAuthenticationProvider;
 import org.geoserver.geoserver.authentication.auth.GeoFenceSecurityProvider;
 import org.geoserver.security.GeoServerSecurityManager;
@@ -22,7 +23,9 @@ import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.authentication.www.BasicAuthenticationEntryPoint;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
-/** @author ETj (etj at geo-solutions.it) */
+/**
+ * @author ETj (etj at geo-solutions.it)
+ */
 public class GeoFenceAuthFilter
         // extends GeoServerSecurityFilter
         extends GeoServerCompositeFilter implements GeoServerAuthenticationFilter {
@@ -91,7 +94,9 @@ public class GeoFenceAuthFilter
         // chain.doFilter(request, response);
     }
 
-    /** Simple username+password container */
+    /**
+     * Simple username+password container
+     */
     class BasicUser {
         String name;
 
@@ -103,13 +108,17 @@ public class GeoFenceAuthFilter
         }
     }
 
-    /** @see org.geoserver.security.filter.GeoServerAuthenticationFilter#applicableForHtml() */
+    /**
+     * @see org.geoserver.security.filter.GeoServerAuthenticationFilter#applicableForHtml()
+     */
     // @Override
     public boolean applicableForHtml() {
         return true;
     }
 
-    /** @see org.geoserver.security.filter.GeoServerAuthenticationFilter#applicableForServices() */
+    /**
+     * @see org.geoserver.security.filter.GeoServerAuthenticationFilter#applicableForServices()
+     */
     // @Override
     public boolean applicableForServices() {
         return true;

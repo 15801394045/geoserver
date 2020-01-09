@@ -14,6 +14,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
+
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
@@ -130,7 +131,7 @@ public class ImportTaskTable extends GeoServerTablePanel<ImportTask> {
                 case NO_CRS:
                     // provide link to choose crs
                     return new NoCRSPanel(id, itemModel);
-                    // return createFixCRSLink(id, itemModel);
+                // return createFixCRSLink(id, itemModel);
                 case READY:
                     // return advanced option link
                     // for now disable if this is not a vector layer
@@ -192,7 +193,8 @@ public class ImportTaskTable extends GeoServerTablePanel<ImportTask> {
             this.chained = model;
         }
 
-        public void setObject(T object) {}
+        public void setObject(T object) {
+        }
 
         public void detach() {
             chained.detach();
@@ -252,8 +254,8 @@ public class ImportTaskTable extends GeoServerTablePanel<ImportTask> {
                 case NO_FORMAT:
                 case BAD_FORMAT:
                     return "warning-link";
-                    // case ERROR:
-                    //    return "error-link";
+                // case ERROR:
+                //    return "error-link";
                 case CANCELED:
                     return "cancel-link";
             }
@@ -413,7 +415,9 @@ public class ImportTaskTable extends GeoServerTablePanel<ImportTask> {
                                             } catch (IOException e) {
                                                 error(e);
                                             }
-                                        };
+                                        }
+
+                                        ;
                                     });
                         }
                     }.add(new Label("name", new PropertyModel(model, "layer.name")))
@@ -438,24 +442,24 @@ public class ImportTaskTable extends GeoServerTablePanel<ImportTask> {
 
             add(
                     new DropDownChoice<PreviewLink>(
-                                    "links",
-                                    new Model(links.get(0)),
-                                    links,
-                                    new ChoiceRenderer<PreviewLink>() {
-                                        @Override
-                                        public Object getDisplayValue(PreviewLink object) {
-                                            return new ParamResourceModel(
-                                                            object.id,
-                                                            ImportTaskTable.this,
-                                                            object.id)
-                                                    .getString();
-                                        }
+                            "links",
+                            new Model(links.get(0)),
+                            links,
+                            new ChoiceRenderer<PreviewLink>() {
+                                @Override
+                                public Object getDisplayValue(PreviewLink object) {
+                                    return new ParamResourceModel(
+                                            object.id,
+                                            ImportTaskTable.this,
+                                            object.id)
+                                            .getString();
+                                }
 
-                                        @Override
-                                        public String getIdValue(PreviewLink object, int index) {
-                                            return object.href;
-                                        }
-                                    })
+                                @Override
+                                public String getIdValue(PreviewLink object, int index) {
+                                    return object.href;
+                                }
+                            })
                             .setNullValid(false)
                             .setOutputMarkupId(true));
 

@@ -10,8 +10,10 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNotSame;
 
 import com.google.common.base.Ticker;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.geoserver.geofence.cache.CacheConfiguration;
 import org.geoserver.geofence.cache.CachedRuleReader;
 import org.geoserver.geofence.config.GeoFenceConfigurationManager;
@@ -24,7 +26,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.core.io.UrlResource;
 
-/** @author ETj (etj at geo-solutions.it) */
+/**
+ * @author ETj (etj at geo-solutions.it)
+ */
 public class CacheReaderTest extends GeofenceBaseTest {
 
     static final Logger LOGGER = Logging.getLogger(CacheReaderTest.class);

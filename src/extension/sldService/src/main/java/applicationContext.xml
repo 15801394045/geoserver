@@ -12,9 +12,9 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
-  <!-- <mvc:annotation-driven/> -->
-  <context:component-scan base-package="org.geoserver.sldservice.rest"/>
-  
-  <bean id="restEnvCallback" class="org.geoserver.sldservice.rest.RestEnvVariableCallback"/>
+    <!-- <mvc:annotation-driven/> -->
+    <context:component-scan base-package="org.geoserver.sldservice.rest"/>
+
+    <bean id="restEnvCallback" class="org.geoserver.sldservice.rest.RestEnvVariableCallback"/>
 
 </beans>

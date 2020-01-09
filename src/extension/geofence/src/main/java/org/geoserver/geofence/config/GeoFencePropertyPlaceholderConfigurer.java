@@ -6,6 +6,7 @@ package org.geoserver.geofence.config;
 
 import java.io.IOException;
 import java.util.Properties;
+
 import org.geoserver.config.GeoServerDataDirectory;
 import org.geoserver.config.GeoServerPropertyConfigurer;
 

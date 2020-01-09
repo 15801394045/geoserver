@@ -1,5 +1,7 @@
 {
-  "_id": { "$oid" : "58e5889ce4b02461ad5af081"},
+  "_id": {
+    "$oid": "58e5889ce4b02461ad5af081"
+  },
   "id": "2",
   "name": "station 2",
   "inferredAttribute": "ok",

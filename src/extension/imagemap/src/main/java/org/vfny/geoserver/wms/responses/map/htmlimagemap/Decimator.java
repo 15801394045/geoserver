@@ -11,6 +11,7 @@ package org.vfny.geoserver.wms.responses.map.htmlimagemap;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
+
 import org.geotools.geometry.jts.LiteCoordinateSequence;
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.CoordinateSequence;
@@ -60,11 +61,11 @@ public final class Decimator {
     public Decimator(MathTransform screenToWorld, Rectangle paintArea) {
         if (screenToWorld != null) {
             double[] original =
-                    new double[] {
-                        paintArea.x + paintArea.width / 2.0,
-                        paintArea.y + paintArea.height / 2.0,
-                        paintArea.x + paintArea.width / 2.0 + 1,
-                        paintArea.y + paintArea.height / 2.0 + 1,
+                    new double[]{
+                            paintArea.x + paintArea.width / 2.0,
+                            paintArea.y + paintArea.height / 2.0,
+                            paintArea.x + paintArea.width / 2.0 + 1,
+                            paintArea.y + paintArea.height / 2.0 + 1,
                     };
             double[] coords = new double[4];
             try {
@@ -112,7 +113,9 @@ public final class Decimator {
         if (!coords[0].equals2D(coords[coords.length - 1])) coords[coords.length - 1] = coords[0];
     }
 
-    /** decimates JTS geometries. */
+    /**
+     * decimates JTS geometries.
+     */
     public final Geometry decimate(Geometry geom) {
         GeometryFactory gFac = new GeometryFactory(geom.getPrecisionModel(), geom.getSRID());
         if (spanx == -1) return geom;
@@ -159,7 +162,7 @@ public final class Decimator {
                     forceClosed(interior);
                     if (interior.length > 3) rings.add(gFac.createLinearRing(interior));
                 }
-                return gFac.createPolygon(ring, rings.toArray(new LinearRing[] {}));
+                return gFac.createPolygon(ring, rings.toArray(new LinearRing[]{}));
             }
             return null;
         }

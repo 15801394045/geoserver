@@ -9,6 +9,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.geoserver.flow.config.DefaultControlFlowConfigurator;
 import org.geoserver.ows.Request;
 import org.geoserver.platform.GeoServerExtensions;
@@ -77,7 +78,9 @@ public class DefaultFlowControllerProvider implements FlowControllerProvider {
         }
     }
 
-    /** Reloads the flow controller list and replaces the existing ones */
+    /**
+     * Reloads the flow controller list and replaces the existing ones
+     */
     void reloadConfiguration() {
         try {
             List<FlowController> newControllers =

@@ -7,6 +7,7 @@ package org.geoserver.wps.executor;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+
 import net.opengis.wps10.InputReferenceType;
 import net.opengis.wps10.InputType;
 import org.geoserver.ows.Dispatcher;
@@ -31,7 +32,9 @@ import org.springframework.validation.Validator;
  */
 public abstract class AbstractInputProvider implements InputProvider {
 
-    /** Creates an input provider */
+    /**
+     * Creates an input provider
+     */
     public static InputProvider getInputProvider(
             InputType input,
             ProcessParameterIO ppio,

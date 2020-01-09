@@ -15,6 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.transform.TransformerException;
+
 import org.geoserver.catalog.Catalog;
 import org.geoserver.catalog.CoverageInfo;
 import org.geoserver.catalog.LayerInfo;
@@ -54,7 +55,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-/** ClassifierController. */
+/**
+ * ClassifierController.
+ */
 @RestController
 @ControllerAdvice
 @RequestMapping(path = RestBaseController.ROOT_PATH + "/sldservice")
@@ -68,13 +71,17 @@ public class RasterizerController extends BaseSLDServiceController {
         JET,
         RANDOM,
         CUSTOM
-    };
+    }
+
+    ;
 
     public enum COLORMAP_TYPE {
         RAMP,
         INTERVALS,
         VALUES
-    };
+    }
+
+    ;
 
     private static final String DEFAULT_MIN = "0.0";
 
@@ -94,12 +101,12 @@ public class RasterizerController extends BaseSLDServiceController {
     }
 
     @GetMapping(
-        path = "/{layerName}/rasterize",
-        produces = {
-            MediaType.APPLICATION_JSON_VALUE,
-            MediaType.APPLICATION_XML_VALUE,
-            MediaType.TEXT_HTML_VALUE
-        }
+            path = "/{layerName}/rasterize",
+            produces = {
+                    MediaType.APPLICATION_JSON_VALUE,
+                    MediaType.APPLICATION_XML_VALUE,
+                    MediaType.TEXT_HTML_VALUE
+            }
     )
     public Object rasterize(
             @PathVariable String layerName,
@@ -200,8 +207,8 @@ public class RasterizerController extends BaseSLDServiceController {
     }
 
     @ResponseStatus(
-        value = HttpStatus.EXPECTATION_FAILED,
-        reason = "RasterSymbolizer SLD expected!"
+            value = HttpStatus.EXPECTATION_FAILED,
+            reason = "RasterSymbolizer SLD expected!"
     )
     private class InvalidSymbolizer extends RuntimeException {
         private static final long serialVersionUID = 5453377766415209696L;

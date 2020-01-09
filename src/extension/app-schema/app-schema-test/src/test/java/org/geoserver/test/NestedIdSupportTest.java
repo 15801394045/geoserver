@@ -11,6 +11,7 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assume.assumeTrue;
 
 import java.io.IOException;
+
 import org.geoserver.catalog.FeatureTypeInfo;
 import org.geotools.appschema.filter.FilterFactoryImplNamespaceAware;
 import org.geotools.appschema.jdbc.NestedFilterToSQL;
@@ -38,7 +39,9 @@ public class NestedIdSupportTest extends AbstractAppSchemaTestSupport {
         return new NestedIdSupportTestData();
     }
 
-    /** Test Nested Id with Feature Chaining */
+    /**
+     * Test Nested Id with Feature Chaining
+     */
     @Test
     public void testNestedIdFeatureChaining() {
         String xml =
@@ -70,7 +73,9 @@ public class NestedIdSupportTest extends AbstractAppSchemaTestSupport {
                 "mf4", "wfs:FeatureCollection/gml:featureMember/gsml:MappedFeature/@gml:id", doc);
     }
 
-    /** Test Nested Id with InlineMapping */
+    /**
+     * Test Nested Id with InlineMapping
+     */
     @Test
     public void testNestedIdInlineMapping() {
         String xml =

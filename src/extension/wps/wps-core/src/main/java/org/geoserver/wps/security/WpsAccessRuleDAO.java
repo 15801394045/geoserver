@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.logging.Logger;
+
 import org.geoserver.config.ConfigurationListenerAdapter;
 import org.geoserver.config.GeoServer;
 import org.geoserver.config.ServiceInfo;
@@ -28,17 +29,23 @@ import org.geotools.process.ProcessFactory;
 import org.geotools.util.logging.Logging;
 import org.opengis.feature.type.Name;
 
-/** Allows to manage the rules used by the WPS security subsystem */
+/**
+ * Allows to manage the rules used by the WPS security subsystem
+ */
 public class WpsAccessRuleDAO extends ConfigurationListenerAdapter {
 
     private static final Logger LOGGER = Logging.getLogger(WpsAccessRuleDAO.class);
 
-    /** property file name */
+    /**
+     * property file name
+     */
     static final String WPS_PROP_FILE = "wps.xml";
 
     private GeoServer gs;
 
-    /** Default to the highest security mode */
+    /**
+     * Default to the highest security mode
+     */
     CatalogMode catalogMode = CatalogMode.HIDE;
 
     List<WpsAccessRule> rules;

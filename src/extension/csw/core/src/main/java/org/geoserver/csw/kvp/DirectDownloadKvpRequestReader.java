@@ -7,6 +7,7 @@ package org.geoserver.csw.kvp;
 
 import java.util.List;
 import java.util.Map;
+
 import org.geoserver.csw.DirectDownloadType;
 import org.geoserver.csw.DownloadLinkHandler;
 import org.geoserver.ows.KvpRequestReader;

@@ -6,6 +6,7 @@ package org.geoserver.wps.validator;
 
 import java.awt.image.RenderedImage;
 import java.awt.image.SampleModel;
+
 import org.geotools.coverage.grid.GridCoverage2D;
 
 /**

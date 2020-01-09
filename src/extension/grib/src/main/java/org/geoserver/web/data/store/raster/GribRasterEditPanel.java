@@ -14,8 +14,8 @@ public class GribRasterEditPanel extends AbstractRasterFileEditPanel {
         super(
                 componentId,
                 storeEditForm,
-                new String[] {
-                    ".gr", ".gr1", ".grb", ".grib", ".grb1", ".grib1", ".gr2", ".grib2", ".grb2"
+                new String[]{
+                        ".gr", ".gr1", ".grb", ".grib", ".grb1", ".grib1", ".gr2", ".grib2", ".grb2"
                 });
     }
 }

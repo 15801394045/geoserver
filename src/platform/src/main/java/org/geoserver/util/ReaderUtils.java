@@ -24,6 +24,7 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -38,13 +39,16 @@ import org.xml.sax.helpers.DefaultHandler;
  * <p>This class is intended to be used as a library of XML relevant operation for the GeoTools
  * XMLConfigDigester class.
  *
+ * <p>该类旨在用作GeoTools xmlconfigudigester类的XML相关操作库。
  * <p>
  *
  * @author dzwiers, Refractions Research, Inc.
  * @version $Id$
  */
 public class ReaderUtils {
-    /** Used internally to create log information to detect errors. */
+    /**
+     * Used internally to create log information to detect errors.
+     */
     private static final Logger LOGGER =
             org.geotools.util.logging.Logging.getLogger("org.vfny.geoserver.global");
 
@@ -53,10 +57,12 @@ public class ReaderUtils {
      *
      * <p>Static class, this should never be called.
      */
-    private ReaderUtils() {}
+    private ReaderUtils() {
+    }
 
     /**
      * Parses the specified reader into a DOM tree.
+     * 将指定的读取器解析为DOM树。
      *
      * @param xml Reader representing xml stream to parse.
      * @return the root element of resulting DOM tree
@@ -86,12 +92,13 @@ public class ReaderUtils {
 
     /**
      * Checks to ensure the file is valid.
-     *
+     * 检查以确保文件有效。
      * <p>Returns the file passed in to allow this to wrap file creations.
+     * <p>返回传入的文件以允许它包装文件创建。
      *
-     * @param file A file Handle to test.
+     * @param file  A file Handle to test.
      * @param isDir true when the File passed in is expected to be a directory, false when the
-     *     handle is expected to be a file.
+     *              handle is expected to be a file.
      * @return the File handle passed in
      * @throws FileNotFoundException When the file does not exist or is not the type specified.
      */
@@ -125,7 +132,7 @@ public class ReaderUtils {
      * @param root The root element to look for children in.
      * @param name The name of the child element to look for.
      * @return The child element found, null if not found.
-     * @see #getChildElement(Element,String,boolean)
+     * @see #getChildElement(Element, String, boolean)
      */
     public static Element[] getChildElements(Element root, String name) {
         try {
@@ -142,8 +149,8 @@ public class ReaderUtils {
      * <p>Used to help with XML manipulations. Returns *all* child elements of the specified name.
      * An exception occurs when the node is required and not found.
      *
-     * @param root The root element to look for children in.
-     * @param name The name of the child element to look for.
+     * @param root      The root element to look for children in.
+     * @param name      The name of the child element to look for.
      * @param mandatory true when an exception should be thrown if the child element does not exist.
      * @return The child element found, null if not found.
      * @throws Exception When a child element is required and not found.
@@ -176,8 +183,8 @@ public class ReaderUtils {
      * <p>Used to help with XML manipulations. Returns the first child element of the specified
      * name. An exception occurs when the node is required and not found.
      *
-     * @param root The root element to look for children in.
-     * @param name The name of the child element to look for.
+     * @param root      The root element to look for children in.
+     * @param name      The name of the child element to look for.
      * @param mandatory true when an exception should be thrown if the child element does not exist.
      * @return The child element found, null if not found.
      * @throws Exception When a child element is required and not found.
@@ -213,7 +220,7 @@ public class ReaderUtils {
      * @param root The root element to look for children in.
      * @param name The name of the child element to look for.
      * @return The child element found, null if not found.
-     * @see #getChildElement(Element,String,boolean)
+     * @see #getChildElement(Element, String, boolean)
      */
     public static Element getChildElement(Element root, String name) {
         try {
@@ -230,12 +237,12 @@ public class ReaderUtils {
      * <p>Used to help with XML manipulations. Returns the first child integer attribute of the
      * specified name. An exception occurs when the node is required and not found.
      *
-     * @param elem The root element to look for children in.
-     * @param attName The name of the attribute to look for.
-     * @param mandatory true when an exception should be thrown if the attribute element does not
-     *     exist.
+     * @param elem         The root element to look for children in.
+     * @param attName      The name of the attribute to look for.
+     * @param mandatory    true when an exception should be thrown if the attribute element does not
+     *                     exist.
      * @param defaultValue a default value to return incase the attribute was not found. mutually
-     *     exclusive with the Exception thrown.
+     *                     exclusive with the Exception thrown.
      * @return The int value if the attribute was found, the default otherwise.
      * @throws Exception When a attribute element is required and not found.
      */
@@ -270,10 +277,10 @@ public class ReaderUtils {
      * <p>Used to help with XML manipulations. Returns the first child integer attribute of the
      * specified name. An exception occurs when the node is required and not found.
      *
-     * @param elem The root element to look for children in.
-     * @param attName The name of the attribute to look for.
+     * @param elem      The root element to look for children in.
+     * @param attName   The name of the attribute to look for.
      * @param mandatory true when an exception should be thrown if the attribute element does not
-     *     exist.
+     *                  exist.
      * @return The value if the attribute was found, the null otherwise.
      * @throws Exception When a child attribute is required and not found.
      */
@@ -317,10 +324,10 @@ public class ReaderUtils {
      * <p>Used to help with XML manipulations. Returns the first child integer attribute of the
      * specified name. An exception occurs when the node is required and not found.
      *
-     * @param elem The root element to look for children in.
-     * @param attName The name of the attribute to look for.
-     * @param mandatory true when an exception should be thrown if the attribute element does not
-     *     exist.
+     * @param elem         The root element to look for children in.
+     * @param attName      The name of the attribute to look for.
+     * @param mandatory    true when an exception should be thrown if the attribute element does not
+     *                     exist.
      * @param defaultValue what to return for a non-mandatory that is not found.
      * @return The value if the attribute was found, the false otherwise.
      * @throws Exception When a child attribute is required and not found.
@@ -343,7 +350,7 @@ public class ReaderUtils {
      * <p>Used to help with XML manipulations. Returns the first child text value of the specified
      * element name.
      *
-     * @param root The root element to look for children in.
+     * @param root      The root element to look for children in.
      * @param childName The name of the attribute to look for.
      * @return The value if the child was found, the null otherwise.
      */
@@ -361,7 +368,7 @@ public class ReaderUtils {
      * <p>Used to help with XML manipulations. Returns the first child text value of the specified
      * element name. An exception occurs when the node is required and not found.
      *
-     * @param root The root element to look for children in.
+     * @param root      The root element to look for children in.
      * @param childName The name of the attribute to look for.
      * @param mandatory true when an exception should be thrown if the text does not exist.
      * @return The value if the child was found, the null otherwise.
@@ -406,7 +413,7 @@ public class ReaderUtils {
      * <p>Used to help with XML manipulations. Returns the text value of the specified element name.
      * An exception occurs when the node is required and not found.
      *
-     * @param elem The root element to look for children in.
+     * @param elem      The root element to look for children in.
      * @param mandatory true when an exception should be thrown if the text does not exist.
      * @return The value if the text was found, the null otherwise.
      * @throws Exception When text is required and not found.
@@ -517,10 +524,10 @@ public class ReaderUtils {
      * <p>Used to help with XML manipulations. Returns the first child integer attribute of the
      * specified name. An exception occurs when the node is required and not found.
      *
-     * @param elem The root element to look for children in.
-     * @param attName The name of the attribute to look for.
+     * @param elem      The root element to look for children in.
+     * @param attName   The name of the attribute to look for.
      * @param mandatory true when an exception should be thrown if the attribute element does not
-     *     exist.
+     *                  exist.
      * @return The double value if the attribute was found, the NaN otherwise.
      * @throws Exception When a attribute element is required and not found.
      */
@@ -554,11 +561,11 @@ public class ReaderUtils {
     /**
      * Validates an xml document against a specified schema.
      *
-     * @param xml The document.
-     * @param errorHandler The validation error handler.
+     * @param xml             The document.
+     * @param errorHandler    The validation error handler.
      * @param targetNamespace The target namespace of the schema, may be <code>null</code>
-     * @param schemaLocation The location of the schema to validate against, may be <code>null
-     *     </code>
+     * @param schemaLocation  The location of the schema to validate against, may be <code>null
+     *                        </code>
      * @throws RuntimeException If reader failed to parse properly.
      */
     public static void validate(
@@ -582,11 +589,11 @@ public class ReaderUtils {
     /**
      * Validates an xml document against a specified schema.
      *
-     * @param xml Reader representing xml stream to parse.
-     * @param errorHandler The validation error handler.
+     * @param xml             Reader representing xml stream to parse.
+     * @param errorHandler    The validation error handler.
      * @param targetNamespace The target namespace of the schema, may be <code>null</code>
-     * @param schemaLocation The location of the schema to validate against, may be <code>null
-     *     </code>
+     * @param schemaLocation  The location of the schema to validate against, may be <code>null
+     *                        </code>
      * @throws RuntimeException If reader failed to parse properly.
      */
     public static void validate(

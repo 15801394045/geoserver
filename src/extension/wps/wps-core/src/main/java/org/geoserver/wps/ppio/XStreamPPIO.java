@@ -9,8 +9,10 @@ import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.SaxWriter;
 import com.thoughtworks.xstream.mapper.Mapper;
 import com.thoughtworks.xstream.mapper.MapperWrapper;
+
 import java.io.InputStream;
 import javax.xml.namespace.QName;
+
 import org.geoserver.config.util.SecureXStream;
 import org.xml.sax.ContentHandler;
 
@@ -50,7 +52,9 @@ public class XStreamPPIO extends XMLPPIO {
                 new SecureXStream() {
                     protected MapperWrapper wrapMapper(MapperWrapper next) {
                         return new UppercaseTagMapper(new PackageStrippingMapper(next));
-                    };
+                    }
+
+                    ;
                 };
 
         return stream;
@@ -61,7 +65,9 @@ public class XStreamPPIO extends XMLPPIO {
         throw new UnsupportedOperationException("XML parsing is not supported");
     }
 
-    /** Strips the package names from classes */
+    /**
+     * Strips the package names from classes
+     */
     protected static class PackageStrippingMapper extends MapperWrapper {
         public PackageStrippingMapper(Mapper wrapped) {
             super(wrapped);

@@ -9,6 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.geoserver.monitor.Monitor;
 import org.geoserver.monitor.RequestData;
 import org.geoserver.monitor.RequestData.Category;

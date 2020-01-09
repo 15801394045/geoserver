@@ -14,6 +14,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
+
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.filefilter.IOFileFilter;
@@ -49,7 +50,8 @@ public class VFSWorker {
                     ".jar",
                     ".kmz");
 
-    public VFSWorker() {}
+    public VFSWorker() {
+    }
 
     public boolean canHandle(final File file) {
         final String name = file.getName().toLowerCase();

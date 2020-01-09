@@ -14,6 +14,7 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
+
 import org.geoserver.catalog.*;
 import org.geoserver.geofence.config.GeoFenceConfiguration;
 import org.geoserver.geofence.config.GeoFenceConfigurationManager;
@@ -76,7 +77,9 @@ public class GeofenceAccessManager
 
     private static final Logger LOGGER = Logging.getLogger(GeofenceAccessManager.class);
 
-    /** The role given to the administrators */
+    /**
+     * The role given to the administrators
+     */
     static final String ROOT_ROLE = "ROLE_ADMINISTRATOR";
 
     static final FilterFactory2 FF = CommonFactoryFinder.getFilterFactory2(null);
@@ -149,7 +152,9 @@ public class GeofenceAccessManager
         return new WorkspaceAccessLimits(DEFAULT_CATALOG_MODE, true, false);
     }
 
-    /** We expect the user not to be null and not to be admin */
+    /**
+     * We expect the user not to be null and not to be admin
+     */
     private boolean isWorkspaceAdmin(Authentication user, String workspaceName) {
         LOGGER.log(Level.FINE, "Getting admin auth for Workspace {0}", workspaceName);
 
@@ -180,7 +185,7 @@ public class GeofenceAccessManager
         LOGGER.log(
                 Level.FINE,
                 "Admin auth for User:{0} Workspace:{1}: {2}",
-                new Object[] {user.getName(), workspaceName, auth.getAdminRights()});
+                new Object[]{user.getName(), workspaceName, auth.getAdminRights()});
 
         return auth.getAdminRights();
     }
@@ -352,12 +357,14 @@ public class GeofenceAccessManager
         LOGGER.log(
                 Level.FINE,
                 "Returning {0} for layer {1} and user {2}",
-                new Object[] {limits, resource.prefixedName(), username});
+                new Object[]{limits, resource.prefixedName(), username});
 
         return limits;
     }
 
-    /** @param user */
+    /**
+     * @param user
+     */
     private void setRuleFilterUserOrRole(Authentication user, RuleFilter ruleFilter) {
         if (user != null) {
             GeoFenceConfiguration config = configurationManager.getConfiguration();
@@ -369,14 +376,14 @@ public class GeofenceAccessManager
                         role = authority.getAuthority();
                     }
                 }
-                LOGGER.log(Level.FINE, "Setting role for filter: {0}", new Object[] {role});
+                LOGGER.log(Level.FINE, "Setting role for filter: {0}", new Object[]{role});
                 ruleFilter.setRole(role);
             } else {
                 String username = user.getName();
                 if (username == null || username.isEmpty()) {
                     ruleFilter.setUser(RuleFilter.SpecialFilterType.DEFAULT);
                 } else {
-                    LOGGER.log(Level.FINE, "Setting user for filter: {0}", new Object[] {username});
+                    LOGGER.log(Level.FINE, "Setting user for filter: {0}", new Object[]{username});
                     ruleFilter.setUser(username);
                 }
             }
@@ -456,7 +463,7 @@ public class GeofenceAccessManager
         LOGGER.log(
                 Level.FINE,
                 "Returning mode {0} for resource {1}",
-                new Object[] {catalogMode, resource});
+                new Object[]{catalogMode, resource});
 
         if (resource instanceof FeatureTypeInfo) {
             // merge the area among the filters
@@ -542,7 +549,7 @@ public class GeofenceAccessManager
         for (LayerAttribute attribute : attributes) {
             if ((attribute.getAccess() == AccessType.READWRITE)
                     || ((mode == PropertyAccessMode.READ)
-                            && (attribute.getAccess() == AccessType.READONLY))) {
+                    && (attribute.getAccess() == AccessType.READONLY))) {
                 PropertyName property = FF.property(attribute.getName());
                 result.add(property);
             }
@@ -589,7 +596,7 @@ public class GeofenceAccessManager
         if ((request != null)
                 && "WMS".equalsIgnoreCase(service)
                 && ("GetMap".equalsIgnoreCase(request)
-                        || "GetFeatureInfo".equalsIgnoreCase(request))) {
+                || "GetFeatureInfo".equalsIgnoreCase(request))) {
             // extract the getmap part
             Object ro = operation.getParameters()[0];
             GetMapRequest getMap;
@@ -851,7 +858,9 @@ public class GeofenceAccessManager
         return new ArrayList<>();
     }
 
-    /** An helper that avoids duplicating the code to parse the layers parameter */
+    /**
+     * An helper that avoids duplicating the code to parse the layers parameter
+     */
     static final class LayersParser extends GetMapKvpRequestReader {
 
         private static LayersParser singleton = null;

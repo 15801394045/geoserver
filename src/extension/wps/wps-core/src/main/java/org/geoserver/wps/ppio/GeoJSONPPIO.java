@@ -8,6 +8,7 @@ package org.geoserver.wps.ppio;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+
 import org.geotools.feature.FeatureCollection;
 import org.geotools.geojson.feature.FeatureJSON;
 import org.geotools.geojson.geom.GeometryJSON;

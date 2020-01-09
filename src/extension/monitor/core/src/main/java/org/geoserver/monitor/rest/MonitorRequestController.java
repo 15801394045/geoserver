@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+
 import org.geoserver.monitor.Monitor;
 import org.geoserver.monitor.Query;
 import org.geoserver.monitor.Query.Comparison;
@@ -29,10 +30,10 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(
-    path = {
-        RestBaseController.ROOT_PATH + "/monitor/requests/{request}",
-        RestBaseController.ROOT_PATH + "/monitor/requests"
-    }
+        path = {
+                RestBaseController.ROOT_PATH + "/monitor/requests/{request}",
+                RestBaseController.ROOT_PATH + "/monitor/requests"
+        }
 )
 public class MonitorRequestController extends RestBaseController {
 
@@ -70,11 +71,11 @@ public class MonitorRequestController extends RestBaseController {
     }
 
     @GetMapping(
-        produces = {
-            MediaType.TEXT_HTML_VALUE,
-            MediaType.APPLICATION_XML_VALUE,
-            MediaType.APPLICATION_JSON_VALUE
-        }
+            produces = {
+                    MediaType.TEXT_HTML_VALUE,
+                    MediaType.APPLICATION_XML_VALUE,
+                    MediaType.APPLICATION_JSON_VALUE
+            }
     )
     @ResponseBody
     protected RestWrapper handleObjectGetRestWrapper(

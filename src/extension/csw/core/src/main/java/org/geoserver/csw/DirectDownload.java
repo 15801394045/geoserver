@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.geoserver.catalog.CoverageInfo;
 import org.geoserver.config.GeoServer;
 import org.geoserver.csw.store.CatalogStore;
@@ -52,7 +53,9 @@ public class DirectDownload {
             this.fileGroupProvider = fileGroupProvider;
         }
 
-        /** The underlying FileGroupProvider used to collect the files */
+        /**
+         * The underlying FileGroupProvider used to collect the files
+         */
         private FileGroupProvider fileGroupProvider;
 
         /**
@@ -99,7 +102,9 @@ public class DirectDownload {
             }
         }
 
-        /** Collect all files from the fileGroupProvider */
+        /**
+         * Collect all files from the fileGroupProvider
+         */
         void collectFull(List<File> result) {
             CloseableIterator<FileGroup> files = null;
             try {
@@ -277,7 +282,9 @@ public class DirectDownload {
         }
     }
 
-    /** Format a size in a human readable way */
+    /**
+     * Format a size in a human readable way
+     */
     static String formatBytes(long bytes) {
         if (bytes < KILO) {
             return bytes + "B";

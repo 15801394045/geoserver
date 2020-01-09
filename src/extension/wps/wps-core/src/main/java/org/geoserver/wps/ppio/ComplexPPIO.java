@@ -17,16 +17,22 @@ import java.util.Map;
  */
 public abstract class ComplexPPIO extends ProcessParameterIO {
 
-    /** mime type of encoded content. */
+    /**
+     * mime type of encoded content.
+     */
     protected String mimeType;
 
-    /** Constructor. */
+    /**
+     * Constructor.
+     */
     protected ComplexPPIO(Class externalType, Class internalType, String mimeType) {
         super(externalType, internalType);
         this.mimeType = mimeType;
     }
 
-    /** The mime type of the parameter of the data in encoded form. */
+    /**
+     * The mime type of the parameter of the data in encoded form.
+     */
     public final String getMimeType() {
         return mimeType;
     }
@@ -54,7 +60,9 @@ public abstract class ComplexPPIO extends ProcessParameterIO {
         return input;
     }
 
-    /** Encodes the internal object representation of a parameter into an output stream */
+    /**
+     * Encodes the internal object representation of a parameter into an output stream
+     */
     public abstract void encode(Object value, OutputStream os) throws Exception;
 
     /**
@@ -64,7 +72,9 @@ public abstract class ComplexPPIO extends ProcessParameterIO {
     public void encode(Object value, Map<String, Object> encodingParameters, OutputStream os)
             throws Exception {
         encode(value, os);
-    };
+    }
+
+    ;
 
     /**
      * Provides a suitable extension for the output file. Implement this if the file extension is

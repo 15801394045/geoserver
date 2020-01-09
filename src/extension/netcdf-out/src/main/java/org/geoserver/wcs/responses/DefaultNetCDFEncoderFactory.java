@@ -7,10 +7,13 @@ package org.geoserver.wcs.responses;
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
+
 import org.geoserver.platform.ExtensionPriority;
 import org.geoserver.wcs2_0.response.GranuleStack;
 
-/** Fallback factory encoding NetCDFs "as-is", without any coverage remapping */
+/**
+ * Fallback factory encoding NetCDFs "as-is", without any coverage remapping
+ */
 public class DefaultNetCDFEncoderFactory implements NetCDFEncoderFactory, ExtensionPriority {
 
     @Override

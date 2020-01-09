@@ -21,7 +21,9 @@ public class DuplicateTypeTest extends AbstractAppSchemaTestSupport {
         return new DuplicateTypeMockData();
     }
 
-    /** Test GetFeature for gsml:DuplicateMappedFeature. */
+    /**
+     * Test GetFeature for gsml:DuplicateMappedFeature.
+     */
     @Test
     public void testGetDuplicateMappedFeature() throws Exception {
         String request = "GetFeature&version=1.1.0&typename=gsml:DuplicateMappedFeature";
@@ -41,7 +43,9 @@ public class DuplicateTypeTest extends AbstractAppSchemaTestSupport {
                 doc);
     }
 
-    /** Test GetFeature for gsml:MappedFeature. */
+    /**
+     * Test GetFeature for gsml:MappedFeature.
+     */
     @Test
     public void testGetMappedFeature() throws Exception {
         String request = "GetFeature&version=1.1.0&typename=gsml:MappedFeature";

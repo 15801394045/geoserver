@@ -10,6 +10,7 @@ import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpsConfigurator;
 import com.sun.net.httpserver.HttpsParameters;
 import com.sun.net.httpserver.HttpsServer;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -25,6 +26,7 @@ import javax.net.ssl.SSLEngine;
 import javax.net.ssl.SSLParameters;
 import javax.net.ssl.TrustManagerFactory;
 import javax.servlet.http.HttpServletResponse;
+
 import org.geoserver.data.test.LiveSystemTestData;
 import org.geotools.util.logging.Logging;
 
@@ -39,7 +41,9 @@ public class LiveCasData extends LiveSystemTestData {
     private static final String CAS_SERVICE_PROPERTY = "service";
     private static final String CAS_PROXYCALLBACK_PROPERTY = "proxycallbackurlprefix";
 
-    /** The property file containing the token -> value pairs used to get a CAS server Url */
+    /**
+     * The property file containing the token -> value pairs used to get a CAS server Url
+     */
     protected File fixture;
 
     protected URL serverURLPrefix, serviceURL, loginURL, proxyCallbackURLPrefix;
@@ -73,7 +77,9 @@ public class LiveCasData extends LiveSystemTestData {
         this.proxyCallbackURLPrefix = proxyCallbackURLPrefix;
     }
 
-    /** constant fixture id */
+    /**
+     * constant fixture id
+     */
     protected String fixtureId = "cas";
 
     public LiveCasData(File dataDirSourceDirectory) throws IOException {

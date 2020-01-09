@@ -6,21 +6,24 @@ package org.geoserver.wms.vector;
 
 import java.io.IOException;
 import java.util.Map;
+
 import org.geoserver.wms.WMSMapContent;
 import org.geoserver.wms.WebMap;
 import org.locationtech.jts.geom.Geometry;
 
-/** Collects features into a vector tile 将特征收集到矢量图层 */
+/**
+ * Collects features into a vector tile 将特征收集到矢量图层
+ */
 public interface VectorTileBuilder {
 
     /**
      * Add a feature to the tile
      *
-     * @param layerName The name of the feature set
-     * @param featureId The identifier of the feature within the feature set
+     * @param layerName    The name of the feature set
+     * @param featureId    The identifier of the feature within the feature set
      * @param geometryName The name of the geometry property
-     * @param geometry The geometry value
-     * @param properties The non-geometry attributes of the feature
+     * @param geometry     The geometry value
+     * @param properties   The non-geometry attributes of the feature
      */
     void addFeature(
             String layerName,

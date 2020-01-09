@@ -16,6 +16,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.logging.Level;
+
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AbstractAjaxTimerBehavior;
@@ -351,8 +352,8 @@ public class ImportPage extends GeoServerSecuredPage {
                             df.getFormat() instanceof VectorFormat
                                     ? DataIcon.FILE_VECTOR
                                     : df.getFormat() instanceof RasterFormat
-                                            ? DataIcon.FILE_RASTER
-                                            : DataIcon.FILE;
+                                    ? DataIcon.FILE_RASTER
+                                    : DataIcon.FILE;
                 }
             } else if (data instanceof Database) {
                 icon = DataIcon.DATABASE;
@@ -403,10 +404,12 @@ public class ImportPage extends GeoServerSecuredPage {
         }
 
         @Override
-        public void setObject(String object) {}
+        public void setObject(String object) {
+        }
 
         @Override
-        public void detach() {}
+        public void detach() {
+        }
     }
 
     static class TextAreaPanel extends Panel {

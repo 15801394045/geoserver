@@ -11,6 +11,7 @@ import static org.geoserver.inspire.InspireMetadata.SERVICE_METADATA_URL;
 import static org.geoserver.inspire.InspireSchema.COMMON_NAMESPACE;
 
 import java.io.IOException;
+
 import org.geoserver.ExtendedCapabilitiesProvider;
 import org.geoserver.catalog.MetadataMap;
 import org.geoserver.config.GeoServer;
@@ -36,7 +37,7 @@ public class WMTSExtendedCapabilitiesProvider extends WMTSExtensionImpl {
 
     @Override
     public String[] getSchemaLocations() {
-        return new String[] {VS_VS_OWS_NAMESPACE, VS_VS_OWS_SCHEMA};
+        return new String[]{VS_VS_OWS_NAMESPACE, VS_VS_OWS_SCHEMA};
     }
 
     @Override

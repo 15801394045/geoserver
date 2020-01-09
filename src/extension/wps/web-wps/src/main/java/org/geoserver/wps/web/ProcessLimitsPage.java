@@ -7,6 +7,7 @@ package org.geoserver.wps.web;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Multimap;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -14,6 +15,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 import org.apache.wicket.markup.html.basic.Label;
@@ -77,9 +79,9 @@ public class ProcessLimitsPage extends GeoServerSecuredPage {
 
                     @Override
                     protected List<
-                                    org.geoserver.web.wicket.GeoServerDataProvider.Property<
-                                            InputLimit>>
-                            getProperties() {
+                            org.geoserver.web.wicket.GeoServerDataProvider.Property<
+                                    InputLimit>>
+                    getProperties() {
                         List<Property<InputLimit>> result = new ArrayList<>();
                         result.add(new BeanProperty<InputLimit>("name", "name"));
                         result.add(new PropertyPlaceholder("type"));

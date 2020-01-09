@@ -13,6 +13,7 @@ import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.nio.charset.Charset;
 import java.util.List;
+
 import net.opengis.cat.csw20.DescribeRecordType;
 import org.geoserver.config.GeoServer;
 import org.geoserver.csw.CSWInfo;

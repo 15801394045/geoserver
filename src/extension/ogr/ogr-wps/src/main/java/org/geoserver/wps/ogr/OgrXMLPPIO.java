@@ -11,6 +11,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
+
 import net.opengis.wfs.FeatureCollectionType;
 import net.opengis.wfs.WfsFactory;
 import org.geoserver.platform.Operation;
@@ -21,7 +22,9 @@ import org.xml.sax.ContentHandler;
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
 
-/** Process XML output parameter using ogr2ogr process */
+/**
+ * Process XML output parameter using ogr2ogr process
+ */
 public class OgrXMLPPIO extends XMLPPIO {
 
     private Ogr2OgrOutputFormat ogr2OgrOutputFormat;

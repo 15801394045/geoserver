@@ -16,6 +16,7 @@ import java.util.Map;
 import javax.imageio.ImageIO;
 import javax.imageio.ImageReader;
 import javax.imageio.stream.FileImageInputStream;
+
 import org.apache.commons.io.FileUtils;
 import org.geoserver.data.test.SystemTestData;
 import org.geoserver.wps.ppio.CoveragePPIO.JPEGPPIO;
@@ -28,7 +29,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-/** Testing CoveragePPIOs is able to encode PNG and JPEG formats. */
+/**
+ * Testing CoveragePPIOs is able to encode PNG and JPEG formats.
+ */
 public class CoveragePPIOTest {
 
     File geotiff = new File("./target/testInput.tiff");

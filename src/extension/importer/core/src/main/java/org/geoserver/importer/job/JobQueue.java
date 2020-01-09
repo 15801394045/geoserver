@@ -22,6 +22,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.geoserver.importer.ImportContext;
 import org.geoserver.importer.Importer;
 import org.geoserver.platform.GeoServerExtensions;
@@ -32,13 +33,19 @@ public class JobQueue {
 
     static Logger LOGGER = Logging.getLogger(JobQueue.class);
 
-    /** job id counter */
+    /**
+     * job id counter
+     */
     AtomicLong counter = new AtomicLong();
 
-    /** recent jobs */
+    /**
+     * recent jobs
+     */
     ConcurrentHashMap<Long, Task<?>> jobs = new ConcurrentHashMap<Long, Task<?>>();
 
-    /** job runner */
+    /**
+     * job runner
+     */
     // ExecutorService pool = Executors.newCachedThreadPool();
     ExecutorService pool =
             new ThreadPoolExecutor(
@@ -48,22 +55,30 @@ public class JobQueue {
                         return new Task((Job) callable);
                     }
                     return super.newTaskFor(callable);
-                };
+                }
+
+                ;
 
                 protected void beforeExecute(Thread t, Runnable r) {
                     if (t != null && r instanceof Task) {
                         ((Task) r).started();
                     }
-                };
+                }
+
+                ;
 
                 protected void afterExecute(Runnable r, Throwable t) {
                     if (t != null && r instanceof Task) {
                         ((Task) r).setError(t);
                     }
-                };
+                }
+
+                ;
             };
 
-    /** job cleaner */
+    /**
+     * job cleaner
+     */
     ScheduledExecutorService cleaner = Executors.newSingleThreadScheduledExecutor();
 
     {
@@ -74,7 +89,7 @@ public class JobQueue {
                         for (Map.Entry<Long, Task<?>> e : jobs.entrySet()) {
                             if (e.getValue().isCancelled()
                                     || (e.getValue()
-                                            .isDone() /* AF: This condition is never verified ?!? && e.getValue().isRecieved() */)) {
+                                    .isDone() /* AF: This condition is never verified ?!? && e.getValue().isRecieved() */)) {
                                 try {
                                     ImportContext context = (ImportContext) e.getValue().get();
 

@@ -12,6 +12,7 @@ import java.io.ByteArrayInputStream;
 import java.util.HashMap;
 import java.util.Map;
 import javax.xml.namespace.QName;
+
 import net.opengis.wfs.FeatureCollectionType;
 import org.geoserver.data.test.MockData;
 import org.geoserver.data.test.SystemTestData;

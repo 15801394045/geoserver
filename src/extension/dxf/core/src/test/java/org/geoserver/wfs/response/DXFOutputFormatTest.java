@@ -55,7 +55,9 @@ public class DXFOutputFormatTest extends WFSTestSupport {
         checkSequence(dxf, sequence, -1);
     }
 
-    /** Test a request with two queries. */
+    /**
+     * Test a request with two queries.
+     */
     @Test
     public void testMultiLayer() throws Exception {
         MockHttpServletResponse resp =
@@ -63,10 +65,12 @@ public class DXFOutputFormatTest extends WFSTestSupport {
                         "wfs?request=GetFeature&version=1.1.0&typeName=Points,MPoints&outputFormat=dxf");
         String sResponse = testBasicResult(resp, "Points_MPoints");
         checkSequence(
-                sResponse, new String[] {"LAYER", "LAYER", "LAYER", "POINTS", "LAYER", "MPOINTS"});
+                sResponse, new String[]{"LAYER", "LAYER", "LAYER", "POINTS", "LAYER", "MPOINTS"});
     }
 
-    /** Test DXF-ZIP format. */
+    /**
+     * Test DXF-ZIP format.
+     */
     @Test
     public void testZipOutput() throws Exception {
         MockHttpServletResponse resp =
@@ -76,7 +80,9 @@ public class DXFOutputFormatTest extends WFSTestSupport {
         assertEquals("application/zip", resp.getContentType());
     }
 
-    /** Test a Point geometry. */
+    /**
+     * Test a Point geometry.
+     */
     @Test
     public void testPoints() throws Exception {
         MockHttpServletResponse resp =
@@ -85,9 +91,12 @@ public class DXFOutputFormatTest extends WFSTestSupport {
         String sResponse = testBasicResult(resp, "Points");
         int pos = getGeometrySearchStart(sResponse);
         assertTrue(pos != -1);
-        checkSequence(sResponse, new String[] {"POINT"}, pos);
+        checkSequence(sResponse, new String[]{"POINT"}, pos);
     }
-    /** Test a MultiPoint geometry. */
+
+    /**
+     * Test a MultiPoint geometry.
+     */
     @Test
     public void testMultiPoints() throws Exception {
         MockHttpServletResponse resp =
@@ -97,10 +106,12 @@ public class DXFOutputFormatTest extends WFSTestSupport {
         int pos = getGeometrySearchStart(sResponse);
         assertTrue(pos != -1);
         // has to insert two points
-        checkSequence(sResponse, new String[] {"POINT", "POINT"}, pos);
+        checkSequence(sResponse, new String[]{"POINT", "POINT"}, pos);
     }
 
-    /** Test a LineString geometry. */
+    /**
+     * Test a LineString geometry.
+     */
     @Test
     public void testLines() throws Exception {
         MockHttpServletResponse resp =
@@ -109,10 +120,12 @@ public class DXFOutputFormatTest extends WFSTestSupport {
         String sResponse = testBasicResult(resp, "Lines");
         int pos = getGeometrySearchStart(sResponse);
         assertTrue(pos != -1);
-        checkSequence(sResponse, new String[] {"LWPOLYLINE"}, pos);
+        checkSequence(sResponse, new String[]{"LWPOLYLINE"}, pos);
     }
 
-    /** Test a MultiLineString geometry. */
+    /**
+     * Test a MultiLineString geometry.
+     */
     @Test
     public void testMultiLines() throws Exception {
         MockHttpServletResponse resp =
@@ -122,10 +135,12 @@ public class DXFOutputFormatTest extends WFSTestSupport {
         int pos = getGeometrySearchStart(sResponse);
         assertTrue(pos != -1);
         // has to insert two lwpolyline
-        checkSequence(sResponse, new String[] {"LWPOLYLINE", "LWPOLYLINE"}, pos);
+        checkSequence(sResponse, new String[]{"LWPOLYLINE", "LWPOLYLINE"}, pos);
     }
 
-    /** Test a Polygon geometry. */
+    /**
+     * Test a Polygon geometry.
+     */
     @Test
     public void testPolygons() throws Exception {
         MockHttpServletResponse resp =
@@ -135,10 +150,12 @@ public class DXFOutputFormatTest extends WFSTestSupport {
         int pos = getGeometrySearchStart(sResponse);
         assertTrue(pos != -1);
         // has to insert an lwpolyline
-        checkSequence(sResponse, new String[] {"LWPOLYLINE"}, pos);
+        checkSequence(sResponse, new String[]{"LWPOLYLINE"}, pos);
     }
 
-    /** Test writeattributes option. */
+    /**
+     * Test writeattributes option.
+     */
     @Test
     public void testWriteAttributes() throws Exception {
         MockHttpServletResponse resp =
@@ -148,10 +165,12 @@ public class DXFOutputFormatTest extends WFSTestSupport {
         int pos = getGeometrySearchStart(sResponse);
         assertTrue(pos != -1);
         // has to insert an attribute
-        checkSequence(sResponse, new String[] {"ATTRIB", "AcDbAttribute"}, pos);
+        checkSequence(sResponse, new String[]{"ATTRIB", "AcDbAttribute"}, pos);
     }
 
-    /** Test writeattributes option, check position of attributes. */
+    /**
+     * Test writeattributes option, check position of attributes.
+     */
     @Test
     public void testWriteAttributesPosition() throws Exception {
         MockHttpServletResponse resp =
@@ -163,23 +182,25 @@ public class DXFOutputFormatTest extends WFSTestSupport {
         // has to insert an attribute
         checkSequence(
                 sResponse,
-                new String[] {
-                    "POLYGONS_attributes",
-                    "POLYGONS_attributes",
-                    "POLYGONS_attributes",
-                    "ATTRIB",
-                    "POLYGONS_attributes",
-                    "AcDbText",
-                    "10",
-                    "500237.5",
-                    "20",
-                    "500062.5",
-                    "t0002"
+                new String[]{
+                        "POLYGONS_attributes",
+                        "POLYGONS_attributes",
+                        "POLYGONS_attributes",
+                        "ATTRIB",
+                        "POLYGONS_attributes",
+                        "AcDbText",
+                        "10",
+                        "500237.5",
+                        "20",
+                        "500062.5",
+                        "t0002"
                 },
                 pos);
     }
 
-    /** Test a MultiPolygon geometry. */
+    /**
+     * Test a MultiPolygon geometry.
+     */
     @Test
     public void testMultiPolygons() throws Exception {
         MockHttpServletResponse resp =
@@ -189,7 +210,7 @@ public class DXFOutputFormatTest extends WFSTestSupport {
         int pos = getGeometrySearchStart(sResponse);
         assertTrue(pos != -1);
         // has to insert two lwpolyline
-        checkSequence(sResponse, new String[] {"LWPOLYLINE", "LWPOLYLINE"}, pos);
+        checkSequence(sResponse, new String[]{"LWPOLYLINE", "LWPOLYLINE"}, pos);
     }
 
     /**
@@ -221,7 +242,9 @@ public class DXFOutputFormatTest extends WFSTestSupport {
         testBasicResult(resp, "MPolygons");
     }
 
-    /** Test format option asblocks. */
+    /**
+     * Test format option asblocks.
+     */
     @Test
     public void testGeometryAsBlock() {
         try {
@@ -246,7 +269,9 @@ public class DXFOutputFormatTest extends WFSTestSupport {
         }
     }
 
-    /** Test format option version support. */
+    /**
+     * Test format option version support.
+     */
     @Test
     public void testVersion() throws Exception {
         try {
@@ -290,16 +315,21 @@ public class DXFOutputFormatTest extends WFSTestSupport {
         return sResponse;
     }
 
-    /** Test the ltypes format option. */
+    /**
+     * Test the ltypes format option.
+     */
     @Test
     public void testCustomLineTypes() throws Exception {
         MockHttpServletResponse resp =
                 getAsServletResponse(
                         "wfs?request=GetFeature&version=1.1.0&typeName=Lines&outputFormat=dxf&format_options=ltypes:DASHED!--_*_!0.5");
         String sResponse = testBasicResult(resp, "Lines");
-        checkSequence(sResponse, new String[] {"DASHED"});
+        checkSequence(sResponse, new String[]{"DASHED"});
     }
-    /** Test the colors format option. */
+
+    /**
+     * Test the colors format option.
+     */
     @Test
     public void testCustomColors() throws Exception {
         MockHttpServletResponse resp =
@@ -308,10 +338,12 @@ public class DXFOutputFormatTest extends WFSTestSupport {
         String sResponse = testBasicResult(resp, "Points_MPoints");
         checkSequence(
                 sResponse,
-                new String[] {"LAYER", "LAYER", "LAYER", " 62\n     1", "LAYER", " 62\n     2"});
+                new String[]{"LAYER", "LAYER", "LAYER", " 62\n     1", "LAYER", " 62\n     2"});
     }
 
-    /** Test custom naming for layers. */
+    /**
+     * Test custom naming for layers.
+     */
     @Test
     public void testLayerNames() throws Exception {
         MockHttpServletResponse resp =
@@ -320,10 +352,12 @@ public class DXFOutputFormatTest extends WFSTestSupport {
         String sResponse = testBasicResult(resp, "Points_MPoints");
         checkSequence(
                 sResponse,
-                new String[] {"LAYER", "LAYER", "LAYER", "MYLAYER1", "LAYER", "MYLAYER2"});
+                new String[]{"LAYER", "LAYER", "LAYER", "MYLAYER1", "LAYER", "MYLAYER2"});
     }
 
-    /** Test fix for GEOS-6402. */
+    /**
+     * Test fix for GEOS-6402.
+     */
     @Test
     public void testLayerNamesParsing() throws Exception {
 
@@ -333,7 +367,7 @@ public class DXFOutputFormatTest extends WFSTestSupport {
         String sResponse = testBasicResult(resp, "Points_MPoints");
         checkSequence(
                 sResponse,
-                new String[] {"LAYER", "LAYER", "LAYER", "MYLAYER1", "LAYER", "MYLAYER2"});
+                new String[]{"LAYER", "LAYER", "LAYER", "MYLAYER1", "LAYER", "MYLAYER2"});
 
         // now repeat the test parsing layers format_options as a list, instead of a string
         LayersKvpParser.parseAsList = true;
@@ -343,7 +377,7 @@ public class DXFOutputFormatTest extends WFSTestSupport {
         sResponse = testBasicResult(resp, "Points_MPoints");
         checkSequence(
                 sResponse,
-                new String[] {"LAYER", "LAYER", "LAYER", "MYLAYER1", "LAYER", "MYLAYER2"});
+                new String[]{"LAYER", "LAYER", "LAYER", "MYLAYER1", "LAYER", "MYLAYER2"});
     }
 
     /**

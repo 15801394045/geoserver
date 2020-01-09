@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <as:AppSchemaDataAccess xmlns:as="http://www.geotools.org/app-schema"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.geotools.org/app-schema AppSchemaDataAccess.xsd">
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                        xsi:schemaLocation="http://www.geotools.org/app-schema AppSchemaDataAccess.xsd">
     <namespaces>
         <Namespace>
             <prefix>gml</prefix>
@@ -38,8 +39,8 @@
             <targetElement>gsml:CGI_PlanarOrientation</targetElement>
             <attributeMappings>
                 <AttributeMapping>
-                    <targetAttribute>gsml:CGI_PlanarOrientation</targetAttribute>                    
-					<idExpression>
+                    <targetAttribute>gsml:CGI_PlanarOrientation</targetAttribute>
+                    <idExpression>
                         <OCQL>ID</OCQL>
                     </idExpression>
                 </AttributeMapping>
@@ -57,18 +58,22 @@
                 </AttributeMapping>
                 <AttributeMapping>
                     <targetAttribute>
-						gsml:azimuth
-  		            </targetAttribute>
+                        gsml:azimuth
+                    </targetAttribute>
                     <sourceExpression>
-                        <linkElement>if_then_else(isNull(AZIMUTH_NUMERIC), '_er_mo_planarOrientation_azimuth_literal', '_er_mo_planarOrientation_azimuth_numeric')</linkElement>
+                        <linkElement>if_then_else(isNull(AZIMUTH_NUMERIC), '_er_mo_planarOrientation_azimuth_literal',
+                            '_er_mo_planarOrientation_azimuth_numeric')
+                        </linkElement>
                     </sourceExpression>
                 </AttributeMapping>
                 <AttributeMapping>
                     <targetAttribute>
-						gsml:dip
-  		            </targetAttribute>
+                        gsml:dip
+                    </targetAttribute>
                     <sourceExpression>
-                        <linkElement>if_then_else(isNull(DIP_NUMERIC), '_er_mo_planarOrientation_dip_literal', '_er_mo_planarOrientation_dip_numeric')</linkElement>
+                        <linkElement>if_then_else(isNull(DIP_NUMERIC), '_er_mo_planarOrientation_dip_literal',
+                            '_er_mo_planarOrientation_dip_numeric')
+                        </linkElement>
                     </sourceExpression>
                 </AttributeMapping>
                 <AttributeMapping>

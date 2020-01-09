@@ -7,11 +7,13 @@ package org.geoserver.importer.mosaic;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.apache.commons.io.FilenameUtils;
 import org.geoserver.importer.DataFormat;
 import org.geoserver.importer.Directory;
@@ -66,7 +68,7 @@ public class Mosaic extends Directory {
                                 // is this file part a shapefile or properties file?
                                 if (new File(f.getParentFile(), basename + ".shp").exists()
                                         || new File(f.getParentFile(), basename + ".properties")
-                                                .exists()) {
+                                        .exists()) {
                                     return true;
                                 }
 

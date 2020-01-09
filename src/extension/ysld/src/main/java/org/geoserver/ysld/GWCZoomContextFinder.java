@@ -8,6 +8,7 @@ package org.geoserver.ysld;
 
 import java.util.Set;
 import javax.annotation.Nullable;
+
 import org.geotools.ysld.parse.MedialZoomContext;
 import org.geotools.ysld.parse.ZoomContext;
 import org.geotools.ysld.parse.ZoomContextFinder;
@@ -29,7 +30,8 @@ public class GWCZoomContextFinder implements ZoomContextFinder {
     }
 
     @Override
-    public @Nullable ZoomContext get(String name) {
+    public @Nullable
+    ZoomContext get(String name) {
         GridSet set = broker.get(name);
         if (set != null) {
             return new GWCZoomContext(set);

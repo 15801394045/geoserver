@@ -14,6 +14,6 @@ public class NetCDFRasterEditPanel extends AbstractRasterFileEditPanel {
         super(
                 componentId,
                 storeEditForm,
-                new String[] {".nc", ".cdf", ".netcdf", ".nc3", ".nc4", ".ncml"});
+                new String[]{".nc", ".cdf", ".netcdf", ".nc3", ".nc4", ".ncml"});
     }
 }

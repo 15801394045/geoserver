@@ -19,7 +19,9 @@ public class GetRepositoryItemType {
 
     String id;
 
-    /** The OGC service (should be "CSW") */
+    /**
+     * The OGC service (should be "CSW")
+     */
     public String getService() {
         return service;
     }
@@ -28,7 +30,9 @@ public class GetRepositoryItemType {
         this.service = service;
     }
 
-    /** The service version (for example "2.0.2") */
+    /**
+     * The service version (for example "2.0.2")
+     */
     public String getVersion() {
         return version;
     }
@@ -37,7 +41,9 @@ public class GetRepositoryItemType {
         this.version = version;
     }
 
-    /** The repository item id */
+    /**
+     * The repository item id
+     */
     public String getId() {
         return id;
     }

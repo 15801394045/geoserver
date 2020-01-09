@@ -10,8 +10,10 @@ import static org.junit.Assert.assertNull;
 
 import com.maxmind.geoip.Location;
 import com.maxmind.geoip.LookupService;
+
 import java.io.File;
 import java.io.IOException;
+
 import org.junit.BeforeClass;
 import org.junit.Test;
 

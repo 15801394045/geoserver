@@ -14,6 +14,7 @@ import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
 import java.util.logging.Level;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.OnChangeAjaxBehavior;
@@ -273,7 +274,7 @@ public class GeofenceRulePage extends GeoServerSecuredPage {
             return (MultiPolygon) geometry;
         }
         if (geometry instanceof Polygon) {
-            return new MultiPolygon(new Polygon[] {(Polygon) geometry}, new GeometryFactory());
+            return new MultiPolygon(new Polygon[]{(Polygon) geometry}, new GeometryFactory());
         }
         throw new GeoServerRuntimException(
                 String.format(
@@ -281,7 +282,9 @@ public class GeofenceRulePage extends GeoServerSecuredPage {
                         geometry.getClass().getSimpleName()));
     }
 
-    /** Returns a sorted list of workspace names */
+    /**
+     * Returns a sorted list of workspace names
+     */
     protected List<String> getWorkspaceNames() {
 
         SortedSet<String> resultSet = new TreeSet<String>();
@@ -300,14 +303,14 @@ public class GeofenceRulePage extends GeoServerSecuredPage {
             FilterFactory2 ff = CommonFactoryFinder.getFilterFactory2();
 
             try (CloseableIterator<ResourceInfo> it =
-                    getCatalog()
-                            .getFacade()
-                            .list(
-                                    ResourceInfo.class,
-                                    Predicates.equal("store.workspace.name", workspaceName),
-                                    null,
-                                    null,
-                                    ff.sort("name", SortOrder.ASCENDING))) {
+                         getCatalog()
+                                 .getFacade()
+                                 .list(
+                                         ResourceInfo.class,
+                                         Predicates.equal("store.workspace.name", workspaceName),
+                                         null,
+                                         null,
+                                         ff.sort("name", SortOrder.ASCENDING))) {
                 while (it.hasNext()) {
                     resultSet.add(it.next().getName());
                 }
@@ -317,7 +320,9 @@ public class GeofenceRulePage extends GeoServerSecuredPage {
         return resultSet;
     }
 
-    /** Returns a sorted list of workspace names */
+    /**
+     * Returns a sorted list of workspace names
+     */
     protected List<String> getServiceNames() {
         SortedSet<String> resultSet = new TreeSet<String>();
         for (Service ows : GeoServerExtensions.extensions(Service.class)) {
@@ -513,7 +518,7 @@ public class GeofenceRulePage extends GeoServerSecuredPage {
                             ruleFormModel.getObject().layerDetailsCheck =
                                     ruleFormModel.getObject().layerDetailsCheck
                                             && GrantType.ALLOW.equals(
-                                                    grantTypeChoice.getConvertedInput())
+                                            grantTypeChoice.getConvertedInput())
                                             && layerChoice.getConvertedInput() != null;
 
                             ruleFormModel.getObject().layerDetails.attributes.clear();
@@ -553,7 +558,7 @@ public class GeofenceRulePage extends GeoServerSecuredPage {
                                                                     ati.getBinding() == null
                                                                             ? null
                                                                             : ati.getBinding()
-                                                                                    .getName(),
+                                                                            .getName(),
                                                                     AccessType.NONE));
                                         }
                                     } catch (IOException e) {
@@ -595,11 +600,11 @@ public class GeofenceRulePage extends GeoServerSecuredPage {
                             ruleFormModel.getObject().layerDetailsCheck =
                                     ruleFormModel.getObject().layerDetailsCheck
                                             && (grantTypeChoice.getConvertedInput() != null
-                                                    && grantTypeChoice
-                                                            .getConvertedInput()
-                                                            .equals(GrantType.ALLOW))
+                                            && grantTypeChoice
+                                            .getConvertedInput()
+                                            .equals(GrantType.ALLOW))
                                             && (layerChoice.getConvertedInput() != null
-                                                    && !layerChoice.getConvertedInput().isEmpty());
+                                            && !layerChoice.getConvertedInput().isEmpty());
                         }
                     });
 
@@ -799,7 +804,9 @@ public class GeofenceRulePage extends GeoServerSecuredPage {
         return styleNames;
     }
 
-    /** Makes sure we see translated text, by the raw name is used for the model */
+    /**
+     * Makes sure we see translated text, by the raw name is used for the model
+     */
     protected class LayerTypeRenderer extends ChoiceRenderer<LayerType> {
         private static final long serialVersionUID = -7478943956804313995L;
 
@@ -812,7 +819,9 @@ public class GeofenceRulePage extends GeoServerSecuredPage {
         }
     }
 
-    /** Makes sure we see translated text, by the raw name is used for the model */
+    /**
+     * Makes sure we see translated text, by the raw name is used for the model
+     */
     protected class GrantTypeRenderer extends ChoiceRenderer<GrantType> {
         private static final long serialVersionUID = -7478943956804313995L;
 
@@ -825,7 +834,9 @@ public class GeofenceRulePage extends GeoServerSecuredPage {
         }
     }
 
-    /** Makes sure we see translated text, by the raw name is used for the model */
+    /**
+     * Makes sure we see translated text, by the raw name is used for the model
+     */
     protected class AccessTypeRenderer extends ChoiceRenderer<AccessType> {
         private static final long serialVersionUID = -7478943956804313995L;
 
@@ -838,7 +849,9 @@ public class GeofenceRulePage extends GeoServerSecuredPage {
         }
     }
 
-    /** Makes sure we see translated text, by the raw name is used for the model */
+    /**
+     * Makes sure we see translated text, by the raw name is used for the model
+     */
     protected class CatalogModeRenderer extends ChoiceRenderer<CatalogMode> {
         private static final long serialVersionUID = -7478943956804313995L;
 
@@ -851,7 +864,9 @@ public class GeofenceRulePage extends GeoServerSecuredPage {
         }
     }
 
-    /** Makes sure that while rendered in mixed case, is stored in uppercase */
+    /**
+     * Makes sure that while rendered in mixed case, is stored in uppercase
+     */
     protected class CaseConversionRenderer extends ChoiceRenderer<String> {
         private static final long serialVersionUID = 4238195087731806209L;
 

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <as:AppSchemaDataAccess xmlns:as="http://www.geotools.org/app-schema"
-    xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.geotools.org/app-schema AppSchemaDataAccess.xsd">
+                        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                        xsi:schemaLocation="http://www.geotools.org/app-schema AppSchemaDataAccess.xsd">
     <namespaces>
         <Namespace>
             <prefix>gml</prefix>
@@ -30,7 +31,9 @@
     </sourceDataStores>
     <targetTypes>
         <FeatureType>
-            <schemaUri>https://www.seegrid.csiro.au/subversion/GeoSciML/branches/3.0.0_rc1_gml3.2/geosciml-core/3.0.0/xsd/geosciml-core.xsd</schemaUri>
+            <schemaUri>
+                https://www.seegrid.csiro.au/subversion/GeoSciML/branches/3.0.0_rc1_gml3.2/geosciml-core/3.0.0/xsd/geosciml-core.xsd
+            </schemaUri>
         </FeatureType>
     </targetTypes>
     <typeMappings>
@@ -39,12 +42,12 @@
             <sourceType>MappedFeaturePropertyfile</sourceType>
             <targetElement>
                 gsml:MappedFeature
-			</targetElement>
+            </targetElement>
             <attributeMappings>
                 <AttributeMapping>
                     <targetAttribute>
                         gsml:MappedFeature
-					</targetAttribute>
+                    </targetAttribute>
                     <idExpression>
                         <OCQL>ID</OCQL>
                     </idExpression>
@@ -80,10 +83,10 @@
                         <value>strConcat('urn:x-test:GeologicUnit:', GML_ID)</value>
                     </ClientProperty>
                 </AttributeMapping>
-                 <AttributeMapping>
+                <AttributeMapping>
                     <targetAttribute>
                         FEATURE_LINK
-		            </targetAttribute>
+                    </targetAttribute>
                     <sourceExpression>
                         <OCQL>GEOLOGIC_UNIT_ID</OCQL>
                     </sourceExpression>

@@ -7,6 +7,7 @@ package org.geoserver.crs.netcdf;
 import java.io.File;
 import java.net.URL;
 import java.util.logging.Level;
+
 import org.geoserver.platform.GeoServerExtensions;
 import org.geoserver.platform.GeoServerResourceLoader;
 import org.geoserver.platform.resource.Resource;

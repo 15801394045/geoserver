@@ -15,12 +15,15 @@ import org.geoserver.security.config.SecurityAuthProviderConfig;
 public class WebServiceBodyResponseSecurityProviderConfig extends BaseSecurityNamedServiceConfig
         implements SecurityAuthProviderConfig {
 
-    /** serialVersionUID */
+    /**
+     * serialVersionUID
+     */
     private static final long serialVersionUID = -784422971183238680L;
 
     String userGroupServiceName;
 
-    public WebServiceBodyResponseSecurityProviderConfig() {}
+    public WebServiceBodyResponseSecurityProviderConfig() {
+    }
 
     public WebServiceBodyResponseSecurityProviderConfig(
             WebServiceBodyResponseSecurityProviderConfig other) {

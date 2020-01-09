@@ -8,6 +8,7 @@ import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import com.jayway.jsonpath.JsonPath;
 import com.jayway.jsonpath.PathNotFoundException;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -30,6 +31,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import net.minidev.json.JSONArray;
 import org.geoserver.security.config.SecurityNamedServiceConfig;
 import org.geoserver.security.event.RoleLoadedListener;
@@ -42,7 +44,9 @@ import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
-/** @author Alessio Fabiani, GeoSolutions S.A.S. */
+/**
+ * @author Alessio Fabiani, GeoSolutions S.A.S.
+ */
 public class GeoServerRestRoleService extends AbstractGeoServerSecurityService
         implements GeoServerRoleService {
 
@@ -103,7 +107,9 @@ public class GeoServerRestRoleService extends AbstractGeoServerSecurityService
     protected Set<RoleLoadedListener> listeners =
             Collections.synchronizedSet(new HashSet<RoleLoadedListener>());
 
-    /** Default Constructor */
+    /**
+     * Default Constructor
+     */
     public GeoServerRestRoleService(SecurityNamedServiceConfig config) throws IOException {
         initializeFromConfig(config);
     }
@@ -129,35 +135,39 @@ public class GeoServerRestRoleService extends AbstractGeoServerSecurityService
                         .build(); // look Ma, no CacheLoader
     }
 
-    /** Read only store. */
+    /**
+     * Read only store.
+     */
     @Override
     public boolean canCreateStore() {
         return false;
     }
 
-    /** Read only store. */
+    /**
+     * Read only store.
+     */
     @Override
     public GeoServerRoleStore createStore() throws IOException {
         return null;
     }
 
     /**
-     * @see
-     *     org.geoserver.security.GeoServerRoleService#registerRoleLoadedListener(RoleLoadedListener)
+     * @see org.geoserver.security.GeoServerRoleService#registerRoleLoadedListener(RoleLoadedListener)
      */
     public void registerRoleLoadedListener(RoleLoadedListener listener) {
         listeners.add(listener);
     }
 
     /**
-     * @see
-     *     org.geoserver.security.GeoServerRoleService#unregisterRoleLoadedListener(RoleLoadedListener)
+     * @see org.geoserver.security.GeoServerRoleService#unregisterRoleLoadedListener(RoleLoadedListener)
      */
     public void unregisterRoleLoadedListener(RoleLoadedListener listener) {
         listeners.remove(listener);
     }
 
-    /** Roles to group association is not supported */
+    /**
+     * Roles to group association is not supported
+     */
     @Override
     public SortedSet<String> getGroupNamesForRole(GeoServerRole role) throws IOException {
         return emptyStringSet;
@@ -460,7 +470,9 @@ public class GeoServerRestRoleService extends AbstractGeoServerSecurityService
         return getRoles().size();
     }
 
-    /** @return the restTemplate */
+    /**
+     * @return the restTemplate
+     */
     public RestTemplate getRestTemplate() {
         if (restTemplate == null) {
             restTemplate = restTemplate();
@@ -469,7 +481,9 @@ public class GeoServerRestRoleService extends AbstractGeoServerSecurityService
         return restTemplate;
     }
 
-    /** @param restTemplate the restTemplate to set */
+    /**
+     * @param restTemplate the restTemplate to set
+     */
     public void setRestTemplate(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }

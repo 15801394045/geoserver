@@ -6,12 +6,15 @@ package org.geoserver.geofence.server.rest;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.geoserver.security.impl.GeoServerRole;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-/** @author Niels Charlier */
+/**
+ * @author Niels Charlier
+ */
 public class GeofenceSecurityInterceptor extends HandlerInterceptorAdapter {
 
     @Override

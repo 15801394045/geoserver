@@ -7,6 +7,7 @@ package org.geoserver.wps.ppio;
 
 import java.io.InputStream;
 import javax.xml.namespace.QName;
+
 import org.geotools.gml2.GML;
 import org.geotools.gml2.GMLConfiguration;
 import org.geotools.xsd.Configuration;
@@ -48,7 +49,9 @@ public class GMLPPIO extends XMLPPIO {
             xml = new GMLConfiguration();
         }
 
-        /** Place holder for process params which declare Geometry.class as the type. */
+        /**
+         * Place holder for process params which declare Geometry.class as the type.
+         */
         public static class Geometry extends GML2 {
             public Geometry() {
                 super(org.locationtech.jts.geom.Geometry.class, GML._Geometry);
@@ -78,7 +81,9 @@ public class GMLPPIO extends XMLPPIO {
             }
         }
 
-        /** PPIO with alternate mime type suitable for usage in Execute KVP */
+        /**
+         * PPIO with alternate mime type suitable for usage in Execute KVP
+         */
         public static class GeometryAlternate extends Geometry {
 
             public GeometryAlternate() {
@@ -95,7 +100,9 @@ public class GMLPPIO extends XMLPPIO {
             xml = new org.geotools.gml3.GMLConfiguration();
         }
 
-        /** Place holder for process params which declare Geometry.class as the type. */
+        /**
+         * Place holder for process params which declare Geometry.class as the type.
+         */
         public static class Geometry extends GML3 {
             public Geometry() {
                 super(org.locationtech.jts.geom.Geometry.class, org.geotools.gml3.GML._Geometry);
@@ -126,7 +133,9 @@ public class GMLPPIO extends XMLPPIO {
             }
         }
 
-        /** PPIO with alternate mime type suitable for usage in Execute KVP */
+        /**
+         * PPIO with alternate mime type suitable for usage in Execute KVP
+         */
         public static class GeometryAlternate extends Geometry {
 
             public GeometryAlternate() {

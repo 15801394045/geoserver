@@ -8,6 +8,7 @@ package org.geoserver.wps;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import net.opengis.wps10.DescribeProcessType;
 import net.opengis.wps10.ExecuteResponseType;
 import net.opengis.wps10.ExecuteType;
@@ -50,34 +51,46 @@ public class DefaultWebProcessingService implements WebProcessingService, Applic
         this.tracker = tracker;
     }
 
-    /** @see WebMapService#getServiceInfo() */
+    /**
+     * @see WebMapService#getServiceInfo()
+     */
     public WPSInfo getServiceInfo() {
         return gs.getService(WPSInfo.class);
     }
 
-    /** @see org.geoserver.wps.WebProcessingService#getCapabilities */
+    /**
+     * @see org.geoserver.wps.WebProcessingService#getCapabilities
+     */
     public WPSCapabilitiesType getCapabilities(GetCapabilitiesType request) throws WPSException {
         return new GetCapabilities(getServiceInfo(), context).run(request);
     }
 
-    /** @see org.geoserver.wps.WebProcessingService#describeProcess */
+    /**
+     * @see org.geoserver.wps.WebProcessingService#describeProcess
+     */
     public ProcessDescriptionsType describeProcess(DescribeProcessType request)
             throws WPSException {
         return new DescribeProcess(getServiceInfo(), context).run(request);
     }
 
-    /** @see org.geoserver.wps.WebProcessingService#execute */
+    /**
+     * @see org.geoserver.wps.WebProcessingService#execute
+     */
     public ExecuteResponseType execute(ExecuteType request) throws WPSException {
         return new Execute(executionManager, context).run(request);
     }
 
-    /** @see org.geoserver.wps.WebProcessingService#getSchema */
+    /**
+     * @see org.geoserver.wps.WebProcessingService#getSchema
+     */
     public void getSchema(HttpServletRequest request, HttpServletResponse response)
             throws WPSException {
         new GetSchema(getServiceInfo()).run(request, response);
     }
 
-    /** @see org.springframework.context.ApplicationContextAware#setApplicationContext */
+    /**
+     * @see org.springframework.context.ApplicationContextAware#setApplicationContext
+     */
     public void setApplicationContext(ApplicationContext context) throws BeansException {
         this.context = context;
     }

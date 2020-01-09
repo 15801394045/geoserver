@@ -18,6 +18,7 @@ import java.util.logging.Level;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
+
 import org.geoserver.security.impl.GeoServerUser;
 import org.geoserver.security.validation.FilterConfigException;
 import org.geotools.data.ows.HTTPClient;
@@ -39,7 +40,9 @@ import org.springframework.util.StringUtils;
  */
 public class WebServiceAuthenticationKeyMapper extends AbstractAuthenticationKeyMapper {
 
-    /** Thread local holding the current response */
+    /**
+     * Thread local holding the current response
+     */
     public static final ThreadLocal<String> RECORDED_RESPONSE = new ThreadLocal<String>();
 
     public static final String AUTH_KEY_WEBSERVICE_PLACEHOLDER_REQUIRED =
@@ -80,7 +83,9 @@ public class WebServiceAuthenticationKeyMapper extends AbstractAuthenticationKey
         return httpClient;
     }
 
-    /** Returns the connection timeout to the mapper web service (in seconds). */
+    /**
+     * Returns the connection timeout to the mapper web service (in seconds).
+     */
     public int getConnectTimeout() {
         return connectTimeout;
     }
@@ -94,7 +99,9 @@ public class WebServiceAuthenticationKeyMapper extends AbstractAuthenticationKey
         this.connectTimeout = connectTimeout;
     }
 
-    /** Returns the read timeout to the mapper web service (in seconds). */
+    /**
+     * Returns the read timeout to the mapper web service (in seconds).
+     */
     public int getReadTimeout() {
         return readTimeout;
     }
@@ -108,7 +115,9 @@ public class WebServiceAuthenticationKeyMapper extends AbstractAuthenticationKey
         this.readTimeout = readTimeout;
     }
 
-    /** Returns the web service url */
+    /**
+     * Returns the web service url
+     */
     public String getWebServiceUrl() {
         return webServiceUrl;
     }
@@ -139,7 +148,9 @@ public class WebServiceAuthenticationKeyMapper extends AbstractAuthenticationKey
         searchUserRegex = Pattern.compile(searchUser);
     }
 
-    /** Configures the HTTPClient implementation to be used to connect to the web service. */
+    /**
+     * Configures the HTTPClient implementation to be used to connect to the web service.
+     */
     public void setHttpClient(HTTPClient httpClient) {
         this.httpClient = httpClient;
     }

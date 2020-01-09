@@ -8,6 +8,7 @@ package org.geoserver.wcs2_0.eo;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.logging.Logger;
+
 import org.geoserver.catalog.Catalog;
 import org.geoserver.catalog.CoverageInfo;
 import org.geoserver.catalog.DimensionInfo;
@@ -101,7 +102,9 @@ public class EOCoverageResourceCodec {
         return ci;
     }
 
-    /** Builds the identifier for a granule inside a coverage */
+    /**
+     * Builds the identifier for a granule inside a coverage
+     */
     public String getGranuleId(CoverageInfo coverage, String featureId) {
         return NCNameResourceCodec.encode(coverage) + GRANULE_SEPARATOR + featureId;
     }

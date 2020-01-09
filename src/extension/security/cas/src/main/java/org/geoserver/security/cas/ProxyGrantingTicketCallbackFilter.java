@@ -15,6 +15,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.jasig.cas.client.proxy.ProxyGrantingTicketStorage;
 import org.jasig.cas.client.util.CommonUtils;
 import org.springframework.beans.factory.BeanNameAware;
@@ -44,7 +45,8 @@ public class ProxyGrantingTicketCallbackFilter implements Filter, BeanNameAware 
     }
 
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {}
+    public void init(FilterConfig filterConfig) throws ServletException {
+    }
 
     /**
      * extract a proxy granting tickets and store it in the global {@link
@@ -58,5 +60,6 @@ public class ProxyGrantingTicketCallbackFilter implements Filter, BeanNameAware 
     }
 
     @Override
-    public void destroy() {}
+    public void destroy() {
+    }
 }

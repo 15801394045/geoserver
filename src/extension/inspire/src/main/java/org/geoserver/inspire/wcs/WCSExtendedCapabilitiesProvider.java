@@ -16,6 +16,7 @@ import static org.geoserver.inspire.InspireSchema.DLS_SCHEMA;
 
 import java.io.IOException;
 import java.util.List;
+
 import net.opengis.wcs20.GetCapabilitiesType;
 import org.geoserver.catalog.CoverageInfo;
 import org.geoserver.catalog.MetadataMap;
@@ -31,7 +32,7 @@ public class WCSExtendedCapabilitiesProvider
 
     @Override
     public String[] getSchemaLocations(String schemaBaseURL) {
-        return new String[] {DLS_NAMESPACE, DLS_SCHEMA};
+        return new String[]{DLS_NAMESPACE, DLS_SCHEMA};
     }
 
     @Override

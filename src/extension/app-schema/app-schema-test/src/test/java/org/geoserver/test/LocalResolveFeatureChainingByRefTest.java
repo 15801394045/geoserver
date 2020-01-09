@@ -22,7 +22,9 @@ public class LocalResolveFeatureChainingByRefTest extends AbstractAppSchemaTestS
         return new FeatureGML32ResolveMockData();
     }
 
-    /** Test Local Resolve with Depth 2. */
+    /**
+     * Test Local Resolve with Depth 2.
+     */
     @Test
     public void testResolveDepth2() {
 
@@ -42,7 +44,9 @@ public class LocalResolveFeatureChainingByRefTest extends AbstractAppSchemaTestS
                 doc);
     }
 
-    /** Test Local Resolve with Depth 1. */
+    /**
+     * Test Local Resolve with Depth 1.
+     */
     @Test
     public void testResolveDepth1() {
 
@@ -62,7 +66,9 @@ public class LocalResolveFeatureChainingByRefTest extends AbstractAppSchemaTestS
                 doc);
     }
 
-    /** Test Local Resolve with Depth 0. */
+    /**
+     * Test Local Resolve with Depth 0.
+     */
     @Test
     public void testResolveDepth0() {
 
@@ -78,7 +84,9 @@ public class LocalResolveFeatureChainingByRefTest extends AbstractAppSchemaTestS
                 doc);
     }
 
-    /** Test Local Resolve is not applied when turned off */
+    /**
+     * Test Local Resolve is not applied when turned off
+     */
     @Test
     public void testNoResolve() {
 

@@ -9,11 +9,15 @@ import org.apache.wicket.model.IModel;
 import org.geoserver.security.GeoServerRestRoleServiceConfig;
 import org.geoserver.security.web.role.RoleServicePanel;
 
-/** @author Alessio Fabiani, GeoSolutions S.A.S. */
+/**
+ * @author Alessio Fabiani, GeoSolutions S.A.S.
+ */
 public class GeoServerRestRoleServicePanel
         extends RoleServicePanel<GeoServerRestRoleServiceConfig> {
 
-    /** serialVersionUID */
+    /**
+     * serialVersionUID
+     */
     private static final long serialVersionUID = -6288298408680657130L;
 
     public GeoServerRestRoleServicePanel(String id, IModel<GeoServerRestRoleServiceConfig> model) {

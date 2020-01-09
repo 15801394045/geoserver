@@ -6,6 +6,7 @@ package org.geoserver.wps.executor;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.geoserver.wps.ProcessDismissedException;
 import org.geotools.data.util.DelegateProgressListener;
 import org.geotools.util.logging.Logging;
@@ -58,7 +59,9 @@ public class MaxExecutionTimeListener extends DelegateProgressListener {
         }
     }
 
-    /** Returns true if the execution went beyond the allowed max time */
+    /**
+     * Returns true if the execution went beyond the allowed max time
+     */
     public boolean isExpired() {
         boolean maxExecutionTimeExceeded =
                 maxExecutionTime > 0
@@ -69,7 +72,9 @@ public class MaxExecutionTimeListener extends DelegateProgressListener {
         return maxExecutionTimeExceeded || maxTotalTimeExceeded;
     }
 
-    /** The maximum execution time */
+    /**
+     * The maximum execution time
+     */
     public long getMaxExecutionTime() {
         return maxExecutionTime;
     }

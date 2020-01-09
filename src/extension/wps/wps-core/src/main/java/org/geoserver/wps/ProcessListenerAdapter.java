@@ -13,20 +13,26 @@ package org.geoserver.wps;
 public class ProcessListenerAdapter implements ProcessListener {
 
     @Override
-    public void submitted(ProcessEvent event) throws WPSException {}
+    public void submitted(ProcessEvent event) throws WPSException {
+    }
 
     @Override
-    public void progress(ProcessEvent event) throws WPSException {}
+    public void progress(ProcessEvent event) throws WPSException {
+    }
 
     @Override
-    public void succeeded(ProcessEvent event) throws WPSException {}
+    public void succeeded(ProcessEvent event) throws WPSException {
+    }
 
     @Override
-    public void dismissing(ProcessEvent event) throws WPSException {}
+    public void dismissing(ProcessEvent event) throws WPSException {
+    }
 
     @Override
-    public void dismissed(ProcessEvent event) throws WPSException {}
+    public void dismissed(ProcessEvent event) throws WPSException {
+    }
 
     @Override
-    public void failed(ProcessEvent event) {}
+    public void failed(ProcessEvent event) {
+    }
 }

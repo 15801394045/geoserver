@@ -13,7 +13,9 @@ import org.geoserver.gwc.GWC;
 import org.geoserver.test.GeoServerSystemTestSupport;
 import org.junit.Test;
 
-/** Testing that INSPIRE grid set is correctly loaded and configured. */
+/**
+ * Testing that INSPIRE grid set is correctly loaded and configured.
+ */
 public class InspireGridSetLoaderTest extends GeoServerSystemTestSupport {
 
     @Test

@@ -10,7 +10,9 @@ import org.geoserver.security.config.SecurityNamedServiceConfig;
 import org.geoserver.security.filter.AbstractFilterProvider;
 import org.geoserver.security.filter.GeoServerSecurityFilter;
 
-/** @author ETj (etj at geo-solutions.it) */
+/**
+ * @author ETj (etj at geo-solutions.it)
+ */
 public class GeoFenceAuthFilterProvider extends AbstractFilterProvider {
 
     private GeoFenceSecurityProvider geofenceAuth;

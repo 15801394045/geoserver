@@ -6,6 +6,7 @@
 package org.geoserver.importer;
 
 import com.google.common.collect.Collections2;
+
 import java.text.ParseException;
 import java.util.Arrays;
 import java.util.Collection;
@@ -45,7 +46,7 @@ public class Dates {
      * Returns list of all patterns, optionally filtering out ones that require a strict match.
      *
      * @param strict when <tt>false</tt> those patterns that require a strict match (ie. a pattern
-     *     match and a date parse) are filtered out.
+     *               match and a date parse) are filtered out.
      */
     public static Collection<DatePattern> patterns(boolean strict) {
         Collection<DatePattern> patterns = PATTERNS;

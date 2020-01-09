@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema targetNamespace="http://www.geotools.org/test" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:test="http://www.geotools.org/test" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gml="http://www.opengis.net/gml/3.2" elementFormDefault="qualified">
+<schema targetNamespace="http://www.geotools.org/test" xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:test="http://www.geotools.org/test" xmlns:xlink="http://www.w3.org/1999/xlink"
+        xmlns:gml="http://www.opengis.net/gml/3.2" elementFormDefault="qualified">
     <!-- Portions taken from WXXM 2 -->
     <import namespace="http://www.opengis.net/gml/3.2" schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd"/>
     <import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://www.w3.org/1999/xlink.xsd"/>
@@ -23,7 +25,8 @@
         <complexContent>
             <extension base="gml:AbstractFeatureType">
                 <sequence>
-                    <element name="elements" type="test:SpatioTemporalElementsPropertyType" minOccurs="0" maxOccurs="1"/>
+                    <element name="elements" type="test:SpatioTemporalElementsPropertyType" minOccurs="0"
+                             maxOccurs="1"/>
                 </sequence>
             </extension>
         </complexContent>

@@ -5,6 +5,7 @@
 package org.geoserver.sldservice.rest;
 
 import javax.xml.transform.TransformerException;
+
 import org.geoserver.catalog.Catalog;
 import org.geoserver.rest.catalog.AbstractCatalogController;
 import org.geotools.factory.CommonFactoryFinder;

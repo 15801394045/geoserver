@@ -5,7 +5,9 @@
 package org.geoserver.wps;
 
 import com.google.common.collect.Multimap;
+
 import java.util.List;
+
 import org.geoserver.catalog.Info;
 import org.geoserver.catalog.MetadataMap;
 import org.geoserver.wps.security.SecurityProcessFactory;
@@ -20,7 +22,9 @@ import org.opengis.feature.type.Name;
  */
 public interface ProcessInfo extends Info, Cloneable {
 
-    /** The name of the process */
+    /**
+     * The name of the process
+     */
     Name getName();
 
     /**
@@ -30,13 +34,19 @@ public interface ProcessInfo extends Info, Cloneable {
      */
     void setName(Name name);
 
-    /** Whether the process is enabled or disabled */
+    /**
+     * Whether the process is enabled or disabled
+     */
     boolean isEnabled();
 
-    /** Enables/disables the process */
+    /**
+     * Enables/disables the process
+     */
     void setEnabled(Boolean enabled);
 
-    /** Return roles granted to work with this WPS */
+    /**
+     * Return roles granted to work with this WPS
+     */
     List<String> getRoles();
 
     /**

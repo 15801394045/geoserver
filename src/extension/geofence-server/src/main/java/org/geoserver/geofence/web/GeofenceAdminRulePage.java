@@ -7,6 +7,7 @@ package org.geoserver.geofence.web;
 import java.io.IOException;
 import java.util.*;
 import java.util.logging.Level;
+
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.OnChangeAjaxBehavior;
 import org.apache.wicket.markup.html.form.*;

@@ -11,6 +11,7 @@ import com.thoughtworks.xstream.converters.MarshallingContext;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
+
 import java.awt.*;
 import java.awt.image.RenderedImage;
 import java.io.IOException;
@@ -26,6 +27,7 @@ import java.util.stream.Stream;
 import javax.media.jai.PlanarImage;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.transform.TransformerException;
+
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import net.sf.json.xml.XMLSerializer;
@@ -103,7 +105,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-/** ClassifierController. */
+/**
+ * ClassifierController.
+ */
 @RestController
 @ControllerAdvice
 @RequestMapping(path = RestBaseController.ROOT_PATH + "/sldservice")
@@ -122,16 +126,16 @@ public class ClassifierController extends BaseSLDServiceController {
         XStream xstream = persister.getXStream();
         xstream.alias("Rules", RulesList.class);
         xstream.registerConverter(new StyleConverter());
-        xstream.allowTypes(new Class[] {RulesList.class, JSONObject.class});
+        xstream.allowTypes(new Class[]{RulesList.class, JSONObject.class});
     }
 
     @GetMapping(
-        path = "/{layerName}/classify",
-        produces = {
-            MediaType.APPLICATION_JSON_VALUE,
-            MediaType.APPLICATION_XML_VALUE,
-            MediaType.TEXT_HTML_VALUE
-        }
+            path = "/{layerName}/classify",
+            produces = {
+                    MediaType.APPLICATION_JSON_VALUE,
+                    MediaType.APPLICATION_XML_VALUE,
+                    MediaType.TEXT_HTML_VALUE
+            }
     )
     public Object classify(
             @PathVariable String layerName,
@@ -323,13 +327,13 @@ public class ClassifierController extends BaseSLDServiceController {
         }
 
         return new RangedClassifier(
-                min.toArray(new Comparable[] {}), max.toArray(new Comparable[] {}));
+                min.toArray(new Comparable[]{}), max.toArray(new Comparable[]{}));
     }
 
     private Class normalizePropertyType(Class<?> propertyType, boolean normalize) {
         if (normalize
                 && (Integer.class.isAssignableFrom(propertyType)
-                        || Long.class.isAssignableFrom(propertyType))) {
+                || Long.class.isAssignableFrom(propertyType))) {
             return Double.class;
         }
         return propertyType;
@@ -400,10 +404,10 @@ public class ClassifierController extends BaseSLDServiceController {
         // read the image to be classified
         ImageReader imageReader =
                 new ImageReader(
-                                coverageInfo,
-                                selectedBand,
-                                RasterSymbolizerBuilder.DEFAULT_MAX_PIXELS,
-                                bbox)
+                        coverageInfo,
+                        selectedBand,
+                        RasterSymbolizerBuilder.DEFAULT_MAX_PIXELS,
+                        bbox)
                         .invoke();
         boolean bandSelected = imageReader.isBandSelected();
         RenderedImage image = imageReader.getImage();
@@ -456,7 +460,7 @@ public class ClassifierController extends BaseSLDServiceController {
                     SF.createSelectedChannelType(
                             String.valueOf(selectedBand), (ContrastEnhancement) null);
             ChannelSelection channelSelection =
-                    SF.createChannelSelection(new SelectedChannelType[] {grayChannel});
+                    SF.createChannelSelection(new SelectedChannelType[]{grayChannel});
             rasterSymbolizer.setChannelSelection(channelSelection);
         }
 
@@ -594,9 +598,9 @@ public class ClassifierController extends BaseSLDServiceController {
                             + property
                             + ", available attributes are: "
                             + ftType.getDescriptors()
-                                    .stream()
-                                    .map(p -> p.getName().getLocalPart())
-                                    .collect(Collectors.joining(", ")),
+                            .stream()
+                            .map(p -> p.getName().getLocalPart())
+                            .collect(Collectors.joining(", ")),
                     HttpStatus.BAD_REQUEST);
         }
         Class<?> propertyType = pd.getType().getBinding();
@@ -735,7 +739,8 @@ public class ClassifierController extends BaseSLDServiceController {
                     new ColorRamp() {
 
                         @Override
-                        public void setNumClasses(int numClass) {}
+                        public void setNumClasses(int numClass) {
+                        }
 
                         @Override
                         public int getNumClasses() {
@@ -748,7 +753,8 @@ public class ClassifierController extends BaseSLDServiceController {
                         }
 
                         @Override
-                        public void revert() {}
+                        public void revert() {
+                        }
                     };
         }
         return ramp;
@@ -768,7 +774,9 @@ public class ClassifierController extends BaseSLDServiceController {
         return null;
     }
 
-    /** @author Fabiani */
+    /**
+     * @author Fabiani
+     */
     public class RulesList {
         private String layerName;
 
@@ -786,18 +794,24 @@ public class ClassifierController extends BaseSLDServiceController {
             return rules;
         }
 
-        /** @param layerName the layerName to set */
+        /**
+         * @param layerName the layerName to set
+         */
         public void setLayerName(String layerName) {
             this.layerName = layerName;
         }
 
-        /** @return the layerName */
+        /**
+         * @return the layerName
+         */
         public String getLayerName() {
             return layerName;
         }
     }
 
-    /** @author Fabiani */
+    /**
+     * @author Fabiani
+     */
     public class StyleConverter implements Converter {
 
         /**
@@ -809,9 +823,9 @@ public class ClassifierController extends BaseSLDServiceController {
         }
 
         /**
-         * @see com.thoughtworks.xstream.converters.Converter#marshal(java.lang.Object ,
-         *     com.thoughtworks.xstream.io.HierarchicalStreamWriter,
-         *     com.thoughtworks.xstream.converters.MarshallingContext)
+         * @see com.thoughtworks.xstream.converters.Converter#marshal(java.lang.Object,
+         * com.thoughtworks.xstream.io.HierarchicalStreamWriter,
+         * com.thoughtworks.xstream.converters.MarshallingContext)
          */
         public void marshal(
                 Object value, HierarchicalStreamWriter writer, MarshallingContext context) {
@@ -886,8 +900,7 @@ public class ClassifierController extends BaseSLDServiceController {
         }
 
         /**
-         * @see
-         *     com.thoughtworks.xstream.converters.Converter#unmarshal(com.thoughtworks.xstream.io.HierarchicalStreamReader,com.thoughtworks.xstream.converters.UnmarshallingContext)
+         * @see com.thoughtworks.xstream.converters.Converter#unmarshal(com.thoughtworks.xstream.io.HierarchicalStreamReader, com.thoughtworks.xstream.converters.UnmarshallingContext)
          */
         public Object unmarshal(HierarchicalStreamReader arg0, UnmarshallingContext arg1) {
             // TODO Auto-generated method stub

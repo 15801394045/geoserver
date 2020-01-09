@@ -6,6 +6,7 @@
 package org.geoserver.csw.response;
 
 import java.util.Date;
+
 import net.opengis.cat.csw20.ElementSetType;
 import org.geotools.feature.FeatureCollection;
 

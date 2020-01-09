@@ -18,6 +18,7 @@ import java.io.InputStream;
 import java.util.function.Consumer;
 import javax.imageio.ImageIO;
 import javax.media.jai.PlanarImage;
+
 import org.geoserver.data.test.SystemTestData;
 import org.geoserver.sldservice.rest.ClassifierTest;
 import org.geotools.coverage.grid.GridCoverage2D;

@@ -16,7 +16,9 @@ import org.geoserver.geofence.services.dto.ShortRule;
 import org.junit.Before;
 import org.junit.Test;
 
-/** @author Niels Charlier */
+/**
+ * @author Niels Charlier
+ */
 public class InternalServicesTest extends ServicesTest {
 
     protected RulesRestController controller;

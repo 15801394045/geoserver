@@ -21,6 +21,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.geoserver.flow.controller.BasicOWSController;
 import org.geoserver.flow.controller.SimpleThreadBlocker;
 import org.geoserver.ows.HttpErrorCodeException;
@@ -250,7 +251,9 @@ public class ControlFlowCallbackTest {
         assertEquals(0, controller.getRequestsInQueue());
     }
 
-    /** A wide open configurator to be used for testing */
+    /**
+     * A wide open configurator to be used for testing
+     */
     static class TestingConfigurator implements ControlFlowConfigurator {
         List<FlowController> controllers = new ArrayList<FlowController>();
         long timeout;
@@ -270,7 +273,9 @@ public class ControlFlowCallbackTest {
         }
     }
 
-    /** A controller counting requests, can also be used to check for timeouts */
+    /**
+     * A controller counting requests, can also be used to check for timeouts
+     */
     static class CountingController implements FlowController {
 
         int priority;

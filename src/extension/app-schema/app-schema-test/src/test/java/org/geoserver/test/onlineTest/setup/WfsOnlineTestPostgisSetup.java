@@ -8,6 +8,7 @@ package org.geoserver.test.onlineTest.setup;
 import java.io.InputStream;
 import java.util.List;
 import java.util.Properties;
+
 import org.geoserver.test.onlineTest.support.AbstractReferenceDataSetup;
 import org.geoserver.test.onlineTest.support.DatabaseUtil;
 import org.geotools.data.postgis.PostgisNGDataStoreFactory;
@@ -29,7 +30,9 @@ public class WfsOnlineTestPostgisSetup extends AbstractReferenceDataSetup {
         this.script = this.getClass().getResourceAsStream("/RefDataSet/Postgis_Data_ref_set.sql");
     }
 
-    /** Returns PostgisNGDataStoreFactory */
+    /**
+     * Returns PostgisNGDataStoreFactory
+     */
     @Override
     public JDBCDataStoreFactory createDataStoreFactory() {
         return new PostgisNGDataStoreFactory();

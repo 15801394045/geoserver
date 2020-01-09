@@ -7,6 +7,7 @@ package org.geoserver.wcs2_0.eo.kvp;
 
 import java.util.Arrays;
 import java.util.Map;
+
 import net.opengis.ows11.SectionsType;
 import net.opengis.wcs20.DescribeEOCoverageSetType;
 import net.opengis.wcs20.Section;

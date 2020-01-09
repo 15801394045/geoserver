@@ -7,6 +7,7 @@ package org.geoserver.map.turbojpeg;
 
 import it.geosolutions.imageio.plugins.turbojpeg.TurboJpegUtilities;
 import it.geosolutions.jaiext.range.NoDataContainer;
+
 import java.awt.image.BufferedImage;
 import java.awt.image.IndexColorModel;
 import java.awt.image.WritableRaster;
@@ -17,6 +18,7 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.media.jai.PlanarImage;
 import javax.media.jai.RasterFactory;
+
 import org.geotools.image.ImageWorker;
 import org.geotools.test.TestData;
 import org.junit.Assert;

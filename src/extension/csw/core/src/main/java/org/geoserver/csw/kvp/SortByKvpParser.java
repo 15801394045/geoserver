@@ -6,6 +6,7 @@
 package org.geoserver.csw.kvp;
 
 import java.util.List;
+
 import org.geoserver.ows.FlatKvpParser;
 import org.opengis.filter.FilterFactory;
 import org.opengis.filter.sort.SortBy;
@@ -26,7 +27,9 @@ public class SortByKvpParser extends FlatKvpParser {
         this.filterFactory = filterFactory;
     }
 
-    /** Parses a token of the form 'Field1 {A|D}' into an instnace of {@link SortBy}. */
+    /**
+     * Parses a token of the form 'Field1 {A|D}' into an instnace of {@link SortBy}.
+     */
     protected Object parseToken(String token) throws Exception {
         SortOrder order = SortOrder.ASCENDING;
         int idx = token.lastIndexOf(":");

@@ -11,7 +11,7 @@ import org.w3c.dom.Document;
 
 /**
  * @author Niels Charlier, Curtin University Of Technology
- *     <p>Tests manual and automatic xlink:href for Geometries
+ * <p>Tests manual and automatic xlink:href for Geometries
  */
 public class XlinkGeometryTest extends AbstractAppSchemaTestSupport {
 
@@ -20,7 +20,9 @@ public class XlinkGeometryTest extends AbstractAppSchemaTestSupport {
         return new XlinkGeometryMockData();
     }
 
-    /** Tests whether automatic and manual xlink:href is encoded in all Geometry Types */
+    /**
+     * Tests whether automatic and manual xlink:href is encoded in all Geometry Types
+     */
     @Test
     public void testGeometry() {
         Document doc = getAsDOM("wfs?request=GetFeature&version=1.1.0&typeName=ex:MyTestFeature");

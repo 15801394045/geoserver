@@ -15,6 +15,7 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+
 import org.geoserver.filters.GeoServerFilter;
 import org.geoserver.flow.config.DefaultControlFlowConfigurator;
 import org.geoserver.ows.AbstractDispatcherCallback;
@@ -84,12 +85,16 @@ public class ControlFlowCallback extends AbstractDispatcherCallback
         REQUEST_CONTROLLERS.remove();
     }
 
-    /** Returns the current number of blocked/queued requests. */
+    /**
+     * Returns the current number of blocked/queued requests.
+     */
     public long getBlockedRequests() {
         return blockedRequests.get();
     }
 
-    /** Returns the current number of running requests. */
+    /**
+     * Returns the current number of running requests.
+     */
     public long getRunningRequests() {
         return runningRequests.get();
     }
@@ -216,7 +221,9 @@ public class ControlFlowCallback extends AbstractDispatcherCallback
         }
     }
 
-    /** Register default beans for control flow configurator and flow controller. */
+    /**
+     * Register default beans for control flow configurator and flow controller.
+     */
     private void registDefaultBeansIfNeeded(ConfigurableApplicationContext applicationContext) {
         ConfigurableListableBeanFactory factory = applicationContext.getBeanFactory();
         // make sure default beans are only registered once

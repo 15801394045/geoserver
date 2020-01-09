@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+
 import org.geoserver.catalog.CatalogInfo;
 import org.geoserver.csw.DownloadLinkHandler;
 import org.geoserver.csw.records.CSWRecordDescriptor;
@@ -20,7 +21,9 @@ import org.opengis.feature.Property;
 import org.opengis.feature.type.AttributeDescriptor;
 import org.opengis.feature.type.ComplexType;
 
-/** {@link FeatureCustomizer} subclass to deal with CSW DublinCore records */
+/**
+ * {@link FeatureCustomizer} subclass to deal with CSW DublinCore records
+ */
 public class RecordCustomizer extends FeatureCustomizer {
 
     private static final AttributeDescriptor REFERENCES_DESCRIPTOR;
@@ -37,7 +40,9 @@ public class RecordCustomizer extends FeatureCustomizer {
         VALUE_DESCRIPTOR = (AttributeDescriptor) referenceType.getDescriptor("value");
     }
 
-    /** An instance of {@link DownloadLinkHandler}, used to deal with download links */
+    /**
+     * An instance of {@link DownloadLinkHandler}, used to deal with download links
+     */
     private DownloadLinkHandler downloadLinkHandler;
 
     public void setDownloadLinkHandler(DownloadLinkHandler downloadLinkHandler) {
@@ -99,7 +104,9 @@ public class RecordCustomizer extends FeatureCustomizer {
         feature.setValue(propertyList);
     }
 
-    /** Create a new references element for the link */
+    /**
+     * Create a new references element for the link
+     */
     private Property createReferencesElement(String link) {
         Property urlAttribute = new AttributeImpl(link, VALUE_DESCRIPTOR, null);
 

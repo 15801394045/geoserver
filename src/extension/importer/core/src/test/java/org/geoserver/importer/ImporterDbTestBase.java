@@ -11,6 +11,7 @@ import static org.junit.Assert.assertNotNull;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.Statement;
+
 import org.geoserver.catalog.Catalog;
 import org.geoserver.catalog.DataStoreInfo;
 import org.geotools.data.jdbc.JDBCUtils;

@@ -10,6 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+
 import org.apache.xml.serializer.TreeWalker;
 import org.geoserver.catalog.Catalog;
 import org.geoserver.catalog.NamespaceInfo;
@@ -46,7 +47,9 @@ class WPSExecuteTransformer extends TransformerBase {
 
     static final Logger LOGGER = Logging.getLogger(WPSExecuteTransformer.class);
 
-    /** entity resolver */
+    /**
+     * entity resolver
+     */
     private EntityResolver2 entityResolver;
 
     public WPSExecuteTransformer() {
@@ -74,14 +77,18 @@ class WPSExecuteTransformer extends TransformerBase {
 
     public class ExecuteRequestTranslator extends TranslatorSupport {
 
-        /** wfs namespace */
+        /**
+         * wfs namespace
+         */
         protected static final String WFS_URI = "http://www.opengis.net/wfs";
 
         protected static final String WPS_URI = "http://www.opengis.net/wps/1.0.0";
 
         protected static final String WCS_URI = "http://www.opengis.net/wcs/1.1.1";
 
-        /** xml schema namespace + prefix */
+        /**
+         * xml schema namespace + prefix
+         */
         protected static final String XSI_PREFIX = "xsi";
 
         protected static final String XSI_URI = "http://www.w3.org/2001/XMLSchema-instance";
@@ -178,7 +185,7 @@ class WPSExecuteTransformer extends TransformerBase {
                                 crs =
                                         "EPSG:"
                                                 + CRS.lookupEpsgCode(
-                                                        env.getCoordinateReferenceSystem(), false);
+                                                env.getCoordinateReferenceSystem(), false);
                             } catch (Exception e) {
                                 LOGGER.log(Level.WARNING, "Could not get EPSG code for " + crs);
                             }

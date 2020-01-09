@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <as:AppSchemaDataAccess xmlns:as="http://www.geotools.org/app-schema"
-    xmlns:ogc="http://www.opengis.net/ogc" xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.geotools.org/app-schema AppSchemaDataAccess.xsd
+                        xmlns:ogc="http://www.opengis.net/ogc" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                        xsi:schemaLocation="http://www.geotools.org/app-schema AppSchemaDataAccess.xsd
                       http://www.opengis.net/ogc http://schemas.opengis.net/filter/1.1.0/expr.xsd">
     <namespaces>
         <Namespace>
@@ -122,7 +122,9 @@
                     <targetAttribute>ex:conditionallyNestedFeature</targetAttribute>
                     <sourceExpression>
                         <OCQL>GML_ID</OCQL>
-                        <linkElement>if_then_else(equalTo(NAME, 'A_nested_second'), 'ConditionallyNestedFeature', toXlinkHref('urn:ogc:def:nil:OGC:1.0:missing'))</linkElement>
+                        <linkElement>if_then_else(equalTo(NAME, 'A_nested_second'), 'ConditionallyNestedFeature',
+                            toXlinkHref('urn:ogc:def:nil:OGC:1.0:missing'))
+                        </linkElement>
                         <linkField>FEATURE_LINK</linkField>
                     </sourceExpression>
                     <isMultiple>true</isMultiple>

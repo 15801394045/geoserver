@@ -7,6 +7,7 @@ package org.geoserver.importer.rest.converters;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStreamWriter;
+
 import net.sf.json.JSONObject;
 import org.geoserver.importer.ImportData;
 import org.geoserver.importer.Importer;
@@ -21,7 +22,9 @@ import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.http.converter.HttpMessageNotWritableException;
 import org.springframework.stereotype.Component;
 
-/** Convert {@link ImportData} to/from JSON. */
+/**
+ * Convert {@link ImportData} to/from JSON.
+ */
 @Component
 public class ImportDataJSONMessageConverter extends BaseMessageConverter<ImportData> {
 

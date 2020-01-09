@@ -8,6 +8,7 @@ package org.geoserver.monitor.ows;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
+
 import org.geoserver.monitor.Monitor;
 import org.geoserver.monitor.RequestData;
 import org.geoserver.monitor.RequestData.Status;
@@ -30,12 +31,16 @@ public class ControlFlowCallbackProxy implements InvocationHandler, BeanPostProc
         this.target = target;
     }
 
-    /** Returns the number of running requests from the underlying control flow callback. */
+    /**
+     * Returns the number of running requests from the underlying control flow callback.
+     */
     public long getRunningRequests() {
         return (Long) OwsUtils.get(target, "runningRequests");
     }
 
-    /** Returns the number of blocked requests from the underlying control flow callback. */
+    /**
+     * Returns the number of blocked requests from the underlying control flow callback.
+     */
     public long getBlockedRequests() {
         return (Long) OwsUtils.get(target, "blockedRequests");
     }
@@ -47,7 +52,7 @@ public class ControlFlowCallbackProxy implements InvocationHandler, BeanPostProc
             bean =
                     Proxy.newProxyInstance(
                             bean.getClass().getClassLoader(),
-                            new Class[] {DispatcherCallback.class},
+                            new Class[]{DispatcherCallback.class},
                             new ControlFlowCallbackProxy(monitor, bean));
         }
 

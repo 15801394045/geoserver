@@ -8,6 +8,7 @@ package org.geoserver.filter.function;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
 import org.geoserver.catalog.Catalog;
 import org.geoserver.catalog.FeatureTypeInfo;
 import org.geotools.data.FeatureSource;
@@ -116,7 +117,7 @@ public class QueryFunction extends FunctionImpl {
             }
 
             // perform the query
-            Query query = new Query(null, filter, new String[] {attribute});
+            Query query = new Query(null, filter, new String[]{attribute});
             // .. just enough to judge if we went beyond the limit
             query.setMaxFeatures(maxResults + 1);
             FeatureSource fs = ft.getFeatureSource(null, null);

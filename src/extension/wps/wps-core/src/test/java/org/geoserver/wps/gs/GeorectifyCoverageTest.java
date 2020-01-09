@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 import javax.imageio.ImageIO;
+
 import org.geoserver.wps.WPSTestSupport;
 import org.geotools.coverage.grid.GridCoverage2D;
 import org.geotools.coverage.grid.GridCoverageFactory;
@@ -41,7 +42,7 @@ public class GeorectifyCoverageTest extends WPSTestSupport {
     @Test
     public void testGeorectify()
             throws IOException, MismatchedDimensionException, NoSuchAuthorityCodeException,
-                    FactoryException {
+            FactoryException {
         GeorectifyCoverage process = applicationContext.getBean(GeorectifyCoverage.class);
         if (!process.isAvailable()) {
             LOGGER.warning("GDAL utilities are not in the path, skipping the test");

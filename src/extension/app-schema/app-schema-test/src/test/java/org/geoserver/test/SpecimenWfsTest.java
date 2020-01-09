@@ -19,13 +19,17 @@ import org.w3c.dom.Document;
  */
 public class SpecimenWfsTest extends AbstractAppSchemaTestSupport {
 
-    /** @see org.geoserver.test.AbstractAppSchemaTestSupport#buildTestData() */
+    /**
+     * @see org.geoserver.test.AbstractAppSchemaTestSupport#buildTestData()
+     */
     @Override
     protected SpecimenMockData createTestData() {
         return new SpecimenMockData();
     }
 
-    /** Test whether GetFeature returns wfs:FeatureCollection. */
+    /**
+     * Test whether GetFeature returns wfs:FeatureCollection.
+     */
     @Test
     public void testGetFeature() {
         String path =
@@ -37,7 +41,9 @@ public class SpecimenWfsTest extends AbstractAppSchemaTestSupport {
         assertEquals("FeatureCollection", doc.getDocumentElement().getLocalName());
     }
 
-    /** Test whether GetFeature response is schema-valid. */
+    /**
+     * Test whether GetFeature response is schema-valid.
+     */
     @Test
     public void testGetFeatureValid() {
         String path =
@@ -48,7 +54,9 @@ public class SpecimenWfsTest extends AbstractAppSchemaTestSupport {
         validateGet(path);
     }
 
-    /** Test whether GetFeature response has expected content. */
+    /**
+     * Test whether GetFeature response has expected content.
+     */
     @Test
     public void testGetFeatureContent() {
         String path =

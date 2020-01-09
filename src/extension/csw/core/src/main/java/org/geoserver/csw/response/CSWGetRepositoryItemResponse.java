@@ -8,6 +8,7 @@ package org.geoserver.csw.response;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+
 import org.apache.commons.io.IOUtils;
 import org.geoserver.config.GeoServer;
 import org.geoserver.csw.GetRepositoryItemType;

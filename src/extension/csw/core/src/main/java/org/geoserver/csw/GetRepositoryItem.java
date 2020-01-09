@@ -6,6 +6,7 @@
 package org.geoserver.csw;
 
 import java.io.IOException;
+
 import org.geoserver.csw.store.CatalogStore;
 import org.geoserver.csw.store.RepositoryItem;
 import org.geoserver.ows.HttpErrorCodeException;

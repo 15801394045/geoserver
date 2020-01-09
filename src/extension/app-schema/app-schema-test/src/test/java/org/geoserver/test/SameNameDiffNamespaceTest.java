@@ -21,7 +21,9 @@ public class SameNameDiffNamespaceTest extends AbstractAppSchemaTestSupport {
         return new SameNameDiffNamespaceMockData();
     }
 
-    /** Test GetFeature with two 'name' properties with different namespace. */
+    /**
+     * Test GetFeature with two 'name' properties with different namespace.
+     */
     @Test
     public void testSameNameDiffNamespace3() {
         Document doc = getAsDOM("wfs?request=GetFeature&version=1.1.0&typeName=ex:MyTestFeature");

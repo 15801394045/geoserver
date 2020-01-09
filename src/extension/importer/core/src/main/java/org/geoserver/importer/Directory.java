@@ -7,6 +7,7 @@ package org.geoserver.importer;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
+
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -24,6 +25,7 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.zip.ZipOutputStream;
+
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.vfs2.AllFileSelector;
@@ -40,10 +42,14 @@ public class Directory extends FileData {
 
     private static final long serialVersionUID = 1L;
 
-    /** list of files contained in directory */
+    /**
+     * list of files contained in directory
+     */
     protected List<FileData> files = new ArrayList<FileData>();
 
-    /** flag controlling whether file look up should recurse into sub directories. */
+    /**
+     * flag controlling whether file look up should recurse into sub directories.
+     */
     boolean recursive;
 
     String name;
@@ -247,7 +253,7 @@ public class Directory extends FileData {
     /**
      * Creates a new spatial file.
      *
-     * @param f The raw file.
+     * @param f      The raw file.
      * @param format The spatial format of the file.
      */
     protected SpatialFile newSpatialFile(File f, DataFormat format) {
@@ -374,7 +380,9 @@ public class Directory extends FileData {
         LOGGER.warning(buf.toString());
     }
 
-    /** @throws IOException */
+    /**
+     * @throws IOException
+     */
     protected void lockDirectory() throws IOException {
         File locking = new File(this.getFile(), ".locking");
         if (!locking.exists()) {

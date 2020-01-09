@@ -12,6 +12,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 import java.util.logging.Logger;
+
 import org.geoserver.security.validation.FilterConfigException;
 import org.springframework.util.StringUtils;
 
@@ -83,7 +84,9 @@ public abstract class AbstractAuthenticationKeyMapper implements AuthenticationK
         return UUID.randomUUID().toString();
     }
 
-    /** Returns the list of configuration parameters supported by the mapper. */
+    /**
+     * Returns the list of configuration parameters supported by the mapper.
+     */
     public Set<String> getAvailableParameters() {
         return new HashSet<String>();
     }
@@ -98,7 +101,9 @@ public abstract class AbstractAuthenticationKeyMapper implements AuthenticationK
         fillDefaultParameters();
     }
 
-    /** Fills parameters with default values (if defined by the mapper. */
+    /**
+     * Fills parameters with default values (if defined by the mapper.
+     */
     private void fillDefaultParameters() {
         for (String paramName : getAvailableParameters()) {
             if (!this.parameters.containsKey(paramName)) {
@@ -121,8 +126,11 @@ public abstract class AbstractAuthenticationKeyMapper implements AuthenticationK
         return parameters;
     }
 
-    /** Validates the given parameter (used by the filter validator). */
-    public void validateParameter(String paramName, String value) throws FilterConfigException {}
+    /**
+     * Validates the given parameter (used by the filter validator).
+     */
+    public void validateParameter(String paramName, String value) throws FilterConfigException {
+    }
 
     /**
      * Creates a validation exception (used by inheriting mappers).

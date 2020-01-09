@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.Map;
+
 import net.sf.json.JSONObject;
 import org.geoserver.wps.ppio.CDataPPIO;
 import org.geotools.process.vector.AggregateProcess;
@@ -71,7 +72,7 @@ public class AggregateProcessJSONPPIO extends CDataPPIO {
             // if there is no group by attributes we only to encode the aggregations function
             // results
             json.put("GroupByAttributes", new String[0]);
-            json.put("AggregationResults", new Number[][] {encodeSimpleResult(processResult)});
+            json.put("AggregationResults", new Number[][]{encodeSimpleResult(processResult)});
         } else {
             // there is group by values so we need to encode all the grouped results
             json.put("GroupByAttributes", processResult.getGroupByAttributes().toArray());

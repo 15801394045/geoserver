@@ -28,7 +28,9 @@ import java.util.Map.Entry;
 public abstract class CasAuthenticationHelper {
 
     protected URL casUrlPrefix;
-    /** true for an SSL (TLS) connection */
+    /**
+     * true for an SSL (TLS) connection
+     */
     protected boolean secure;
 
     protected HttpCookie ticketGrantingCookie, warningCookie;

@@ -7,6 +7,7 @@ package org.geoserver.importer;
 
 import java.io.IOException;
 import java.util.List;
+
 import org.geoserver.catalog.AttributeTypeInfo;
 import org.geoserver.catalog.FeatureTypeInfo;
 import org.geotools.data.FeatureReader;
@@ -28,13 +29,19 @@ public abstract class VectorFormat extends DataFormat {
         EMPTY_BOUNDS.setToNull();
     }
 
-    /** Reads features from the data for the specified import item. */
+    /**
+     * Reads features from the data for the specified import item.
+     */
     public abstract FeatureReader read(ImportData data, ImportTask item) throws IOException;
 
-    /** Disposes the reader for the specified import item. */
+    /**
+     * Disposes the reader for the specified import item.
+     */
     public abstract void dispose(FeatureReader reader, ImportTask item) throws IOException;
 
-    /** Get the number of features from the data for the specified import item. */
+    /**
+     * Get the number of features from the data for the specified import item.
+     */
     public abstract int getFeatureCount(ImportData data, ImportTask item) throws IOException;
 
     /**

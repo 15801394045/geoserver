@@ -12,6 +12,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.HashMap;
 import java.util.Map;
+
 import org.geoserver.catalog.MetadataMap;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;

@@ -6,6 +6,7 @@ package org.geoserver.wps.validator;
 
 import java.util.Collections;
 import java.util.List;
+
 import org.geoserver.platform.GeoServerExtensions;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

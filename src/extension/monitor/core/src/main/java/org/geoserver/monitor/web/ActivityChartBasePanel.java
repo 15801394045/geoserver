@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.extensions.yui.calendar.DateTimeField;
@@ -87,7 +88,7 @@ public abstract class ActivityChartBasePanel extends Panel {
                                 ((GeoServerApplication) getApplication())
                                         .getBeanOfType(Monitor.class);
 
-                        Date[] range = new Date[] {from, to};
+                        Date[] range = new Date[]{from, to};
 
                         chartImage.setImageResource(queryAndRenderChart(monitor, range));
                         target.add(chartImage);

@@ -9,6 +9,7 @@ package org.geoserver.wps;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.Writer;
+
 import org.apache.commons.io.output.WriterOutputStream;
 import org.geoserver.wps.ppio.CDataPPIO;
 import org.geotools.xsd.EncoderDelegate;

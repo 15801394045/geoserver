@@ -11,6 +11,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
+
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.LoadableDetachableModel;
 import org.apache.wicket.model.PropertyModel;
@@ -22,7 +23,9 @@ import org.geoserver.wps.process.GeoServerProcessors;
 import org.geotools.process.ProcessFactory;
 import org.opengis.feature.type.Name;
 
-/** Provides entries for the process filtering table in the {@link WPSAccessRulePage} */
+/**
+ * Provides entries for the process filtering table in the {@link WPSAccessRulePage}
+ */
 @SuppressWarnings("serial")
 public class ProcessFactoryInfoProvider extends GeoServerDataProvider<ProcessGroupInfo> {
 
@@ -124,14 +127,14 @@ public class ProcessFactoryInfoProvider extends GeoServerDataProvider<ProcessGro
                                     int active = names.size();
                                     if (active != total) {
                                         return new ParamResourceModel(
-                                                        "WPSAdminPage.filter.active",
-                                                        null,
-                                                        active,
-                                                        total)
+                                                "WPSAdminPage.filter.active",
+                                                null,
+                                                active,
+                                                total)
                                                 .getString();
                                     } else {
                                         return new ParamResourceModel(
-                                                        "WPSAdminPage.filter.all", null)
+                                                "WPSAdminPage.filter.all", null)
                                                 .getString();
                                     }
                                 }

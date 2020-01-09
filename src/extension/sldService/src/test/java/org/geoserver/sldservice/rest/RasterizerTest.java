@@ -11,6 +11,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.io.ByteArrayOutputStream;
+
 import org.geoserver.catalog.LayerInfo;
 import org.geoserver.data.test.SystemTestData;
 import org.geoserver.rest.RestBaseController;

@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema targetNamespace="http://www.opengis.net/wcseo/1.0"
-    xmlns:wcseo="http://www.opengis.net/wcseo/1.0"
-    xmlns:wcs="http://www.opengis.net/wcs/2.0"
-    xmlns:gml="http://www.opengis.net/gml/3.2"
-    xmlns:gmlcov="http://www.opengis.net/gmlcov/1.0"
-    xmlns:eop="http://www.opengis.net/eop/2.0"
-    xmlns="http://www.w3.org/2001/XMLSchema" 
-    elementFormDefault="qualified" version="1.0.0" xml:lang="en">
+        xmlns:wcseo="http://www.opengis.net/wcseo/1.0"
+        xmlns:wcs="http://www.opengis.net/wcs/2.0"
+        xmlns:gml="http://www.opengis.net/gml/3.2"
+        xmlns:gmlcov="http://www.opengis.net/gmlcov/1.0"
+        xmlns:eop="http://www.opengis.net/eop/2.0"
+        xmlns="http://www.w3.org/2001/XMLSchema"
+        elementFormDefault="qualified" version="1.0.0" xml:lang="en">
     <annotation>
         <appinfo>wcsEODescribeCoverageSet.xsd</appinfo>
-        <documentation>This XML Schema Document defines the DescribeEOCoverageSet operation request and response XML elements and types, used by the OGC Web Coverage Service (WCS) Earth Observation Application Profile (EO-WCS).
+        <documentation>This XML Schema Document defines the DescribeEOCoverageSet operation request and response XML
+            elements and types, used by the OGC Web Coverage Service (WCS) Earth Observation Application Profile
+            (EO-WCS).
             Last updated: 2011-feb-04
             Copyright (c) 2011 Open Geospatial Consortium, Inc. All Rights Reserved.
             To obtain additional rights of use, visit http://www.opengeospatial.org/legal/.
@@ -20,9 +22,11 @@
     <!-- includes and imports                                        -->
     <!-- =========================================================== -->
     <import namespace="http://www.opengis.net/gml/3.2" schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd"/>
-    <import namespace="http://www.opengis.net/gmlcov/1.0" schemaLocation="http://schemas.opengis.net/gmlcov/1.0/gmlcovAll.xsd"/>
+    <import namespace="http://www.opengis.net/gmlcov/1.0"
+            schemaLocation="http://schemas.opengis.net/gmlcov/1.0/gmlcovAll.xsd"/>
     <import namespace="http://www.opengis.net/wcs/2.0" schemaLocation="http://schemas.opengis.net/wcs/2.0/wcsAll.xsd"/>
-    <import namespace="http://www.opengis.net/eop/2.0" schemaLocation="http://schemas.opengis.net/eop/2.0/eop.xsd"/> <!--TODO: Where will the schema reside?-->
+    <import namespace="http://www.opengis.net/eop/2.0"
+            schemaLocation="http://schemas.opengis.net/eop/2.0/eop.xsd"/> <!--TODO: Where will the schema reside?-->
     <include schemaLocation="wcsEOAll.xsd"/>
 
     <!-- =========================================================== -->
@@ -30,7 +34,10 @@
     <!-- =========================================================== -->
     <element name="DescribeEOCoverageSet" type="wcseo:DescribeEOCoverageSetType">
         <annotation>
-            <documentation>Request to a WCS to perform the DescribeCoverage operation. This operation allows a client to retrieve descriptions of one or more coverages. In this XML encoding, no "request" parameter is included, since the element name specifies the specific operation. </documentation>
+            <documentation>Request to a WCS to perform the DescribeCoverage operation. This operation allows a client to
+                retrieve descriptions of one or more coverages. In this XML encoding, no "request" parameter is
+                included, since the element name specifies the specific operation.
+            </documentation>
         </annotation>
     </element>
     <complexType name="DescribeEOCoverageSetType">
@@ -49,7 +56,9 @@
     <!-- =========================================================== -->
     <element name="eoId" type="NCName">
         <annotation>
-            <documentation>This element represents EO coverage or Dataset Series identifiers. It uses the same type as gml:id to allow for identifier values to be used in both contexts. </documentation>
+            <documentation>This element represents EO coverage or Dataset Series identifiers. It uses the same type as
+                gml:id to allow for identifier values to be used in both contexts.
+            </documentation>
         </annotation>
     </element>
     <!-- =========================================================== -->
@@ -81,26 +90,32 @@
     <!-- =========================================================== -->
     <element name="EOCoverageSetDescription" type="wcseo:EOCoverageSetDescriptionType">
         <annotation>
-            <documentation>Response from an EO-WCS DescribeEOCoverageSet operation, containing a wcs: CoverageDescriptions and a wcseo:DatasetSeriesDescriptions element.</documentation>
+            <documentation>Response from an EO-WCS DescribeEOCoverageSet operation, containing a wcs:
+                CoverageDescriptions and a wcseo:DatasetSeriesDescriptions element.
+            </documentation>
         </annotation>
     </element>
     <complexType name="EOCoverageSetDescriptionType">
         <sequence>
-            <element ref="wcs:CoverageDescriptions" minOccurs="0"/> <!-- WCS core schema allows zero CoverageDescription elements in CoverageDescriptions but minOccurs needed for section parameter. -->
-            <element ref="wcseo:DatasetSeriesDescriptions" minOccurs="0"/> <!-- minOccurs needed for section parameter. -->
+            <element ref="wcs:CoverageDescriptions"
+                     minOccurs="0"/> <!-- WCS core schema allows zero CoverageDescription elements in CoverageDescriptions but minOccurs needed for section parameter. -->
+            <element ref="wcseo:DatasetSeriesDescriptions"
+                     minOccurs="0"/> <!-- minOccurs needed for section parameter. -->
         </sequence>
         <attribute name="numberMatched" type="nonNegativeInteger" use="required"/>
         <attribute name="numberReturned" type="nonNegativeInteger" use="required"/>
         <!-- TODO: Paging -->
-<!-- From WFS 2.0:
-        <attribute name="next" type="anyURI"/>
-        <attribute name="previous" type="anyURI"/>
--->
+        <!-- From WFS 2.0:
+                <attribute name="next" type="anyURI"/>
+                <attribute name="previous" type="anyURI"/>
+        -->
     </complexType>
     <!-- =========================================================== -->
     <element name="DatasetSeriesDescriptions" type="wcseo:DatasetSeriesDescriptionsType">
         <annotation>
-            <documentation>Contained in responses from an EO-WCS DescribeEOCoverageSet operation, containing zero or more Dataset Series descriptions.</documentation>
+            <documentation>Contained in responses from an EO-WCS DescribeEOCoverageSet operation, containing zero or
+                more Dataset Series descriptions.
+            </documentation>
         </annotation>
     </element>
     <complexType name="DatasetSeriesDescriptionsType">

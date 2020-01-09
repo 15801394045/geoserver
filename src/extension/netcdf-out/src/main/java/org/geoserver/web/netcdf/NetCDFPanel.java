@@ -7,6 +7,7 @@ package org.geoserver.web.netcdf;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.ajax.AjaxRequestTarget;
@@ -38,7 +39,9 @@ import org.geoserver.web.wicket.ParamResourceModel;
 
 public class NetCDFPanel<T extends NetCDFSettingsContainer> extends FormComponentPanel<T> {
 
-    /** serialVersionUID */
+    /**
+     * serialVersionUID
+     */
     private static final long serialVersionUID = 1L;
 
     protected final ListView<GlobalAttribute> globalAttributes;

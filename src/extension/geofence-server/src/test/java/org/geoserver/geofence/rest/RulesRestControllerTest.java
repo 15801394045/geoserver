@@ -15,6 +15,7 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 import java.util.UUID;
+
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.geoserver.geofence.GeofenceBaseTest;
@@ -626,7 +627,9 @@ public class RulesRestControllerTest extends GeofenceBaseTest {
         return id;
     }
 
-    /** Helper method that will validate a move result. */
+    /**
+     * Helper method that will validate a move result.
+     */
     private void validateResult(
             ResponseEntity<JaxbRuleList> result, HttpStatus expectedHttpStatus, int rules) {
         assertThat(result, notNullValue());

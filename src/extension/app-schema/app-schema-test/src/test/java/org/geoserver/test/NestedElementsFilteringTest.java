@@ -9,6 +9,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 import java.util.Collections;
+
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 import org.springframework.mock.web.MockHttpServletResponse;
@@ -27,7 +28,9 @@ public final class NestedElementsFilteringTest extends AbstractAppSchemaTestSupp
         return new MockData();
     }
 
-    /** Helper class that will setup custom complex feature types using the stations data set. */
+    /**
+     * Helper class that will setup custom complex feature types using the stations data set.
+     */
     private static final class MockData extends StationsMockData {
 
         @Override

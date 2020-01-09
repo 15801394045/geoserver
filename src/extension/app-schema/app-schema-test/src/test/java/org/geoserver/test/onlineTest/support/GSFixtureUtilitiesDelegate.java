@@ -7,6 +7,7 @@ package org.geoserver.test.onlineTest.support;
 
 import java.io.File;
 import java.util.Properties;
+
 import junit.framework.TestCase;
 import org.geotools.test.FixtureUtilities;
 import org.geotools.test.OnlineTestCase;
@@ -23,7 +24,9 @@ import org.geotools.test.OnlineTestSupport;
  */
 public class GSFixtureUtilitiesDelegate {
 
-    /** Load {@link Properties} from a {@link File}. */
+    /**
+     * Load {@link Properties} from a {@link File}.
+     */
     public static Properties loadProperties(File file) {
         return FixtureUtilities.loadProperties(file);
     }
@@ -41,16 +44,14 @@ public class GSFixtureUtilitiesDelegate {
      * guaranteed to exist.
      *
      * <p>
-     *
+     * <p>
      * Dots "." in the fixture id represent a subdirectory path under the GeoTools configuration
      * file directory. For example, an id <code>a.b.foo</code> would be resolved to
      * <code>.geotools/a/b/foo.properties<code>.
      *
-     * @param fixtureDirectory
-     *            the base fixture configuration file directory, typically ".geotools" in the user
-     *            home directory.
-     * @param fixtureId
-     *            the fixture id
+     * @param fixtureDirectory the base fixture configuration file directory, typically ".geotools" in the user
+     *                         home directory.
+     * @param fixtureId        the fixture id
      */
     public static File getFixtureFile(File fixtureDirectory, String fixtureId) {
         return FixtureUtilities.getFixtureFile(fixtureDirectory, fixtureId);
@@ -60,7 +61,7 @@ public class GSFixtureUtilitiesDelegate {
      * Print a notice that tests are being skipped, identifying the property file whose absence is
      * responsible.
      *
-     * @param fixtureId the fixture id
+     * @param fixtureId   the fixture id
      * @param fixtureFile the missing fixture configuration file
      */
     public static void printSkipNotice(String fixtureId, File fixtureFile) {

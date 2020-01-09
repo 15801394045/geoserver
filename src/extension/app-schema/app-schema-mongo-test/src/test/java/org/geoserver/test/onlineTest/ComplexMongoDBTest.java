@@ -13,6 +13,7 @@ import static org.junit.Assert.assertTrue;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
+
 import org.apache.commons.collections.CollectionUtils;
 import org.geoserver.catalog.DataStoreInfo;
 import org.geoserver.security.AccessMode;
@@ -32,7 +33,9 @@ import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.w3c.dom.Document;
 
-/** Tests the integration between MongoDB and App-schema. */
+/**
+ * Tests the integration between MongoDB and App-schema.
+ */
 public class ComplexMongoDBTest extends ComplexMongoDBSupport {
 
     @Override
@@ -55,7 +58,9 @@ public class ComplexMongoDBTest extends ComplexMongoDBSupport {
                 "/wfs:FeatureCollection/gml:featureMembers/st:StationFeature");
     }
 
-    /** Tests inferred attributes on improved mongodb schema generation. */
+    /**
+     * Tests inferred attributes on improved mongodb schema generation.
+     */
     @Test
     public void testGetStationInferredAttributes() throws Exception {
         Document document =
@@ -127,7 +132,9 @@ public class ComplexMongoDBTest extends ComplexMongoDBSupport {
         checkStationRestrebuildMongoSchemas();
     }
 
-    /** Tests the cleanSchemas Rest endpoint for mongodb internal appschema datastores. */
+    /**
+     * Tests the cleanSchemas Rest endpoint for mongodb internal appschema datastores.
+     */
     public void checkStationRestrebuildMongoSchemas() throws Exception {
         Document document =
                 getAsDOM("wfs?request=GetFeature&version=1.1.0&typename=st:StationFeature");

@@ -27,12 +27,18 @@ import org.geoserver.web.netcdf.NetCDFSettingsContainer;
 import org.junit.Before;
 import org.junit.Test;
 
-/** Test class for the {@link NetCDFOutTabPanel}. */
+/**
+ * Test class for the {@link NetCDFOutTabPanel}.
+ */
 public class NetCDFOutTabPanelTest extends GeoServerWicketTestSupport {
-    /** LayerInfo model */
+    /**
+     * LayerInfo model
+     */
     private Model<LayerInfo> layerModel;
 
-    /** CoverageInfo model */
+    /**
+     * CoverageInfo model
+     */
     private Model<CoverageInfo> resourceModel;
 
     @Override

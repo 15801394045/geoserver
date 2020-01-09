@@ -7,6 +7,7 @@ package org.geoserver.wps;
 
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
+
 import org.apache.commons.codec.binary.Base64;
 import org.geoserver.wps.ppio.BinaryPPIO;
 import org.geotools.xsd.EncoderDelegate;

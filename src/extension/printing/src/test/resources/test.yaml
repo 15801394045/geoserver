@@ -22,7 +22,7 @@ scales:
 hosts:
   - !localMatch
     dummy: true
-  
+
 
 layouts:
   Legal:
@@ -35,9 +35,9 @@ layouts:
           height: 483
   #===========================================================================
   A4 portrait:
-  #===========================================================================
+    #===========================================================================
     metaData:
-#      title: '${mapTitle}'
+      #      title: '${mapTitle}'
       author: 'MapFish print module'
       subject: 'Simple layout'
       keywords: 'map,print'
@@ -61,7 +61,7 @@ layouts:
           - !columns
             config:
               cells:
-                - paddingBottom: 5   
+                - paddingBottom: 5
             items:
               - !text
                 backgroundColor: #FF0000
@@ -75,14 +75,14 @@ layouts:
     mainPage:
       pageSize: A4
       rotation: true
-#      header:
-#        height: 50
-#        items:
-#          - !text
-#            font: Helvetica
-#            fontSize: 30
-#            align: right
-#            text: '${layout}'
+      #      header:
+      #        height: 50
+      #        items:
+      #          - !text
+      #            font: Helvetica
+      #            fontSize: 30
+      #            align: right
+      #            text: '${layout}'
       items:
         - !text
           text: '${mapTitle}'

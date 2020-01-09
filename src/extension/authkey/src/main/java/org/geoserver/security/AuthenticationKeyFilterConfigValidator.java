@@ -7,6 +7,7 @@
 package org.geoserver.security;
 
 import java.io.IOException;
+
 import org.geoserver.security.config.SecurityNamedServiceConfig;
 import org.geoserver.security.validation.FilterConfigException;
 import org.geoserver.security.validation.FilterConfigValidator;
@@ -14,7 +15,7 @@ import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 
 /**
  * @author christian
- *     <p>Validates {@link AuthenticationKeyFilterConfig} objects.
+ * <p>Validates {@link AuthenticationKeyFilterConfig} objects.
  */
 public class AuthenticationKeyFilterConfigValidator extends FilterConfigValidator {
 

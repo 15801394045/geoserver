@@ -9,6 +9,7 @@ import static org.geoserver.ows.util.ResponseUtils.*;
 
 import java.io.Writer;
 import javax.xml.transform.TransformerException;
+
 import net.opengis.cat.csw20.RequestBaseType;
 import org.geotools.xml.transform.TransformerBase;
 import org.xml.sax.ContentHandler;

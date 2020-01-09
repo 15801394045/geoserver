@@ -9,6 +9,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.geoserver.catalog.MetadataMap;
 import org.geoserver.wfs.WFSInfo;
 import org.geotools.util.Converter;

@@ -5,4 +5,5 @@
  */
 package org.geoserver.importer;
 
-public class ImportStep {}
+public class ImportStep {
+}

@@ -11,6 +11,7 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.geoserver.geofence.spi.UserResolver;
 import org.geoserver.security.GeoServerRoleService;
 import org.geoserver.security.GeoServerSecurityManager;
@@ -39,7 +40,8 @@ public class InternalUserResolver implements UserResolver {
 
     private Logger logger = Logging.getLogger(InternalUserResolver.class);
 
-    @Autowired private Environment env;
+    @Autowired
+    private Environment env;
 
     @Value("${org.geoserver.rest.DefaultUserGroupServiceName}")
     private String DEFAULT_ROLE_SERVICE_NAME;

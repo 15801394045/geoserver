@@ -11,10 +11,12 @@ import com.hazelcast.config.MapConfig;
 import com.hazelcast.config.XmlConfigBuilder;
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.logging.Logger;
+
 import org.apache.commons.io.IOUtils;
 import org.geoserver.platform.resource.Resource;
 import org.geoserver.platform.resource.Resource.Type;
@@ -30,10 +32,14 @@ import org.springframework.beans.factory.DisposableBean;
 public class HazelcastLoader implements DisposableBean {
     private static final Logger LOGGER = Logging.getLogger(HazelcastLoader.class);
 
-    /** Name of the Hazelcast XML file to use */
+    /**
+     * Name of the Hazelcast XML file to use
+     */
     public static final String HAZELCAST_NAME = "hazelcast.xml";
 
-    /** Hazelcast instance to pass to the {@link HazelcastCacheProvider} class */
+    /**
+     * Hazelcast instance to pass to the {@link HazelcastCacheProvider} class
+     */
     private HazelcastInstance instance;
 
     /**
@@ -47,7 +53,7 @@ public class HazelcastLoader implements DisposableBean {
         Resource resource = store.get(HAZELCAST_NAME);
         if (resource.getType() == Type.UNDEFINED) {
             try (OutputStream os = resource.out();
-                    InputStream is = HazelcastLoader.class.getResourceAsStream(HAZELCAST_NAME)) {
+                 InputStream is = HazelcastLoader.class.getResourceAsStream(HAZELCAST_NAME)) {
                 IOUtils.copy(is, os);
             }
         }

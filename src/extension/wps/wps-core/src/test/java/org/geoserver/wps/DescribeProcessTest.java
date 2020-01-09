@@ -99,7 +99,9 @@ public class DescribeProcessTest extends WPSTestSupport {
         assertXpathExists(base + "/Output/ComplexOutput", d);
     }
 
-    /** Tests encoding of bounding box outputs */
+    /**
+     * Tests encoding of bounding box outputs
+     */
     @Test
     public void testBounds() throws Exception {
         Document d = getAsDOM(root() + "service=wps&request=describeprocess&identifier=gs:Bounds");

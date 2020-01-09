@@ -11,6 +11,7 @@ import static org.junit.Assert.assertTrue;
 import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Collection;
+
 import org.geoserver.data.test.MockData;
 import org.geoserver.data.test.SystemTestData;
 import org.geoserver.wcs2_0.WCS2GetCoverageRequestBuilder;
@@ -37,7 +38,7 @@ public class ExecuteOnCoverageTest extends WPSTestSupport {
 
     @Parameters
     public static Collection<Object[]> getParameters() {
-        return Arrays.asList(new Object[] {"1.1.1"}, new Object[] {"2.0.0"});
+        return Arrays.asList(new Object[]{"1.1.1"}, new Object[]{"2.0.0"});
     }
 
     @Override

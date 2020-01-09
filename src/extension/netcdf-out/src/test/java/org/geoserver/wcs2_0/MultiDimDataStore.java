@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.TimeZone;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.geotools.data.CollectionFeatureReader;
 import org.geotools.data.FeatureReader;
 import org.geotools.data.Query;
@@ -76,7 +77,9 @@ public class MultiDimDataStore extends ContentDataStore {
             Arrays.asList(
                     "NDVI", "BLUE/TOC", "SWIR/VAA", "NIR/TOC", "RED/TOC", "SWIR/TOC", "VNIR/VAA");
 
-    /** The 'dim_' prefix is mandatory as per the WMS spec, and also required by geoserver */
+    /**
+     * The 'dim_' prefix is mandatory as per the WMS spec, and also required by geoserver
+     */
     private static final String BAND_DIMENSION = "BANDS";
 
     private static final SimpleDateFormat PROBA_DATE_FORMAT = new SimpleDateFormat("dd/MM/yyyy");
@@ -187,7 +190,7 @@ public class MultiDimDataStore extends ContentDataStore {
                 if (query.getFilter() == Filter.INCLUDE) { // filtering not implemented
                     int count = 0;
                     try (FeatureReader<SimpleFeatureType, SimpleFeature> featureReader =
-                            getReaderInternal(query)) {
+                                 getReaderInternal(query)) {
                         while (featureReader.hasNext()) {
                             featureReader.next();
                             count++;
@@ -347,17 +350,17 @@ public class MultiDimDataStore extends ContentDataStore {
                                     if (prop.getPropertyName().equals(TIME_ATTRIBUTE)) {
                                         beginDate.setTime(
                                                 ((Date)
-                                                                ((Literal)
-                                                                                filter
-                                                                                        .getLowerBoundary())
-                                                                        .getValue())
+                                                        ((Literal)
+                                                                filter
+                                                                        .getLowerBoundary())
+                                                                .getValue())
                                                         .getTime());
                                         endDate.setTime(
                                                 ((Date)
-                                                                ((Literal)
-                                                                                filter
-                                                                                        .getUpperBoundary())
-                                                                        .getValue())
+                                                        ((Literal)
+                                                                filter
+                                                                        .getUpperBoundary())
+                                                                .getValue())
                                                         .getTime());
                                     }
                                     if (prop.getPropertyName().equals(BAND_DIMENSION)) {

@@ -16,13 +16,17 @@ import org.w3c.dom.Document;
  */
 public class Observation_2_0_WfsTest extends AbstractAppSchemaTestSupport {
 
-    /** @see org.geoserver.test.AbstractAppSchemaTestSupport#buildTestData() */
+    /**
+     * @see org.geoserver.test.AbstractAppSchemaTestSupport#buildTestData()
+     */
     @Override
     protected Observation_2_0_MockData createTestData() {
         return new Observation_2_0_MockData();
     }
 
-    /** Test whether GetFeature returns wfs:FeatureCollection. */
+    /**
+     * Test whether GetFeature returns wfs:FeatureCollection.
+     */
     @Test
     public void testGetFeature() {
         String path = "wfs?request=GetFeature&typename=om:OM_Observation&outputFormat=gml32";
@@ -166,7 +170,9 @@ public class Observation_2_0_WfsTest extends AbstractAppSchemaTestSupport {
                 doc);
     }
 
-    /** Test filtering timePositionList expecting a subset. */
+    /**
+     * Test filtering timePositionList expecting a subset.
+     */
     @Test
     public void testTimePositionSubset() {
         String beginPosition = "1950-03-01T00:00:00Z";

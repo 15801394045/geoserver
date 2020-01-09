@@ -6,6 +6,7 @@
 package org.geoserver.inspire.web;
 
 import java.util.List;
+
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.model.IModel;
 

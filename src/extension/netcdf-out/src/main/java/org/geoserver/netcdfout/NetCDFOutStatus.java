@@ -7,6 +7,7 @@ package org.geoserver.netcdfout;
 
 import java.lang.reflect.Method;
 import java.util.Optional;
+
 import org.geoserver.platform.ModuleStatus;
 import org.geotools.imageio.netcdf.utilities.NetCDFUtilities;
 import org.geotools.util.Version;

@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TimeZone;
 import javax.xml.namespace.QName;
+
 import net.opengis.cat.csw20.ElementSetNameType;
 import net.opengis.cat.csw20.ElementSetType;
 import net.opengis.cat.csw20.GetRecordsType;
@@ -543,7 +544,9 @@ public class GetRecordsTest extends CSWSimpleTestSupport {
         checkOws10Exception(d);
     }
 
-    /** From CITE compliance, throw an error the output format is not supported */
+    /**
+     * From CITE compliance, throw an error the output format is not supported
+     */
     @Test
     public void testUnsupportedOutputFormat() throws Exception {
         String request =

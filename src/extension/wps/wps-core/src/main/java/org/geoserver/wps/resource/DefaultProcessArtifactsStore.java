@@ -7,6 +7,7 @@ package org.geoserver.wps.resource;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
 import org.geoserver.platform.resource.Paths;
 import org.geoserver.platform.resource.Resource;
 import org.geoserver.platform.resource.Resource.Type;

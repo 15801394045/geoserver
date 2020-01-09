@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import net.opengis.cat.csw20.CapabilitiesType;
 import net.opengis.cat.csw20.Csw20Factory;
 import net.opengis.cat.csw20.GetCapabilitiesType;
@@ -243,16 +244,16 @@ public class GetCapabilities {
 
         // - Scalar Capabilities
         Operator[] operators =
-                new Operator[] {
-                    ffFactory.operator("EqualTo"),
-                    ffFactory.operator("Like"),
-                    ffFactory.operator("LessThan"),
-                    ffFactory.operator("GreaterThan"),
-                    ffFactory.operator("LessThanEqualTo"),
-                    ffFactory.operator("GreaterThanEqualTo"),
-                    ffFactory.operator("NotEqualTo"),
-                    ffFactory.operator("Between"),
-                    ffFactory.operator("NullCheck")
+                new Operator[]{
+                        ffFactory.operator("EqualTo"),
+                        ffFactory.operator("Like"),
+                        ffFactory.operator("LessThan"),
+                        ffFactory.operator("GreaterThan"),
+                        ffFactory.operator("LessThanEqualTo"),
+                        ffFactory.operator("GreaterThanEqualTo"),
+                        ffFactory.operator("NotEqualTo"),
+                        ffFactory.operator("Between"),
+                        ffFactory.operator("NullCheck")
                 };
         ComparisonOperators comparisonOperators = ffFactory.comparisonOperators(operators);
         ArithmeticOperators arithmeticOperators = ffFactory.arithmeticOperators(true, null);
@@ -660,26 +661,26 @@ public class GetCapabilities {
 
 class CSWSpatialCapabilities extends SpatialCapabiltiesImpl {
     static final SpatialOperator[] spatialOperators =
-            new SpatialOperator[] {
-                spatialOperator("BBOX"),
-                spatialOperator("Equals"),
-                spatialOperator("Overlaps"),
-                spatialOperator("Disjoint"),
-                spatialOperator("Intersects"),
-                spatialOperator("Touches"),
-                spatialOperator("Crosses"),
-                spatialOperator("Within"),
-                spatialOperator("Contains"),
-                spatialOperator("Beyond"),
-                spatialOperator("DWithin")
+            new SpatialOperator[]{
+                    spatialOperator("BBOX"),
+                    spatialOperator("Equals"),
+                    spatialOperator("Overlaps"),
+                    spatialOperator("Disjoint"),
+                    spatialOperator("Intersects"),
+                    spatialOperator("Touches"),
+                    spatialOperator("Crosses"),
+                    spatialOperator("Within"),
+                    spatialOperator("Contains"),
+                    spatialOperator("Beyond"),
+                    spatialOperator("DWithin")
             };
 
     static final GeometryOperand[] geometryOpertors =
-            new GeometryOperand[] {
-                GeometryOperand.get("http://www.opengis.net/gml", "Envelope"),
-                GeometryOperand.get("http://www.opengis.net/gml", "Point"),
-                GeometryOperand.get("http://www.opengis.net/gml", "LineString"),
-                GeometryOperand.get("http://www.opengis.net/gml", "Polygon")
+            new GeometryOperand[]{
+                    GeometryOperand.get("http://www.opengis.net/gml", "Envelope"),
+                    GeometryOperand.get("http://www.opengis.net/gml", "Point"),
+                    GeometryOperand.get("http://www.opengis.net/gml", "LineString"),
+                    GeometryOperand.get("http://www.opengis.net/gml", "Polygon")
             };
 
     volatile SpatialOperators spatialOperands = new SpatialOperatorsImpl();

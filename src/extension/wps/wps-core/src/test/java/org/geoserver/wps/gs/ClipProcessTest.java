@@ -9,6 +9,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.io.ByteArrayInputStream;
+
 import net.opengis.wfs.FeatureCollectionType;
 import org.geoserver.wps.WPSTestSupport;
 import org.geotools.feature.FeatureCollection;

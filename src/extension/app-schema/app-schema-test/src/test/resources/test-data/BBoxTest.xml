@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <as:AppSchemaDataAccess xmlns:as="http://www.geotools.org/app-schema"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.geotools.org/app-schema AppSchemaDataAccess.xsd">
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                        xsi:schemaLocation="http://www.geotools.org/app-schema AppSchemaDataAccess.xsd">
     <namespaces>
         <Namespace>
             <prefix>gml</prefix>
@@ -32,14 +33,14 @@
             <sourceDataStore>BBoxTestPropertyfile</sourceDataStore>
             <sourceType>BBoxTestPropertyfile</sourceType>
             <targetElement>
-				ex:geomContainer
-			</targetElement>
+                ex:geomContainer
+            </targetElement>
             <attributeMappings>
                 <AttributeMapping>
                     <targetAttribute>
-						ex:geomContainer						
-					</targetAttribute>
-					<idExpression>
+                        ex:geomContainer
+                    </targetAttribute>
+                    <idExpression>
                         <OCQL>ID</OCQL>
                     </idExpression>
                 </AttributeMapping>
@@ -63,13 +64,13 @@
             <sourceDataStore>BBoxTestPropertyfile</sourceDataStore>
             <sourceType>BBoxTestPropertyfile</sourceType>
             <targetElement>
-				ex:nestedGeom
-			</targetElement>
+                ex:nestedGeom
+            </targetElement>
             <attributeMappings>
                 <AttributeMapping>
                     <targetAttribute>
-						ex:nestedGeom
-					</targetAttribute>
+                        ex:nestedGeom
+                    </targetAttribute>
                     <idExpression>
                         <OCQL>strConcat('nested.', ID)</OCQL>
                     </idExpression>
@@ -82,11 +83,11 @@
                 </AttributeMapping>
                 <AttributeMapping>
                     <targetAttribute>
-		                FEATURE_LINK
-		            </targetAttribute>
+                        FEATURE_LINK
+                    </targetAttribute>
                     <sourceExpression>
-                    <!-- Removed strTrim for online test because it'd fail
-                        <OCQL>strTrim(getId())</OCQL> -->
+                        <!-- Removed strTrim for online test because it'd fail
+                            <OCQL>strTrim(getId())</OCQL> -->
                         <OCQL>ID</OCQL>
                     </sourceExpression>
                 </AttributeMapping>

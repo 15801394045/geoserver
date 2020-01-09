@@ -2,8 +2,10 @@
 * {
     mark: symbol(square);
     mark-size: 6px;
-    :mark {
-        fill: ${colorCode};
-    }
+
+:mark {
+    fill: ${colorCode};
+}
+
 }
 

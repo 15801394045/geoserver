@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.logging.Level;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.extensions.ajax.markup.html.autocomplete.AutoCompleteBehavior;
 import org.apache.wicket.extensions.ajax.markup.html.autocomplete.AutoCompleteSettings;
@@ -109,10 +110,12 @@ public class ProcessSelectionPage extends AbstractSecurityPage {
                             TextArea<?> roles =
                                     new TextArea("roles", property.getModel(itemModel)) {
                                         public <C extends Object>
-                                                org.apache.wicket.util.convert.IConverter<C>
-                                                        getConverter(java.lang.Class<C> type) {
+                                        org.apache.wicket.util.convert.IConverter<C>
+                                        getConverter(java.lang.Class<C> type) {
                                             return new RolesConverter(availableRoles);
-                                        };
+                                        }
+
+                                        ;
                                     };
                             StringBuilder selectedRoles = new StringBuilder();
                             IAutoCompleteRenderer<String> roleRenderer =
@@ -177,7 +180,7 @@ public class ProcessSelectionPage extends AbstractSecurityPage {
                             if ((process.getRoles() != null && !process.getRoles().isEmpty())
                                     || !process.getEnabled()
                                     || (process.getValidators() != null
-                                            && !process.getValidators().isEmpty())) {
+                                    && !process.getValidators().isEmpty())) {
                                 ProcessInfo pai = process.toProcessInfo();
                                 pfi.getFilteredProcesses().add(pai);
                             }

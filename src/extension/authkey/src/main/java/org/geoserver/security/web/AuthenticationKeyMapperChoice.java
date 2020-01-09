@@ -6,6 +6,7 @@ package org.geoserver.security.web;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.apache.wicket.markup.html.form.ChoiceRenderer;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.model.IModel;
@@ -20,7 +21,9 @@ import org.geoserver.security.AuthenticationKeyMapper;
  */
 public class AuthenticationKeyMapperChoice extends DropDownChoice<String> {
 
-    /** */
+    /**
+     *
+     */
     private static final long serialVersionUID = 1L;
 
     public AuthenticationKeyMapperChoice(String id) {
@@ -79,7 +82,7 @@ public class AuthenticationKeyMapperChoice extends DropDownChoice<String> {
         public Object getDisplayValue(String object) {
             // do a resource lookup
             return new StringResourceModel(
-                            AuthenticationKeyFilterPanel.class.getSimpleName() + "." + object)
+                    AuthenticationKeyFilterPanel.class.getSimpleName() + "." + object)
                     .setParameters(object)
                     .getObject();
         }

@@ -8,6 +8,7 @@ package org.geoserver.monitor.ows.wfs;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.xml.namespace.QName;
+
 import org.geoserver.catalog.Catalog;
 import org.geoserver.catalog.FeatureTypeInfo;
 import org.geoserver.monitor.MonitorConfig;
@@ -80,7 +81,9 @@ public abstract class WFSRequestObjectHandler extends RequestObjectHandler {
         }
     }
 
-    /** Look up the CRS of the specified FeatureType */
+    /**
+     * Look up the CRS of the specified FeatureType
+     */
     protected CoordinateReferenceSystem crsFromTypeName(QName typeName) {
         FeatureTypeInfo featureType =
                 catalog.getFeatureTypeByName(typeName.getNamespaceURI(), typeName.getLocalPart());

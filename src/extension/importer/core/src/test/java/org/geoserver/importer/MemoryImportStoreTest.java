@@ -10,7 +10,9 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-/** @author Ian Schneider <ischneider@opengeo.org> */
+/**
+ * @author Ian Schneider <ischneider@opengeo.org>
+ */
 public class MemoryImportStoreTest {
 
     @Test

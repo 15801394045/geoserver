@@ -6,6 +6,7 @@ package org.geoserver.test.onlineTest;
 
 import java.io.File;
 import java.io.IOException;
+
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ContentType;
@@ -13,7 +14,9 @@ import org.apache.http.entity.FileEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 
-/** Solr index data setup utility class */
+/**
+ * Solr index data setup utility class
+ */
 public class SolrIndexSetup {
 
     public static final String SCHEMA_PATH = "/schema";
@@ -25,7 +28,9 @@ public class SolrIndexSetup {
         this.url = url;
     }
 
-    /** initialize index data on solr */
+    /**
+     * initialize index data on solr
+     */
     public void init() {
         // post geom type to "http://localhost:8983/solr/stations/schema"
         postJson(url + SCHEMA_PATH, "geomType.txt");

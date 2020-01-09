@@ -5,6 +5,7 @@
 package org.geoserver.geoserver.authentication.auth;
 
 import java.util.logging.Logger;
+
 import org.geoserver.config.util.XStreamPersister;
 import org.geoserver.geofence.services.RuleReaderService;
 import org.geoserver.security.GeoServerAuthenticationProvider;
@@ -15,7 +16,9 @@ import org.geoserver.security.config.SecurityNamedServiceConfig;
 import org.geotools.util.logging.Logging;
 import org.springframework.beans.factory.InitializingBean;
 
-/** @author ETj (etj at geo-solutions.it) */
+/**
+ * @author ETj (etj at geo-solutions.it)
+ */
 public class GeoFenceSecurityProvider extends GeoServerSecurityProvider
         implements InitializingBean {
 
@@ -26,7 +29,8 @@ public class GeoFenceSecurityProvider extends GeoServerSecurityProvider
 
     private GeoServerSecurityManager securityManager;
 
-    public GeoFenceSecurityProvider() {}
+    public GeoFenceSecurityProvider() {
+    }
 
     @Override
     public Class<? extends GeoServerAuthenticationProvider> getAuthenticationProviderClass() {

@@ -7,6 +7,7 @@ package org.geoserver.csw.response;
 
 import java.io.IOException;
 import java.util.Enumeration;
+
 import net.opengis.cat.csw20.ElementSetType;
 import net.opengis.cat.csw20.GetRecordByIdType;
 import net.opengis.cat.csw20.RequestBaseType;

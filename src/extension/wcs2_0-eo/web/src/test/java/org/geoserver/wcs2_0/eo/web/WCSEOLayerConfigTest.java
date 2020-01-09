@@ -8,6 +8,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import javax.xml.namespace.QName;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.tester.FormTester;

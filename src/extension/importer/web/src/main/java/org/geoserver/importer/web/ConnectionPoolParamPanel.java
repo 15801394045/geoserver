@@ -11,7 +11,9 @@ import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.PropertyModel;
 
-/** Connection pool related parameter form */
+/**
+ * Connection pool related parameter form
+ */
 @SuppressWarnings("serial")
 class ConnectionPoolParamPanel extends Panel {
     int minConnection = 1;

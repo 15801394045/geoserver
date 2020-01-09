@@ -6,6 +6,7 @@ import java.io.OutputStreamWriter;
 import java.util.HashMap;
 import java.util.Properties;
 import javax.xml.namespace.QName;
+
 import org.geoserver.catalog.CatalogBuilder;
 import org.geoserver.catalog.CoverageDimensionInfo;
 import org.geoserver.catalog.CoverageInfo;

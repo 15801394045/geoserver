@@ -13,7 +13,9 @@ package org.geoserver.test;
  */
 public class SimpleAttributeFeatureChainMockData extends AbstractAppSchemaMockData {
 
-    /** @see org.geoserver.test.AbstractAppSchemaMockData#addContent() */
+    /**
+     * @see org.geoserver.test.AbstractAppSchemaMockData#addContent()
+     */
     public void addContent() {
         addFeatureType(
                 GSML_PREFIX,

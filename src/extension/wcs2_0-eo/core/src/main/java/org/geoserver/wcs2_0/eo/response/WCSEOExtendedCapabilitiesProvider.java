@@ -10,6 +10,7 @@ import static org.geoserver.ows.util.ResponseUtils.buildURL;
 
 import java.io.IOException;
 import java.util.List;
+
 import net.opengis.wcs20.GetCapabilitiesType;
 import org.geoserver.catalog.CoverageInfo;
 import org.geoserver.catalog.DimensionInfo;
@@ -49,7 +50,9 @@ public class WCSEOExtendedCapabilitiesProvider extends WCSExtendedCapabilitiesPr
         return Boolean.TRUE.equals(enabled);
     }
 
-    /** IGN : Do we still need to host this xsd ? */
+    /**
+     * IGN : Do we still need to host this xsd ?
+     */
     public String[] getSchemaLocations(String schemaBaseURL) {
         if (!isEarthObservationEnabled()) {
             return new String[0];
@@ -60,7 +63,7 @@ public class WCSEOExtendedCapabilitiesProvider extends WCSExtendedCapabilitiesPr
                         "schemas/wcseo/1.0/wcsEOGetCapabilites.xsd",
                         null,
                         URLType.RESOURCE);
-        return new String[] {WCSEOMetadata.NAMESPACE, schemaLocation};
+        return new String[]{WCSEOMetadata.NAMESPACE, schemaLocation};
     }
 
     @Override

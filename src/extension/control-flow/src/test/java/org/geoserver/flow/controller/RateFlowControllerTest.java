@@ -7,6 +7,7 @@ package org.geoserver.flow.controller;
 import static org.junit.Assert.*;
 
 import javax.servlet.http.Cookie;
+
 import org.geoserver.ows.HttpErrorCodeException;
 import org.geoserver.ows.Request;
 import org.junit.Test;

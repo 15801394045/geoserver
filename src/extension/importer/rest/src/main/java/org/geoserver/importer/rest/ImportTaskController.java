@@ -16,6 +16,7 @@ import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import net.sf.json.JSONException;
 import net.sf.json.JSONObject;
 import org.apache.commons.fileupload.FileItem;
@@ -71,8 +72,8 @@ import org.springframework.web.servlet.mvc.condition.PatternsRequestCondition;
 
 @RestController
 @RequestMapping(
-    path = RestBaseController.ROOT_PATH + "/imports/{id}/tasks",
-    produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.TEXT_HTML_VALUE}
+        path = RestBaseController.ROOT_PATH + "/imports/{id}/tasks",
+        produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.TEXT_HTML_VALUE}
 )
 public class ImportTaskController extends ImportBaseController {
 
@@ -144,10 +145,10 @@ public class ImportTaskController extends ImportBaseController {
     }
 
     @PostMapping(
-        consumes = {
-            MediaType.MULTIPART_FORM_DATA_VALUE,
-            MediaType.APPLICATION_FORM_URLENCODED_VALUE
-        }
+            consumes = {
+                    MediaType.MULTIPART_FORM_DATA_VALUE,
+                    MediaType.APPLICATION_FORM_URLENCODED_VALUE
+            }
     )
     public Object taskPost(
             @PathVariable Long id,
@@ -178,8 +179,8 @@ public class ImportTaskController extends ImportBaseController {
     }
 
     @PutMapping(
-        path = "/{taskId}",
-        consumes = {MediaType.APPLICATION_JSON_VALUE, MediaTypeExtensions.TEXT_JSON_VALUE}
+            path = "/{taskId}",
+            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaTypeExtensions.TEXT_JSON_VALUE}
     )
     public ImportWrapper taskPut(
             @PathVariable Long id,
@@ -191,7 +192,9 @@ public class ImportTaskController extends ImportBaseController {
                 handleTaskPut(id, taskId, request, response, converter);
     }
 
-    /** Workaround to support regular response content type when file extension is in path */
+    /**
+     * Workaround to support regular response content type when file extension is in path
+     */
     @Configuration
     static class ImportTaskControllerConfiguration {
         @Bean
@@ -205,7 +208,7 @@ public class ImportTaskController extends ImportBaseController {
     /**
      * Uploads a file as a new import task.
      *
-     * @param id The import id
+     * @param id       The import id
      * @param filename The destination name of the file
      */
     @PutMapping(path = "/{taskId:.+}")

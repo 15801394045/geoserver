@@ -10,7 +10,9 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
 import com.sleepycat.je.DatabaseEntry;
+
 import java.io.File;
+
 import org.geoserver.catalog.Catalog;
 import org.geoserver.catalog.DataStoreInfo;
 import org.geoserver.catalog.WorkspaceInfo;

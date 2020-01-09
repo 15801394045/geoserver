@@ -8,6 +8,7 @@ package org.geoserver.monitor.ows;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.geoserver.monitor.MonitorConfig;
 import org.geoserver.monitor.RequestData;
 import org.geotools.util.logging.Logging;
@@ -56,7 +57,9 @@ public abstract class RequestObjectHandler {
 
     protected abstract List<String> getLayers(Object request);
 
-    /** Find a bounding box for the area covered by the request. */
+    /**
+     * Find a bounding box for the area covered by the request.
+     */
     protected BoundingBox getBBox(Object request) {
         return null;
     }

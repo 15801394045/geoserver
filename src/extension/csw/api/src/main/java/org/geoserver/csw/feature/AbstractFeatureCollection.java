@@ -9,6 +9,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
+
 import org.geotools.data.util.NullProgressListener;
 import org.geotools.feature.FeatureCollection;
 import org.geotools.feature.FeatureIterator;
@@ -28,7 +29,9 @@ import org.opengis.feature.type.FeatureType;
 public abstract class AbstractFeatureCollection<T extends FeatureType, F extends Feature>
         implements FeatureCollection<T, F> {
 
-    /** id used when serialized to gml */
+    /**
+     * id used when serialized to gml
+     */
     protected String id;
 
     protected T schema;
@@ -148,7 +151,7 @@ public abstract class AbstractFeatureCollection<T extends FeatureType, F extends
      * Removes all of the elements from this collection (optional operation).
      *
      * @throws UnsupportedOperationException if the <tt>clear</tt> method is not supported by this
-     *     collection.
+     *                                       collection.
      */
     public void clear() {
         Iterator<F> e = iterator();
@@ -194,7 +197,7 @@ public abstract class AbstractFeatureCollection<T extends FeatureType, F extends
      *
      * @param c collection to be checked for containment in this collection.
      * @return <tt>true</tt> if this collection contains all of the elements in the specified
-     *     collection.
+     * collection.
      * @throws NullPointerException if the specified collection is null.
      * @see #contains(Object)
      */
@@ -212,7 +215,9 @@ public abstract class AbstractFeatureCollection<T extends FeatureType, F extends
     // Contents
     //
     //
-    /** Set of open resource iterators */
+    /**
+     * Set of open resource iterators
+     */
     @SuppressWarnings("unchecked")
     protected final Set open = new HashSet<Iterator<F>>();
 
@@ -239,7 +244,9 @@ public abstract class AbstractFeatureCollection<T extends FeatureType, F extends
         return iterator;
     }
 
-    /** @return <tt>true</tt> if this collection contains no elements. */
+    /**
+     * @return <tt>true</tt> if this collection contains no elements.
+     */
     public boolean isEmpty() {
         Iterator<F> iterator = iterator();
         try {

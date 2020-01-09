@@ -21,7 +21,9 @@ public class GetPropertyValueTest extends AbstractAppSchemaTestSupport {
         return new XLink32MockData();
     }
 
-    /** Test GetPropertyValue for a simple property, tests only selected property is returned */
+    /**
+     * Test GetPropertyValue for a simple property, tests only selected property is returned
+     */
     @Test
     public void testGetPropertyValue() {
 
@@ -37,7 +39,9 @@ public class GetPropertyValueTest extends AbstractAppSchemaTestSupport {
         assertXpathCount(0, "//gsml:specification", doc);
     }
 
-    /** Test GetPropertyValue without local resolve */
+    /**
+     * Test GetPropertyValue without local resolve
+     */
     @Test
     public void testNoResolve() {
 
@@ -55,7 +59,9 @@ public class GetPropertyValueTest extends AbstractAppSchemaTestSupport {
         assertXpathCount(0, "//gsml:CompositionPart", doc);
     }
 
-    /** Test GetPropertyValue with Local Resolve with Depth 2. */
+    /**
+     * Test GetPropertyValue with Local Resolve with Depth 2.
+     */
     @Test
     public void testResolveDepth2() {
 
@@ -102,7 +108,9 @@ public class GetPropertyValueTest extends AbstractAppSchemaTestSupport {
         assertXpathEvaluatesTo("-Py", "//wfs:member[1]/gml:name", doc);
     }
 
-    /** Test GetPropertyValue with Local Resolve with Depth 1. */
+    /**
+     * Test GetPropertyValue with Local Resolve with Depth 1.
+     */
     @Test
     public void testResolveDepth1() {
 
@@ -122,7 +130,9 @@ public class GetPropertyValueTest extends AbstractAppSchemaTestSupport {
         assertXpathCount(0, "//gsml:CompositionPart", doc);
     }
 
-    /** Test GetPropertyValue with count parameter */
+    /**
+     * Test GetPropertyValue with count parameter
+     */
     @Test
     public void testGetPropertyValueMax() {
 

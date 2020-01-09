@@ -10,7 +10,9 @@ import static org.custommonkey.xmlunit.XMLAssert.assertXpathExists;
 import org.junit.Test;
 import org.w3c.dom.Document;
 
-/** @author Niels Charlier */
+/**
+ * @author Niels Charlier
+ */
 public class DescribeRecordTest extends CSWInternalTestSupport {
 
     @Test

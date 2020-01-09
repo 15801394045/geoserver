@@ -9,6 +9,7 @@ import static org.junit.Assert.assertEquals;
 import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
+
 import org.apache.commons.io.IOUtils;
 import org.geoserver.data.test.SystemTestData;
 import org.geoserver.wps.WPSTestSupport;
@@ -27,7 +28,9 @@ public class NoArgWPSTest extends WPSTestSupport {
         namespaces.put("feature", SystemTestData.BUILDINGS.getNamespaceURI());
     }
 
-    /** This test runs a no-argument WPS Process and checks the result. */
+    /**
+     * This test runs a no-argument WPS Process and checks the result.
+     */
     @Test
     public void NoArgumentProcessTest() throws Exception {
         String xml =

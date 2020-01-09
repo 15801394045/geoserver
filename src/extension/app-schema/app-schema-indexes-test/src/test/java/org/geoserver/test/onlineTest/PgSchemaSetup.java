@@ -13,9 +13,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 import org.apache.commons.io.IOUtils;
 
-/** Utility class for to insert postgresql schema data */
+/**
+ * Utility class for to insert postgresql schema data
+ */
 public class PgSchemaSetup {
 
     private PostgresqlProperties properties;
@@ -24,7 +27,9 @@ public class PgSchemaSetup {
         this.properties = properties;
     }
 
-    /** execute statements and initializes pg schema data */
+    /**
+     * execute statements and initializes pg schema data
+     */
     public void init() {
         try (Connection conn = getConnection()) {
             // iterate statements

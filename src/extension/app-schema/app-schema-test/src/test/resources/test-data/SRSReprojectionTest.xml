@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <as:AppSchemaDataAccess xmlns:as="http://www.geotools.org/app-schema"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.geotools.org/app-schema AppSchemaDataAccess.xsd">
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                        xsi:schemaLocation="http://www.geotools.org/app-schema AppSchemaDataAccess.xsd">
     <namespaces>
         <Namespace>
             <prefix>ex</prefix>
             <uri>http://example.com</uri>
         </Namespace>
-		<Namespace>
-			<prefix>xlink</prefix>
-			<uri>http://www.w3.org/1999/xlink</uri>
-		</Namespace>
+        <Namespace>
+            <prefix>xlink</prefix>
+            <uri>http://www.w3.org/1999/xlink</uri>
+        </Namespace>
     </namespaces>
     <sourceDataStores>
         <DataStore>
@@ -32,14 +33,14 @@
             <sourceDataStore>SRSTestPropertyfile</sourceDataStore>
             <sourceType>SRSTestPropertyfile</sourceType>
             <targetElement>
-				ex:geomContainer
-			</targetElement>
+                ex:geomContainer
+            </targetElement>
             <attributeMappings>
                 <AttributeMapping>
                     <targetAttribute>
-						ex:geomContainer
-					</targetAttribute>
-					<idExpression>
+                        ex:geomContainer
+                    </targetAttribute>
+                    <idExpression>
                         <OCQL>ID</OCQL>
                     </idExpression>
                 </AttributeMapping>
@@ -65,17 +66,17 @@
                         <linkField>FEATURE_LINK</linkField>
                     </sourceExpression>
                 </AttributeMapping>
-				<AttributeMapping>
+                <AttributeMapping>
                     <targetAttribute>ex:nestedFeature[3]</targetAttribute>
                     <sourceExpression>
                         <OCQL>NESTED_GEOM_ID</OCQL>
                         <linkElement>noGeometry</linkElement>
                         <linkField>FEATURE_LINK</linkField>
-                    </sourceExpression>					
-					<ClientProperty>
-						<name>xlink:href</name>
-						<value>strConCat('http://example.com/UrnResolver/?uri=', NESTED_GEOM_ID)</value>
-					</ClientProperty>
+                    </sourceExpression>
+                    <ClientProperty>
+                        <name>xlink:href</name>
+                        <value>strConCat('http://example.com/UrnResolver/?uri=', NESTED_GEOM_ID)</value>
+                    </ClientProperty>
                 </AttributeMapping>
             </attributeMappings>
         </FeatureTypeMapping>
@@ -84,13 +85,13 @@
             <sourceDataStore>SRSTestPropertyfile</sourceDataStore>
             <sourceType>SRSTestPropertyfile</sourceType>
             <targetElement>
-				ex:nestedGeom
-			</targetElement>
+                ex:nestedGeom
+            </targetElement>
             <attributeMappings>
                 <AttributeMapping>
                     <targetAttribute>
-						ex:nestedGeom
-					</targetAttribute>
+                        ex:nestedGeom
+                    </targetAttribute>
                     <idExpression>
                         <OCQL>strConcat('nested.', ID)</OCQL>
                     </idExpression>
@@ -103,8 +104,8 @@
                 </AttributeMapping>
                 <AttributeMapping>
                     <targetAttribute>
-		                FEATURE_LINK
-		            </targetAttribute>
+                        FEATURE_LINK
+                    </targetAttribute>
                     <sourceExpression>
                         <OCQL>ID</OCQL>
                     </sourceExpression>
@@ -116,13 +117,13 @@
             <sourceDataStore>SRSTestPropertyfile</sourceDataStore>
             <sourceType>SRSTestPropertyfile</sourceType>
             <targetElement>
-				ex:nestedGeom
-			</targetElement>
+                ex:nestedGeom
+            </targetElement>
             <attributeMappings>
                 <AttributeMapping>
                     <targetAttribute>
-						ex:nestedGeom
-					</targetAttribute>
+                        ex:nestedGeom
+                    </targetAttribute>
                     <idExpression>
                         <OCQL>strConcat('secondNested.', ID)</OCQL>
                     </idExpression>
@@ -143,8 +144,8 @@
                 </AttributeMapping>
                 <AttributeMapping>
                     <targetAttribute>
-		                FEATURE_LINK
-		            </targetAttribute>
+                        FEATURE_LINK
+                    </targetAttribute>
                     <sourceExpression>
                         <OCQL>ID</OCQL>
                     </sourceExpression>
@@ -156,13 +157,13 @@
             <sourceDataStore>SRSTestPropertyfile</sourceDataStore>
             <sourceType>SRSTestPropertyfile</sourceType>
             <targetElement>
-				ex:nestedGeom
-			</targetElement>
+                ex:nestedGeom
+            </targetElement>
             <attributeMappings>
                 <AttributeMapping>
                     <targetAttribute>
-						ex:nestedGeom
-					</targetAttribute>
+                        ex:nestedGeom
+                    </targetAttribute>
                     <idExpression>
                         <OCQL>strConcat('thirdNested.', ID)</OCQL>
                     </idExpression>
@@ -175,8 +176,8 @@
                 </AttributeMapping>
                 <AttributeMapping>
                     <targetAttribute>
-		                FEATURE_LINK
-		            </targetAttribute>
+                        FEATURE_LINK
+                    </targetAttribute>
                     <sourceExpression>
                         <OCQL>ID</OCQL>
                     </sourceExpression>

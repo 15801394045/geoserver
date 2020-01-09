@@ -7,6 +7,7 @@ package org.geoserver.wps.executor;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
+
 import org.geoserver.wps.ProcessDismissedException;
 import org.geotools.data.simple.SimpleFeatureCollection;
 import org.geotools.data.simple.SimpleFeatureIterator;
@@ -29,9 +30,9 @@ class CancellingFeatureCollectionBuilder {
 
         Class[] interfaces;
         if (delegate instanceof SimpleFeatureCollection) {
-            interfaces = new Class[] {SimpleFeatureCollection.class};
+            interfaces = new Class[]{SimpleFeatureCollection.class};
         } else {
-            interfaces = new Class[] {FeatureCollection.class};
+            interfaces = new Class[]{FeatureCollection.class};
         }
         SimpleFeatureCollection proxy =
                 (SimpleFeatureCollection)
@@ -66,9 +67,9 @@ class CancellingFeatureCollectionBuilder {
             if (result instanceof FeatureIterator<?>) {
                 Class[] interfaces;
                 if (result instanceof SimpleFeatureIterator) {
-                    interfaces = new Class[] {SimpleFeatureIterator.class};
+                    interfaces = new Class[]{SimpleFeatureIterator.class};
                 } else {
-                    interfaces = new Class[] {FeatureIterator.class};
+                    interfaces = new Class[]{FeatureIterator.class};
                 }
                 result =
                         Proxy.newProxyInstance(

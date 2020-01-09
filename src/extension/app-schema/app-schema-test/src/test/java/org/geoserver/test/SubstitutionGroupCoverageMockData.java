@@ -12,17 +12,23 @@ package org.geoserver.test;
  */
 public class SubstitutionGroupCoverageMockData extends AbstractAppSchemaMockData {
 
-    /** Prefix for namespace. */
+    /**
+     * Prefix for namespace.
+     */
     protected static final String NAMESPACE_PREFIX = "test";
 
-    /** URI for namespace. */
+    /**
+     * URI for namespace.
+     */
     protected static final String URI = "http://www.geotools.org/test";
 
     public SubstitutionGroupCoverageMockData() {
         super(GML32_NAMESPACES);
     }
 
-    /** @see AbstractAppSchemaMockData#addContent() */
+    /**
+     * @see AbstractAppSchemaMockData#addContent()
+     */
     @Override
     public void addContent() {
         putNamespace(NAMESPACE_PREFIX, URI);

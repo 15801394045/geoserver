@@ -12,8 +12,8 @@ import org.geotools.process.factory.DescribeResult;
 import org.geotools.util.SimpleInternationalString;
 
 @DescribeProcess(
-    title = "MultiOutputEcho",
-    description = "Echo string process used to test processes with multiple outputs"
+        title = "MultiOutputEcho",
+        description = "Echo string process used to test processes with multiple outputs"
 )
 public class MultiOutputEchoProcess implements org.geoserver.wps.gs.GeoServerProcess {
 

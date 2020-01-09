@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
@@ -43,12 +44,16 @@ import org.geotools.jdbc.JDBCDataStoreFactory;
 @SuppressWarnings("serial")
 public abstract class AbstractDbPanel extends ImportSourcePanel {
 
-    /** available connection types */
+    /**
+     * available connection types
+     */
     protected static final String CONNECTION_DEFAULT = "Default";
 
     protected static final String CONNECTION_JNDI = "JNDI";
 
-    /** connection type */
+    /**
+     * connection type
+     */
     protected String connectionType;
 
     protected WebMarkupContainer paramPanelContainer;
@@ -91,7 +96,9 @@ public abstract class AbstractDbPanel extends ImportSourcePanel {
         return new Database(params);
     }
 
-    /** Switches between the types of param panels */
+    /**
+     * Switches between the types of param panels
+     */
     Component connectionTypeChoice(final Map<String, Component> paramPanelMap) {
         ArrayList<String> connectionTypeList = new ArrayList<String>(paramPanelMap.keySet());
         DropDownChoice choice =
@@ -216,7 +223,9 @@ public abstract class AbstractDbPanel extends ImportSourcePanel {
      */
     protected abstract LinkedHashMap<String, Component> buildParamPanels();
 
-    /** Builds the advanced panel. */
+    /**
+     * Builds the advanced panel.
+     */
     protected AdvancedDbParamPanel buildAdvancedPanel(String id) {
         return new AdvancedDbParamPanel(id, false);
     }

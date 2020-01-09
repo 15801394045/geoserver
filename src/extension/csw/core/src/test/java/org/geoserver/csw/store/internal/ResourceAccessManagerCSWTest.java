@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 import javax.xml.namespace.QName;
+
 import org.custommonkey.xmlunit.XMLUnit;
 import org.custommonkey.xmlunit.XpathEngine;
 import org.geoserver.catalog.Catalog;
@@ -49,7 +50,9 @@ public class ResourceAccessManagerCSWTest extends CSWTestSupport {
         this.xpath = XMLUnit.newXpathEngine();
     }
 
-    /** Add the test resource access manager in the spring context */
+    /**
+     * Add the test resource access manager in the spring context
+     */
     @Override
     protected void setUpSpring(List<String> springContextLocations) {
         super.setUpSpring(springContextLocations);
@@ -126,10 +129,10 @@ public class ResourceAccessManagerCSWTest extends CSWTestSupport {
             assertEquals(
                     1,
                     xpath.getMatchingNodes(
-                                    String.format(
-                                            "//csw:SummaryRecord[dc:identifier='%s']",
-                                            ri.prefixedName()),
-                                    d)
+                            String.format(
+                                    "//csw:SummaryRecord[dc:identifier='%s']",
+                                    ri.prefixedName()),
+                            d)
                             .getLength());
         }
     }
@@ -152,10 +155,10 @@ public class ResourceAccessManagerCSWTest extends CSWTestSupport {
             assertEquals(
                     1,
                     xpath.getMatchingNodes(
-                                    String.format(
-                                            "//csw:SummaryRecord[dc:identifier='%s']",
-                                            ri.prefixedName()),
-                                    d)
+                            String.format(
+                                    "//csw:SummaryRecord[dc:identifier='%s']",
+                                    ri.prefixedName()),
+                            d)
                             .getLength());
         }
     }

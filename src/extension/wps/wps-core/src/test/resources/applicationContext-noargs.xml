@@ -6,5 +6,5 @@
  -->
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
 <beans>
-    <bean id="NoArgWPS" class="org.geoserver.wps.other.NoArgWPS" />
+    <bean id="NoArgWPS" class="org.geoserver.wps.other.NoArgWPS"/>
 </beans>

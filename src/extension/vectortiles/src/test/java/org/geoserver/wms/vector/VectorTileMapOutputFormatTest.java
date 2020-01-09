@@ -10,6 +10,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 import com.google.common.collect.ImmutableSet;
+
 import java.awt.Rectangle;
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,6 +19,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+
 import org.apache.wicket.spring.test.ApplicationContextMock;
 import org.geoserver.catalog.SLDHandler;
 import org.geoserver.config.GeoServerLoader;

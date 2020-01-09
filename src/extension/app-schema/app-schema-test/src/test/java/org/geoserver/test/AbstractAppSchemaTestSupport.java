@@ -33,6 +33,7 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+
 import net.sf.json.JSON;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -91,7 +92,9 @@ public abstract class AbstractAppSchemaTestSupport extends GeoServerSystemTestSu
      */
     protected static final String XMLNS = "http://www.w3.org/2000/xmlns/";
 
-    /** WFS namespaces, for use by XMLUnit. A seen in WFSTestSupport, plus xlink. */
+    /**
+     * WFS namespaces, for use by XMLUnit. A seen in WFSTestSupport, plus xlink.
+     */
     @SuppressWarnings("serial")
     private final Map<String, String> WFS_NAMESPACES =
             Collections.unmodifiableMap(
@@ -111,10 +114,14 @@ public abstract class AbstractAppSchemaTestSupport extends GeoServerSystemTestSu
                         }
                     });
 
-    /** The XpathEngine to be used for this namespace context. */
+    /**
+     * The XpathEngine to be used for this namespace context.
+     */
     private XpathEngine xpathEngine;
 
-    /** SchemaCatalog to work with AppSchemaValidator for test requests validation. */
+    /**
+     * SchemaCatalog to work with AppSchemaValidator for test requests validation.
+     */
     private SchemaCatalog catalog;
 
     /**
@@ -174,12 +181,16 @@ public abstract class AbstractAppSchemaTestSupport extends GeoServerSystemTestSu
         return (AbstractAppSchemaMockData) super.getTestData();
     }
 
-    /** Returns the map of namespace prefix to URI configured in the test data. */
+    /**
+     * Returns the map of namespace prefix to URI configured in the test data.
+     */
     public Map<String, String> getNamespaces() {
         return getTestData().getNamespaces();
     }
 
-    /** Returns the namespace URI for a given prefix configured in the test data. */
+    /**
+     * Returns the namespace URI for a given prefix configured in the test data.
+     */
     public String getNamespace(String prefix) {
         return getNamespaces().get(prefix);
     }
@@ -248,7 +259,7 @@ public abstract class AbstractAppSchemaTestSupport extends GeoServerSystemTestSu
      * <p>Override to remove checked exception.
      *
      * @see org.geoserver.test.GeoServerAbstractTestSupport#postAsDOM(java.lang.String,
-     *     java.lang.String)
+     * java.lang.String)
      */
     @Override
     protected Document postAsDOM(String path, String xml) {
@@ -295,7 +306,7 @@ public abstract class AbstractAppSchemaTestSupport extends GeoServerSystemTestSu
     /**
      * Return the flattened value corresponding to an XPath expression from a document.
      *
-     * @param xpath XPath expression
+     * @param xpath    XPath expression
      * @param document the document under test
      * @return flattened string value
      */
@@ -310,7 +321,7 @@ public abstract class AbstractAppSchemaTestSupport extends GeoServerSystemTestSu
     /**
      * Return the list of nodes in a document that match an XPath expression.
      *
-     * @param xpath XPath expression
+     * @param xpath    XPath expression
      * @param document the document under test
      * @return list of matching nodes
      */
@@ -327,7 +338,7 @@ public abstract class AbstractAppSchemaTestSupport extends GeoServerSystemTestSu
      * expected value.
      *
      * @param expected expected value of expression
-     * @param xpath XPath expression
+     * @param xpath    XPath expression
      * @param document the document under test
      */
     protected void assertXpathEvaluatesTo(String expected, String xpath, Document document) {
@@ -337,8 +348,8 @@ public abstract class AbstractAppSchemaTestSupport extends GeoServerSystemTestSu
     /**
      * Assert that there are count matches of and XPath expression in a document.
      *
-     * @param count expected number of matches
-     * @param xpath XPath expression
+     * @param count    expected number of matches
+     * @param xpath    XPath expression
      * @param document document under test
      */
     protected void assertXpathCount(int count, String xpath, Document document) {
@@ -349,8 +360,8 @@ public abstract class AbstractAppSchemaTestSupport extends GeoServerSystemTestSu
      * Assert that the flattened value of an XPath expression in a document matches a regular
      * expression.
      *
-     * @param regex regular expression that must be matched
-     * @param xpath XPath expression
+     * @param regex    regular expression that must be matched
+     * @param xpath    XPath expression
      * @param document document under test
      */
     protected void assertXpathMatches(String regex, String xpath, Document document) {
@@ -361,8 +372,8 @@ public abstract class AbstractAppSchemaTestSupport extends GeoServerSystemTestSu
      * Assert that the flattened value of an XPath expression in a document doe not match a regular
      * expression.
      *
-     * @param regex regular expression that must not be matched
-     * @param xpath XPath expression
+     * @param regex    regular expression that must not be matched
+     * @param xpath    XPath expression
      * @param document document under test
      */
     protected void assertXpathNotMatches(String regex, String xpath, Document document) {
@@ -385,7 +396,7 @@ public abstract class AbstractAppSchemaTestSupport extends GeoServerSystemTestSu
      * Pretty-print a {@link Document} to an {@link OutputStream}.
      *
      * @param document document to be prettified
-     * @param output stream to which output is written
+     * @param output   stream to which output is written
      */
     protected void prettyPrint(Document document, OutputStream output) {
         try {
@@ -452,7 +463,7 @@ public abstract class AbstractAppSchemaTestSupport extends GeoServerSystemTestSu
      * failure messages. The failure messages are also logged.
      *
      * @param path request path (typically "wfs")
-     * @param xml the request XML document
+     * @param xml  the request XML document
      * @throws RuntimeException if validation fails
      */
     protected void validatePost(String path, String xml) {
@@ -473,7 +484,7 @@ public abstract class AbstractAppSchemaTestSupport extends GeoServerSystemTestSu
      * failure messages. The failure messages are also logged.
      *
      * @param path request path (typically "wfs")
-     * @param xml the XML instance document
+     * @param xml  the XML instance document
      * @throws RuntimeException if validation fails
      */
     protected void validate(String xml) {
@@ -492,8 +503,8 @@ public abstract class AbstractAppSchemaTestSupport extends GeoServerSystemTestSu
      * the passed background color.
      *
      * @param testName the name of the test to throw meaningfull messages if something goes wrong
-     * @param image the imgage to check it is not "blank"
-     * @param bgColor the background color for which differing pixels are looked for
+     * @param image    the imgage to check it is not "blank"
+     * @param bgColor  the background color for which differing pixels are looked for
      */
     protected void assertNotBlank(String testName, BufferedImage image, Color bgColor) {
         int pixelsDiffer = countNonBlankPixels(testName, image, bgColor);
@@ -543,7 +554,7 @@ public abstract class AbstractAppSchemaTestSupport extends GeoServerSystemTestSu
      * </ul>
      *
      * @param featureSet the feature collection to check
-     * @param fids the feature identifiers that must be present in the collection
+     * @param fids       the feature identifiers that must be present in the collection
      */
     protected void assertContainsFeatures(FeatureCollection featureSet, String... fids) {
         List<String> fidList = Arrays.asList(fids);
@@ -574,7 +585,7 @@ public abstract class AbstractAppSchemaTestSupport extends GeoServerSystemTestSu
      *
      * @param rootMapping the feature type being queried
      * @return <code>true</code> if nested filters encoding can be tested, <code>false</code>
-     *     otherwise.
+     * otherwise.
      */
     protected boolean shouldTestNestedFiltersEncoding(FeatureTypeMapping rootMapping) {
         if (!(rootMapping.getSource().getDataStore() instanceof JDBCDataStore)) return false;
@@ -639,14 +650,16 @@ public abstract class AbstractAppSchemaTestSupport extends GeoServerSystemTestSu
      */
     protected String readResource(String resourcePath) {
         try (InputStream input =
-                NormalizedMultiValuesTest.class.getResourceAsStream(resourcePath)) {
+                     NormalizedMultiValuesTest.class.getResourceAsStream(resourcePath)) {
             return IOUtils.toString(input);
         } catch (Exception exception) {
             throw new RuntimeException(String.format("Error reading resource '%s'.", resourcePath));
         }
     }
 
-    /** Drills into nested JSON objects (won't traverse arrays though) */
+    /**
+     * Drills into nested JSON objects (won't traverse arrays though)
+     */
     protected JSONObject getNestedObject(JSONObject root, String... keys) {
         JSONObject curr = root;
         for (String key : keys) {

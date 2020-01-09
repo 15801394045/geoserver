@@ -9,6 +9,7 @@ package org.geoserver.flow.controller;
 import java.util.Map;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ConcurrentHashMap;
+
 import org.geoserver.flow.FlowController;
 import org.geoserver.ows.Request;
 
@@ -18,10 +19,14 @@ import org.geoserver.ows.Request;
  * @author Juan Marin, OpenGeo
  */
 public abstract class QueueController implements FlowController {
-    /** The size of each queue */
+    /**
+     * The size of each queue
+     */
     int queueSize;
 
-    /** The per request queue collection */
+    /**
+     * The per request queue collection
+     */
     Map<String, TimedBlockingQueue> queues = new ConcurrentHashMap<String, TimedBlockingQueue>();
 
     @Override

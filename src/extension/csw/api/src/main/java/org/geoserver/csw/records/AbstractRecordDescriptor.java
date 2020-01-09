@@ -7,6 +7,7 @@ package org.geoserver.csw.records;
 
 import java.util.LinkedList;
 import java.util.List;
+
 import org.geotools.factory.CommonFactoryFinder;
 import org.geotools.feature.NameImpl;
 import org.geotools.referencing.CRS;
@@ -54,7 +55,7 @@ public abstract class AbstractRecordDescriptor implements RecordDescriptor {
     /**
      * Helper method to create a list of names from namespace support and a sequence of strings
      *
-     * @param ns Namespace Support
+     * @param ns    Namespace Support
      * @param names Sequence of name strings
      * @return the List of Names
      */
@@ -81,7 +82,7 @@ public abstract class AbstractRecordDescriptor implements RecordDescriptor {
      * support.
      *
      * @param namespaces Namespace support
-     * @param name the Name
+     * @param name       the Name
      * @return the PropertyName
      */
     public static PropertyName buildPropertyName(NamespaceSupport namespaces, Name name) {

@@ -23,7 +23,9 @@ public class PropertySelectionTest extends AbstractAppSchemaTestSupport {
         return new PropertySelectionMockData();
     }
 
-    /** Test GetFeature with Property Selection. */
+    /**
+     * Test GetFeature with Property Selection.
+     */
     @Test
     public void testGetFeature() {
         Document doc =
@@ -65,7 +67,9 @@ public class PropertySelectionTest extends AbstractAppSchemaTestSupport {
                 doc);
     }
 
-    /** Test Property Selection with Feature Chaining. */
+    /**
+     * Test Property Selection with Feature Chaining.
+     */
     @Test
     public void testGetFeatureFeatureChaining() {
         Document doc =
@@ -105,7 +109,9 @@ public class PropertySelectionTest extends AbstractAppSchemaTestSupport {
                 0, "//gsml:MappedFeature[@gml:id='gsml.mappedfeature.mf1']/gml:description", doc);
     }
 
-    /** Test GetFeature with Property Selection, using client properties. */
+    /**
+     * Test GetFeature with Property Selection, using client properties.
+     */
     @Test
     public void testGetFeatureClientProperty() {
         Document doc =
@@ -122,7 +128,9 @@ public class PropertySelectionTest extends AbstractAppSchemaTestSupport {
                 doc);
     }
 
-    /** Test GetFeature with Property Selection, with an invalid column name. */
+    /**
+     * Test GetFeature with Property Selection, with an invalid column name.
+     */
     @Test
     public void testGetFeatureInvalidName() {
         Document doc =
@@ -139,7 +147,9 @@ public class PropertySelectionTest extends AbstractAppSchemaTestSupport {
                                 "Could not find working property accessor for attribute (DOESNT_EXIST)"));
     }
 
-    /** Test Posting GetFeature */
+    /**
+     * Test Posting GetFeature
+     */
     @Test
     public void testPostGetFeature() {
         String xml =
@@ -222,7 +232,9 @@ public class PropertySelectionTest extends AbstractAppSchemaTestSupport {
         assertXpathCount(0, "//ex:MyTestFeature[@gml:id='f1']/ex:name", doc);
     }
 
-    /** Test GetFeature with Property Selection, with an invalid column name. */
+    /**
+     * Test GetFeature with Property Selection, with an invalid column name.
+     */
     @Test
     public void testSameNameDiffNamespace3() {
         Document doc =

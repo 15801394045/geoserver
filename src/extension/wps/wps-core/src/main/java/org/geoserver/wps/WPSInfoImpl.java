@@ -7,6 +7,7 @@ package org.geoserver.wps;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.geoserver.catalog.MetadataMap;
 import org.geoserver.config.impl.ServiceInfoImpl;
 import org.geoserver.security.CatalogMode;
@@ -41,19 +42,29 @@ public class WPSInfoImpl extends ServiceInfoImpl implements WPSInfo {
      */
     Double connectionTimeout = DEFAULT_CONNECTION_TIMEOUT;
 
-    /** Resource expiration timeout in seconds. */
+    /**
+     * Resource expiration timeout in seconds.
+     */
     Integer resourceExpirationTimeout = DEFAULT_RESOURCE_EXPIRATION_TIMEOUT;
 
-    /** Maximum number of synchronous requests running in parallel */
+    /**
+     * Maximum number of synchronous requests running in parallel
+     */
     Integer maxSynchronousProcesses = DEFAULT_MAX_SYNCH;
 
-    /** Maximum number of asynchronous requests running in parallel */
+    /**
+     * Maximum number of asynchronous requests running in parallel
+     */
     Integer maxAsynchronousProcesses = DEFAULT_MAX_ASYNCH;
 
-    /** List of process groups/factories. */
+    /**
+     * List of process groups/factories.
+     */
     List<ProcessGroupInfo> processGroups = new ArrayList<ProcessGroupInfo>();
 
-    /** Where to store the WPS artifacts (inputs, outputs, and so on) */
+    /**
+     * Where to store the WPS artifacts (inputs, outputs, and so on)
+     */
     String storageDirectory;
 
     /**
@@ -298,32 +309,32 @@ public class WPSInfoImpl extends ServiceInfoImpl implements WPSInfo {
         result =
                 prime * result
                         + ((maxAsynchronousProcesses == null)
-                                ? 0
-                                : maxAsynchronousProcesses.hashCode());
+                        ? 0
+                        : maxAsynchronousProcesses.hashCode());
         result = prime * result + maxAsynchronousExecutionTime;
         result =
                 prime * result
                         + ((maxAsynchronousTotalTime == null)
-                                ? 0
-                                : maxAsynchronousTotalTime.hashCode());
+                        ? 0
+                        : maxAsynchronousTotalTime.hashCode());
         result = prime * result + maxComplexInputSize;
         result = prime * result + maxSynchronousExecutionTime;
         result =
                 prime * result
                         + ((maxSynchronousTotalTime == null)
-                                ? 0
-                                : maxSynchronousTotalTime.hashCode());
+                        ? 0
+                        : maxSynchronousTotalTime.hashCode());
         result =
                 prime * result
                         + ((maxSynchronousProcesses == null)
-                                ? 0
-                                : maxSynchronousProcesses.hashCode());
+                        ? 0
+                        : maxSynchronousProcesses.hashCode());
         result = prime * result + ((processGroups == null) ? 0 : processGroups.hashCode());
         result =
                 prime * result
                         + ((resourceExpirationTimeout == null)
-                                ? 0
-                                : resourceExpirationTimeout.hashCode());
+                        ? 0
+                        : resourceExpirationTimeout.hashCode());
         result = prime * result + ((storageDirectory == null) ? 0 : storageDirectory.hashCode());
         return result;
     }

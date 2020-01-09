@@ -17,6 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.Nullable;
+
 import org.apache.commons.io.IOUtils;
 import org.geoserver.catalog.StyleHandler;
 import org.geoserver.catalog.StyleType;
@@ -68,7 +69,9 @@ public class YsldHandler extends StyleHandler {
         }
     }
 
-    /** Creates a new handler with an explicit zoom finder. */
+    /**
+     * Creates a new handler with an explicit zoom finder.
+     */
     public YsldHandler(ZoomContextFinder zoomFinder, UomMapper uomMapper) {
         super("YSLD", FORMAT);
         this.zoomFinder = zoomFinder;

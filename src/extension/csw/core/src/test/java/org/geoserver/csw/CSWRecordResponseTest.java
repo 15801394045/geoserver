@@ -20,6 +20,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.TimeZone;
 import javax.xml.transform.TransformerException;
+
 import net.opengis.cat.csw20.Csw20Factory;
 import net.opengis.cat.csw20.ElementSetType;
 import net.opengis.cat.csw20.GetRecordsType;
@@ -57,7 +58,7 @@ public class CSWRecordResponseTest extends CSWSimpleTestSupport {
                     CSWRecordDescriptor.RECORD_TYPE,
                     CSW.NAMESPACE,
                     new HashSet<String>(
-                            Arrays.asList(new String[] {"application/xml", "text/xml"})),
+                            Arrays.asList(new String[]{"application/xml", "text/xml"})),
                     gs);
         }
 

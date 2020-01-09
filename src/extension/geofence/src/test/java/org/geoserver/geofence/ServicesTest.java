@@ -10,6 +10,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Collections;
 import java.util.List;
+
 import org.geoserver.data.test.MockData;
 import org.geoserver.platform.GeoServerExtensions;
 import org.junit.Test;
@@ -26,7 +27,9 @@ public class ServicesTest extends GeofenceBaseTest {
         login("sf", "sf", "ROLE_SF_ADMIN");
     }
 
-    /** Enable the Spring Security auth filters, otherwise there will be no auth */
+    /**
+     * Enable the Spring Security auth filters, otherwise there will be no auth
+     */
     @Override
     protected List<javax.servlet.Filter> getFilters() {
         return Collections.singletonList(

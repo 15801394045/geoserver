@@ -12,7 +12,9 @@ package org.geoserver.wps.transmute;
  * @author Lucas Reed, Refractions Research Inc
  */
 public interface LiteralTransmuter extends Transmuter {
-    /** Returns string identifier for encoded value type */
+    /**
+     * Returns string identifier for encoded value type
+     */
     String getEncodedType();
 
     /**

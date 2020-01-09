@@ -5,6 +5,7 @@
 package org.geoserver.importer.rest;
 
 import javax.servlet.http.HttpServletRequest;
+
 import org.geoserver.catalog.CatalogInfo;
 import org.geoserver.catalog.ResourceInfo;
 import org.geoserver.catalog.WorkspaceInfo;

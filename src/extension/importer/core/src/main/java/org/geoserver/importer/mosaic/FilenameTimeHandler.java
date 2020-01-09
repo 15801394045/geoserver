@@ -6,6 +6,7 @@
 package org.geoserver.importer.mosaic;
 
 import com.google.common.base.Preconditions;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -14,6 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 import org.geotools.util.logging.Logging;
 
 /**

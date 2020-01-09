@@ -10,6 +10,7 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 import com.thoughtworks.xstream.XStream;
+
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
+
 import org.geoserver.config.util.SecureXStream;
 import org.geoserver.ogr.core.Format;
 import org.geoserver.platform.GeoServerExtensions;

@@ -16,6 +16,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 import org.geoserver.platform.GeoServerExtensions;
 import org.geoserver.security.LogoutFilterChain;
 import org.geoserver.security.config.SecurityNamedServiceConfig;
@@ -105,7 +106,7 @@ public class GeoServerCasAuthenticationFilter extends GeoServerPreAuthenticatedU
 
         if (ticket == null) return null;
         if ((ticket.startsWith(GeoServerCasConstants.PROXY_TICKET_PREFIX)
-                        || ticket.startsWith(GeoServerCasConstants.SERVICE_TICKET_PREFIX))
+                || ticket.startsWith(GeoServerCasConstants.SERVICE_TICKET_PREFIX))
                 == false) return null;
 
         try {
@@ -175,7 +176,9 @@ public class GeoServerCasAuthenticationFilter extends GeoServerPreAuthenticatedU
         return principal;
     }
 
-    /** */
+    /**
+     *
+     */
     @Override
     protected String getPreAuthenticatedPrincipalName(HttpServletRequest request) {
 
@@ -246,9 +249,9 @@ public class GeoServerCasAuthenticationFilter extends GeoServerPreAuthenticatedU
     public boolean isLogoutRequest(final HttpServletRequest request) {
         return "POST".equals(request.getMethod())
                 && CommonUtils.isNotBlank(
-                        CommonUtils.safeGetParameter(
-                                request,
-                                ConfigurationKeys.LOGOUT_PARAMETER_NAME.getDefaultValue()));
+                CommonUtils.safeGetParameter(
+                        request,
+                        ConfigurationKeys.LOGOUT_PARAMETER_NAME.getDefaultValue()));
     }
 
     @Override

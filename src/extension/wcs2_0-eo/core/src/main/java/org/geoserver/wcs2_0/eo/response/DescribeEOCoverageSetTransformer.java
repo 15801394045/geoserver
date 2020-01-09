@@ -16,6 +16,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import net.opengis.wcs20.DescribeEOCoverageSetType;
 import net.opengis.wcs20.DimensionTrimType;
 import net.opengis.wcs20.Section;
@@ -116,7 +117,9 @@ public class DescribeEOCoverageSetTransformer extends TransformerBase {
             this.dcTranslator = dcTranslator;
         }
 
-        /** Encode the object. */
+        /**
+         * Encode the object.
+         */
         @Override
         public void encode(Object o) throws IllegalArgumentException {
             DescribeEOCoverageSetType dcs = (DescribeEOCoverageSetType) o;
@@ -183,8 +186,8 @@ public class DescribeEOCoverageSetTransformer extends TransformerBase {
                 }
                 if (allSections
                         || dcs.getSections()
-                                .getSection()
-                                .contains(Section.DATASETSERIESDESCRIPTIONS)) {
+                        .getSection()
+                        .contains(Section.DATASETSERIESDESCRIPTIONS)) {
                     handleDatasetSeriesDescriptions(coverageGranules);
                 }
             }

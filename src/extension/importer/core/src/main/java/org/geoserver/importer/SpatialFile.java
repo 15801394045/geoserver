@@ -9,12 +9,14 @@ import static org.apache.commons.io.FilenameUtils.getBaseName;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Lists;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import javax.annotation.Nullable;
+
 import org.apache.commons.io.FileUtils;
 import org.geoserver.catalog.StyleHandler;
 import org.geoserver.catalog.Styles;
@@ -30,13 +32,19 @@ public class SpatialFile extends FileData {
 
     static EPSGCodeLookupCache EPSG_LOOKUP_CACHE = new EPSGCodeLookupCache();
 
-    /** .prj file */
+    /**
+     * .prj file
+     */
     File prjFile;
 
-    /** style file */
+    /**
+     * style file
+     */
     File styleFile;
 
-    /** supplementary files, like indexes, etc... */
+    /**
+     * supplementary files, like indexes, etc...
+     */
     List<File> suppFiles = new ArrayList<File>();
 
     /**

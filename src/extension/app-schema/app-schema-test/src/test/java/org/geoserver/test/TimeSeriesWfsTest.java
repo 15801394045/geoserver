@@ -276,7 +276,9 @@ public class TimeSeriesWfsTest extends AbstractAppSchemaTestSupport {
                 doc);
     }
 
-    /** Test filtering quantity list that is feature chained. */
+    /**
+     * Test filtering quantity list that is feature chained.
+     */
     @Test
     public void testQuantityListSubset() {
         String xml =

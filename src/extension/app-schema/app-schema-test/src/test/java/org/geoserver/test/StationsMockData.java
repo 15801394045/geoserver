@@ -28,6 +28,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.custommonkey.xmlunit.SimpleNamespaceContext;
 import org.custommonkey.xmlunit.XMLUnit;
 import org.custommonkey.xmlunit.XpathEngine;
@@ -58,7 +59,9 @@ public class StationsMockData extends AbstractAppSchemaMockData {
     // directory that should contain all the new files created during the setup of this data set
     private File testRootDirectory;
 
-    /** Helper method that just quietly creates a temporary directory, */
+    /**
+     * Helper method that just quietly creates a temporary directory,
+     */
     private static File createTestRootDirectory() {
         try {
             // create the tests root directory
@@ -68,7 +71,9 @@ public class StationsMockData extends AbstractAppSchemaMockData {
         }
     }
 
-    /** Helper method that builds a xpath engine that will use the provided GML namespaces. */
+    /**
+     * Helper method that builds a xpath engine that will use the provided GML namespaces.
+     */
     public static XpathEngine buildXpathEngine(
             Map<String, String> baseNamespaces, String... namespaces) {
         // build xpath engine
@@ -95,7 +100,9 @@ public class StationsMockData extends AbstractAppSchemaMockData {
         return xpathEngine;
     }
 
-    /** Return a map containing the standard placeholders with the corresponding GML31 values. */
+    /**
+     * Return a map containing the standard placeholders with the corresponding GML31 values.
+     */
     public static Map<String, String> getGml31StandardParamaters() {
         Map<String, String> gml31Parameters = new HashMap<>();
         gml31Parameters.put("GML_PREFIX", "gml31");
@@ -105,7 +112,9 @@ public class StationsMockData extends AbstractAppSchemaMockData {
         return gml31Parameters;
     }
 
-    /** Return a map containing the standard placeholders with the corresponding GML32 values. */
+    /**
+     * Return a map containing the standard placeholders with the corresponding GML32 values.
+     */
     public static Map<String, String> getGml32StandardParamaters() {
         Map<String, String> gml32Parameters = new HashMap<>();
         gml32Parameters.put("GML_PREFIX", "gml32");
@@ -175,7 +184,9 @@ public class StationsMockData extends AbstractAppSchemaMockData {
         }
     }
 
-    /** Helper method the reads a resource content to a string. */
+    /**
+     * Helper method the reads a resource content to a string.
+     */
     protected static String resourceToString(String resourceName) {
         try (InputStream input = NamespacesWfsTest.class.getResourceAsStream(resourceName)) {
             return IOUtils.toString(input);

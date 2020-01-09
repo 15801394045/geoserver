@@ -20,6 +20,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+
 import org.geoserver.catalog.CoverageStoreInfo;
 import org.geoserver.catalog.DataStoreInfo;
 import org.geoserver.catalog.FeatureTypeInfo;
@@ -56,7 +57,9 @@ public class ImportProcessTest extends WPSTestSupport {
         removeStore(SystemTestData.CITE_PREFIX, SystemTestData.CITE_PREFIX + "raster");
     }
 
-    /** Try to re-import buildings as another layer (different name, different projection) */
+    /**
+     * Try to re-import buildings as another layer (different name, different projection)
+     */
     @Test
     public void testImportBuildings() throws Exception {
         FeatureTypeInfo ti =
@@ -182,7 +185,9 @@ public class ImportProcessTest extends WPSTestSupport {
         }
     }
 
-    /** Try to re-import buildings as another layer (different name, different projection) */
+    /**
+     * Try to re-import buildings as another layer (different name, different projection)
+     */
     @Test
     public void testImportBuildingsForceCRS() throws Exception {
         FeatureTypeInfo ti =
@@ -242,7 +247,9 @@ public class ImportProcessTest extends WPSTestSupport {
         assertEquals("215 Main Street", f.getAttribute("ADDRESS"));
     }
 
-    /** Test creating a coverage store when a store name is specified but does not exist */
+    /**
+     * Test creating a coverage store when a store name is specified but does not exist
+     */
     @Test
     public void testCreateCoverageStore() throws Exception {
         String storeName = SystemTestData.CITE_PREFIX + "raster";
@@ -267,7 +274,9 @@ public class ImportProcessTest extends WPSTestSupport {
         assertEquals(result, SystemTestData.CITE_PREFIX + ":" + "Buildings4");
     }
 
-    /** Test creating a vector store when a store name is specified but does not exist */
+    /**
+     * Test creating a vector store when a store name is specified but does not exist
+     */
     @Test
     public void testCreateDataStore() throws Exception {
         FeatureTypeInfo ti =

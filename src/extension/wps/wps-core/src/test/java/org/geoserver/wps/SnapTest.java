@@ -10,6 +10,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.HashMap;
 import javax.xml.namespace.QName;
+
 import org.geoserver.config.GeoServer;
 import org.geoserver.data.test.MockData;
 import org.geoserver.data.test.SystemTestData;
@@ -473,7 +474,9 @@ public class SnapTest extends WPSTestSupport {
         assertXpathExists("//wps:Status/wps:ProcessFailed", d);
     }
 
-    /** Test setting a WPS title. */
+    /**
+     * Test setting a WPS title.
+     */
     @Test
     public void testWpsTitle() {
         final GeoServer geoserver = getGeoServer();

@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.geotools.util.factory.FactoryCreator;
 import org.geotools.util.factory.FactoryRegistry;
 
@@ -33,7 +34,9 @@ public final class DXFWriterFinder {
             org.geotools.util.logging.Logging.getLogger(
                     "org.geoserver.wfs.response.dxf.DXFWriterFinder");
 
-    /** The service registry for this manager. Will be initialized only when first needed. */
+    /**
+     * The service registry for this manager. Will be initialized only when first needed.
+     */
     private static FactoryRegistry registry;
 
     /**
@@ -63,7 +66,7 @@ public final class DXFWriterFinder {
      */
     private static FactoryRegistry getServiceRegistry() {
         if (registry == null) {
-            registry = new FactoryCreator(Arrays.asList(new Class<?>[] {DXFWriter.class}));
+            registry = new FactoryCreator(Arrays.asList(new Class<?>[]{DXFWriter.class}));
         }
         return registry;
     }

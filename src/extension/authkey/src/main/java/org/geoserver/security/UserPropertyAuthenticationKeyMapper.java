@@ -7,11 +7,14 @@ package org.geoserver.security;
 
 import java.io.IOException;
 import java.util.SortedSet;
+
 import org.geoserver.security.impl.GeoServerUser;
 import org.geoserver.security.validation.PasswordPolicyException;
 import org.springframework.util.StringUtils;
 
-/** */
+/**
+ *
+ */
 public class UserPropertyAuthenticationKeyMapper extends AbstractAuthenticationKeyMapper {
 
     private String userPropertyName;

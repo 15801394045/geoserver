@@ -101,7 +101,7 @@ public class GeofenceServerPage extends GeoServerSecuredPage {
                             AjaxRequestTarget target, Transfer transfer, Location location) {
                         if (location == null
                                 || !(location.getComponent().getDefaultModel().getObject()
-                                        instanceof ShortRule)) {
+                                instanceof ShortRule)) {
                             return;
                         }
                         ShortRule movedRule = transfer.getData();
@@ -122,7 +122,9 @@ public class GeofenceServerPage extends GeoServerSecuredPage {
         rulesPanel.setOutputMarkupId(true);
     }
 
-    /** Panel with buttons up, down and edit */
+    /**
+     * Panel with buttons up, down and edit
+     */
     private class ButtonPanel extends Panel {
 
         private static final long serialVersionUID = 833648465957566970L;

@@ -19,6 +19,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 import java.util.logging.Level;
+
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.solr.client.solrj.impl.HttpSolrClient;
 import org.custommonkey.xmlunit.SimpleNamespaceContext;
@@ -298,7 +299,9 @@ public class ComplexIndexesTest extends GeoServerSystemTestSupport {
         return loadFixtureProperties(fixFile);
     }
 
-    /** Gets the fixture file for GeoServer Apache Solr integration tests. */
+    /**
+     * Gets the fixture file for GeoServer Apache Solr integration tests.
+     */
     private static File getFixtureFile() {
         File directory = new File(System.getProperty("user.home") + "/.geoserver");
         if (!directory.exists()) {
@@ -308,7 +311,9 @@ public class ComplexIndexesTest extends GeoServerSystemTestSupport {
         return new File(directory, "appschema-indexes.properties");
     }
 
-    /** Helper method that just loads the fixture files properties. */
+    /**
+     * Helper method that just loads the fixture files properties.
+     */
     private static Properties loadFixtureProperties(File fixtureFile) {
         Properties properties = new Properties();
         try (InputStream input = new FileInputStream(fixtureFile)) {
@@ -327,7 +332,9 @@ public class ComplexIndexesTest extends GeoServerSystemTestSupport {
         return TESTS_ROOT_DIR.getAbsolutePath();
     }
 
-    /** Helper method that creates a temporary directory. */
+    /**
+     * Helper method that creates a temporary directory.
+     */
     public static File createTempDirectory(String dirName) {
         try {
             return Files.createTempDirectory(dirName).toFile();

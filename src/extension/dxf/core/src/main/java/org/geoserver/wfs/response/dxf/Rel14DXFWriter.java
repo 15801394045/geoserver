@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
+
 import org.geotools.feature.FeatureCollection;
 import org.geotools.feature.FeatureIterator;
 import org.geotools.feature.type.FeatureTypeImpl;
@@ -63,7 +64,9 @@ public class Rel14DXFWriter extends AbstractDXFWriter {
         super(writer);
     }
 
-    /** Supports version if it's a number and equals to 14. */
+    /**
+     * Supports version if it's a number and equals to 14.
+     */
     public boolean supportsVersion(String version) {
         if (super.supportsVersion(version)) return true;
         try {
@@ -74,12 +77,16 @@ public class Rel14DXFWriter extends AbstractDXFWriter {
         }
     }
 
-    /** Creates a new writer, using the given underlying writer. */
+    /**
+     * Creates a new writer, using the given underlying writer.
+     */
     public DXFWriter newInstance(Writer writer) {
         return new Rel14DXFWriter(writer);
     }
 
-    /** Writes the DXF for the given feature list. */
+    /**
+     * Writes the DXF for the given feature list.
+     */
     @Override
     public void write(List featureList, String version) throws IOException {
         // DXF General Structure
@@ -932,8 +939,8 @@ public class Rel14DXFWriter extends AbstractDXFWriter {
         writeOwnerHandle("0");
         writeSubClass("AcDbSymbolTable");
         writeSize(lineTypes.length);
-        writeLineType("14", "5", "BYBLOCK", "", 0.0, new LineTypeItem[] {});
-        writeLineType("15", "5", "BYLAYER", "", 0.0, new LineTypeItem[] {});
+        writeLineType("14", "5", "BYBLOCK", "", 0.0, new LineTypeItem[]{});
+        writeLineType("15", "5", "BYLAYER", "", 0.0, new LineTypeItem[]{});
         for (LineType ltype : lineTypes)
             writeLineType(
                     getNewHandle("LType"),
@@ -1192,7 +1199,9 @@ public class Rel14DXFWriter extends AbstractDXFWriter {
         loadFromResource("header");
     }
 
-    /** Description for the writer. */
+    /**
+     * Description for the writer.
+     */
     public String getDescription() {
         return "DXF Release 14";
     }

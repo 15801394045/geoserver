@@ -6,6 +6,7 @@
 package org.geoserver.wcs.responses;
 
 import it.geosolutions.jaiext.range.NoDataContainer;
+
 import java.awt.image.RenderedImage;
 import java.io.File;
 import java.io.IOException;
@@ -19,6 +20,7 @@ import javax.measure.Unit;
 import javax.measure.UnitConverter;
 import javax.media.jai.iterator.RandomIter;
 import javax.media.jai.iterator.RandomIterFactory;
+
 import org.geoserver.wcs.responses.NetCDFDimensionsManager.NetCDFDimensionMapping;
 import org.geoserver.wcs2_0.response.GranuleStack;
 import org.geoserver.web.netcdf.DataPacking;
@@ -49,10 +51,14 @@ import ucar.nc2.dataset.NetcdfDataset;
  */
 public class DefaultNetCDFEncoder extends AbstractNetCDFEncoder {
 
-    /** The user supplied variableName */
+    /**
+     * The user supplied variableName
+     */
     private String variableName;
 
-    /** The user supplied unit of measure */
+    /**
+     * The user supplied unit of measure
+     */
     private String variableUoM;
 
     /**
@@ -73,8 +79,8 @@ public class DefaultNetCDFEncoder extends AbstractNetCDFEncoder {
     /**
      * {@link DefaultNetCDFEncoder} constructor.
      *
-     * @param granuleStack the granule stack to be written
-     * @param file an output file
+     * @param granuleStack       the granule stack to be written
+     * @param file               an output file
      * @param encodingParameters customized encoding params
      * @throws IOException
      */
@@ -94,7 +100,9 @@ public class DefaultNetCDFEncoder extends AbstractNetCDFEncoder {
         variableUoM = settings.getLayerUOM();
     }
 
-    /** Initialize the NetCDF variables on this writer */
+    /**
+     * Initialize the NetCDF variables on this writer
+     */
     protected void initializeVariables() {
 
         // group the dimensions to be added to the variable
@@ -249,7 +257,7 @@ public class DefaultNetCDFEncoder extends AbstractNetCDFEncoder {
                                 // do not allow overwrite or attributes in blacklist
                                 if (var.findAttribute(att.getFullName()) == null
                                         && !COPY_ATTRIBUTES_BLACKLIST.contains(
-                                                att.getShortName())) {
+                                        att.getShortName())) {
                                     writer.addVariableAttribute(var, att);
                                 }
                             }
@@ -394,10 +402,10 @@ public class DefaultNetCDFEncoder extends AbstractNetCDFEncoder {
                                         indexing[record.dimensionIndex])) {
                                     writer.write(
                                             writer.findVariable(record.extraVariable.getOutput()),
-                                            new int[] {indexing[record.dimensionIndex]},
+                                            new int[]{indexing[record.dimensionIndex]},
                                             source.findVariable(record.extraVariable.getSource())
                                                     .read()
-                                                    .reshape(new int[] {1}));
+                                                    .reshape(new int[]{1}));
                                     record.writtenIndices.add(indexing[record.dimensionIndex]);
                                 }
                             }

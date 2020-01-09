@@ -10,6 +10,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.Serializable;
 import java.util.List;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.feedback.FeedbackMessage;
 import org.apache.wicket.markup.html.form.Form;
@@ -115,9 +116,9 @@ public class UniqueResourceIdentifiersEditorTest extends GeoServerWicketTestSupp
 
         String error =
                 new ParamResourceModel(
-                                "UniqueResourceIdentifiersEditor.noSpatialDatasetIdentifiers", null)
+                        "UniqueResourceIdentifiersEditor.noSpatialDatasetIdentifiers", null)
                         .getString();
-        tester.assertErrorMessages(new String[] {error});
+        tester.assertErrorMessages(new String[]{error});
     }
 
     @Test

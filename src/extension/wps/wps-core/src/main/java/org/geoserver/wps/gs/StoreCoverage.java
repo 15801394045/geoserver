@@ -8,6 +8,7 @@ package org.geoserver.wps.gs;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URL;
+
 import org.geoserver.platform.resource.Resource;
 import org.geoserver.wps.resource.WPSResourceManager;
 import org.geotools.coverage.grid.GridCoverage2D;

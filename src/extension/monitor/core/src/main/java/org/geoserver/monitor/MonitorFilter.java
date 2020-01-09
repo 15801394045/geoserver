@@ -23,6 +23,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.geoserver.filters.GeoServerFilter;
 import org.geoserver.monitor.RequestData.Status;
 import org.geoserver.platform.GeoServerExtensions;
@@ -64,7 +65,8 @@ public class MonitorFilter implements GeoServerFilter {
         }
     }
 
-    public void init(FilterConfig filterConfig) throws ServletException {}
+    public void init(FilterConfig filterConfig) throws ServletException {
+    }
 
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {

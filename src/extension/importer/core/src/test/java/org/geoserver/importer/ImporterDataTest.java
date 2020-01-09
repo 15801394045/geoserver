@@ -18,6 +18,7 @@ import static org.junit.Assert.fail;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
@@ -28,6 +29,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.logging.Level;
+
 import org.apache.commons.exec.CommandLine;
 import org.apache.commons.exec.DefaultExecutor;
 import org.apache.commons.exec.PumpStreamHandler;
@@ -82,7 +84,9 @@ import org.opengis.feature.type.GeometryDescriptor;
 public class ImporterDataTest extends ImporterTestSupport {
 
     private static final class DescriptionLimitingTransform extends AbstractInlineVectorTransform {
-        /** serialVersionUID */
+        /**
+         * serialVersionUID
+         */
         private static final long serialVersionUID = 1L;
 
         @Override

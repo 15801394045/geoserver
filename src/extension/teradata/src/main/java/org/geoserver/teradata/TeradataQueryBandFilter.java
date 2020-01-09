@@ -13,11 +13,13 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+
 import org.geotools.data.teradata.QueryBand;
 
 public class TeradataQueryBandFilter implements Filter {
 
-    public void init(FilterConfig filterConfig) throws ServletException {}
+    public void init(FilterConfig filterConfig) throws ServletException {
+    }
 
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
@@ -39,5 +41,6 @@ public class TeradataQueryBandFilter implements Filter {
         }
     }
 
-    public void destroy() {}
+    public void destroy() {
+    }
 }

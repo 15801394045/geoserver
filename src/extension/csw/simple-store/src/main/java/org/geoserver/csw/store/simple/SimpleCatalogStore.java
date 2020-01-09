@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Comparator;
+
 import org.geoserver.csw.feature.MemoryFeatureCollection;
 import org.geoserver.csw.feature.sort.ComplexComparatorFactory;
 import org.geoserver.csw.records.CSWRecordDescriptor;
@@ -115,7 +116,9 @@ public class SimpleCatalogStore extends AbstractCatalogStore {
         };
     }
 
-    /** This dummy implementation returns the file backing the record, verbatim */
+    /**
+     * This dummy implementation returns the file backing the record, verbatim
+     */
     @Override
     public RepositoryItem getRepositoryItem(String recordId) {
         SimpleRecordIterator it = new SimpleRecordIterator(root, 0);

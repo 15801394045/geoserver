@@ -11,6 +11,7 @@ import static org.junit.Assert.assertEquals;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import javax.servlet.ServletOutputStream;
+
 import org.geoserver.monitor.MonitorServletResponse.MonitorOutputStream;
 import org.junit.Test;
 import org.springframework.mock.web.DelegatingServletOutputStream;

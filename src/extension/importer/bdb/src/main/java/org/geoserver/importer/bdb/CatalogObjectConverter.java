@@ -19,7 +19,8 @@ public class CatalogObjectConverter implements Converter {
     }
 
     public void marshal(
-            Object source, HierarchicalStreamWriter writer, MarshallingContext context) {}
+            Object source, HierarchicalStreamWriter writer, MarshallingContext context) {
+    }
 
     public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
 

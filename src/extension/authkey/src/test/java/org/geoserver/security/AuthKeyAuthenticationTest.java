@@ -24,6 +24,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Properties;
 import javax.servlet.http.HttpServletResponse;
+
 import org.geoserver.platform.GeoServerEnvironment;
 import org.geoserver.platform.GeoServerExtensions;
 import org.geoserver.security.auth.AbstractAuthenticationProviderTest;
@@ -108,7 +109,7 @@ public class AuthKeyAuthenticationTest extends AbstractAuthenticationProviderTes
     @BeforeClass
     public static void setupClass()
             throws IllegalArgumentException, IllegalAccessException, NoSuchFieldException,
-                    SecurityException {
+            SecurityException {
         // Playing with System.Properties and Static boolean fields can raises issues
         // when running Junit tests via Maven, due to initialization orders.
         // So let's change the fields via reflections for these tests
@@ -124,7 +125,7 @@ public class AuthKeyAuthenticationTest extends AbstractAuthenticationProviderTes
     @AfterClass
     public static void tearDownClass()
             throws NoSuchFieldException, SecurityException, IllegalArgumentException,
-                    IllegalAccessException {
+            IllegalAccessException {
         // Playing with System.Properties and Static boolean fields can raises issues
         // when running Junit tests via Maven, due to initialization orders.
         // So let's change the fields via reflections for these tests

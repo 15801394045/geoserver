@@ -17,7 +17,9 @@ class ReferenceConfiguration implements Serializable {
     enum Method {
         GET,
         POST
-    };
+    }
+
+    ;
 
     Method method = Method.GET;
 

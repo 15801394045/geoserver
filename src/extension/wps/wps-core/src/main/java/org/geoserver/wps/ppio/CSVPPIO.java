@@ -9,6 +9,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.logging.Logger;
+
 import org.geoserver.platform.resource.Resource;
 import org.geoserver.util.IOUtils;
 import org.geoserver.wps.resource.WPSResourceManager;
@@ -23,7 +24,9 @@ import org.geotools.data.simple.SimpleFeatureSource;
 import org.geotools.util.logging.Logging;
 import org.geotools.xsd.Text;
 
-/** @author ian */
+/**
+ * @author ian
+ */
 public class CSVPPIO extends CDataPPIO {
     WPSResourceManager resourceManager;
     private static final Logger LOGGER = Logging.getLogger("org.geoserver.wps.ppio.CSVPPIO");

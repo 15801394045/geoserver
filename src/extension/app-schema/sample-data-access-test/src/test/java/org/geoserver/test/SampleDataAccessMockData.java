@@ -14,6 +14,7 @@ import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+
 import org.geoserver.data.CatalogWriter;
 import org.geoserver.data.test.MockData;
 import org.geoserver.data.test.SystemTestData;
@@ -32,27 +33,41 @@ public class SampleDataAccessMockData extends SystemTestData {
 
     public static final String DATASTORE_NAME = "datastore";
 
-    /** Use FeatureTypeInfo constants for srs handling as values */
+    /**
+     * Use FeatureTypeInfo constants for srs handling as values
+     */
     public static final String KEY_SRS_HANDLINGS = "srsHandling";
 
-    /** The feature type alias, a string */
+    /**
+     * The feature type alias, a string
+     */
     public static final String KEY_ALIAS = "alias";
 
-    /** The style name */
+    /**
+     * The style name
+     */
     public static final String KEY_STYLE = "style";
 
-    /** The srs code (a number) for this layer */
+    /**
+     * The srs code (a number) for this layer
+     */
     public static final String KEY_SRS_NUMBER = "srs";
 
-    /** The lon/lat envelope as a JTS Envelope */
+    /**
+     * The lon/lat envelope as a JTS Envelope
+     */
     public static final String KEY_LL_ENVELOPE = "ll_envelope";
 
-    /** The native envelope as a JTS Envelope */
+    /**
+     * The native envelope as a JTS Envelope
+     */
     public static final String KEY_NATIVE_ENVELOPE = "native_envelope";
 
     static final Envelope DEFAULT_ENVELOPE = new Envelope(-180, 180, -90, 90);
 
-    /** the 'featureTypes' directory, under 'data' */
+    /**
+     * the 'featureTypes' directory, under 'data'
+     */
     File featureTypes;
 
     /**
@@ -163,7 +178,7 @@ public class SampleDataAccessMockData extends SystemTestData {
     /**
      * Copies from an {@link InputStream} to path under the mock data directory.
      *
-     * @param input source from which file content is copied
+     * @param input    source from which file content is copied
      * @param location path relative to mock data directory
      */
     public void copyTo(InputStream input, String location) throws IOException {

@@ -14,7 +14,9 @@ import java.util.Map;
  */
 public interface FormatConverter {
 
-    /** Returns the tool's executable full path. */
+    /**
+     * Returns the tool's executable full path.
+     */
     public String getExecutable();
 
     /**
@@ -24,10 +26,14 @@ public interface FormatConverter {
      */
     public void setExecutable(String executable);
 
-    /** Returns the environment variables that are set prior to invoking the tool's executable. */
+    /**
+     * Returns the environment variables that are set prior to invoking the tool's executable.
+     */
     public Map<String, String> getEnvironment();
 
-    /** Provides the environment variables that are set prior to invoking the tool's executable. */
+    /**
+     * Provides the environment variables that are set prior to invoking the tool's executable.
+     */
     public void setEnvironment(Map<String, String> environment);
 
     /**
@@ -37,10 +43,14 @@ public interface FormatConverter {
      */
     public void addFormat(Format format);
 
-    /** Get a list of supported output formats. */
+    /**
+     * Get a list of supported output formats.
+     */
     public List<Format> getFormats();
 
-    /** Programmatically removes all formats. */
+    /**
+     * Programmatically removes all formats.
+     */
     public void clearFormats();
 
     /**

@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.xml.namespace.QName;
+
 import net.opengis.cat.csw20.Csw20Factory;
 import net.opengis.cat.csw20.DistributedSearchType;
 import net.opengis.cat.csw20.ElementSetNameType;
@@ -46,7 +47,9 @@ public class GetRecordsKvpRequestReader extends CSWKvpRequestReader
     private static final String CONSTRAINTLANGUAGE = "constraintlanguage";
     private static final String CONSTRAINT = "constraint";
 
-    /** Resolves the type names into proper QName objects */
+    /**
+     * Resolves the type names into proper QName objects
+     */
     TypeNamesResolver resolver = new TypeNamesResolver();
 
     HashMap<String, RecordDescriptor> descriptors;

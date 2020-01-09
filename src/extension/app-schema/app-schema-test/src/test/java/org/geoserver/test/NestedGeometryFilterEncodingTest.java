@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+
 import org.geoserver.catalog.FeatureTypeInfo;
 import org.geotools.appschema.filter.FilterFactoryImplNamespaceAware;
 import org.geotools.appschema.jdbc.NestedFilterToSQL;

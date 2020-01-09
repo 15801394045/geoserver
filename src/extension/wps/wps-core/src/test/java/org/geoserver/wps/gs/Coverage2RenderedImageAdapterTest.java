@@ -15,6 +15,7 @@ import java.awt.image.DataBuffer;
 import java.awt.image.RenderedImage;
 import java.awt.image.WritableRaster;
 import javax.media.jai.RasterFactory;
+
 import org.geoserver.wps.WPSTestSupport;
 import org.geotools.coverage.CoverageFactoryFinder;
 import org.geotools.coverage.GridSampleDimension;
@@ -25,21 +26,24 @@ import org.geotools.geometry.Envelope2D;
 import org.geotools.referencing.crs.DefaultGeographicCRS;
 import org.junit.Test;
 
-/** @author ETj <etj at geo-solutions.it> */
+/**
+ * @author ETj <etj at geo-solutions.it>
+ */
 public class Coverage2RenderedImageAdapterTest extends WPSTestSupport {
 
     protected static final double NODATA = 3.0d;
 
-    public Coverage2RenderedImageAdapterTest() {}
+    public Coverage2RenderedImageAdapterTest() {
+    }
 
     /**
      * creates a coverage for testing purposes-
      *
-     * @param width width in pixel of the raster
-     * @param height height in pixel of the raster
-     * @param envX0 envelope minx
-     * @param envY0 envelope miny
-     * @param envWidth envelope width
+     * @param width     width in pixel of the raster
+     * @param height    height in pixel of the raster
+     * @param envX0     envelope minx
+     * @param envY0     envelope miny
+     * @param envWidth  envelope width
      * @param envHeight envelope height
      * @return the test coverage
      */
@@ -77,7 +81,7 @@ public class Coverage2RenderedImageAdapterTest extends WPSTestSupport {
             }
         }
         final Color[] colors =
-                new Color[] {Color.BLUE, Color.CYAN, Color.WHITE, Color.YELLOW, Color.RED};
+                new Color[]{Color.BLUE, Color.CYAN, Color.WHITE, Color.YELLOW, Color.RED};
 
         return factory.create(
                 "Float coverage",
@@ -86,7 +90,7 @@ public class Coverage2RenderedImageAdapterTest extends WPSTestSupport {
                 null,
                 null,
                 null,
-                new Color[][] {colors},
+                new Color[][]{colors},
                 null);
     }
 

@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.OnChangeAjaxBehavior;
@@ -37,7 +38,9 @@ import org.geoserver.web.util.MapModel;
 import org.geoserver.web.util.MetadataMapModel;
 import org.geoserver.wfs.WFSInfo;
 
-/** Panel for the service admin page to set the service INSPIRE extension preferences. */
+/**
+ * Panel for the service admin page to set the service INSPIRE extension preferences.
+ */
 public class InspireAdminPanel extends AdminPagePanel {
 
     private static final long serialVersionUID = -7670555379263411393L;

@@ -6,6 +6,7 @@
 package org.geoserver.monitor;
 
 import java.io.Serializable;
+
 import org.geoserver.monitor.Query.Comparison;
 
 /**
@@ -24,7 +25,8 @@ public class Filter implements Serializable {
         this.type = type;
     }
 
-    protected Filter() {}
+    protected Filter() {
+    }
 
     public Object getLeft() {
         return left;

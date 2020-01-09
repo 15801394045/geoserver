@@ -12,7 +12,8 @@ import org.xml.sax.helpers.NamespaceSupport;
 
 public final class ViewServicesUtils {
 
-    private ViewServicesUtils() {}
+    private ViewServicesUtils() {
+    }
 
     public static void registerNameSpaces(NamespaceSupport namespaces) {
         namespaces.declarePrefix("inspire_vs", VS_NAMESPACE);

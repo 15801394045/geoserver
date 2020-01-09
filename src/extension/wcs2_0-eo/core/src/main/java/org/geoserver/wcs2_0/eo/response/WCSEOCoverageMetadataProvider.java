@@ -7,6 +7,7 @@ package org.geoserver.wcs2_0.eo.response;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.geoserver.catalog.CoverageInfo;
 import org.geoserver.catalog.DimensionInfo;
 import org.geoserver.catalog.ResourceInfo;
@@ -111,7 +112,7 @@ public class WCSEOCoverageMetadataProvider implements WCS20CoverageMetadataProvi
                         "schemas/wcseo/1.0/wcsEOCoverage.xsd",
                         null,
                         URLType.RESOURCE);
-        return new String[] {WCSEOMetadata.NAMESPACE, schemaLocation};
+        return new String[]{WCSEOMetadata.NAMESPACE, schemaLocation};
     }
 
     @Override

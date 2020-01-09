@@ -8,9 +8,11 @@ package org.geoserver.monitor.auditlog;
 import freemarker.cache.ClassTemplateLoader;
 import freemarker.cache.FileTemplateLoader;
 import freemarker.cache.TemplateLoader;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.Reader;
+
 import org.geoserver.platform.GeoServerResourceLoader;
 import org.geoserver.template.GeoServerTemplateLoader;
 
@@ -22,10 +24,14 @@ import org.geoserver.template.GeoServerTemplateLoader;
  */
 public class AuditTemplateLoader implements TemplateLoader {
 
-    /** Delegate file based template loader */
+    /**
+     * Delegate file based template loader
+     */
     FileTemplateLoader fileTemplateLoader;
 
-    /** Delegate class based template loader, may be null depending on how */
+    /**
+     * Delegate class based template loader, may be null depending on how
+     */
     ClassTemplateLoader classTemplateLoader;
 
     public AuditTemplateLoader(GeoServerResourceLoader rl) throws IOException {
@@ -99,10 +105,14 @@ public class AuditTemplateLoader implements TemplateLoader {
      * @author Justin Deoliveira, The Open Planning Project, jdeolive@openplans.org
      */
     static class ClassTemplateSource {
-        /** The path used to load the template. */
+        /**
+         * The path used to load the template.
+         */
         String path;
 
-        /** The raw source from the class template loader */
+        /**
+         * The raw source from the class template loader
+         */
         Object source;
 
         public ClassTemplateSource(String path, Object source) {

@@ -7,6 +7,7 @@ package org.geoserver.wps.gs;
 
 import java.io.InputStream;
 import javax.xml.namespace.QName;
+
 import org.geoserver.wps.ppio.XMLPPIO;
 import org.geotools.process.classify.ClassificationStats;
 import org.jaitools.numeric.Range;

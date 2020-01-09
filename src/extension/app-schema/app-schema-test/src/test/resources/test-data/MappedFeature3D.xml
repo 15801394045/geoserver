@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-    <!--
-        Mapped Feature mapping file with no gsml:specification attribute. This is to avoid circular
-        reference problem when this is linked as gsml:occurrence in Geologic Unit type.
-    -->
+<!--
+    Mapped Feature mapping file with no gsml:specification attribute. This is to avoid circular
+    reference problem when this is linked as gsml:occurrence in Geologic Unit type.
+-->
 <as:AppSchemaDataAccess xmlns:as="http://www.geotools.org/app-schema"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.geotools.org/app-schema AppSchemaDataAccess.xsd">
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                        xsi:schemaLocation="http://www.geotools.org/app-schema AppSchemaDataAccess.xsd">
     <namespaces>
         <Namespace>
             <prefix>gml</prefix>
@@ -44,15 +45,15 @@
                 <AttributeMapping>
                     <targetAttribute>
                         gsml:MappedFeature
-					</targetAttribute>
+                    </targetAttribute>
                     <idExpression>
                         <OCQL>strConCat('gsml.mappedfeature.',ID)</OCQL>
                     </idExpression>
                 </AttributeMapping>
                 <AttributeMapping>
                     <targetAttribute>
-                       gsml:observationMethod
-					</targetAttribute>
+                        gsml:observationMethod
+                    </targetAttribute>
                     <sourceExpression>
                         <OCQL>ID</OCQL>
                         <linkElement>observationMethodMapping</linkElement>
@@ -62,16 +63,16 @@
                 </AttributeMapping>
                 <AttributeMapping>
                     <targetAttribute>
-                       gsml:shape
-					</targetAttribute>
+                        gsml:shape
+                    </targetAttribute>
                     <sourceExpression>
                         <OCQL>SHAPE</OCQL>
                     </sourceExpression>
                 </AttributeMapping>
                 <AttributeMapping>
                     <targetAttribute>
-                       gsml:shape
-					</targetAttribute>
+                        gsml:shape
+                    </targetAttribute>
                     <sourceExpression>
                         <OCQL>SHAPE</OCQL>
                     </sourceExpression>

@@ -10,6 +10,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import net.opengis.ows11.BoundingBoxType;
 import net.opengis.ows11.Ows11Factory;
 import net.opengis.wps10.ComplexDataType;
@@ -127,7 +128,9 @@ public class ExecuteKvpRequestReader extends EMFKvpRequestReader
         return "DataInputs".equalsIgnoreCase(kvp)
                 || "responseDocument".equalsIgnoreCase(kvp)
                 || "rawDataOutput".equalsIgnoreCase(kvp);
-    };
+    }
+
+    ;
 
     List<InputType> parseDataInputs(Map<String, Parameter<?>> inputParams, String inputString) {
         List<IOParam> params = parseIOParameters(inputString);

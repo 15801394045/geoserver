@@ -5,6 +5,7 @@
 package org.geoserver.wps;
 
 import java.util.List;
+
 import org.geoserver.wps.executor.ExecutionStatus;
 import org.geotools.data.Query;
 import org.opengis.filter.Filter;
@@ -14,13 +15,19 @@ import org.opengis.filter.Filter;
  * completed processes
  */
 public interface ProcessStatusStore {
-    /** Saves or updates a given process status */
+    /**
+     * Saves or updates a given process status
+     */
     void save(ExecutionStatus status);
 
-    /** Retrieves a specific status by id */
+    /**
+     * Retrieves a specific status by id
+     */
     ExecutionStatus get(String executionId);
 
-    /** Removes a specific status by id */
+    /**
+     * Removes a specific status by id
+     */
     ExecutionStatus remove(String executionId);
 
     /**

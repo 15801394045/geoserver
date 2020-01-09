@@ -10,6 +10,7 @@ import it.geosolutions.imageio.plugins.turbojpeg.TurboJpegImageWriter;
 import it.geosolutions.imageio.plugins.turbojpeg.TurboJpegImageWriterSpi;
 import it.geosolutions.imageio.plugins.turbojpeg.TurboJpegUtilities;
 import it.geosolutions.imageio.utilities.ImageOutputStreamAdapter2;
+
 import java.awt.RenderingHints;
 import java.awt.Transparency;
 import java.awt.color.ColorSpace;
@@ -29,6 +30,7 @@ import javax.imageio.spi.ImageOutputStreamSpi;
 import javax.imageio.stream.ImageOutputStream;
 import javax.media.jai.ImageLayout;
 import javax.media.jai.JAI;
+
 import org.geotools.image.ImageWorker;
 import org.geotools.image.util.ImageUtilities;
 import org.geotools.util.logging.Logging;
@@ -45,10 +47,14 @@ final class TurboJpegImageWorker extends ImageWorker {
 
     static final String ERROR_FILE_MESSAGE = "The specified input file can't be read: Skipping";
 
-    /** Is the libjpeg-turbo available? * */
+    /**
+     * Is the libjpeg-turbo available? *
+     */
     private static final TurboJpegImageWriterSpi TURBO_JPEG_SPI = new TurboJpegImageWriterSpi();
 
-    /** The logger to use for this class. */
+    /**
+     * The logger to use for this class.
+     */
     private static final Logger LOGGER = Logging.getLogger(TurboJpegImageWorker.class);
 
     public TurboJpegImageWorker() {
@@ -70,10 +76,10 @@ final class TurboJpegImageWorker extends ImageWorker {
      * <p>The destination object can be anything providing that we have an {@link
      * ImageOutputStreamSpi} that recognizes it.
      *
-     * @param destination where to write the internal {@link #image} as a JPEG.
+     * @param destination     where to write the internal {@link #image} as a JPEG.
      * @param compressionRate percentage of compression.
      * @throws IOException In case an error occurs during the search for an {@link
-     *     ImageOutputStream} or during the eoncding process.
+     *                     ImageOutputStream} or during the eoncding process.
      */
     public final void writeTurboJPEG(final OutputStream destination, final float compressionRate)
             throws IOException {

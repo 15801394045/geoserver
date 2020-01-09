@@ -16,7 +16,9 @@ import org.opengis.referencing.FactoryException;
 import org.opengis.referencing.crs.CoordinateReferenceSystem;
 import org.opengis.referencing.operation.MathTransform;
 
-/** @author Daniele Romagnoli, GeoSolutions */
+/**
+ * @author Daniele Romagnoli, GeoSolutions
+ */
 public class BaseCoverageAlgebraProcess {
 
     static final String MISMATCHING_ENVELOPE_MESSAGE =
@@ -28,7 +30,8 @@ public class BaseCoverageAlgebraProcess {
     static final String MISMATCHING_CRS_MESSAGE =
             "coverageA and coverageB should share the same CoordinateReferenceSystem";
 
-    private BaseCoverageAlgebraProcess() {}
+    private BaseCoverageAlgebraProcess() {
+    }
 
     public static void checkCompatibleCoverages(GridCoverage2D coverageA, GridCoverage2D coverageB)
             throws ProcessException {

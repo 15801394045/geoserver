@@ -9,6 +9,7 @@ import static org.geoserver.importer.ImporterUtils.resolve;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
@@ -18,6 +19,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.geoserver.catalog.Catalog;
 import org.geoserver.catalog.LayerInfo;
 import org.geoserver.catalog.StoreInfo;
@@ -38,7 +40,9 @@ import org.geotools.util.logging.Logging;
  */
 public class ImportContext implements Serializable {
 
-    /** serialVersionUID */
+    /**
+     * serialVersionUID
+     */
     private static final long serialVersionUID = 8790675013874051197L;
 
     static final Logger LOGGER = Logging.getLogger(ImportContext.class);
@@ -49,47 +53,77 @@ public class ImportContext implements Serializable {
          * while planning for an asynchronous initialization
          */
         INIT,
-        /** Context init failed */
+        /**
+         * Context init failed
+         */
         INIT_ERROR,
-        /** Context ready to be started */
+        /**
+         * Context ready to be started
+         */
         PENDING,
-        /** Import is running */
+        /**
+         * Import is running
+         */
         RUNNING,
-        /** Import is complete */
+        /**
+         * Import is complete
+         */
         COMPLETE;
     }
 
-    /** identifier */
+    /**
+     * identifier
+     */
     Long id;
 
-    /** state */
+    /**
+     * state
+     */
     State state = State.PENDING;
 
-    /** data source */
+    /**
+     * data source
+     */
     ImportData data;
 
-    /** target workspace for the import */
+    /**
+     * target workspace for the import
+     */
     WorkspaceInfo targetWorkspace;
 
-    /** target store of the import */
+    /**
+     * target store of the import
+     */
     StoreInfo targetStore;
 
-    /** import tasks */
+    /**
+     * import tasks
+     */
     List<ImportTask> tasks = new ArrayList<ImportTask>();
 
-    /** The default transformations that will be applied on task creation */
+    /**
+     * The default transformations that will be applied on task creation
+     */
     List<ImportTransform> defaultTransforms = new ArrayList<>();
 
-    /** id generator for task */
+    /**
+     * id generator for task
+     */
     int taskid = 0;
 
-    /** date import was created */
+    /**
+     * date import was created
+     */
     Date created;
 
-    /** date import was finished */
+    /**
+     * date import was finished
+     */
     Date updated;
 
-    /** credentials of creator */
+    /**
+     * credentials of creator
+     */
     String user;
 
     /**
@@ -99,7 +133,9 @@ public class ImportContext implements Serializable {
      */
     boolean archive = false;
 
-    /** Used for error messages */
+    /**
+     * Used for error messages
+     */
     String message;
 
     volatile ProgressMonitor progress;

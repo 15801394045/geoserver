@@ -26,7 +26,9 @@ public class TimeSeriesInlineWfsTest extends TimeSeriesWfsTest {
         return new TimeSeriesInlineMockData();
     }
 
-    /** Test subsetting timePositionList. */
+    /**
+     * Test subsetting timePositionList.
+     */
     @Test
     public void testTimePositionSubset() {
         String xml =

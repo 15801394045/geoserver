@@ -7,6 +7,7 @@ package org.geoserver.importer.transform;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import junit.framework.TestCase;
 import org.geotools.feature.simple.SimpleFeatureBuilder;
 import org.geotools.feature.simple.SimpleFeatureTypeBuilder;

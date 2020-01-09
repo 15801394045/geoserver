@@ -7,6 +7,7 @@ package org.geoserver.importer.mosaic;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterators;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -16,6 +17,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Properties;
 import java.util.logging.Logger;
+
 import org.apache.commons.io.FilenameUtils;
 import org.geotools.data.FeatureWriter;
 import org.geotools.data.Transaction;
@@ -109,7 +111,7 @@ public class MosaicIndex {
                             public boolean apply(Granule input) {
                                 return input.getEnvelope() != null
                                         && input.getEnvelope().getCoordinateReferenceSystem()
-                                                != null;
+                                        != null;
                             }
                         });
         if (first == null) {

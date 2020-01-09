@@ -7,8 +7,10 @@
 package org.geoserver.csw;
 
 import com.thoughtworks.xstream.XStream;
+
 import java.util.ArrayList;
 import java.util.HashMap;
+
 import org.geoserver.catalog.MetadataMap;
 import org.geoserver.config.GeoServer;
 import org.geoserver.config.util.XStreamPersister;

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-    <!-- 
-  Geologic Unit mapping file
+<!--
+Geologic Unit mapping file
 -->
 <as:AppSchemaDataAccess xmlns:as="http://www.geotools.org/app-schema"
-    xmlns:ogc="http://www.opengis.net/ogc" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.geotools.org/app-schema AppSchemaDataAccess.xsd
+                        xmlns:ogc="http://www.opengis.net/ogc" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                        xsi:schemaLocation="http://www.geotools.org/app-schema AppSchemaDataAccess.xsd
                       http://www.opengis.net/ogc http://schemas.opengis.net/filter/1.1.0/expr.xsd">
     <namespaces>
         <!--
@@ -57,7 +58,9 @@
     </sourceDataStores>
     <targetTypes>
         <FeatureType>
-            <schemaUri>https://www.seegrid.csiro.au/subversion/GeoSciML/branches/3.0.0_rc1_gml3.2/geosciml-core/3.0.0/xsd/geosciml-core.xsd</schemaUri>
+            <schemaUri>
+                https://www.seegrid.csiro.au/subversion/GeoSciML/branches/3.0.0_rc1_gml3.2/geosciml-core/3.0.0/xsd/geosciml-core.xsd
+            </schemaUri>
         </FeatureType>
     </targetTypes>
     <typeMappings>
@@ -83,7 +86,7 @@
                 <AttributeMapping>
                     <targetAttribute>
                         gml:name[1]
-  		            </targetAttribute>
+                    </targetAttribute>
                     <sourceExpression>
                         <OCQL>NAME</OCQL>
                     </sourceExpression>
@@ -96,7 +99,7 @@
                 <AttributeMapping>
                     <targetAttribute>
                         gml:name[2]
-		            </targetAttribute>
+                    </targetAttribute>
                     <sourceExpression>
                         <OCQL>ABBREVIATION</OCQL>
                     </sourceExpression>
@@ -105,7 +108,7 @@
                 <AttributeMapping>
                     <targetAttribute>
                         FEATURE_LINK
-		            </targetAttribute>
+                    </targetAttribute>
                     <sourceExpression>
                         <OCQL>GML_ID</OCQL>
                     </sourceExpression>
@@ -117,21 +120,21 @@
                     </sourceExpression>
                 </AttributeMapping>
                 <AttributeMapping>
-                    <targetAttribute>gsml:geologicUnitType</targetAttribute>                    
-					<ClientProperty>
+                    <targetAttribute>gsml:geologicUnitType</targetAttribute>
+                    <ClientProperty>
                         <name>xlink:href</name>
                         <value>'urn:ogc:def:nil:OGC::unknown'</value>
                     </ClientProperty>
-                </AttributeMapping>               
-				<AttributeMapping>
-					<targetAttribute>
-			            gsml:composition
-		            </targetAttribute>
-					<ClientProperty>
+                </AttributeMapping>
+                <AttributeMapping>
+                    <targetAttribute>
+                        gsml:composition
+                    </targetAttribute>
+                    <ClientProperty>
                         <name>xlink:href</name>
                         <value>strConcat('urn:x-test:CompositionPart:', COMPONENTPART_ID)</value>
                     </ClientProperty>
-				</AttributeMapping>
+                </AttributeMapping>
             </attributeMappings>
         </FeatureTypeMapping>
     </typeMappings>

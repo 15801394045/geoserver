@@ -5,6 +5,7 @@
 package org.geoserver.csw;
 
 import java.io.Serializable;
+
 import org.geoserver.catalog.MetadataMap;
 
 /**
@@ -13,7 +14,9 @@ import org.geoserver.catalog.MetadataMap;
  */
 public class DirectDownloadSettings implements Serializable {
 
-    /** serialVersionUID */
+    /**
+     * serialVersionUID
+     */
     private static final long serialVersionUID = 1L;
 
     public static final String DIRECTDOWNLOAD_KEY = "DirectDownload.Key";
@@ -27,7 +30,8 @@ public class DirectDownloadSettings implements Serializable {
         this.maxDownloadSize = that.maxDownloadSize;
     }
 
-    public DirectDownloadSettings() {}
+    public DirectDownloadSettings() {
+    }
 
     public boolean isDirectDownloadEnabled() {
         return directDownloadEnabled;
@@ -41,7 +45,9 @@ public class DirectDownloadSettings implements Serializable {
         return maxDownloadSize;
     }
 
-    /** Max download size in KB */
+    /**
+     * Max download size in KB
+     */
     public void setMaxDownloadSize(long maxDownloadSize) {
         this.maxDownloadSize = maxDownloadSize;
     }

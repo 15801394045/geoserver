@@ -5,6 +5,7 @@
 package org.geoserver.wps.validator;
 
 import java.io.Serializable;
+
 import org.springframework.validation.Validator;
 
 /**
@@ -14,7 +15,9 @@ import org.springframework.validation.Validator;
  */
 public interface WPSInputValidator extends Validator, Serializable {
 
-    /** Creates a copy of this validator */
+    /**
+     * Creates a copy of this validator
+     */
     public WPSInputValidator copy();
 
     /**

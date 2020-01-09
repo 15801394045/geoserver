@@ -12,6 +12,7 @@ import static org.junit.Assert.assertNotNull;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
 import org.apache.wicket.markup.html.link.ExternalLink;
 import org.apache.wicket.markup.repeater.data.DataView;
 import org.geoserver.web.GeoServerWicketTestSupport;
@@ -49,6 +50,6 @@ public class AbstractMapPreviewPageTest extends GeoServerWicketTestSupport {
         Collections.sort(gmlLinks);
         // check the two lists match
         assertArrayEquals(
-                EXPECTED_GML_LINKS.toArray(new String[] {}), gmlLinks.toArray(new String[] {}));
+                EXPECTED_GML_LINKS.toArray(new String[]{}), gmlLinks.toArray(new String[]{}));
     }
 }

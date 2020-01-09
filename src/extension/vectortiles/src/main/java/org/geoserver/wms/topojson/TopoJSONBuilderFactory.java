@@ -5,8 +5,10 @@
 package org.geoserver.wms.topojson;
 
 import com.google.common.collect.ImmutableSet;
+
 import java.awt.Rectangle;
 import java.util.Set;
+
 import org.geoserver.wms.vector.VectorTileBuilder;
 import org.geoserver.wms.vector.VectorTileBuilderFactory;
 import org.geotools.geometry.jts.ReferencedEnvelope;

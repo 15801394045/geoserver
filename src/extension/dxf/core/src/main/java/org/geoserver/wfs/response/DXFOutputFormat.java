@@ -18,6 +18,7 @@ import java.util.logging.Logger;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 import javax.xml.namespace.QName;
+
 import org.apache.commons.lang3.StringUtils;
 import org.geoserver.config.GeoServer;
 import org.geoserver.platform.Operation;
@@ -89,7 +90,9 @@ public class DXFOutputFormat extends WFSGetFeatureOutputFormat {
         return "zip";
     }
 
-    /** Mime type: application/dxf or application/zip */
+    /**
+     * Mime type: application/dxf or application/zip
+     */
     @Override
     public String getMimeType(Object value, Operation operation) throws ServiceException {
         return "application/" + getDxfExtension(operation);
@@ -148,7 +151,7 @@ public class DXFOutputFormat extends WFSGetFeatureOutputFormat {
      * Actually write the given featurecollection as a dxf file to the output stream.
      *
      * @see org.geoserver.wfs.WFSGetFeatureOutputFormat#write(net.opengis.wfs.FeatureCollectionType,
-     *     java.io.OutputStream, org.geoserver.platform.Operation)
+     * java.io.OutputStream, org.geoserver.platform.Operation)
      */
     @Override
     protected void write(
@@ -279,6 +282,6 @@ public class DXFOutputFormat extends WFSGetFeatureOutputFormat {
             addLayerNames(names, query, true);
         }
 
-        return names.toArray(new String[] {});
+        return names.toArray(new String[]{});
     }
 }

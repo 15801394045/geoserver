@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
+
 import org.geoserver.catalog.CatalogInfo;
 import org.geoserver.platform.GeoServerExtensions;
 import org.geotools.factory.CommonFactoryFinder;
@@ -15,7 +16,9 @@ import org.geotools.util.logging.Logging;
 import org.opengis.feature.Feature;
 import org.opengis.filter.FilterFactory2;
 
-/** Subclasses implementations allow to customize Feature values. */
+/**
+ * Subclasses implementations allow to customize Feature values.
+ */
 abstract class FeatureCustomizer {
 
     protected static final FilterFactory2 ff = CommonFactoryFinder.getFilterFactory2();
@@ -41,7 +44,9 @@ abstract class FeatureCustomizer {
      */
     abstract void customizeFeature(Feature feature, CatalogInfo resource);
 
-    /** Map of all the registered feature customizers */
+    /**
+     * Map of all the registered feature customizers
+     */
     static Map<String, FeatureCustomizer> CUSTOMIZERS;
 
     static Map<String, FeatureCustomizer> getCustomizers() {

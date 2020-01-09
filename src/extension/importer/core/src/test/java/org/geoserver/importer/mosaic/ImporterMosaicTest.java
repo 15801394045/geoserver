@@ -18,6 +18,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 import javax.xml.namespace.QName;
+
 import org.apache.commons.io.FileUtils;
 import org.custommonkey.xmlunit.XMLAssert;
 import org.geoserver.catalog.Catalog;
@@ -212,7 +213,7 @@ public class ImporterMosaicTest extends ImporterTestSupport {
         props.put("SPI", "org.geotools.data.h2.H2DataStoreFactory");
         props.put("database", "empty");
         try (FileOutputStream fos =
-                new FileOutputStream(new File(mosaicRoot, "datastore.properties"))) {
+                     new FileOutputStream(new File(mosaicRoot, "datastore.properties"))) {
             props.store(fos, null);
         }
         CatalogBuilder cb = new CatalogBuilder(catalog);
@@ -271,8 +272,8 @@ public class ImporterMosaicTest extends ImporterTestSupport {
 
         File fileToHarvest = new File(mosaicFolder, "polyphemus_20130302_test.nc");
         try (InputStream is =
-                ImporterTest.class.getResourceAsStream(
-                        "test-data/mosaic/polyphemus_20130302_test.nc")) {
+                     ImporterTest.class.getResourceAsStream(
+                             "test-data/mosaic/polyphemus_20130302_test.nc")) {
             FileUtils.copyInputStreamToFile(is, fileToHarvest);
         }
         assertTrue(fileToHarvest.exists());
@@ -332,8 +333,8 @@ public class ImporterMosaicTest extends ImporterTestSupport {
 
         File fileToHarvest = new File(mosaicFolder, "polyphemus_20130302_test.nc");
         try (InputStream is =
-                ImporterTest.class.getResourceAsStream(
-                        "test-data/mosaic/polyphemus_20130302_test.nc")) {
+                     ImporterTest.class.getResourceAsStream(
+                             "test-data/mosaic/polyphemus_20130302_test.nc")) {
             FileUtils.copyInputStreamToFile(is, fileToHarvest);
         }
         assertTrue(fileToHarvest.exists());

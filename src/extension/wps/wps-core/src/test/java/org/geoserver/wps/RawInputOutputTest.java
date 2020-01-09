@@ -11,6 +11,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.io.ByteArrayInputStream;
 import java.util.Map;
+
 import org.geoserver.config.GeoServerInfo;
 import org.geoserver.data.test.SystemTestData;
 import org.geotools.process.Processors;

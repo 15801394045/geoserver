@@ -6,6 +6,7 @@ package org.geoserver.importer.rest.converters;
 
 import java.io.IOException;
 import java.io.InputStream;
+
 import net.sf.json.JSONObject;
 import org.geoserver.importer.ImportTask;
 import org.geoserver.importer.Importer;
@@ -18,7 +19,9 @@ import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.stereotype.Component;
 
-/** Convert {@link ImportTask} to/from JSON. */
+/**
+ * Convert {@link ImportTask} to/from JSON.
+ */
 @Component
 public class TransformChainJSONMessageConverter extends BaseMessageConverter<TransformChain<?>> {
 

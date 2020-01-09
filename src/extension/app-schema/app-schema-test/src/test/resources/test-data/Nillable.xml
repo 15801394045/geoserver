@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <as:AppSchemaDataAccess xmlns:as="http://www.geotools.org/app-schema"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.geotools.org/app-schema AppSchemaDataAccess.xsd">
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                        xsi:schemaLocation="http://www.geotools.org/app-schema AppSchemaDataAccess.xsd">
     <namespaces>
         <Namespace>
             <prefix>gsml</prefix>
@@ -41,7 +42,7 @@
                 <AttributeMapping>
                     <targetAttribute>
                         gsml:GeologicUnit
-					</targetAttribute>
+                    </targetAttribute>
                     <idExpression>
                         <OCQL>strConCat('gsml.geologicunit.',GEOLOGICUNIT_ID)</OCQL>
                     </idExpression>
@@ -49,7 +50,7 @@
                 <AttributeMapping>
                     <targetAttribute>
                         gml:name
-					</targetAttribute>
+                    </targetAttribute>
                     <sourceExpression>
                         <OCQL>NAME_VALUE</OCQL>
                     </sourceExpression>
@@ -64,8 +65,8 @@
                 </AttributeMapping>
                 <AttributeMapping>
                     <targetAttribute>
-                       gsml:bodyMorphology/gsml:CGI_TermValue/gsml:value
-					</targetAttribute>
+                        gsml:bodyMorphology/gsml:CGI_TermValue/gsml:value
+                    </targetAttribute>
                     <sourceExpression>
                         <OCQL>BODY_VALUE</OCQL>
                     </sourceExpression>
@@ -84,8 +85,8 @@
                 </AttributeMapping>
                 <AttributeMapping>
                     <targetAttribute>
-                       gsml:composition/gsml:CompositionPart/gsml:lithology/gsml:ControlledConcept/gml:name
-					</targetAttribute>
+                        gsml:composition/gsml:CompositionPart/gsml:lithology/gsml:ControlledConcept/gml:name
+                    </targetAttribute>
                     <sourceExpression>
                         <OCQL>'compositionName'</OCQL>
                     </sourceExpression>
@@ -100,16 +101,16 @@
                 </AttributeMapping>
                 <AttributeMapping>
                     <targetAttribute>
-                       gsml:composition/gsml:CompositionPart/gsml:lithology[2]/gsml:ControlledConcept/gml:name
-					</targetAttribute>
+                        gsml:composition/gsml:CompositionPart/gsml:lithology[2]/gsml:ControlledConcept/gml:name
+                    </targetAttribute>
                     <sourceExpression>
                         <OCQL>BODY_VALUE</OCQL>
                     </sourceExpression>
                 </AttributeMapping>
                 <AttributeMapping>
                     <targetAttribute>
-                       gsml:preferredAge
-					</targetAttribute>
+                        gsml:preferredAge
+                    </targetAttribute>
                     <ClientProperty>
                         <name>xlink:href</name>
                         <value>'urn:ogc:def:nil:OGC:1.0:missing'</value>
@@ -117,12 +118,12 @@
                 </AttributeMapping>
                 <AttributeMapping>
                     <targetAttribute>
-                       gsml:rank
-					</targetAttribute>
+                        gsml:rank
+                    </targetAttribute>
                     <sourceExpression>
                         <OCQL>BODY_VALUE</OCQL>
                     </sourceExpression>
-					<encodeIfEmpty>true</encodeIfEmpty>	
+                    <encodeIfEmpty>true</encodeIfEmpty>
                     <ClientProperty>
                         <name>codeSpace</name>
                         <value>BODY_CODESPACE</value>

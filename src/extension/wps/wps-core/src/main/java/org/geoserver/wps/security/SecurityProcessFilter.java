@@ -6,6 +6,7 @@
 package org.geoserver.wps.security;
 
 import java.util.logging.Logger;
+
 import org.geoserver.platform.ExtensionPriority;
 import org.geoserver.platform.GeoServerExtensions;
 import org.geoserver.wps.process.ProcessFilter;
@@ -15,7 +16,9 @@ import org.opengis.feature.type.Name;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
-/** A process filter based on the security subsystem */
+/**
+ * A process filter based on the security subsystem
+ */
 public class SecurityProcessFilter implements ProcessFilter, ExtensionPriority {
 
     protected static final Logger LOGGER = Logging.getLogger(SecurityProcessFilter.class);

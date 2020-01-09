@@ -12,6 +12,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
+
 import org.apache.commons.lang3.StringUtils;
 import org.geotools.data.property.PropertyFeatureReader;
 import org.geotools.util.Classes;
@@ -34,7 +35,9 @@ import org.opengis.filter.identity.FeatureId;
 @SuppressWarnings("deprecation")
 public class AppSchemaTestOracleSetup extends ReferenceDataOracleSetup {
 
-    /** Mapping file database parameters */
+    /**
+     * Mapping file database parameters
+     */
     public static String DB_PARAMS =
             "<parameters>" //
                     + "\n<Parameter>\n" //
@@ -67,7 +70,9 @@ public class AppSchemaTestOracleSetup extends ReferenceDataOracleSetup {
                     + "\n</Parameter>" //
                     + "\n</parameters>"; //
 
-    /** Default WKT parser for non 3D tests. */
+    /**
+     * Default WKT parser for non 3D tests.
+     */
     private static String DEFAULT_PARSER = "SDO_GEOMETRY";
 
     private String sql;
@@ -99,7 +104,7 @@ public class AppSchemaTestOracleSetup extends ReferenceDataOracleSetup {
      * corresponding tables on the database based on data from properties files.
      *
      * @param propertyFiles Property file name and its feature type directory map
-     * @param is3D True if this is a 3D test and needs a particular WKT parser
+     * @param is3D          True if this is a 3D test and needs a particular WKT parser
      */
     public AppSchemaTestOracleSetup(Map<String, File> propertyFiles, boolean is3D)
             throws Exception {
@@ -124,7 +129,7 @@ public class AppSchemaTestOracleSetup extends ReferenceDataOracleSetup {
      * Write SQL string to create tables in the test database based on the property files.
      *
      * @param propertyFiles Property files from app-schema-test suite.
-     * @param parser The parser (WKT or an SC4O one for 3D tests)
+     * @param parser        The parser (WKT or an SC4O one for 3D tests)
      * @throws IllegalAttributeException
      * @throws NoSuchElementException
      * @throws IOException
@@ -194,12 +199,12 @@ public class AppSchemaTestOracleSetup extends ReferenceDataOracleSetup {
                                 .append("MDSYS.SDO_DIM_ELEMENT('Y',-38.858,-33.98,0.00001)")
                                 .append( // support 3d index
                                         ((GeometryDescriptor) desc).getCoordinateReferenceSystem()
-                                                                != null
-                                                        && ((GeometryDescriptor) desc)
-                                                                        .getCoordinateReferenceSystem()
-                                                                        .getCoordinateSystem()
-                                                                        .getDimension()
-                                                                == 3
+                                                != null
+                                                && ((GeometryDescriptor) desc)
+                                                .getCoordinateReferenceSystem()
+                                                .getCoordinateSystem()
+                                                .getDimension()
+                                                == 3
                                                 ? ", MDSYS.SDO_DIM_ELEMENT('Z',-100000, 100000, 1) ),"
                                                 : "),")
                                 .append(srid)

@@ -13,6 +13,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.geoserver.catalog.CoverageInfo;
 import org.geoserver.catalog.DimensionInfo;
 import org.geoserver.catalog.ResourceInfo;
@@ -39,15 +40,21 @@ import org.opengis.feature.simple.SimpleFeature;
  * @author Nicola Lagomarsini - GeoSolutions
  */
 public class GranuleCoverageExtension implements WCS20DescribeCoverageExtension {
-    /** Constant used as separator for the granule definition */
+    /**
+     * Constant used as separator for the granule definition
+     */
     private static final String GRANULE_SEPARATOR = "_granule_";
 
     private static final Logger LOGGER = Logging.getLogger(GranuleCoverageExtension.class);
 
-    /** Parser used for decoding the coverageId parameter */
+    /**
+     * Parser used for decoding the coverageId parameter
+     */
     private EOCoverageResourceCodec codec;
 
-    /** GeoServer instance used for checking if the EO extension is enabled */
+    /**
+     * GeoServer instance used for checking if the EO extension is enabled
+     */
     private GeoServer geoserver;
 
     public GranuleCoverageExtension(GeoServer geoServer, EOCoverageResourceCodec codec) {
@@ -158,7 +165,7 @@ public class GranuleCoverageExtension implements WCS20DescribeCoverageExtension 
      * incorrect
      *
      * @return the coverageId related to the following coverageId parameter (with the _granule_
-     *     extension)
+     * extension)
      */
     public String getCoverageId(String coverageId) {
         // does it have the expected lexical structure?
@@ -178,7 +185,7 @@ public class GranuleCoverageExtension implements WCS20DescribeCoverageExtension 
      * incorrect
      *
      * @return the coverageId related to the following coverageId parameter (with the _granule_
-     *     extension)
+     * extension)
      */
     public String getGranuleId(String coverageId) {
         // does it have the expected lexical structure?
@@ -193,7 +200,9 @@ public class GranuleCoverageExtension implements WCS20DescribeCoverageExtension 
         }
     }
 
-    /** This method returns the active dimensions */
+    /**
+     * This method returns the active dimensions
+     */
     private List<DimensionDescriptor> getActiveDimensionDescriptor(
             CoverageInfo ci, StructuredGridCoverage2DReader reader, String name)
             throws IOException {

@@ -8,7 +8,9 @@ import org.apache.wicket.markup.html.form.FormComponentPanel;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
 
-/** Base class for admin panel extensions. */
+/**
+ * Base class for admin panel extensions.
+ */
 public abstract class NetCDFExtensionPanel extends Panel {
 
     public NetCDFExtensionPanel(String id, IModel<?> model) {

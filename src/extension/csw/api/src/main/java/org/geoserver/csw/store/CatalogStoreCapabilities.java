@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+
 import net.opengis.ows10.DomainType;
 import net.opengis.ows10.Ows10Factory;
 import org.geoserver.csw.records.RecordDescriptor;
@@ -196,7 +197,9 @@ public class CatalogStoreCapabilities {
         operationConstraints.put("Transaction", new LinkedList<DomainType>());
     }
 
-    /** True if the store supports transactions (insert, update, delete), false otherwise */
+    /**
+     * True if the store supports transactions (insert, update, delete), false otherwise
+     */
     public boolean supportsTransactions() {
         return false;
     }

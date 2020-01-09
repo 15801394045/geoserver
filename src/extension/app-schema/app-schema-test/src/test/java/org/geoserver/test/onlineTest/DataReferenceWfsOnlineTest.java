@@ -12,6 +12,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
+
 import org.geoserver.test.AbstractAppSchemaMockData;
 import org.geoserver.test.onlineTest.support.AbstractDataReferenceWfsTest;
 import org.geoserver.wfs.WFSInfo;
@@ -34,7 +35,9 @@ import org.opengis.filter.FilterFactory2;
 import org.opengis.filter.expression.Expression;
 import org.w3c.dom.Document;
 
-/** @author Victor Tey(CSIRO Earth Science and Resource Engineering) */
+/**
+ * @author Victor Tey(CSIRO Earth Science and Resource Engineering)
+ */
 public abstract class DataReferenceWfsOnlineTest extends AbstractDataReferenceWfsTest {
     private boolean printDoc = false;
 
@@ -42,14 +45,20 @@ public abstract class DataReferenceWfsOnlineTest extends AbstractDataReferenceWf
         super();
     }
 
-    /** URI for om namespace. */
+    /**
+     * URI for om namespace.
+     */
     protected static final String OM_URI = "http://www.opengis.net/om/1.0";
 
-    /** Schema URL for observation and measurements */
+    /**
+     * Schema URL for observation and measurements
+     */
     protected static final String OM_SCHEMA_LOCATION_URL =
             "http://schemas.opengis.net/om/1.0.0/observation.xsd";
 
-    /** Test whether GetCapabilities returns wfs:WFS_Capabilities. */
+    /**
+     * Test whether GetCapabilities returns wfs:WFS_Capabilities.
+     */
     @Test
     public void testGetCapabilities() {
         Document doc = getAsDOM("wfs?request=GetCapabilities&version=1.1.0");
@@ -577,7 +586,9 @@ public abstract class DataReferenceWfsOnlineTest extends AbstractDataReferenceWf
         }
     }
 
-    /** Test FeatureCollection is encoded with one/many featureMembers element */
+    /**
+     * Test FeatureCollection is encoded with one/many featureMembers element
+     */
     @Test
     public void testEncodeFeatureMember() {
 
@@ -664,7 +675,9 @@ public abstract class DataReferenceWfsOnlineTest extends AbstractDataReferenceWf
                 doc);
     }
 
-    /** test that geometries are correctly reprojected. */
+    /**
+     * test that geometries are correctly reprojected.
+     */
     @Test
     public void testReprojection() {
         String path =
@@ -747,7 +760,9 @@ public abstract class DataReferenceWfsOnlineTest extends AbstractDataReferenceWf
         return true;
     }
 
-    /** validate the result returned by the given path. */
+    /**
+     * validate the result returned by the given path.
+     */
     @Test
     public void testValidate() {
         String path =
@@ -755,7 +770,9 @@ public abstract class DataReferenceWfsOnlineTest extends AbstractDataReferenceWf
         validateGet(path);
     }
 
-    /** Test if we can get gsml.geologicunit.16777549126932776 with a FeatureId fid filter. */
+    /**
+     * Test if we can get gsml.geologicunit.16777549126932776 with a FeatureId fid filter.
+     */
     @Test
     public void testGetFeatureWithFeatureIdFilter() {
         String xml = //
@@ -784,7 +801,9 @@ public abstract class DataReferenceWfsOnlineTest extends AbstractDataReferenceWf
         checkGU16777549126932776(doc);
     }
 
-    /** Test if we can get gsml.geologicunit.16777549126932776 with a GmlObjectId gml:id filter. */
+    /**
+     * Test if we can get gsml.geologicunit.16777549126932776 with a GmlObjectId gml:id filter.
+     */
     @Test
     public void testGetFeatureWithGmlObjectIdFilter() {
         String xml = //
@@ -951,7 +970,9 @@ public abstract class DataReferenceWfsOnlineTest extends AbstractDataReferenceWf
         //
     }
 
-    /** Test if we can get gsml.geologicunit.16777549126930540 using its name. */
+    /**
+     * Test if we can get gsml.geologicunit.16777549126930540 using its name.
+     */
     @Test
     public void testGetFeaturePropertyFilter() {
         String xml = //
@@ -983,7 +1004,9 @@ public abstract class DataReferenceWfsOnlineTest extends AbstractDataReferenceWf
         checkGU16777549126930540(doc);
     }
 
-    /** Test if we can filter on nested client properties */
+    /**
+     * Test if we can filter on nested client properties
+     */
     @Test
     public void testFilterOnNestedAttribute() {
         String xml = //

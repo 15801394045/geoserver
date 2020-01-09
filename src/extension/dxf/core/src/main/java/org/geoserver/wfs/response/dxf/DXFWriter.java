@@ -48,6 +48,8 @@ public interface DXFWriter {
      */
     public void setOption(String optionName, Object optionValue);
 
-    /** Gets the writer description. */
+    /**
+     * Gets the writer description.
+     */
     public String getDescription();
 }

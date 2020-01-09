@@ -41,7 +41,9 @@ public class FeatureGML32Test extends AbstractAppSchemaTestSupport {
                 1, "//gsml:MappedFeature[@gml:id='mf3']/gsml:specification/@xlink:href", doc);
     }
 
-    /** Test content of GetFeature response. */
+    /**
+     * Test content of GetFeature response.
+     */
     @Test
     public void testGetFeatureWithFilter() throws Exception {
 
@@ -119,7 +121,9 @@ public class FeatureGML32Test extends AbstractAppSchemaTestSupport {
         assertXpathEvaluatesTo("mf4", "//gsml:MappedFeature/@gml:id", doc);
     }
 
-    /** Test encoding of a multivalued mapping with an xlink:href ClientProperty. */
+    /**
+     * Test encoding of a multivalued mapping with an xlink:href ClientProperty.
+     */
     @Test
     public void testMultivaluedXlinkHref() {
         Document doc =

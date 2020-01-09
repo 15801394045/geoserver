@@ -8,6 +8,7 @@ package org.geoserver.importer.format;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+
 import junit.framework.TestCase;
 import org.apache.commons.io.IOUtils;
 import org.geotools.data.FeatureReader;

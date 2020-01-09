@@ -12,7 +12,9 @@ package org.geoserver.test;
  * @author Rini Angreani (CSIRO Earth Science and Resource Engineering)
  */
 public class DefaultIdMockData extends AbstractAppSchemaMockData {
-    /** @see org.geoserver.test.AbstractAppSchemaMockData#addContent() */
+    /**
+     * @see org.geoserver.test.AbstractAppSchemaMockData#addContent()
+     */
     @Override
     public void addContent() {
         addFeatureType(

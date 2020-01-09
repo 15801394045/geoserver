@@ -7,18 +7,23 @@ package org.geoserver.importer.rest;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Collections2;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+
 import org.geoserver.importer.DatePattern;
 import org.geoserver.importer.Dates;
 import org.geoserver.importer.transform.DateFormatTransform;
 import org.junit.Test;
 
-/** @author Ian Schneider <ischneider@opengeo.org> */
+/**
+ * @author Ian Schneider <ischneider@opengeo.org>
+ */
 public class DateFormatTransformTest extends TransformTestSupport {
 
-    public DateFormatTransformTest() {}
+    public DateFormatTransformTest() {
+    }
 
     @Test
     public void testExtents() throws Exception {

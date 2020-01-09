@@ -22,7 +22,7 @@ public interface FlowController {
      * @param request new request
      * @param timeout maximum time the request can be blocked
      * @return True if the request was processed successfully, false if the request timed out during
-     *     the wait
+     * the wait
      */
     boolean requestIncoming(Request request, long timeout);
 

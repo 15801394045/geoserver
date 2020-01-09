@@ -13,6 +13,7 @@ import java.net.UnknownHostException;
 import java.util.Date;
 import java.util.Enumeration;
 import java.util.logging.Logger;
+
 import net.opengis.wps10.ExecuteType;
 import org.geotools.util.logging.Logging;
 import org.opengis.feature.type.Name;
@@ -49,7 +50,7 @@ public class ExecutionStatus implements Serializable, Comparable<ExecutionStatus
             InetAddress candidateAddress = null;
             // Iterate all NICs (network interface cards)...
             for (Enumeration interfaces = NetworkInterface.getNetworkInterfaces();
-                    interfaces.hasMoreElements(); ) {
+                 interfaces.hasMoreElements(); ) {
                 NetworkInterface ni = (NetworkInterface) interfaces.nextElement();
                 if (ni.getName() != null && ni.getName().startsWith("vmnet")) {
                     // skipping vmware interfaces
@@ -86,46 +87,74 @@ public class ExecutionStatus implements Serializable, Comparable<ExecutionStatus
         }
     }
 
-    /** The process being executed */
+    /**
+     * The process being executed
+     */
     Name processName;
 
-    /** The execution id, can be used to retrieve the process results */
+    /**
+     * The execution id, can be used to retrieve the process results
+     */
     String executionId;
 
-    /** If the request was asynchronous, or not */
+    /**
+     * If the request was asynchronous, or not
+     */
     boolean asynchronous;
 
-    /** Current execution status */
+    /**
+     * Current execution status
+     */
     ProcessState phase;
 
-    /** Process execution status (as a percentage between 0 and 100) */
+    /**
+     * Process execution status (as a percentage between 0 and 100)
+     */
     float progress;
 
-    /** The name of the user that requested the process */
+    /**
+     * The name of the user that requested the process
+     */
     String userName;
 
-    /** Request creation time */
+    /**
+     * Request creation time
+     */
     Date creationTime;
 
-    /** Request completion time */
+    /**
+     * Request completion time
+     */
     Date completionTime = null;
 
-    /** A heartbeat field, used when clustering nodes */
+    /**
+     * A heartbeat field, used when clustering nodes
+     */
     Date lastUpdated;
 
-    /** Date and time by wich the processing job will be no longer accessible */
+    /**
+     * Date and time by wich the processing job will be no longer accessible
+     */
     Date expirationDate = null;
 
-    /** Date and time by wich the processing job will be finished */
+    /**
+     * Date and time by wich the processing job will be finished
+     */
     Date estimatedCompletion = null;
 
-    /** Date and time for the next suggested status polling */
+    /**
+     * Date and time for the next suggested status polling
+     */
     Date nextPoll = null;
 
-    /** What is the process currently working on */
+    /**
+     * What is the process currently working on
+     */
     String task;
 
-    /** The process failure */
+    /**
+     * The process failure
+     */
     Throwable exception;
 
     /**
@@ -134,7 +163,9 @@ public class ExecutionStatus implements Serializable, Comparable<ExecutionStatus
      */
     transient ExecuteType request;
 
-    /** Node identifier */
+    /**
+     * Node identifier
+     */
     String nodeId;
 
     public ExecutionStatus(Name processName, String executionId, boolean asynchronous) {
@@ -195,7 +226,9 @@ public class ExecutionStatus implements Serializable, Comparable<ExecutionStatus
         return phase;
     }
 
-    /** Returns the progress percentage, as a number between 0 and 100 */
+    /**
+     * Returns the progress percentage, as a number between 0 and 100
+     */
     public float getProgress() {
         return progress;
     }
@@ -278,7 +311,9 @@ public class ExecutionStatus implements Serializable, Comparable<ExecutionStatus
         return nodeId;
     }
 
-    /** Last time this bean has been updated */
+    /**
+     * Last time this bean has been updated
+     */
     public Date getLastUpdated() {
         return lastUpdated;
     }
@@ -292,32 +327,44 @@ public class ExecutionStatus implements Serializable, Comparable<ExecutionStatus
         this.lastUpdated = lastUpdated;
     }
 
-    /** @return the expirationDate */
+    /**
+     * @return the expirationDate
+     */
     public Date getExpirationDate() {
         return expirationDate;
     }
 
-    /** @param expirationDate the expirationDate to set */
+    /**
+     * @param expirationDate the expirationDate to set
+     */
     public void setExpirationDate(Date expirationDate) {
         this.expirationDate = expirationDate;
     }
 
-    /** @return the estimatedCompletion */
+    /**
+     * @return the estimatedCompletion
+     */
     public Date getEstimatedCompletion() {
         return estimatedCompletion;
     }
 
-    /** @param estimatedCompletion the estimatedCompletion to set */
+    /**
+     * @param estimatedCompletion the estimatedCompletion to set
+     */
     public void setEstimatedCompletion(Date estimatedCompletion) {
         this.estimatedCompletion = estimatedCompletion;
     }
 
-    /** @return the nextPoll */
+    /**
+     * @return the nextPoll
+     */
     public Date getNextPoll() {
         return nextPoll;
     }
 
-    /** @param nextPoll the nextPoll to set */
+    /**
+     * @param nextPoll the nextPoll to set
+     */
     public void setNextPoll(Date nextPoll) {
         this.nextPoll = nextPoll;
     }

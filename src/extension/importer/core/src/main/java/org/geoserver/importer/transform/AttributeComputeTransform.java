@@ -5,6 +5,7 @@
 package org.geoserver.importer.transform;
 
 import java.security.InvalidParameterException;
+
 import org.geoserver.importer.ImportTask;
 import org.geotools.data.DataStore;
 import org.geotools.feature.simple.SimpleFeatureTypeBuilder;
@@ -14,18 +15,26 @@ import org.opengis.feature.simple.SimpleFeature;
 import org.opengis.feature.simple.SimpleFeatureType;
 import org.opengis.filter.expression.Expression;
 
-/** Transform creating a new attribute based on the existing ones */
+/**
+ * Transform creating a new attribute based on the existing ones
+ */
 public class AttributeComputeTransform extends AbstractTransform implements InlineVectorTransform {
 
     private static final long serialVersionUID = 1L;
 
-    /** field to remap */
+    /**
+     * field to remap
+     */
     protected String field;
 
-    /** type to remap to */
+    /**
+     * type to remap to
+     */
     protected Class type;
 
-    /** the expression to apply (stored as a string as CQL does not always round trip properly */
+    /**
+     * the expression to apply (stored as a string as CQL does not always round trip properly
+     */
     protected String cql;
 
     protected Expression expression;

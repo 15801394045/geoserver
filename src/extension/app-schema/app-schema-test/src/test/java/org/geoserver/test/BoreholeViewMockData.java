@@ -13,7 +13,9 @@ package org.geoserver.test;
  */
 public class BoreholeViewMockData extends AbstractAppSchemaMockData {
 
-    /** @see org.geoserver.test.AbstractAppSchemaMockData#addContent() */
+    /**
+     * @see org.geoserver.test.AbstractAppSchemaMockData#addContent()
+     */
     @Override
     public void addContent() {
         putNamespace("gsmlp", "http://xmlns.geosciml.org/geosciml-portrayal/2.0");

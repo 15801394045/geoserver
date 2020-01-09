@@ -6,6 +6,7 @@ package org.geoserver.importer.rest.converters;
 
 import com.thoughtworks.xstream.converters.MarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
@@ -20,6 +21,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TimeZone;
 import java.util.logging.LogRecord;
+
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import net.sf.json.JSONSerializer;
@@ -111,7 +113,7 @@ public class ImportJSONWriter {
      * Determines the number of levels to expand the JSON result
      *
      * @param expand The value of the "expand" parameter
-     * @param def The default value to fall back on
+     * @param def    The default value to fall back on
      * @return
      */
     public int expand(String expand, int def) {
@@ -123,8 +125,8 @@ public class ImportJSONWriter {
             return "self".equalsIgnoreCase(expand)
                     ? 1
                     : "all".equalsIgnoreCase(expand)
-                            ? Integer.MAX_VALUE
-                            : "none".equalsIgnoreCase(expand) ? 0 : Integer.parseInt(expand);
+                    ? Integer.MAX_VALUE
+                    : "none".equalsIgnoreCase(expand) ? 0 : Integer.parseInt(expand);
         } catch (NumberFormatException e) {
             return def;
         }
@@ -871,12 +873,16 @@ public class ImportJSONWriter {
         }
     }
 
-    /** @return the callback */
+    /**
+     * @return the callback
+     */
     public Callback getCallback() {
         return callback;
     }
 
-    /** @param callback the callback to set */
+    /**
+     * @param callback the callback to set
+     */
     public void setCallback(Callback callback) {
         this.callback = callback;
     }

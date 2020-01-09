@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+
 import org.apache.commons.io.FileUtils;
 import org.geoserver.importer.Directory;
 import org.geoserver.importer.ImportContext;
@@ -35,8 +36,8 @@ public class BDBImportStoreTest extends ImporterTestSupport {
     @Parameters(name = "{0}")
     public static Collection<Object[]> data() {
         List<Object[]> result = new ArrayList<>();
-        result.add(new Object[] {"serial", BindingType.SERIAL});
-        result.add(new Object[] {"xstream", BindingType.XSTREAM});
+        result.add(new Object[]{"serial", BindingType.SERIAL});
+        result.add(new Object[]{"xstream", BindingType.XSTREAM});
 
         return result;
     }
@@ -175,7 +176,8 @@ public class BDBImportStoreTest extends ImporterTestSupport {
     }
 
     @Test
-    public void testDatabaseRecovery() throws Exception {}
+    public void testDatabaseRecovery() throws Exception {
+    }
 
     @Test
     public void testIDManagement() throws Exception {

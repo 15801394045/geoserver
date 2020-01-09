@@ -10,6 +10,7 @@ import static org.junit.Assert.assertEquals;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.TimeZone;
+
 import org.geoserver.importer.ImportTask;
 import org.geotools.feature.simple.SimpleFeatureBuilder;
 import org.geotools.feature.simple.SimpleFeatureTypeBuilder;
@@ -23,7 +24,9 @@ import org.opengis.feature.simple.SimpleFeature;
 import org.opengis.feature.simple.SimpleFeatureType;
 import org.opengis.referencing.crs.CoordinateReferenceSystem;
 
-/** @author Ian Schneider <ischneider@boundlessgeo.com> */
+/**
+ * @author Ian Schneider <ischneider@boundlessgeo.com>
+ */
 public class TransformTest {
 
     SimpleFeatureTypeBuilder sftb = new SimpleFeatureTypeBuilder();

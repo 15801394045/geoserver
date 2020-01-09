@@ -10,6 +10,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 import java.util.HashMap;
 import java.util.Map;
+
 import org.custommonkey.xmlunit.XpathEngine;
 import org.geoserver.catalog.FeatureTypeInfo;
 import org.geotools.data.DataAccess;
@@ -60,7 +61,9 @@ public class UnboundedSequenceMultiValuesTest extends AbstractAppSchemaTestSuppo
         return new MockData();
     }
 
-    /** Helper class that will setup custom complex feature types using the stations data set. */
+    /**
+     * Helper class that will setup custom complex feature types using the stations data set.
+     */
     private static final class MockData extends StationsMockData {
 
         @Override

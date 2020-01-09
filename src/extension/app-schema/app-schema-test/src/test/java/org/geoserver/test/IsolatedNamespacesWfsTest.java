@@ -9,6 +9,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 import java.util.HashMap;
 import java.util.Map;
+
 import org.custommonkey.xmlunit.XpathEngine;
 import org.junit.Before;
 import org.junit.Test;
@@ -29,7 +30,7 @@ import org.w3c.dom.Document;
  *   <li>only stations feature type is published in the isolated workspace and the global (non
  *       isolated) measurements feature type is used for feature chaining
  * </ul>
- *
+ * <p>
  * All mappings can be used for GML 3.1 and GML 3.2 with the correct parameterization.
  */
 public final class IsolatedNamespacesWfsTest extends AbstractAppSchemaTestSupport {
@@ -82,7 +83,9 @@ public final class IsolatedNamespacesWfsTest extends AbstractAppSchemaTestSuppor
         return new MockData();
     }
 
-    /** Helper class that will setup custom complex feature types using the stations data set. */
+    /**
+     * Helper class that will setup custom complex feature types using the stations data set.
+     */
     private static final class MockData extends StationsMockData {
 
         @Override

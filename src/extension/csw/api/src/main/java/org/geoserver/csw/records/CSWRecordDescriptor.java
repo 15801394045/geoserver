@@ -11,6 +11,7 @@ import java.lang.reflect.Modifier;
 import java.net.URI;
 import java.net.URL;
 import java.util.List;
+
 import net.opengis.cat.csw20.ElementSetType;
 import org.geoserver.csw.util.NamespaceQualifier;
 import org.geoserver.platform.GeoServerExtensions;
@@ -68,7 +69,9 @@ public class CSWRecordDescriptor extends AbstractRecordDescriptor {
 
     private static FilterFactory2 FF = CommonFactoryFinder.getFilterFactory2();
 
-    /** Contains the declarations of common namespaces and prefixes used in the CSW world */
+    /**
+     * Contains the declarations of common namespaces and prefixes used in the CSW world
+     */
     public static final Name SIMPLE_LITERAL_SCHEME = new NameImpl(DC.NAMESPACE, "scheme");
 
     public static final Name SIMPLE_LITERAL_VALUE = new NameImpl(DC.NAMESPACE, "value");
@@ -294,7 +297,9 @@ public class CSWRecordDescriptor extends AbstractRecordDescriptor {
         return "BoundingBox";
     }
 
-    /** Locates the AttributeDescriptor corresponding to the specified element name */
+    /**
+     * Locates the AttributeDescriptor corresponding to the specified element name
+     */
     public static AttributeDescriptor getDescriptor(String elementName) {
         return (AttributeDescriptor) Types.findDescriptor(RECORD_TYPE, elementName);
     }
@@ -321,7 +326,8 @@ public class CSWRecordDescriptor extends AbstractRecordDescriptor {
 
     // singleton
 
-    private CSWRecordDescriptor() {}
+    private CSWRecordDescriptor() {
+    }
 
     private static CSWRecordDescriptor INSTANCE;
 

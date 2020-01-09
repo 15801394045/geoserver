@@ -45,7 +45,9 @@ public class Gsml32BoreholeMockData extends AbstractAppSchemaMockData {
         super(GSML32_NAMESPACES);
     }
 
-    /** @see org.geoserver.test.AbstractAppSchemaMockData#addContent() */
+    /**
+     * @see org.geoserver.test.AbstractAppSchemaMockData#addContent()
+     */
     @Override
     public void addContent() {
         addFeatureType(

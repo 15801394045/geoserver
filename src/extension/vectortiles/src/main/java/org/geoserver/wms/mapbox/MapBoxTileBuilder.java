@@ -10,6 +10,7 @@ import java.awt.Rectangle;
 import java.io.IOException;
 import java.util.Map;
 import java.util.logging.Logger;
+
 import no.ecc.vectortile.VectorTileEncoder;
 import no.ecc.vectortile.VectorTileEncoderNoClip;
 import org.geoserver.wms.WMSMapContent;
@@ -19,7 +20,9 @@ import org.geotools.geometry.jts.ReferencedEnvelope;
 import org.geotools.util.logging.Logging;
 import org.locationtech.jts.geom.Geometry;
 
-/** @author Niels Charlier */
+/**
+ * @author Niels Charlier
+ */
 public class MapBoxTileBuilder implements VectorTileBuilder {
     private static final Logger LOGGER = Logging.getLogger(MapBoxTileBuilder.class);
 

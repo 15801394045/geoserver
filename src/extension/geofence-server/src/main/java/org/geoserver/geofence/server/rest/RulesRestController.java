@@ -11,6 +11,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.geoserver.geofence.core.model.Rule;
 import org.geoserver.geofence.rest.xml.JaxbRule;
 import org.geoserver.geofence.rest.xml.JaxbRuleList;
@@ -85,9 +86,9 @@ public class RulesRestController extends RestBaseController {
     }
 
     @RequestMapping(
-        value = "/rules",
-        method = RequestMethod.GET,
-        produces = {"application/xml", "application/json"}
+            value = "/rules",
+            method = RequestMethod.GET,
+            produces = {"application/xml", "application/json"}
     )
     public JaxbRuleList get(
             @RequestParam(value = "page", required = false) Integer page,
@@ -130,18 +131,18 @@ public class RulesRestController extends RestBaseController {
     }
 
     @RequestMapping(
-        value = "/rules/id/{id}",
-        method = RequestMethod.GET,
-        produces = {"application/xml", "application/json"}
+            value = "/rules/id/{id}",
+            method = RequestMethod.GET,
+            produces = {"application/xml", "application/json"}
     )
     public JaxbRule get(@PathVariable("id") Long id) {
         return new JaxbRule(adminService.get(id));
     }
 
     @RequestMapping(
-        value = "/rules/count",
-        method = RequestMethod.GET,
-        produces = {"application/xml", "application/json"}
+            value = "/rules/count",
+            method = RequestMethod.GET,
+            produces = {"application/xml", "application/json"}
     )
     public JaxbRuleList count(
             @RequestParam(value = "userName", required = false) String userName,
@@ -181,15 +182,15 @@ public class RulesRestController extends RestBaseController {
     }
 
     @RequestMapping(
-        value = "/rules",
-        method = RequestMethod.POST,
-        consumes = {
-            MediaType.TEXT_XML_VALUE,
-            MediaType.APPLICATION_XML_VALUE,
-            MediaType.APPLICATION_JSON_VALUE,
-            MediaTypeExtensions.TEXT_JSON_VALUE
-        },
-        produces = MediaType.TEXT_PLAIN_VALUE
+            value = "/rules",
+            method = RequestMethod.POST,
+            consumes = {
+                    MediaType.TEXT_XML_VALUE,
+                    MediaType.APPLICATION_XML_VALUE,
+                    MediaType.APPLICATION_JSON_VALUE,
+                    MediaTypeExtensions.TEXT_JSON_VALUE
+            },
+            produces = MediaType.TEXT_PLAIN_VALUE
     )
     @ResponseStatus(HttpStatus.CREATED)
     public String insert(@RequestBody(required = true) JaxbRule rule) {
@@ -211,7 +212,8 @@ public class RulesRestController extends RestBaseController {
     }
 
     @RequestMapping(value = "/rules/id/{id}", method = RequestMethod.POST)
-    public @ResponseStatus(HttpStatus.OK) void update(
+    public @ResponseStatus(HttpStatus.OK)
+    void update(
             @PathVariable("id") Long id, @RequestBody JaxbRule rule) {
         if (rule.getPriority() != null) {
             ShortRule priorityRule = adminService.getRuleByPriority(rule.getPriority().longValue());
@@ -231,7 +233,8 @@ public class RulesRestController extends RestBaseController {
     }
 
     @RequestMapping(value = "/rules/id/{id}", method = RequestMethod.PUT)
-    public @ResponseStatus(HttpStatus.OK) void clearAndUpdate(
+    public @ResponseStatus(HttpStatus.OK)
+    void clearAndUpdate(
             @PathVariable("id") Long id, @RequestBody JaxbRule rule) {
         if (rule.getPriority() != null) {
             ShortRule priorityRule = adminService.getRuleByPriority(rule.getPriority().longValue());
@@ -255,7 +258,8 @@ public class RulesRestController extends RestBaseController {
     }
 
     @RequestMapping(value = "/rules/id/{id}", method = RequestMethod.DELETE)
-    public @ResponseStatus(HttpStatus.OK) void delete(@PathVariable("id") Long id) {
+    public @ResponseStatus(HttpStatus.OK)
+    void delete(@PathVariable("id") Long id) {
         adminService.delete(id);
     }
 
@@ -336,9 +340,9 @@ public class RulesRestController extends RestBaseController {
      * an incremented priority value.
      */
     @RequestMapping(
-        value = "/rules/move",
-        method = RequestMethod.GET,
-        produces = {"application/xml", "application/json"}
+            value = "/rules/move",
+            method = RequestMethod.GET,
+            produces = {"application/xml", "application/json"}
     )
     public ResponseEntity<JaxbRuleList> move(
             @RequestParam(value = "targetPriority", required = true) int targetPriority,
@@ -362,7 +366,9 @@ public class RulesRestController extends RestBaseController {
         return ResponseEntity.ok(new JaxbRuleList(rules));
     }
 
-    /** Helper method that will parse and retrieve the provided rules sorted by their priority. */
+    /**
+     * Helper method that will parse and retrieve the provided rules sorted by their priority.
+     */
     private List<Rule> findRules(String rulesIds) {
         return Arrays.stream(rulesIds.split(","))
                 .map(

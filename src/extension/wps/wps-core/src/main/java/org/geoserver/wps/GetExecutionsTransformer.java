@@ -12,6 +12,7 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.datatype.XMLGregorianCalendar;
+
 import net.opengis.ows11.ExceptionType;
 import net.opengis.wfs.GetFeatureType;
 import net.opengis.wfs.QueryType;
@@ -61,16 +62,24 @@ public class GetExecutionsTransformer extends TransformerBase {
 
     WPSInfo wps;
 
-    /** The resource tracker, we use it to build the responses */
+    /**
+     * The resource tracker, we use it to build the responses
+     */
     private WPSResourceManager resources;
 
-    /** Used by the response builder */
+    /**
+     * Used by the response builder
+     */
     private ApplicationContext ctx;
 
-    /** The original request POJO storing the query KVPs */
+    /**
+     * The original request POJO storing the query KVPs
+     */
     private GetExecutionsType request;
 
-    /** Pagination variables */
+    /**
+     * Pagination variables
+     */
     private Integer total;
 
     private Integer startIndex;
@@ -189,8 +198,8 @@ public class GetExecutionsTransformer extends TransformerBase {
                                     "completionTime",
                                     "",
                                     Converters.convert(
-                                                    status.getCompletionTime(),
-                                                    XMLGregorianCalendar.class)
+                                            status.getCompletionTime(),
+                                            XMLGregorianCalendar.class)
                                             .toString());
                         }
                         if (status.getLastUpdated() != null) {
@@ -200,8 +209,8 @@ public class GetExecutionsTransformer extends TransformerBase {
                                     "lastUpdated",
                                     "",
                                     Converters.convert(
-                                                    status.getLastUpdated(),
-                                                    XMLGregorianCalendar.class)
+                                            status.getLastUpdated(),
+                                            XMLGregorianCalendar.class)
                                             .toString());
                         }
                         start("wps:Status", statusAttributes);
@@ -215,15 +224,15 @@ public class GetExecutionsTransformer extends TransformerBase {
                             element(
                                     "wps:EstimatedCompletion",
                                     Converters.convert(
-                                                    status.getEstimatedCompletion(),
-                                                    XMLGregorianCalendar.class)
+                                            status.getEstimatedCompletion(),
+                                            XMLGregorianCalendar.class)
                                             .toString());
                         }
                         element(
                                 "wps:ExpirationDate",
                                 Converters.convert(
-                                                status.getExpirationDate(),
-                                                XMLGregorianCalendar.class)
+                                        status.getExpirationDate(),
+                                        XMLGregorianCalendar.class)
                                         .toString());
                         element(
                                 "wps:NextPoll",
@@ -790,7 +799,9 @@ public class GetExecutionsTransformer extends TransformerBase {
         return new GMLTranslator(handler);
     }
 
-    /** @return the executions */
+    /**
+     * @return the executions
+     */
     public List<ExecutionStatus> getExecutions() {
         return executions;
     }

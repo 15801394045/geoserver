@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema targetNamespace="http://www.opengis.net/wcseo/1.0"
-    xmlns:wcseo="http://www.opengis.net/wcseo/1.0"
-    xmlns:wcs="http://www.opengis.net/wcs/2.0"
-    xmlns:gmlcov="http://www.opengis.net/gmlcov/1.0"
-    xmlns:ows="http://www.opengis.net/ows/2.0"
-    xmlns:gml="http://www.opengis.net/gml/3.2"
-    xmlns:eop="http://www.opengis.net/eop/2.0"
-    xmlns="http://www.w3.org/2001/XMLSchema"
-    elementFormDefault="qualified" version="1.0.0" xml:lang="en">
+        xmlns:wcseo="http://www.opengis.net/wcseo/1.0"
+        xmlns:wcs="http://www.opengis.net/wcs/2.0"
+        xmlns:gmlcov="http://www.opengis.net/gmlcov/1.0"
+        xmlns:ows="http://www.opengis.net/ows/2.0"
+        xmlns:gml="http://www.opengis.net/gml/3.2"
+        xmlns:eop="http://www.opengis.net/eop/2.0"
+        xmlns="http://www.w3.org/2001/XMLSchema"
+        elementFormDefault="qualified" version="1.0.0" xml:lang="en">
     <annotation>
         <appinfo>wcsEOCommon.xsd</appinfo>
-        <documentation>This XML Schema Document encodes the elements and types that are shared by multiple EO-WCS operations.
+        <documentation>This XML Schema Document encodes the elements and types that are shared by multiple EO-WCS
+            operations.
             Last updated: 2011-feb-04
             Copyright (c) 2011 Open Geospatial Consortium, Inc. All Rights Reserved.
             To obtain additional rights of use, visit http://www.opengeospatial.org/legal/.
@@ -22,9 +23,11 @@
     <!-- =========================================================== -->
     <import namespace="http://www.opengis.net/gml/3.2" schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd"/>
     <import namespace="http://www.opengis.net/ows/2.0" schemaLocation="http://schemas.opengis.net/ows/2.0/owsAll.xsd"/>
-    <import namespace="http://www.opengis.net/gmlcov/1.0" schemaLocation="http://schemas.opengis.net/gmlcov/1.0/gmlcovAll.xsd"/>
+    <import namespace="http://www.opengis.net/gmlcov/1.0"
+            schemaLocation="http://schemas.opengis.net/gmlcov/1.0/gmlcovAll.xsd"/>
     <import namespace="http://www.opengis.net/wcs/2.0" schemaLocation="http://schemas.opengis.net/wcs/2.0/wcsAll.xsd"/>
-    <import namespace="http://www.opengis.net/eop/2.0" schemaLocation="../../eop/2.0/eop.xsd"/> <!--TODO: Where will the schema reside?-->
+    <import namespace="http://www.opengis.net/eop/2.0"
+            schemaLocation="../../eop/2.0/eop.xsd"/> <!--TODO: Where will the schema reside?-->
     <include schemaLocation="wcsEOAll.xsd"/>
 
     <!-- =========================================================== -->
@@ -32,7 +35,9 @@
     <!-- =========================================================== -->
     <element name="DatasetSeriesId" type="NCName">
         <annotation>
-            <documentation>This element represents dataset series identifiers. It uses the same type as gml:id to allow for identifier values to be used in both contexts. </documentation>
+            <documentation>This element represents dataset series identifiers. It uses the same type as gml:id to allow
+                for identifier values to be used in both contexts.
+            </documentation>
         </annotation>
     </element>
     <!-- =========================================================== -->
@@ -65,12 +70,14 @@
     <complexType name="referenceGetCoverageType">
         <annotation>
             <documentation>The lineage records are supposed to describe the history of processing steps that has
-            led to the coverage on hand. As at the time of this writing there is no canonical format for such
-            histories available in OGC, for the purpose of this specification no assumption is made about the
-            contents of a lineage record, except that GetCoverage appends its request verbatim in an additional
-            record in the following way:
-             * In case of a GET/KVP request, this shall be the request URL with parameters as ows:Reference.
-             * In case of an XML or SOAP request this shall be an XML snippet as ows:ServiceReference which is in the substitutionGroup of ows:Reference.</documentation>
+                led to the coverage on hand. As at the time of this writing there is no canonical format for such
+                histories available in OGC, for the purpose of this specification no assumption is made about the
+                contents of a lineage record, except that GetCoverage appends its request verbatim in an additional
+                record in the following way:
+                * In case of a GET/KVP request, this shall be the request URL with parameters as ows:Reference.
+                * In case of an XML or SOAP request this shall be an XML snippet as ows:ServiceReference which is in the
+                substitutionGroup of ows:Reference.
+            </documentation>
         </annotation>
         <sequence>
             <element ref="ows:Reference"/>
@@ -78,10 +85,10 @@
     </complexType>
     <!-- =========================================================== -->
     <element name="datasets" type="wcseo:datasetsType">
-         <annotation>
+        <annotation>
             <documentation>This element is used in stitched mosaics to reference datasets.
-            Stitched mosaics have to reference at least one dataset but since this is also used for
-            subsets of them the minOccurs="0" is added.
+                Stitched mosaics have to reference at least one dataset but since this is also used for
+                subsets of them the minOccurs="0" is added.
             </documentation>
         </annotation>
     </element>
@@ -92,7 +99,7 @@
     </complexType>
     <!-- =========================================================== -->
     <element name="dataset" type="wcseo:datasetType">
-         <annotation>
+        <annotation>
             <documentation>This element is used in stitched mosaics to reference a dataset.</documentation>
         </annotation>
     </element>

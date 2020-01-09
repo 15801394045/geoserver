@@ -24,7 +24,8 @@ public class MemoryImportStore implements ImportStore {
     }
 
     @Override
-    public void init() {}
+    public void init() {
+    }
 
     @Override
     public ImportContext get(long id) {
@@ -98,24 +99,24 @@ public class MemoryImportStore implements ImportStore {
     @Override
     public Iterator<ImportContext> allNonCompleteImports() {
         return collect(
-                        new ImportCollector() {
-                            @Override
-                            protected boolean capture(ImportContext context) {
-                                return context.getState() != ImportContext.State.COMPLETE;
-                            }
-                        })
+                new ImportCollector() {
+                    @Override
+                    protected boolean capture(ImportContext context) {
+                        return context.getState() != ImportContext.State.COMPLETE;
+                    }
+                })
                 .iterator();
     }
 
     @Override
     public Iterator<ImportContext> importsByUser(final String user) {
         return collect(
-                        new ImportCollector() {
-                            @Override
-                            protected boolean capture(ImportContext context) {
-                                return user.equals(context.getUser());
-                            }
-                        })
+                new ImportCollector() {
+                    @Override
+                    protected boolean capture(ImportContext context) {
+                        return user.equals(context.getUser());
+                    }
+                })
                 .iterator();
     }
 

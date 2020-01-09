@@ -10,7 +10,9 @@ import org.geotools.filter.expression.PropertyAccessor;
 import org.geotools.filter.expression.PropertyAccessorFactory;
 import org.geotools.util.factory.Hints;
 
-/** Property accessor for GeoServer ExecutionStatus beans */
+/**
+ * Property accessor for GeoServer ExecutionStatus beans
+ */
 public class ExecutionStatusAccessorFactory implements PropertyAccessorFactory {
 
     private static final BeanPropertyAccessor INSTANCE = new BeanPropertyAccessor();

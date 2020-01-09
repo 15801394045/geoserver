@@ -7,6 +7,7 @@ package org.geoserver.importer.format;
 
 import java.io.IOException;
 import java.io.InputStream;
+
 import org.geoserver.importer.transform.KMLPlacemarkTransform;
 import org.geotools.data.FeatureReader;
 import org.opengis.feature.simple.SimpleFeature;

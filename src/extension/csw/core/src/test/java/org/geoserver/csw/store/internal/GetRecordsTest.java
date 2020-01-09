@@ -17,7 +17,9 @@ import org.geotools.referencing.CRS;
 import org.junit.Test;
 import org.w3c.dom.Document;
 
-/** @author Niels Charlier */
+/**
+ * @author Niels Charlier
+ */
 public class GetRecordsTest extends CSWInternalTestSupport {
 
     @Override
@@ -219,7 +221,9 @@ public class GetRecordsTest extends CSWInternalTestSupport {
         checkOws10Exception(d);
     }
 
-    /** From CITE compliance, throw an error the output format is not supported */
+    /**
+     * From CITE compliance, throw an error the output format is not supported
+     */
     @Test
     public void testUnsupportedOutputFormat() throws Exception {
         String request =

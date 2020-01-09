@@ -14,7 +14,9 @@ import java.util.Collection;
  */
 public interface ControlFlowConfigurator {
 
-    /** Builds the set of flow controllers to be used in the {@link ControlFlowCallback} */
+    /**
+     * Builds the set of flow controllers to be used in the {@link ControlFlowCallback}
+     */
     Collection<FlowController> buildFlowControllers() throws Exception;
 
     /**

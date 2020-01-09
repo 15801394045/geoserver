@@ -6,6 +6,7 @@
 package org.geoserver.wps;
 
 import java.util.List;
+
 import org.geoserver.catalog.Info;
 import org.geoserver.catalog.MetadataMap;
 import org.geotools.process.ProcessFactory;
@@ -17,7 +18,9 @@ import org.geotools.process.ProcessFactory;
  */
 public interface ProcessGroupInfo extends Info, Cloneable {
 
-    /** The process factory class (only means to identify it) */
+    /**
+     * The process factory class (only means to identify it)
+     */
     public Class<? extends ProcessFactory> getFactoryClass();
 
     /**
@@ -27,7 +30,9 @@ public interface ProcessGroupInfo extends Info, Cloneable {
      */
     public void setFactoryClass(Class<? extends ProcessFactory> factoryClass);
 
-    /** True if the factory is enabled, false otherwise */
+    /**
+     * True if the factory is enabled, false otherwise
+     */
     public boolean isEnabled();
 
     /**
@@ -49,7 +54,9 @@ public interface ProcessGroupInfo extends Info, Cloneable {
      */
     MetadataMap getMetadata();
 
-    /** Create a copy of this class */
+    /**
+     * Create a copy of this class
+     */
     ProcessGroupInfo clone();
 
     /*

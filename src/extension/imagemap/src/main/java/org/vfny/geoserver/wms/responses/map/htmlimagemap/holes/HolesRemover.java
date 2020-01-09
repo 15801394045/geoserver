@@ -7,6 +7,7 @@ package org.vfny.geoserver.wms.responses.map.htmlimagemap.holes;
 
 import java.util.ArrayList;
 import javax.vecmath.GVector;
+
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.GeometryFactory;
 import org.locationtech.jts.geom.LineString;
@@ -101,20 +102,22 @@ public class HolesRemover {
         }
         // return a new polygon from the new boundary
         LinearRing resultRing = gFac.createLinearRing(result.getCoordinates());
-        return gFac.createPolygon(resultRing, new LinearRing[] {});
+        return gFac.createPolygon(resultRing, new LinearRing[]{});
     }
 
     private static boolean skipHole(LineString hole, double scale) {
         GeometryFactory gFac = new GeometryFactory(hole.getPrecisionModel(), hole.getSRID());
         LinearRing ext = gFac.createLinearRing(hole.getCoordinates());
-        Polygon holePoly = gFac.createPolygon(ext, new LinearRing[] {});
+        Polygon holePoly = gFac.createPolygon(ext, new LinearRing[]{});
         // if hole area is less than the tolerance, skip it
         if (holePoly.getArea() < HOLE_AREA_TOLERANCE * scale * scale) return true;
 
         return false;
     }
 
-    /** Cuts the configured polygon with the hole. */
+    /**
+     * Cuts the configured polygon with the hole.
+     */
     private LineString cutHole() {
         // boundary must be counterclockwise
         shapeVerts = ensureWindingOrder(shapeVerts, WINDING_COUNTER_CLOCKWISE);
@@ -148,11 +151,11 @@ public class HolesRemover {
             Vertex b = (Vertex) polygonVertices.get(i + 1);
 
             if ((a.getPosition().x > rightMostHoleVertex.getPosition().x
-                            || b.getPosition().x > rightMostHoleVertex.getPosition().x)
+                    || b.getPosition().x > rightMostHoleVertex.getPosition().x)
                     && ((a.getPosition().y >= rightMostHoleVertex.getPosition().y
-                                    && b.getPosition().y <= rightMostHoleVertex.getPosition().y)
-                            || (a.getPosition().y <= rightMostHoleVertex.getPosition().y
-                                    && b.getPosition().y >= rightMostHoleVertex.getPosition().y)))
+                    && b.getPosition().y <= rightMostHoleVertex.getPosition().y)
+                    || (a.getPosition().y <= rightMostHoleVertex.getPosition().y
+                    && b.getPosition().y >= rightMostHoleVertex.getPosition().y)))
                 segmentsToTest.add(new LineSegment(a, b));
         }
 
@@ -180,8 +183,8 @@ public class HolesRemover {
         // otherwise we can find our mutually visible vertex to split the polygon
 
         Coordinate I = rightMostHoleVertex.getPosition();
-        GVector i = new GVector(new double[] {I.x, I.y});
-        i.add(new GVector(new double[] {closestPoint.floatValue(), 0.0}));
+        GVector i = new GVector(new double[]{I.x, I.y});
+        i.add(new GVector(new double[]{closestPoint.floatValue(), 0.0}));
 
         Vertex P =
                 (closestSegment.A.getPosition().x > closestSegment.B.getPosition().x)
@@ -203,15 +206,15 @@ public class HolesRemover {
             float closestDot = -1f;
             for (int count = 0; count < interiorReflexVertices.size(); count++) {
                 Vertex v = (Vertex) interiorReflexVertices.get(count);
-                GVector n = new GVector(new double[] {v.getPosition().x, v.getPosition().y});
+                GVector n = new GVector(new double[]{v.getPosition().x, v.getPosition().y});
                 n.sub(
                         new GVector(
-                                new double[] {
-                                    rightMostHoleVertex.getPosition().x,
-                                    rightMostHoleVertex.getPosition().y
+                                new double[]{
+                                        rightMostHoleVertex.getPosition().x,
+                                        rightMostHoleVertex.getPosition().y
                                 }));
                 n.normalize();
-                GVector m = new GVector(new double[] {1.0, 0.0});
+                GVector m = new GVector(new double[]{1.0, 0.0});
                 float dot = (float) m.dot(n);
 
                 // if this line is the closest we've found
@@ -260,15 +263,15 @@ public class HolesRemover {
         Coordinate cc = c.getPosition();
         Coordinate pc = p.getPosition();
         Coordinate nc = n.getPosition();
-        GVector d1 = new GVector(new double[] {cc.x, cc.y});
-        d1.sub(new GVector(new double[] {pc.x, pc.y}));
+        GVector d1 = new GVector(new double[]{cc.x, cc.y});
+        d1.sub(new GVector(new double[]{pc.x, pc.y}));
         d1.normalize();
 
-        GVector d2 = new GVector(new double[] {nc.x, nc.y});
-        d2.sub(new GVector(new double[] {cc.x, cc.y}));
+        GVector d2 = new GVector(new double[]{nc.x, nc.y});
+        d2.sub(new GVector(new double[]{cc.x, cc.y}));
         d2.normalize();
 
-        GVector n2 = new GVector(new double[] {-d2.getElement(1), d2.getElement(0)});
+        GVector n2 = new GVector(new double[]{-d2.getElement(1), d2.getElement(0)});
         return d1.dot(n2) <= 0.0;
     }
 
@@ -295,10 +298,10 @@ public class HolesRemover {
         for (int i = 1; i < vertices.getNumPoints(); i++) {
             Coordinate p2 = vertices.getCoordinateN(i);
             Coordinate p3 = vertices.getCoordinateN((i + 1) % vertices.getNumPoints());
-            GVector e1 = new GVector(new double[] {p1.x, p1.y});
-            e1.sub(new GVector(new double[] {p2.x, p2.y}));
-            GVector e2 = new GVector(new double[] {p3.x, p3.y});
-            e2.sub(new GVector(new double[] {p2.x, p2.y}));
+            GVector e1 = new GVector(new double[]{p1.x, p1.y});
+            e1.sub(new GVector(new double[]{p2.x, p2.y}));
+            GVector e2 = new GVector(new double[]{p3.x, p3.y});
+            e2.sub(new GVector(new double[]{p2.x, p2.y}));
 
             if (e1.getElement(0) * e2.getElement(1) - e1.getElement(1) * e2.getElement(0) >= 0)
                 clockWiseCount++;

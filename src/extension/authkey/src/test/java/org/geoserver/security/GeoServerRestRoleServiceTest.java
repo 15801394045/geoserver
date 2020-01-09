@@ -12,8 +12,10 @@ import static org.springframework.test.web.client.match.MockRestRequestMatchers.
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess;
 
 import com.google.common.util.concurrent.ExecutionError;
+
 import java.io.IOException;
 import java.util.SortedSet;
+
 import org.geoserver.security.impl.GeoServerRole;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,7 +23,9 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.client.MockRestServiceServer;
 import org.springframework.web.client.RestTemplate;
 
-/** @author Alessio Fabiani, GeoSolutions S.A.S. */
+/**
+ * @author Alessio Fabiani, GeoSolutions S.A.S.
+ */
 public class GeoServerRestRoleServiceTest {
 
     public static final String uri = "http://rest.geoserver.org";

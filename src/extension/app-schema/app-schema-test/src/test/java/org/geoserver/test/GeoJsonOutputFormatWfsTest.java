@@ -17,7 +17,9 @@ import net.sf.json.JSONObject;
 import org.hamcrest.CoreMatchers;
 import org.junit.Test;
 
-/** Validates JSON output format for complex features. */
+/**
+ * Validates JSON output format for complex features.
+ */
 public final class GeoJsonOutputFormatWfsTest extends AbstractAppSchemaTestSupport {
 
     @Override
@@ -26,7 +28,9 @@ public final class GeoJsonOutputFormatWfsTest extends AbstractAppSchemaTestSuppo
         return new MockData();
     }
 
-    /** Helper class that will setup custom complex feature types using the stations data set. */
+    /**
+     * Helper class that will setup custom complex feature types using the stations data set.
+     */
     private static final class MockData extends StationsMockData {
 
         @Override
@@ -113,7 +117,9 @@ public final class GeoJsonOutputFormatWfsTest extends AbstractAppSchemaTestSuppo
         assertEquals("http://www.geoserver.org/featureC", featureLinkC.getString("@href"));
     }
 
-    /** Helper method that station 1 exists and was correctly encoded in the GeoJSON response. */
+    /**
+     * Helper method that station 1 exists and was correctly encoded in the GeoJSON response.
+     */
     private void checkStation1Exists(JSON geoJson) {
         // get the station from the response
         JSONObject station = getFeaturePropertiesById(geoJson, "st.1");

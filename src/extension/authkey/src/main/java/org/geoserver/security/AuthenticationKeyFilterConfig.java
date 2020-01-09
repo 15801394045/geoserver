@@ -8,6 +8,7 @@ package org.geoserver.security;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
+
 import org.apache.commons.lang.SerializationUtils;
 import org.geoserver.platform.GeoServerEnvironment;
 import org.geoserver.platform.GeoServerExtensions;
@@ -64,7 +65,9 @@ public class AuthenticationKeyFilterConfig extends SecurityFilterConfig
         this.userGroupServiceName = userGroupServiceName;
     }
 
-    /** Returns the mapper parameters. */
+    /**
+     * Returns the mapper parameters.
+     */
     public Map<String, String> getMapperParameters() {
         if (mapperParameters == null) {
             mapperParameters = new HashMap<String, String>();

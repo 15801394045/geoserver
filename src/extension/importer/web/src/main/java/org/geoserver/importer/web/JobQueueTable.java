@@ -7,6 +7,7 @@ package org.geoserver.importer.web;
 
 import java.util.Arrays;
 import java.util.List;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.IModel;
@@ -85,7 +86,8 @@ public class JobQueueTable extends GeoServerTablePanel<Task<ImportContext>> {
         }
 
         @Override
-        public void detach() {}
+        public void detach() {
+        }
 
         @Override
         public Task<ImportContext> getObject() {
@@ -93,6 +95,7 @@ public class JobQueueTable extends GeoServerTablePanel<Task<ImportContext>> {
         }
 
         @Override
-        public void setObject(Task<ImportContext> object) {}
+        public void setObject(Task<ImportContext> object) {
+        }
     }
 }

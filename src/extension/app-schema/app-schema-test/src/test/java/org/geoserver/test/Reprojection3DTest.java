@@ -23,7 +23,9 @@ public class Reprojection3DTest extends AbstractAppSchemaTestSupport {
         return new BBox3DMockData();
     }
 
-    /** Tests re-projection of NonFeatureTypeProxy. */
+    /**
+     * Tests re-projection of NonFeatureTypeProxy.
+     */
     @Test
     public void testReprojection() {
         Document doc =

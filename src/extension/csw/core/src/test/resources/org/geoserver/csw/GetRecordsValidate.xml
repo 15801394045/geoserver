@@ -20,15 +20,15 @@
                 resultType="validate"
                 service="CSW"
                 version="2.0.2">
-   <csw:Query typeNames="csw:Record">
-      <csw:ElementSetName>full</csw:ElementSetName>
-      <csw:Constraint version="1.1.0">
-         <ogc:Filter>
-            <ogc:PropertyIsLike escapeChar="\" singleChar="." wildCard="*">
-               <ogc:PropertyName>csw:AnyText</ogc:PropertyName>
-               <ogc:Literal>*lorem*</ogc:Literal>
-            </ogc:PropertyIsLike>
-         </ogc:Filter>
-      </csw:Constraint>
-   </csw:Query>
+    <csw:Query typeNames="csw:Record">
+        <csw:ElementSetName>full</csw:ElementSetName>
+        <csw:Constraint version="1.1.0">
+            <ogc:Filter>
+                <ogc:PropertyIsLike escapeChar="\" singleChar="." wildCard="*">
+                    <ogc:PropertyName>csw:AnyText</ogc:PropertyName>
+                    <ogc:Literal>*lorem*</ogc:Literal>
+                </ogc:PropertyIsLike>
+            </ogc:Filter>
+        </csw:Constraint>
+    </csw:Query>
 </csw:GetRecords>

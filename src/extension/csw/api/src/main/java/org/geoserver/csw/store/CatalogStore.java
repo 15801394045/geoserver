@@ -7,6 +7,7 @@ package org.geoserver.csw.store;
 
 import java.io.IOException;
 import java.util.List;
+
 import org.geoserver.catalog.util.CloseableIterator;
 import org.geoserver.csw.records.CSWRecordDescriptor;
 import org.geoserver.csw.records.RecordDescriptor;
@@ -28,7 +29,9 @@ import org.opengis.filter.identity.FeatureId;
  */
 public interface CatalogStore {
 
-    /** Returns the supported record types */
+    /**
+     * Returns the supported record types
+     */
     RecordDescriptor[] getRecordDescriptors() throws IOException;
 
     /**
@@ -50,13 +53,13 @@ public interface CatalogStore {
     /**
      * Returns the domain of an attribute in the specified record type.
      *
-     * @param typeName The record type
+     * @param typeName      The record type
      * @param attributeName The attribute
      * @return An iteration of possible values, or null if domain extraction for this attribute is
-     *     not supported
+     * not supported
      * @throws IOException
      * @see {@link CatalogStoreCapabilities#getDomainQueriables(Name)} to get a list of the
-     *     properties which the store supports the domain extraction from
+     * properties which the store supports the domain extraction from
      */
     CloseableIterator<String> getDomain(Name typeName, Name attributeName) throws IOException;
 
@@ -107,9 +110,13 @@ public interface CatalogStore {
      */
     RepositoryItem getRepositoryItem(String recordId) throws IOException;
 
-    /** Returns the store capabilities */
+    /**
+     * Returns the store capabilities
+     */
     CatalogStoreCapabilities getCapabilities();
 
-    /** Maps a qualified name to it's equivalent property name for the backend store. */
+    /**
+     * Maps a qualified name to it's equivalent property name for the backend store.
+     */
     PropertyName translateProperty(RecordDescriptor rd, Name name);
 }

@@ -13,6 +13,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AbstractAjaxTimerBehavior;
@@ -165,7 +166,9 @@ public class ImportDataPage extends GeoServerSecuredPage {
                         new StoreChoiceRenderer()) {
                     protected String getNullValidKey() {
                         return ImportDataPage.class.getSimpleName() + "." + super.getNullValidKey();
-                    };
+                    }
+
+                    ;
                 };
         storeChoice.setOutputMarkupId(true);
 
@@ -266,16 +269,18 @@ public class ImportDataPage extends GeoServerSecuredPage {
 
                                         statusLabel.setDefaultModelObject(msg);
                                         target.add(statusLabel);
-                                    };
+                                    }
+
+                                    ;
 
                                     @Override
                                     public boolean canCallListenerInterface(
                                             Component component, Method method) {
                                         if (self.equals(component)
                                                 && method.getDeclaringClass()
-                                                        .equals(
-                                                                org.apache.wicket.behavior
-                                                                        .IBehaviorListener.class)
+                                                .equals(
+                                                        org.apache.wicket.behavior
+                                                                .IBehaviorListener.class)
                                                 && method.getName().equals("onRequest")) {
                                             return true;
                                         }
@@ -290,7 +295,9 @@ public class ImportDataPage extends GeoServerSecuredPage {
                     protected void disableLink(ComponentTag tag) {
                         super.disableLink(tag);
                         ImporterWebUtils.disableLink(tag);
-                    };
+                    }
+
+                    ;
 
                     @Override
                     public void onClick(AjaxRequestTarget target) {
@@ -322,9 +329,9 @@ public class ImportDataPage extends GeoServerSecuredPage {
                         new ImportContextProvider(true) {
                             @Override
                             protected List<
-                                            org.geoserver.web.wicket.GeoServerDataProvider.Property<
-                                                    ImportContext>>
-                                    getProperties() {
+                                    org.geoserver.web.wicket.GeoServerDataProvider.Property<
+                                            ImportContext>>
+                            getProperties() {
                                 return Arrays.asList(ID, STATE, UPDATED);
                             }
                         },
@@ -332,7 +339,9 @@ public class ImportDataPage extends GeoServerSecuredPage {
                     protected void onSelectionUpdate(AjaxRequestTarget target) {
                         removeImportLink.setEnabled(!getSelection().isEmpty());
                         target.add(removeImportLink);
-                    };
+                    }
+
+                    ;
                 };
         importTable.setOutputMarkupId(true);
         importTable.setFilterable(false);
@@ -492,7 +501,9 @@ public class ImportDataPage extends GeoServerSecuredPage {
         }
     }
 
-    /** A type data source. */
+    /**
+     * A type data source.
+     */
     enum Source {
         SPATIAL_FILES(DataIcon.FOLDER) {
             @Override

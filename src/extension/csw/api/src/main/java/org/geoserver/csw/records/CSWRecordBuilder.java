@@ -16,12 +16,16 @@ public class CSWRecordBuilder extends GenericRecordBuilder {
         super(CSWRecordDescriptor.getInstance());
     }
 
-    /** Adds an element to the current record */
+    /**
+     * Adds an element to the current record
+     */
     public void addElement(String name, String... values) {
         super.addElement(name + ".value", values);
     }
 
-    /** Adds an element to the current record with scheme */
+    /**
+     * Adds an element to the current record with scheme
+     */
     public void addElementWithScheme(String name, String scheme, String value) {
         super.addElement(name + ".value", value);
         super.addElement(name + ".scheme", scheme);

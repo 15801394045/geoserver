@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <as:AppSchemaDataAccess xmlns:as="http://www.geotools.org/app-schema"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.geotools.org/app-schema AppSchemaDataAccess.xsd">
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                        xsi:schemaLocation="http://www.geotools.org/app-schema AppSchemaDataAccess.xsd">
     <namespaces>
         <Namespace>
             <prefix>gml</prefix>
@@ -34,21 +34,21 @@
             <sourceType>InvalidColumnGeologicUnit</sourceType>
             <targetElement>gsml:GeologicUnit</targetElement>
             <attributeMappings>
-              
-              
-              <AttributeMapping>
+
+
+                <AttributeMapping>
                     <targetAttribute>
                         gsml:GeologicUnit
                     </targetAttribute>
                     <idExpression>
                         <OCQL>ID</OCQL>
                     </idExpression>
-                </AttributeMapping>  
-                
+                </AttributeMapping>
+
                 <AttributeMapping>
                     <targetAttribute>
                         gml:name[1]
-                      </targetAttribute>
+                    </targetAttribute>
                     <sourceExpression>
                         <OCQL>NAME</OCQL>
                     </sourceExpression>
@@ -60,7 +60,7 @@
                 <AttributeMapping>
                     <targetAttribute>
                         gml:name[2]
-                      </targetAttribute>
+                    </targetAttribute>
                     <sourceExpression>
                         <OCQL>CODE</OCQL>
                     </sourceExpression>
@@ -72,7 +72,7 @@
                 <AttributeMapping>
                     <targetAttribute>
                         gml:name[3]
-                      </targetAttribute>
+                    </targetAttribute>
                     <sourceExpression>
                         <OCQL>URN</OCQL>
                     </sourceExpression>
@@ -80,11 +80,11 @@
                         <name>codeSpace</name>
                         <value>'urn:x-test:classifierScheme:TestAuthority:GeologicUnitId'</value>
                     </ClientProperty>
-                </AttributeMapping>  
+                </AttributeMapping>
                 <AttributeMapping>
                     <targetAttribute>
                         gml:name[4]
-                      </targetAttribute>
+                    </targetAttribute>
                     <sourceExpression>
                         <OCQL>DESCRIPTIO</OCQL>
                     </sourceExpression>
@@ -92,7 +92,7 @@
                         <name>codeSpace</name>
                         <value>'urn:x-test:classifierScheme:TestAuthority:GeologicUnitDescription'</value>
                     </ClientProperty>
-                </AttributeMapping>              
+                </AttributeMapping>
             </attributeMappings>
         </FeatureTypeMapping>
     </typeMappings>

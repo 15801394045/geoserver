@@ -6,6 +6,7 @@
 package org.geoserver.wfs.xslt.config;
 
 import com.thoughtworks.xstream.XStream;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -21,6 +22,7 @@ import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamSource;
+
 import org.apache.commons.io.IOUtils;
 import org.geoserver.catalog.Catalog;
 import org.geoserver.catalog.FeatureTypeInfo;
@@ -143,7 +145,7 @@ public class TransformRepository {
      */
     private void initXStream(Catalog catalog) {
         xs = new SecureXStream();
-        xs.allowTypes(new Class[] {TransformInfo.class});
+        xs.allowTypes(new Class[]{TransformInfo.class});
         xs.omitField(TransformInfo.class, "name");
         xs.alias("transform", TransformInfo.class);
         xs.registerLocalConverter(
@@ -168,7 +170,9 @@ public class TransformRepository {
         }
     }
 
-    /** Returns all the transform (either global or feature type specific) */
+    /**
+     * Returns all the transform (either global or feature type specific)
+     */
     public List<TransformInfo> getAllTransforms() throws IOException {
         Resource root = dataDir.get(Paths.path("wfs", "transform"));
         List<TransformInfo> result = new ArrayList<TransformInfo>();
@@ -184,7 +188,9 @@ public class TransformRepository {
         return result;
     }
 
-    /** Returns all the global transformations (not attached to a particular layer) */
+    /**
+     * Returns all the global transformations (not attached to a particular layer)
+     */
     public List<TransformInfo> getGlobalTransforms() throws IOException {
         List<TransformInfo> allTransformations = getAllTransforms();
         List<TransformInfo> result = new ArrayList<TransformInfo>();

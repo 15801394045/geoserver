@@ -8,6 +8,7 @@ package org.geoserver.importer.transform;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.logging.Level;
+
 import org.geoserver.catalog.DimensionInfo;
 import org.geoserver.catalog.DimensionPresentation;
 import org.geoserver.catalog.ResourceInfo;
@@ -77,22 +78,30 @@ public class DateFormatTransform extends AttributeRemapTransform {
         this.datePattern = datePattern;
     }
 
-    /** @return the enddate */
+    /**
+     * @return the enddate
+     */
     public String getEnddate() {
         return enddate;
     }
 
-    /** @param enddate the enddate to set */
+    /**
+     * @param enddate the enddate to set
+     */
     public void setEnddate(String enddate) {
         this.enddate = enddate;
     }
 
-    /** @return the presentation */
+    /**
+     * @return the presentation
+     */
     public String getPresentation() {
         return presentation;
     }
 
-    /** @param presentation the presentation to set */
+    /**
+     * @param presentation the presentation to set
+     */
     public void setPresentation(String presentation) {
         this.presentation = presentation;
     }

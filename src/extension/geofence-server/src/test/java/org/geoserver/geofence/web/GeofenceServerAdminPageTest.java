@@ -7,6 +7,7 @@ package org.geoserver.geofence.web;
 import static org.junit.Assert.assertEquals;
 
 import java.util.logging.Level;
+
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.util.tester.FormTester;
 import org.geoserver.data.test.SystemTestData;

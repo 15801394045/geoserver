@@ -11,6 +11,7 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 import java.util.List;
+
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.TextArea;
@@ -19,7 +20,9 @@ import org.apache.wicket.util.tester.FormTester;
 import org.geoserver.web.GeoServerWicketTestSupport;
 import org.junit.Test;
 
-/** @author Martin Davis OpenGeo */
+/**
+ * @author Martin Davis OpenGeo
+ */
 public class WPSRequestBuilderTest extends GeoServerWicketTestSupport {
 
     @Test
@@ -87,7 +90,9 @@ public class WPSRequestBuilderTest extends GeoServerWicketTestSupport {
         // as that requires a true browser to execute the request
     }
 
-    /** Tests initializing page to specific process via name request parameter. */
+    /**
+     * Tests initializing page to specific process via name request parameter.
+     */
     @Test
     public void testNameRequest() throws Exception {
         login();

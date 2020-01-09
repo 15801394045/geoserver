@@ -20,13 +20,19 @@ import org.geotools.data.complex.AppSchemaDataAccess;
  */
 public class XYGeomMockData extends AbstractAppSchemaMockData {
 
-    /** Prefix of the test namespace. */
+    /**
+     * Prefix of the test namespace.
+     */
     public static final String TEST_PREFIX = "test";
 
-    /** The test namespace URI. */
+    /**
+     * The test namespace URI.
+     */
     public static final String TEST_URI = "http://test";
 
-    /** @see org.geoserver.test.AbstractAppSchemaMockData#addContent() */
+    /**
+     * @see org.geoserver.test.AbstractAppSchemaMockData#addContent()
+     */
     public void addContent() {
         putNamespace(TEST_PREFIX, TEST_URI);
         addFeatureType(

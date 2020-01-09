@@ -9,7 +9,9 @@ import org.geoserver.test.onlineTest.setup.AppSchemaWmsReferenceMockData;
 import org.geoserver.test.onlineTest.setup.ReferenceDataPostgisSetup;
 import org.geoserver.test.onlineTest.support.AbstractReferenceDataSetup;
 
-/** @author Niels Charlier */
+/**
+ * @author Niels Charlier
+ */
 public class DataReferenceWmsPostgisWithJoiningTest extends DataReferenceWmsOnlineTest {
 
     public DataReferenceWmsPostgisWithJoiningTest() throws Exception {

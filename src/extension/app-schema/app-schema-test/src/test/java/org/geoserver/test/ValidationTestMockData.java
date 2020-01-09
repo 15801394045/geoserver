@@ -16,7 +16,9 @@ public class ValidationTestMockData extends AbstractAppSchemaMockData {
 
     protected static final String ER_URI = "urn:cgi:xmlns:GGIC:EarthResource:1.1";
 
-    /** @see org.geoserver.test.AbstractAppSchemaMockData#addContent() */
+    /**
+     * @see org.geoserver.test.AbstractAppSchemaMockData#addContent()
+     */
     @Override
     public void addContent() {
         addFeatureType(GSML_PREFIX, "GeologicUnit", "Nillable.xml", "Nillable.properties");

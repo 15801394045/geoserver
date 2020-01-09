@@ -15,6 +15,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.geoserver.ogr.core.AbstractToolWrapper;
 import org.geoserver.ogr.core.Format;
 import org.geotools.util.logging.Logging;
@@ -46,7 +47,9 @@ public class OGRWrapper extends AbstractToolWrapper {
         return false;
     }
 
-    /** Returns a list of the ogr2ogr supported formats */
+    /**
+     * Returns a list of the ogr2ogr supported formats
+     */
     public Set<String> getSupportedFormats() {
         try {
             // this one works up to ogr2ogr 1.7

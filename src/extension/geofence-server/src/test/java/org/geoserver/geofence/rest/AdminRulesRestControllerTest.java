@@ -12,6 +12,7 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 import java.util.UUID;
+
 import org.geoserver.geofence.GeofenceBaseTest;
 import org.geoserver.geofence.core.dao.DuplicateKeyException;
 import org.geoserver.geofence.core.model.AdminRule;
@@ -252,7 +253,9 @@ public class AdminRulesRestControllerTest extends GeofenceBaseTest {
         validateRules(2, 9, 11);
     }
 
-    /** Helper method that will validate a move result. */
+    /**
+     * Helper method that will validate a move result.
+     */
     private void validateResult(
             ResponseEntity<JaxbAdminRuleList> result, HttpStatus expectedHttpStatus, int rules) {
         assertThat(result, notNullValue());

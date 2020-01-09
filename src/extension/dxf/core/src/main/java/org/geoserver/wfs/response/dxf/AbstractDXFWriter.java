@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.logging.Logger;
+
 import org.apache.commons.lang3.StringUtils;
 import org.geoserver.wfs.response.dxf.util.JulianDate;
 import org.geotools.feature.FeatureCollection;
@@ -63,10 +64,10 @@ public abstract class AbstractDXFWriter implements DXFWriter {
     // array of cyclically used colors (specified as autocad color indexes)
     // each color is assigned to a layer until there are elements
     // available, then they are reused again
-    protected int[] colors = new int[] {7, 1, 2, 3, 4, 5, 6, 8, 9};
+    protected int[] colors = new int[]{7, 1, 2, 3, 4, 5, 6, 8, 9};
 
     // array of cyclically used line types
-    protected LineType[] lineTypes = new LineType[] {new LineType("CONTINUOUS", "Solid line")};
+    protected LineType[] lineTypes = new LineType[]{new LineType("CONTINUOUS", "Solid line")};
 
     // current layer color (index in the colors array)
     private int colorPos = 0;
@@ -111,7 +112,8 @@ public abstract class AbstractDXFWriter implements DXFWriter {
         return false;
     }
 
-    public AbstractDXFWriter() {}
+    public AbstractDXFWriter() {
+    }
 
     /**
      * Full constructor. Needs a writer, to write the dxf out. It permits to specify an encoding for
@@ -588,7 +590,9 @@ public abstract class AbstractDXFWriter implements DXFWriter {
         writeGroup(40, dateFormat.format(JulianDate.toJulian(dt)));
     }
 
-    /** Configure an option (usually got as a format option). */
+    /**
+     * Configure an option (usually got as a format option).
+     */
     public void setOption(String optionName, Object optionValue) {
         if (optionName.equalsIgnoreCase("geometryasblock")) {
             setGeometryAsBlock(((Boolean) optionValue).booleanValue());
@@ -604,6 +608,7 @@ public abstract class AbstractDXFWriter implements DXFWriter {
             LOGGER.severe("unknown option " + optionName);
         }
     }
+
     /**
      * Sets the "write attributes to file" flag.
      *

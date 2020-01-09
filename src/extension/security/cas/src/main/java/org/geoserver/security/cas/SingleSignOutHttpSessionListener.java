@@ -9,6 +9,7 @@ package org.geoserver.security.cas;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
+
 import org.jasig.cas.client.session.SessionMappingStorage;
 
 /**

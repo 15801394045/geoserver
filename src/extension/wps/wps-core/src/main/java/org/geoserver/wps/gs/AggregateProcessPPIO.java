@@ -6,7 +6,9 @@
 package org.geoserver.wps.gs;
 
 import com.thoughtworks.xstream.mapper.MapperWrapper;
+
 import javax.xml.namespace.QName;
+
 import org.geoserver.config.util.SecureXStream;
 import org.geoserver.wps.ppio.XStreamPPIO;
 import org.geotools.process.vector.AggregateProcess;
@@ -30,9 +32,11 @@ public class AggregateProcessPPIO extends XStreamPPIO {
                 new SecureXStream() {
                     protected MapperWrapper wrapMapper(MapperWrapper next) {
                         return new UppercaseTagMapper(next);
-                    };
+                    }
+
+                    ;
                 };
-        xstream.allowTypes(new Class[] {AggregateProcess.Results.class});
+        xstream.allowTypes(new Class[]{AggregateProcess.Results.class});
         xstream.omitField(AggregateProcess.Results.class, "aggregateAttribute");
         xstream.omitField(AggregateProcess.Results.class, "functions");
         xstream.omitField(AggregateProcess.Results.class, "groupByAttributes");

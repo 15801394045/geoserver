@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 import org.apache.commons.lang3.StringUtils;
 
 /**
@@ -29,7 +30,9 @@ public class LineType {
         this.description = description;
     }
 
-    /** Gets the DXF name of the line type. */
+    /**
+     * Gets the DXF name of the line type.
+     */
     public String getName() {
         return name;
     }
@@ -43,7 +46,9 @@ public class LineType {
         this.name = name;
     }
 
-    /** Gets the pattern description for the line type. */
+    /**
+     * Gets the pattern description for the line type.
+     */
     public String getDescription() {
         return description;
     }
@@ -57,7 +62,9 @@ public class LineType {
         this.description = description;
     }
 
-    /** Gets the pattern items. */
+    /**
+     * Gets the pattern items.
+     */
     public LineTypeItem[] getItems() {
         return items;
     }
@@ -71,7 +78,9 @@ public class LineType {
         this.items = items;
     }
 
-    /** Gets the complete length of the pattern. */
+    /**
+     * Gets the complete length of the pattern.
+     */
     public double getLength() {
         double len = 0.0;
         for (LineTypeItem item : items) len += Math.abs(item.getLength());
@@ -118,7 +127,7 @@ public class LineType {
             }
         }
         LineType result = new LineType(name, description);
-        result.setItems(items.toArray(new LineTypeItem[] {}));
+        result.setItems(items.toArray(new LineTypeItem[]{}));
         return result;
     }
 }

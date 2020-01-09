@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
+
 import net.opengis.cat.csw20.ElementSetType;
 import org.geoserver.csw.feature.MemoryFeatureCollection;
 import org.geoserver.csw.store.AbstractCatalogStore;

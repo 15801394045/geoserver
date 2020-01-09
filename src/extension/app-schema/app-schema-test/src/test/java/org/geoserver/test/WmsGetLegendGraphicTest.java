@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.InputStream;
 import javax.imageio.ImageIO;
+
 import org.junit.Test;
 
 public class WmsGetLegendGraphicTest extends AbstractAppSchemaTestSupport {

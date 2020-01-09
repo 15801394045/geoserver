@@ -12,6 +12,7 @@ import java.util.Set;
 import java.util.TreeSet;
 import javax.measure.Unit;
 import javax.measure.format.UnitFormat;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.AjaxFormComponentUpdatingBehavior;
@@ -53,7 +54,9 @@ public class NetCDFOutSettingsEditor extends NetCDFPanel<NetCDFLayerSettingsCont
         UNITS.addAll(NON_SI_INSTANCE.getUnits());
     }
 
-    /** serialVersionUID */
+    /**
+     * serialVersionUID
+     */
     private static final long serialVersionUID = 1L;
 
     private final TextField<String> standardName;

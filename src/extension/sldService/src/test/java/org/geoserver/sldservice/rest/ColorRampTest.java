@@ -10,6 +10,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.awt.Color;
 import java.util.List;
+
 import org.geoserver.sldservice.utils.classifier.impl.BlueColorRamp;
 import org.geoserver.sldservice.utils.classifier.impl.GrayColorRamp;
 import org.geoserver.sldservice.utils.classifier.impl.JetColorRamp;

@@ -17,6 +17,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.parsers.ParserConfigurationException;
+
 import net.opengis.wps10.ExecuteType;
 import org.geoserver.ows.Dispatcher;
 import org.geoserver.ows.DispatcherCallback;
@@ -61,13 +62,13 @@ import org.xml.sax.SAXException;
  * modifications to handle asynch process computations as well as resources with a timeout
  *
  * @author Andrea Aime - GeoSolutions
- *     <p>TODO: we need to have the process statuses to avoid deleting stuff that is being worked on
- *     by another machine
+ * <p>TODO: we need to have the process statuses to avoid deleting stuff that is being worked on
+ * by another machine
  */
 public class WPSResourceManager extends ProcessListenerAdapter
         implements DispatcherCallback,
-                ApplicationListener<ApplicationEvent>,
-                ApplicationContextAware {
+        ApplicationListener<ApplicationEvent>,
+        ApplicationContextAware {
     private static final Logger LOGGER = Logging.getLogger(WPSResourceManager.class);
 
     ConcurrentHashMap<String, ExecutionResources> resourceCache =
@@ -78,16 +79,24 @@ public class WPSResourceManager extends ProcessListenerAdapter
     private ProcessArtifactsStore artifactsStore;
 
     static final class ExecutionResources {
-        /** Temporary resources used to parse inputs or during the process execution */
+        /**
+         * Temporary resources used to parse inputs or during the process execution
+         */
         List<WPSResource> temporary;
 
-        /** Whether the execution is synchronous or asynch */
+        /**
+         * Whether the execution is synchronous or asynch
+         */
         boolean synchronouos;
 
-        /** If true there is something accessing the output files and preventing their deletion */
+        /**
+         * If true there is something accessing the output files and preventing their deletion
+         */
         boolean outputLocked;
 
-        /** Marks the process completion, we start counting down for output deletion */
+        /**
+         * Marks the process completion, we start counting down for output deletion
+         */
         long completionTime;
 
         public ExecutionResources(boolean synchronouos) {
@@ -145,7 +154,9 @@ public class WPSResourceManager extends ProcessListenerAdapter
         return this.executionId.get();
     }
 
-    /** Clears the current execution id thread local */
+    /**
+     * Clears the current execution id thread local
+     */
     void clearExecutionId() {
         this.executionId.set(null);
     }
@@ -176,7 +187,7 @@ public class WPSResourceManager extends ProcessListenerAdapter
     /**
      * Returns the url to fetch a output resource using the GetExecutionResult call
      *
-     * @param name The file name
+     * @param name     The file name
      * @param mimeType the
      */
     public String getOutputResourceUrl(String name, String mimeType) {
@@ -187,10 +198,10 @@ public class WPSResourceManager extends ProcessListenerAdapter
      * Returns the url to fetch a output resource using the GetExecutionResult call
      *
      * @param executionId - optional, if you don't have it the resource manager will use its thread
-     *     local version
+     *                    local version
      * @param name
-     * @param baseUrl - optional, if you don't have it the resource manager will pick one from
-     *     Dispatcher.REQUEST
+     * @param baseUrl     - optional, if you don't have it the resource manager will pick one from
+     *                    Dispatcher.REQUEST
      * @param mimeType
      */
     public String getOutputResourceUrl(

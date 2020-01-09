@@ -13,6 +13,7 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+
 import net.opengis.wps10.DocumentOutputDefinitionType;
 import net.opengis.wps10.ExecuteType;
 import net.opengis.wps10.InputType;
@@ -55,24 +56,32 @@ public class ExecuteRequest {
         }
     }
 
-    /** The wrapped WPS 1.0 request */
+    /**
+     * The wrapped WPS 1.0 request
+     */
     public ExecuteType getRequest() {
         return request;
     }
 
-    /** True if the request is asynchronous */
+    /**
+     * True if the request is asynchronous
+     */
     public boolean isAsynchronous() {
         return request.getResponseForm() != null
                 && request.getResponseForm().getResponseDocument() != null
                 && request.getResponseForm().getResponseDocument().isStoreExecuteResponse();
     }
 
-    /** Returns true if status update is requested */
+    /**
+     * Returns true if status update is requested
+     */
     public boolean isStatusEnabled() {
         return isAsynchronous() && request.getResponseForm().getResponseDocument().isStatus();
     }
 
-    /** Returns the process name according to the GeoTools API */
+    /**
+     * Returns the process name according to the GeoTools API
+     */
     public Name getProcessName() {
         return Ows11Util.name(request.getIdentifier());
     }
@@ -211,7 +220,9 @@ public class ExecuteRequest {
                 && request.getResponseForm().getResponseDocument().isLineage();
     }
 
-    /** Returns null if nothing specific was requested, the list otherwise */
+    /**
+     * Returns null if nothing specific was requested, the list otherwise
+     */
     public List<OutputDefinitionType> getRequestedOutputs() {
         // in case nothing specific was requested
         ResponseFormType responseForm = request.getResponseForm();

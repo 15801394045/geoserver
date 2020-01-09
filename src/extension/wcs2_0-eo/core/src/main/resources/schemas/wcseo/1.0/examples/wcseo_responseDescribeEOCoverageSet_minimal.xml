@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <wcseo:EOCoverageSetDescription
-    numberMatched="2"
-    numberReturned="2"
-    xmlns:ows="http://www.opengis.net/ows/2.0"
-    xmlns:gml="http://www.opengis.net/gml/3.2"
-    xmlns:gmlcov="http://www.opengis.net/gmlcov/1.0"
-    xmlns:swe="http://www.opengis.net/swe/2.0"
-    xmlns:wcs="http://www.opengis.net/wcs/2.0"
-    xmlns:wcseo="http://www.opengis.net/wcseo/1.0"
-    xmlns:eop="http://www.opengis.net/eop/2.0"
-    xmlns:om="http://www.opengis.net/om/2.0"
-    xmlns:xlink="http://www.w3.org/1999/xlink"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.opengis.net/wcseo/1.0 http://schemas.opengis.net/wcseo/1.0/wcsEOAll.xsd">
+        numberMatched="2"
+        numberReturned="2"
+        xmlns:ows="http://www.opengis.net/ows/2.0"
+        xmlns:gml="http://www.opengis.net/gml/3.2"
+        xmlns:gmlcov="http://www.opengis.net/gmlcov/1.0"
+        xmlns:swe="http://www.opengis.net/swe/2.0"
+        xmlns:wcs="http://www.opengis.net/wcs/2.0"
+        xmlns:wcseo="http://www.opengis.net/wcseo/1.0"
+        xmlns:eop="http://www.opengis.net/eop/2.0"
+        xmlns:om="http://www.opengis.net/om/2.0"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.opengis.net/wcseo/1.0 http://schemas.opengis.net/wcseo/1.0/wcsEOAll.xsd">
     <wcs:CoverageDescriptions>
         <wcs:CoverageDescription gml:id="someEOCoverage1">
             <gml:boundedBy>
-                <gml:Envelope axisLabels="Lat Long" srsDimension="2" srsName="http://www.opengis.net/def/crs/EPSG/0/4326" uomLabels="deg deg">
+                <gml:Envelope axisLabels="Lat Long" srsDimension="2"
+                              srsName="http://www.opengis.net/def/crs/EPSG/0/4326" uomLabels="deg deg">
                     <gml:lowerCorner>42.996389 1.896944</gml:lowerCorner>
                     <gml:upperCorner>43.516667 2.861667</gml:upperCorner>
                 </gml:Envelope>
@@ -46,7 +47,9 @@
                                             <gml:Polygon gml:id="someEOCoverage1_fppoly">
                                                 <gml:exterior>
                                                     <gml:LinearRing>
-                                                        <gml:posList>43.516667 2.1025 43.381667 2.861667 42.862778 2.65 42.996389 1.896944 43.516667 2.1025</gml:posList>
+                                                        <gml:posList>43.516667 2.1025 43.381667 2.861667 42.862778 2.65
+                                                            42.996389 1.896944 43.516667 2.1025
+                                                        </gml:posList>
                                                     </gml:LinearRing>
                                                 </gml:exterior>
                                             </gml:Polygon>
@@ -81,7 +84,8 @@
                     </gml:limits>
                     <gml:axisLabels>x y</gml:axisLabels>
                     <gml:origin>
-                        <gml:Point gml:id="someEOCoverage1_grid_origin" srsName="http://www.opengis.net/def/crs/EPSG/0/3035">
+                        <gml:Point gml:id="someEOCoverage1_grid_origin"
+                                   srsName="http://www.opengis.net/def/crs/EPSG/0/3035">
                             <gml:pos>4742525.0 2690925.0</gml:pos>
                         </gml:Point>
                     </gml:origin>
@@ -119,7 +123,8 @@
         <!-- Example using xlink to reference EOMetadata -->
         <wcs:CoverageDescription gml:id="someEOCoverage2">
             <gml:boundedBy>
-                <gml:Envelope axisLabels="Lat Long" srsDimension="2" srsName="http://www.opengis.net/def/crs/EPSG/0/4326" uomLabels="deg deg">
+                <gml:Envelope axisLabels="Lat Long" srsDimension="2"
+                              srsName="http://www.opengis.net/def/crs/EPSG/0/4326" uomLabels="deg deg">
                     <gml:lowerCorner>45 110</gml:lowerCorner>
                     <gml:upperCorner>46 111</gml:upperCorner>
                 </gml:Envelope>
@@ -140,7 +145,8 @@
                     </gml:limits>
                     <gml:axisLabels>y x</gml:axisLabels>
                     <gml:origin>
-                        <gml:Point gml:id="someEOCoverage2_grid_origin" srsName="http://www.opengis.net/def/crs/EPSG/0/3035">
+                        <gml:Point gml:id="someEOCoverage2_grid_origin"
+                                   srsName="http://www.opengis.net/def/crs/EPSG/0/3035">
                             <gml:pos>2690925.0 4742525.0</gml:pos>
                         </gml:Point>
                     </gml:origin>
@@ -180,7 +186,8 @@
         <!-- DatasetSeriesDescription with Footprint -->
         <wcseo:DatasetSeriesDescription gml:id="someDatasetSeries1">
             <gml:boundedBy>
-                <gml:Envelope axisLabels="Lat Long" srsDimension="2" srsName="http://www.opengis.net/def/crs/EPSG/0/4326" uomLabels="deg deg">
+                <gml:Envelope axisLabels="Lat Long" srsDimension="2"
+                              srsName="http://www.opengis.net/def/crs/EPSG/0/4326" uomLabels="deg deg">
                     <gml:lowerCorner>42.996389 1.896944</gml:lowerCorner>
                     <gml:upperCorner>43.516667 2.861667</gml:upperCorner>
                 </gml:Envelope>
@@ -197,7 +204,9 @@
                             <gml:Polygon gml:id="someDatasetSeries1_fppoly">
                                 <gml:exterior>
                                     <gml:LinearRing>
-                                        <gml:posList>43.516667 2.1025 43.381667 2.861667 42.862778 2.65 42.996389 1.896944 43.516667 2.1025</gml:posList>
+                                        <gml:posList>43.516667 2.1025 43.381667 2.861667 42.862778 2.65 42.996389
+                                            1.896944 43.516667 2.1025
+                                        </gml:posList>
                                     </gml:LinearRing>
                                 </gml:exterior>
                             </gml:Polygon>
@@ -228,7 +237,8 @@
         <!-- DatasetSeriesDescription without Footprint and ServiceParameters -->
         <wcseo:DatasetSeriesDescription gml:id="someDatasetSeries2">
             <gml:boundedBy>
-                <gml:Envelope axisLabels="Lat Long" srsDimension="2" srsName="http://www.opengis.net/def/crs/EPSG/0/4326" uomLabels="deg deg">
+                <gml:Envelope axisLabels="Lat Long" srsDimension="2"
+                              srsName="http://www.opengis.net/def/crs/EPSG/0/4326" uomLabels="deg deg">
                     <gml:lowerCorner>46 16</gml:lowerCorner>
                     <gml:upperCorner>48 18</gml:upperCorner>
                 </gml:Envelope>

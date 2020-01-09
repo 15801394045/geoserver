@@ -19,6 +19,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+
 import org.geotools.data.FeatureReader;
 import org.geotools.feature.AttributeTypeBuilder;
 import org.geotools.feature.simple.SimpleFeatureTypeBuilder;
@@ -72,7 +73,8 @@ public class FeatureDataConverter {
      */
     static final Pattern UNSAFE_CHARS = Pattern.compile("(^[^a-zA-Z\\._]+)|([^a-zA-Z\\._0-9]+)");
 
-    private FeatureDataConverter() {}
+    private FeatureDataConverter() {
+    }
 
     public SimpleFeatureType convertType(
             SimpleFeatureType featureType, VectorFormat format, ImportData data, ImportTask task) {
@@ -244,7 +246,9 @@ public class FeatureDataConverter {
                             to.setAttribute(convertAttributeName(toName), from.getAttribute(name));
                         }
                     }
-                };
+                }
+
+                ;
 
                 public SimpleFeatureType convertType(
                         SimpleFeatureType featureType,

@@ -11,6 +11,7 @@ import java.io.OutputStreamWriter;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 import org.geoserver.monitor.Monitor;
 import org.geoserver.monitor.RequestData;
 import org.geoserver.monitor.RequestDataVisitor;
@@ -20,7 +21,9 @@ import org.springframework.http.HttpOutputMessage;
 import org.springframework.http.converter.HttpMessageNotWritableException;
 import org.springframework.stereotype.Component;
 
-/** Convert MonitorResutls to a csv file. */
+/**
+ * Convert MonitorResutls to a csv file.
+ */
 @Component
 public class CSVMonitorConverter extends BaseMonitorConverter {
 
@@ -88,10 +91,10 @@ public class CSVMonitorConverter extends BaseMonitorConverter {
     /**
      * Write CSV file (also called by {@link ZIPMonitorConverter}
      *
-     * @param result Query, List or individual RequestData)
+     * @param result  Query, List or individual RequestData)
      * @param fields
      * @param monitor used to cancel output process
-     * @param os Output stream (not closed by this method allowing use of zipfile)
+     * @param os      Output stream (not closed by this method allowing use of zipfile)
      */
     void writeCSVfile(Object result, String[] fields, Monitor monitor, OutputStream os)
             throws IOException {

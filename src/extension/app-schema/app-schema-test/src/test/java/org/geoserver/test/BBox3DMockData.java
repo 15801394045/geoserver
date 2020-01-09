@@ -13,7 +13,9 @@ package org.geoserver.test;
  */
 public class BBox3DMockData extends AbstractAppSchemaMockData {
 
-    /** @see org.geoserver.test.AbstractAppSchemaMockData#addContent() */
+    /**
+     * @see org.geoserver.test.AbstractAppSchemaMockData#addContent()
+     */
     @Override
     public void addContent() {
         add3DFeatureType(

@@ -11,6 +11,7 @@ import java.io.InputStream;
 import java.util.LinkedHashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.geoserver.config.impl.GeoServerLifecycleHandler;
 import org.geoserver.platform.GeoServerExtensions;
 import org.geoserver.platform.GeoServerResourceLoader;
@@ -20,7 +21,9 @@ import org.geotools.imageio.netcdf.NetCDFUnitFormat;
 import org.geotools.imageio.netcdf.utilities.NetCDFUtilities;
 import org.geotools.util.logging.Logging;
 
-/** Re-configures the {@link NetCDFUnitFormat} on config reload */
+/**
+ * Re-configures the {@link NetCDFUnitFormat} on config reload
+ */
 public class NetCDFUnitsConfigurator implements GeoServerLifecycleHandler {
 
     static final Logger LOGGER = Logging.getLogger(NetCDFUnitsConfigurator.class);

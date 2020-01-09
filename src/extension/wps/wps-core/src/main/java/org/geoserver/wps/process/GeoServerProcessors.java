@@ -8,6 +8,7 @@ package org.geoserver.wps.process;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+
 import org.geoserver.platform.GeoServerExtensions;
 import org.geotools.process.Process;
 import org.geotools.process.ProcessFactory;
@@ -71,11 +72,11 @@ public class GeoServerProcessors implements ApplicationContextAware {
     /**
      * Look up a Factory by name of a process it supports.
      *
-     * @param name Name of the Process you wish to work with
+     * @param name         Name of the Process you wish to work with
      * @param applyFilters Whether to apply the available {@link ProcessFilter} to the returned
-     *     factory, or not (if the code needs to check the original process factory by class name
-     *     for example, better not to apply the filters, which often wrap the factories to add extra
-     *     functionality)
+     *                     factory, or not (if the code needs to check the original process factory by class name
+     *                     for example, better not to apply the filters, which often wrap the factories to add extra
+     *                     functionality)
      * @return ProcessFactory capable of creating an instanceof the named process
      */
     public static ProcessFactory createProcessFactory(Name name, boolean applyFilters) {

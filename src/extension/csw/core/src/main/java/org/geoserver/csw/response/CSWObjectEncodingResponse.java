@@ -8,6 +8,7 @@ package org.geoserver.csw.response;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+
 import org.geoserver.csw.CSWException;
 import org.geoserver.csw.records.RecordDescriptor;
 import org.geoserver.csw.store.CatalogStore;

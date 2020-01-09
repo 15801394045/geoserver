@@ -6,6 +6,7 @@ package org.geoserver.csw.response;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.geotools.util.logging.Logging;
 import org.opengis.util.InternationalString;
 import org.opengis.util.ProgressListener;

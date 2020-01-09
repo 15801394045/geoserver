@@ -8,6 +8,7 @@ package org.geoserver.filter.function;
 import static org.junit.Assert.*;
 
 import java.util.Collection;
+
 import org.geoserver.data.test.MockData;
 import org.geoserver.test.GeoServerSystemTestSupport;
 import org.geotools.factory.CommonFactoryFinder;

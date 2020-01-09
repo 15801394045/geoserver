@@ -7,6 +7,6 @@
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
 
 <beans>
-  <bean id="queryLayerFunctionsInitializer"
-    class="org.geoserver.filter.function.QueryFunctionFactoryInitializer" />
+    <bean id="queryLayerFunctionsInitializer"
+          class="org.geoserver.filter.function.QueryFunctionFactoryInitializer"/>
 </beans>

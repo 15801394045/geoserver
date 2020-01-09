@@ -13,6 +13,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+
 import org.geotools.feature.AttributeBuilder;
 import org.geotools.feature.ComplexFeatureBuilder;
 import org.geotools.feature.LenientFeatureFactoryImpl;
@@ -104,7 +105,9 @@ public class GenericRecordBuilder implements RecordBuilder {
         }
     }
 
-    /** The root of the tree */
+    /**
+     * The root of the tree
+     */
     protected TreeBranch root = new TreeBranch();
 
     /**
@@ -122,7 +125,7 @@ public class GenericRecordBuilder implements RecordBuilder {
                     (List<AttributeDescriptor>) descriptor.getUserData().get("substitutionGroup");
             if (substitutionGroup != null) {
                 for (Iterator<AttributeDescriptor> it = substitutionGroup.iterator();
-                        it.hasNext(); ) {
+                     it.hasNext(); ) {
                     substitutionMap.put(it.next().getName(), descriptor.getName());
                 }
             }
@@ -255,8 +258,8 @@ public class GenericRecordBuilder implements RecordBuilder {
     /**
      * Adds an element to the current record with user data
      *
-     * @param name path of property with dots
-     * @param value the value(s) to be inserted
+     * @param name     path of property with dots
+     * @param value    the value(s) to be inserted
      * @param userData the user data
      */
     public void addElement(
@@ -275,7 +278,7 @@ public class GenericRecordBuilder implements RecordBuilder {
     /**
      * Adds an element to the current record
      *
-     * @param name path of property with dots
+     * @param name   path of property with dots
      * @param values the value(s) to be inserted
      */
     public void addElement(String name, String... values) {
@@ -285,7 +288,7 @@ public class GenericRecordBuilder implements RecordBuilder {
     /**
      * Adds an element to the current record
      *
-     * @param name path of property with dots
+     * @param name   path of property with dots
      * @param values the value(s) to be inserted
      */
     public void addElement(String name, int splitIndex, String... values) {
@@ -329,7 +332,7 @@ public class GenericRecordBuilder implements RecordBuilder {
             }
         }
         if (geom instanceof Polygon) {
-            geom = geom.getFactory().createMultiPolygon(new Polygon[] {(Polygon) geom});
+            geom = geom.getFactory().createMultiPolygon(new Polygon[]{(Polygon) geom});
         }
 
         Map<Object, Object> userData =

@@ -16,6 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 import org.geoserver.catalog.Catalog;
 import org.geoserver.catalog.CatalogFacade;
 import org.geoserver.catalog.CatalogInfo;
@@ -303,7 +304,9 @@ class CatalogStoreFeatureIterator implements Iterator<Feature> {
         throw new UnsupportedOperationException("This iterator is read only");
     }
 
-    /** Pattern to match a property to be substituted. Note the reluctant quantifier. */
+    /**
+     * Pattern to match a property to be substituted. Note the reluctant quantifier.
+     */
     protected static final Pattern PROPERTY_INTERPOLATION_PATTERN =
             Pattern.compile("\\$\\{(.+?)\\}");
 

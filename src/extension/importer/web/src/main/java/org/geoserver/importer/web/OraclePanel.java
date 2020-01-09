@@ -15,6 +15,7 @@ import static org.geotools.jdbc.JDBCDataStoreFactory.USER;
 import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.Map;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.TextField;

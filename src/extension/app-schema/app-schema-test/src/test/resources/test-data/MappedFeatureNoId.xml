@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-    <!--
-        Mapped Feature mapping file with no gsml:specification attribute. This is to avoid circular
-        reference problem when this is linked as gsml:occurrence in Geologic Unit type.
-    -->
+<!--
+    Mapped Feature mapping file with no gsml:specification attribute. This is to avoid circular
+    reference problem when this is linked as gsml:occurrence in Geologic Unit type.
+-->
 <as:AppSchemaDataAccess xmlns:as="http://www.geotools.org/app-schema"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.geotools.org/app-schema AppSchemaDataAccess.xsd">
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                        xsi:schemaLocation="http://www.geotools.org/app-schema AppSchemaDataAccess.xsd">
     <namespaces>
         <Namespace>
             <prefix>gml</prefix>
@@ -14,7 +15,7 @@
             <prefix>gsml</prefix>
             <uri>urn:cgi:xmlns:CGI:GeoSciML:2.0</uri>
         </Namespace>
-         <Namespace>
+        <Namespace>
             <prefix>xlink</prefix>
             <uri>http://www.w3.org/1999/xlink</uri>
         </Namespace>
@@ -45,28 +46,28 @@
                 <AttributeMapping>
                     <targetAttribute>
                         gsml:MappedFeature
-					</targetAttribute>
-                </AttributeMapping>               
+                    </targetAttribute>
+                </AttributeMapping>
                 <AttributeMapping>
                     <targetAttribute>
-                       gsml:shape
-					</targetAttribute>
+                        gsml:shape
+                    </targetAttribute>
                     <idExpression>
-                    <OCQL>Expression.NIL</OCQL>
-                    </idExpression>                   
+                        <OCQL>Expression.NIL</OCQL>
+                    </idExpression>
                     <sourceExpression>
                         <OCQL>SHAPE</OCQL>
                     </sourceExpression>
                 </AttributeMapping>
                 <AttributeMapping>
                     <targetAttribute>
-                       gml:description
+                        gml:description
                     </targetAttribute>
                     <sourceExpression>
                         <OCQL>strConcat('descr.', LEX_D)</OCQL>
                     </sourceExpression>
                 </AttributeMapping>
-                 <AttributeMapping>
+                <AttributeMapping>
                     <targetAttribute>gsml:metadata</targetAttribute>
                     <ClientProperty>
                         <name>xlink:href</name>
@@ -78,14 +79,15 @@
                     <targetAttributeNode>gsml:CGI_NumericValuePropertyType</targetAttributeNode>
                 </AttributeMapping>
                 <AttributeMapping>
-                    <targetAttribute>/gsml:positionalAccuracy/gsml:CGI_NumericValue/gsml:principalValue</targetAttribute>
+                    <targetAttribute>/gsml:positionalAccuracy/gsml:CGI_NumericValue/gsml:principalValue
+                    </targetAttribute>
                     <sourceExpression>
                         <OCQL>LOC_ACC</OCQL>
                     </sourceExpression>
                     <ClientProperty>
                         <name>uom</name>
                         <value>'urn:ogc:def:uom:UCUM:m'</value>
-                    </ClientProperty>                    
+                    </ClientProperty>
                 </AttributeMapping>
                 <AttributeMapping>
                     <targetAttribute>gsml:samplingFrame</targetAttribute>
@@ -102,11 +104,16 @@
                         <linkField>FEATURE_LINK</linkField>
                     </sourceExpression>
                 </AttributeMapping>
-                <AttributeMapping> 
-                    <targetAttribute>gsml:observationMethod/gsml:CGI_TermValue/gsml:value</targetAttribute> 
-                    <sourceExpression><OCQL>'urn:ogc:def:nil:OGC::missing'</OCQL></sourceExpression> 
-                    <!--  testing client properties on simple attributes -->    
-                    <ClientProperty><name>codeSpace</name><value>'http://urn.opengis.net'</value></ClientProperty> 
+                <AttributeMapping>
+                    <targetAttribute>gsml:observationMethod/gsml:CGI_TermValue/gsml:value</targetAttribute>
+                    <sourceExpression>
+                        <OCQL>'urn:ogc:def:nil:OGC::missing'</OCQL>
+                    </sourceExpression>
+                    <!--  testing client properties on simple attributes -->
+                    <ClientProperty>
+                        <name>codeSpace</name>
+                        <value>'http://urn.opengis.net'</value>
+                    </ClientProperty>
                 </AttributeMapping>
             </attributeMappings>
         </FeatureTypeMapping>

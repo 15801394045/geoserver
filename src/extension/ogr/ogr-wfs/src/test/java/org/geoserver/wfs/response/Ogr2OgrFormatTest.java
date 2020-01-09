@@ -29,6 +29,7 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+
 import net.opengis.wfs.FeatureCollectionType;
 import net.opengis.wfs.GetFeatureType;
 import net.opengis.wfs.WfsFactory;
@@ -90,7 +91,7 @@ public class Ogr2OgrFormatTest {
                         "GetFeature",
                         new Service("WFS", null, new Version("1.0.0"), Arrays.asList("GetFeature")),
                         null,
-                        new Object[] {gft});
+                        new Object[]{gft});
     }
 
     @Test
@@ -273,7 +274,9 @@ public class Ogr2OgrFormatTest {
         assertEquals(6, dom.getElementsByTagName("Placemark").getLength());
     }
 
-    /** Utility method to print out a dom. */
+    /**
+     * Utility method to print out a dom.
+     */
     protected void print(Document dom) throws Exception {
         TransformerFactory txFactory = TransformerFactory.newInstance();
         try {

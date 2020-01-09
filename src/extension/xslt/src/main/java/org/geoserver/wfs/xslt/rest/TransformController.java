@@ -13,10 +13,12 @@ import com.thoughtworks.xstream.converters.reflection.ReflectionProvider;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
 import com.thoughtworks.xstream.mapper.Mapper;
+
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.lang.reflect.Type;
 import java.util.Collection;
+
 import org.geoserver.catalog.Catalog;
 import org.geoserver.catalog.FeatureTypeInfo;
 import org.geoserver.catalog.StoreInfo;
@@ -59,18 +61,19 @@ import org.springframework.web.util.UriComponentsBuilder;
 @RequestMapping(path = RestBaseController.ROOT_PATH + "/services/wfs/transforms")
 public class TransformController extends AbstractCatalogController {
 
-    @Autowired private TransformRepository repository;
+    @Autowired
+    private TransformRepository repository;
 
     public TransformController(Catalog catalog) {
         super(catalog);
     }
 
     @GetMapping(
-        path = {"", "{transform}"},
-        produces = {
-            MediaType.TEXT_XML_VALUE, MediaType.APPLICATION_XML_VALUE,
-            MediaType.APPLICATION_JSON_VALUE, MediaType.TEXT_HTML_VALUE
-        }
+            path = {"", "{transform}"},
+            produces = {
+                    MediaType.TEXT_XML_VALUE, MediaType.APPLICATION_XML_VALUE,
+                    MediaType.APPLICATION_JSON_VALUE, MediaType.TEXT_HTML_VALUE
+            }
     )
     public RestWrapper getTransformsInfo(
             @PathVariable(name = "transform", required = false) String transformInfoName) {
@@ -103,11 +106,11 @@ public class TransformController extends AbstractCatalogController {
     }
 
     @PostMapping(
-        consumes = {
-            MediaType.TEXT_XML_VALUE,
-            MediaType.APPLICATION_XML_VALUE,
-            MediaType.APPLICATION_JSON_VALUE
-        }
+            consumes = {
+                    MediaType.TEXT_XML_VALUE,
+                    MediaType.APPLICATION_XML_VALUE,
+                    MediaType.APPLICATION_JSON_VALUE
+            }
     )
     public ResponseEntity<String> postTransformInfo(
             @RequestBody TransformInfo transformInfo, UriComponentsBuilder builder) {
@@ -152,12 +155,12 @@ public class TransformController extends AbstractCatalogController {
     }
 
     @PutMapping(
-        path = "{transform}",
-        consumes = {
-            MediaType.TEXT_XML_VALUE,
-            MediaType.APPLICATION_XML_VALUE,
-            MediaType.APPLICATION_JSON_VALUE
-        }
+            path = "{transform}",
+            consumes = {
+                    MediaType.TEXT_XML_VALUE,
+                    MediaType.APPLICATION_XML_VALUE,
+                    MediaType.APPLICATION_JSON_VALUE
+            }
     )
     public void putTransformInfo(
             @RequestBody TransformInfo transformInfo,
@@ -295,7 +298,7 @@ public class TransformController extends AbstractCatalogController {
         xs.addDefaultImplementation(FeatureTypeInfoImpl.class, FeatureTypeInfo.class);
 
         // setup security
-        xs.allowTypes(new Class[] {TransformInfo.class});
+        xs.allowTypes(new Class[]{TransformInfo.class});
     }
 
     private class TransformConverter extends ReflectionConverter {

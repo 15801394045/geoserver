@@ -10,12 +10,15 @@ import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.geoserver.geofence.GeofenceAccessManager;
 import org.geoserver.geofence.cache.CacheConfiguration;
 import org.geoserver.platform.resource.Resource;
 import org.geotools.util.logging.Logging;
 
-/** @author ETj (etj at geo-solutions.it) */
+/**
+ * @author ETj (etj at geo-solutions.it)
+ */
 public class GeoFenceConfigurationManager {
 
     private static final Logger LOGGER = Logging.getLogger(GeofenceAccessManager.class);
@@ -57,7 +60,7 @@ public class GeoFenceConfigurationManager {
         Resource configurationFile = configurer.getConfigFile();
 
         try (BufferedWriter writer =
-                new BufferedWriter(new OutputStreamWriter(configurationFile.out()))) {
+                     new BufferedWriter(new OutputStreamWriter(configurationFile.out()))) {
             writer.write("### GeoFence Module configuration file\n");
             writer.write("### \n");
             writer.write("### GeoServer will read this file at boot time.\n");
@@ -69,7 +72,9 @@ public class GeoFenceConfigurationManager {
         }
     }
 
-    /** Saves current configuration to disk. */
+    /**
+     * Saves current configuration to disk.
+     */
     protected void saveConfiguration(Writer writer, GeoFenceConfiguration configuration)
             throws IOException {
 
@@ -105,7 +110,9 @@ public class GeoFenceConfigurationManager {
         saveConfig(writer, "cacheExpire", params.getExpireMilliSec());
     }
 
-    /** Returns a copy of the configuration. */
+    /**
+     * Returns a copy of the configuration.
+     */
     public void setConfigurer(GeoFencePropertyPlaceholderConfigurer configurer) {
         this.configurer = configurer;
     }

@@ -17,19 +17,31 @@ import org.geoserver.data.test.MockData;
  */
 public class WaterMLTimeSeriesMockData extends AbstractAppSchemaMockData {
 
-    /** Prefix for waterml namespace. */
+    /**
+     * Prefix for waterml namespace.
+     */
     protected static final String WML2DR_PREFIX = "wml2dr";
-    /** URI for waterml namespace. */
+    /**
+     * URI for waterml namespace.
+     */
     protected static final String WML2DR_URI = "http://www.opengis.net/waterml/DR/2.0";
-    /** Prefix for gmlcov namespace. */
+    /**
+     * Prefix for gmlcov namespace.
+     */
     protected static final String GMLCOV_PREFIX = "gmlcov";
 
-    /** URI for gmlcov namespace. */
+    /**
+     * URI for gmlcov namespace.
+     */
     protected static final String GMLCOV_URI = "http://www.opengis.net/gmlcov/1.0";
-    /** Prefix for swe 2.0 namespace. */
+    /**
+     * Prefix for swe 2.0 namespace.
+     */
     protected static final String SWE2_PREFIX = "swe";
 
-    /** URI for swe 2.0 namespace. */
+    /**
+     * URI for swe 2.0 namespace.
+     */
     protected static final String SWE2_URI = "http://www.opengis.net/swe/2.0";
 
     public WaterMLTimeSeriesMockData() {
@@ -38,7 +50,9 @@ public class WaterMLTimeSeriesMockData extends AbstractAppSchemaMockData {
         setSchemaCatalog("schemas/wml2dr_catalog.xml");
     }
 
-    /** @see org.geoserver.test.AbstractAppSchemaMockData#addContent() */
+    /**
+     * @see org.geoserver.test.AbstractAppSchemaMockData#addContent()
+     */
     @Override
     public void addContent() {
         putNamespace(WML2DR_PREFIX, WML2DR_URI);

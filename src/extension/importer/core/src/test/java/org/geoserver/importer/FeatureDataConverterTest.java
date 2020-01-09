@@ -17,7 +17,9 @@ import org.geotools.feature.simple.SimpleFeatureTypeBuilder;
 import org.junit.Test;
 import org.opengis.feature.simple.SimpleFeatureType;
 
-/** @author Ian Schneider <ischneider@opengeo.org> */
+/**
+ * @author Ian Schneider <ischneider@opengeo.org>
+ */
 public class FeatureDataConverterTest {
 
     @Test

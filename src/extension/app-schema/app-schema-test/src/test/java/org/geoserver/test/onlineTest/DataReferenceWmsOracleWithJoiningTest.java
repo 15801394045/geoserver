@@ -9,7 +9,9 @@ import org.geoserver.test.onlineTest.setup.AppSchemaWmsReferenceMockData;
 import org.geoserver.test.onlineTest.setup.ReferenceDataOracleSetup;
 import org.geoserver.test.onlineTest.support.AbstractReferenceDataSetup;
 
-/** @author Niels Charlier */
+/**
+ * @author Niels Charlier
+ */
 public class DataReferenceWmsOracleWithJoiningTest extends DataReferenceWmsOnlineTest {
 
     public DataReferenceWmsOracleWithJoiningTest() throws Exception {

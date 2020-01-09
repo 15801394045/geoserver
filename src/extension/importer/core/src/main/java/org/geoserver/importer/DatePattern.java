@@ -40,11 +40,11 @@ public class DatePattern implements java.io.Serializable {
     /**
      * Constructor.
      *
-     * @param format The date format
-     * @param regex The regular expression to pull the date out of a another string.
+     * @param format   The date format
+     * @param regex    The regular expression to pull the date out of a another string.
      * @param forceGmt Whether the pattern should assume the GMT time zone.
-     * @param strict Whether or not this pattern must apply the regular expression to match before
-     *     parsing a date.
+     * @param strict   Whether or not this pattern must apply the regular expression to match before
+     *                 parsing a date.
      */
     public DatePattern(String format, String regex, boolean forceGmt, boolean strict) {
         this.format = format;
@@ -78,7 +78,9 @@ public class DatePattern implements java.io.Serializable {
         return pattern;
     }
 
-    /** When true the {@link #matchAndParse(String)} method should be used. */
+    /**
+     * When true the {@link #matchAndParse(String)} method should be used.
+     */
     public boolean isStrict() {
         return strict;
     }

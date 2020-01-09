@@ -6,6 +6,7 @@ package org.geoserver.wps;
 
 import java.util.List;
 import java.util.logging.Logger;
+
 import org.geoserver.config.GeoServer;
 import org.geoserver.security.GeoServerSecurityManager;
 import org.geoserver.security.SecurityUtils;
@@ -45,13 +46,19 @@ public class Executions {
 
     private GeoServer gs;
 
-    /** The object tracking the status of various processes */
+    /**
+     * The object tracking the status of various processes
+     */
     private ProcessStatusTracker statusTracker;
 
-    /** The resource tracker, we use it to build the responses */
+    /**
+     * The resource tracker, we use it to build the responses
+     */
     private WPSResourceManager resources;
 
-    /** Used by the response builder */
+    /**
+     * Used by the response builder
+     */
     private ApplicationContext ctx;
 
     public Executions(
@@ -117,7 +124,7 @@ public class Executions {
         if (request.orderBy != null && !request.orderBy.isEmpty()) {
             String sortAttribute = translateAttributeName(request.orderBy);
             if (sortAttribute != null && !sortAttribute.isEmpty()) {
-                SortBy[] sortBy = new SortBy[] {ff.sort(sortAttribute, SortOrder.DESCENDING)};
+                SortBy[] sortBy = new SortBy[]{ff.sort(sortAttribute, SortOrder.DESCENDING)};
                 queryFilter.setSortBy(sortBy);
             }
         }
@@ -188,7 +195,9 @@ public class Executions {
         return null;
     }
 
-    /** @return */
+    /**
+     * @return
+     */
     private GeoServerSecurityManager getSecurityManager() {
         return ctx.getBean(GeoServerSecurityManager.class);
     }

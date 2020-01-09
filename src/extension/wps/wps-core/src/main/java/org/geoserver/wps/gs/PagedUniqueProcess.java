@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
+
 import org.geotools.data.simple.SimpleFeatureCollection;
 import org.geotools.factory.CommonFactoryFinder;
 import org.geotools.feature.visitor.UniqueVisitor;
@@ -31,13 +32,15 @@ import org.opengis.filter.FilterFactory;
  * @author Mauro Bartolomeoli
  */
 @DescribeProcess(
-    title = "PagedUnique",
-    description =
-            "Gets the list of unique values for the given featurecollection on a specified field, allows optional paging"
+        title = "PagedUnique",
+        description =
+                "Gets the list of unique values for the given featurecollection on a specified field, allows optional paging"
 )
 public class PagedUniqueProcess implements GeoServerProcess {
 
-    /** The LOGGER. */
+    /**
+     * The LOGGER.
+     */
     private static final Logger LOGGER = Logging.getLogger(PagedUniqueProcess.class);
 
     private final FilterFactory FF = CommonFactoryFinder.getFilterFactory2();
@@ -76,32 +79,32 @@ public class PagedUniqueProcess implements GeoServerProcess {
     @DescribeResult(name = "result", type = Results.class, description = "List of values")
     public Results execute(
             @DescribeParameter(
-                        name = "features",
-                        min = 1,
-                        max = 1,
-                        description = "Layer from which field values should be retrieved"
-                    )
+                    name = "features",
+                    min = 1,
+                    max = 1,
+                    description = "Layer from which field values should be retrieved"
+            )
                     SimpleFeatureCollection features,
             @DescribeParameter(
-                        name = "fieldName",
-                        min = 1,
-                        max = 1,
-                        description = "Field from which the values should be retrieved"
-                    )
+                    name = "fieldName",
+                    min = 1,
+                    max = 1,
+                    description = "Field from which the values should be retrieved"
+            )
                     String fieldName,
             @DescribeParameter(
-                        name = "startIndex",
-                        min = 0,
-                        max = 1,
-                        description = "The index of the first feature to retrieve"
-                    )
+                    name = "startIndex",
+                    min = 0,
+                    max = 1,
+                    description = "The index of the first feature to retrieve"
+            )
                     Integer startIndex,
             @DescribeParameter(
-                        name = "maxFeatures",
-                        min = 0,
-                        max = 1,
-                        description = "The maximum numbers of features to fetch"
-                    )
+                    name = "maxFeatures",
+                    min = 0,
+                    max = 1,
+                    description = "The maximum numbers of features to fetch"
+            )
                     Integer maxFeatures)
             throws IOException, CQLException {
 

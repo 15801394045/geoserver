@@ -12,6 +12,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
 import net.opengis.cat.csw20.ElementSetType;
 import net.opengis.cat.csw20.GetRecordByIdType;
 import org.eclipse.emf.common.util.EList;

@@ -9,6 +9,7 @@ import static org.junit.Assert.assertNotNull;
 
 import javax.xml.namespace.QName;
 import javax.xml.parsers.DocumentBuilderFactory;
+
 import org.geoserver.geofence.rest.xml.MultiPolygonAdapter;
 import org.geotools.gml3.bindings.GML3MockData;
 import org.geotools.gml3.v3_2.GML;

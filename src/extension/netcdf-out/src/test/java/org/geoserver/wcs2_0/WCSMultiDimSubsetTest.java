@@ -11,6 +11,7 @@ import static org.junit.Assert.assertTrue;
 import java.lang.reflect.Field;
 import java.util.Set;
 import javax.xml.namespace.QName;
+
 import org.geoserver.catalog.CoverageInfo;
 import org.geoserver.catalog.DimensionPresentation;
 import org.geoserver.catalog.ResourceInfo;
@@ -67,7 +68,9 @@ public class WCSMultiDimSubsetTest extends WCSNetCDFBaseTest {
         getCatalog().save(info);
     }
 
-    /** Tests if we can select a single pixel value using a WCS request */
+    /**
+     * Tests if we can select a single pixel value using a WCS request
+     */
     @Test
     public void sliceLambert() throws Exception {
 
@@ -85,7 +88,7 @@ public class WCSMultiDimSubsetTest extends WCSNetCDFBaseTest {
                     ImageMosaicFormat.USE_JAI_IMAGEREAD.createValue();
             useJAI.setValue(false);
             sourceCoverage =
-                    (GridCoverage2D) coverageReader.read(new GeneralParameterValue[] {useJAI});
+                    (GridCoverage2D) coverageReader.read(new GeneralParameterValue[]{useJAI});
             final Envelope2D sourceEnvelope = sourceCoverage.getEnvelope2D();
 
             // subsample using the original extension

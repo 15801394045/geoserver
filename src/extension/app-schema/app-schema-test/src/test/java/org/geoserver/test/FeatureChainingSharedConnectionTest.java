@@ -12,6 +12,7 @@ import static org.junit.Assume.assumeTrue;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+
 import org.geoserver.catalog.FeatureTypeInfo;
 import org.geotools.appschema.filter.FilterFactoryImplNamespaceAware;
 import org.geotools.data.DataAccess;

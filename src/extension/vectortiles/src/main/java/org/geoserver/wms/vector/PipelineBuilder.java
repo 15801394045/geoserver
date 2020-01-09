@@ -11,6 +11,7 @@ import java.awt.geom.AffineTransform;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Nullable;
+
 import org.geotools.data.util.ScreenMap;
 import org.geotools.geometry.jts.Decimator;
 import org.geotools.geometry.jts.GeometryClipper;
@@ -39,12 +40,15 @@ import org.opengis.referencing.operation.TransformException;
 
 public class PipelineBuilder {
 
-    /** The base simplification tolerance for screen coordinates. 屏幕坐标的基础简化公差 */
+    /**
+     * The base simplification tolerance for screen coordinates. 屏幕坐标的基础简化公差
+     */
     private static final double PIXEL_BASE_SAMPLE_SIZE = 0.25;
 
     static class Context {
 
-        @Nullable ProjectionHandler projectionHandler;
+        @Nullable
+        ProjectionHandler projectionHandler;
 
         MathTransform sourceToTargetCrs;
 
@@ -64,7 +68,9 @@ public class PipelineBuilder {
         Rectangle paintArea;
 
         public ScreenMap screenMap;
-        /** data's CRS 数据的CRS */
+        /**
+         * data's CRS 数据的CRS
+         */
         public CoordinateReferenceSystem sourceCrs;
 
         public AffineTransform worldToScreen;
@@ -73,7 +79,9 @@ public class PipelineBuilder {
 
         public double screenSimplificationDistance;
 
-        /** approximate size of a pixel in the Target CRS 目标CRS中像素的近似大小 */
+        /**
+         * approximate size of a pixel in the Target CRS 目标CRS中像素的近似大小
+         */
         public double pixelSizeInTargetCRS;
 
         public int queryBuffer;
@@ -85,7 +93,9 @@ public class PipelineBuilder {
     // the client (i.e. OpenLayers) doesn't draw the clip lines created when
     // the polygon is clipped to the request BBOX.
     // 12 is what the current streaming renderer (for WMS images) uses
-    /** 剪辑时，我们希望将剪辑框稍微展开一点，这样客户端（即OpenLayers）就不会绘制将多边形剪辑到请求BBOX时创建的剪辑线。 12是当前流式渲染器（用于WMS图像）使用的 */
+    /**
+     * 剪辑时，我们希望将剪辑框稍微展开一点，这样客户端（即OpenLayers）就不会绘制将多边形剪辑到请求BBOX时创建的剪辑线。 12是当前流式渲染器（用于WMS图像）使用的
+     */
     final int clipBBOXSizeIncreasePixels = 12;
 
     private Pipeline first = Pipeline.END, last = Pipeline.END;
@@ -95,9 +105,9 @@ public class PipelineBuilder {
     }
 
     /**
-     * @param renderingArea The extent of the tile in target CRS 目标CRS中平铺的范围
-     * @param paintArea The extent of the tile in screen/pixel coordinates 平铺在屏幕/像素坐标中的范围
-     * @param sourceCrs The CRS of the features 特征的CRS
+     * @param renderingArea    The extent of the tile in target CRS 目标CRS中平铺的范围
+     * @param paintArea        The extent of the tile in screen/pixel coordinates 平铺在屏幕/像素坐标中的范围
+     * @param sourceCrs        The CRS of the features 特征的CRS
      * @param overSampleFactor Divisor for simplification tolerance. 用于简化公差的除数。
      * @return
      * @throws FactoryException
@@ -197,7 +207,9 @@ public class PipelineBuilder {
         return this;
     }
 
-    /** @return the completed pipeline 已完工的管道 */
+    /**
+     * @return the completed pipeline 已完工的管道
+     */
     public Pipeline build() {
         return first;
     }
@@ -272,7 +284,7 @@ public class PipelineBuilder {
      * Transform from source CRS to target. 从源CRS转换到目标CRS。
      *
      * @param transformToScreenCoordinates If true, further transfrorm from target to screen
-     *     coordinates 如果为真，则进一步将目标坐标转换为屏幕坐标
+     *                                     coordinates 如果为真，则进一步将目标坐标转换为屏幕坐标
      * @return
      */
     public PipelineBuilder transform(final boolean transformToScreenCoordinates) {
@@ -289,7 +301,7 @@ public class PipelineBuilder {
      * Simplify the geometry 简化几何结构
      *
      * @param isTransformToScreenCoordinates Use screen coordinate space simplification tolerance
-     *     使用屏幕坐标空间简化公差
+     *                                       使用屏幕坐标空间简化公差
      * @return
      */
     public PipelineBuilder simplify(boolean isTransformToScreenCoordinates) {
@@ -307,10 +319,10 @@ public class PipelineBuilder {
     /**
      * Clip to the area of the tile plus its gutter
      *
-     * @param clipToMapBounds Do we actually want to clip. Does nothing if false.
-     *     我们真的要剪辑吗。如果是假的话什么都不做。
+     * @param clipToMapBounds              Do we actually want to clip. Does nothing if false.
+     *                                     我们真的要剪辑吗。如果是假的话什么都不做。
      * @param transformToScreenCoordinates is the pipeline working in screen coordinates
-     *     管道是否在屏幕坐标下工作
+     *                                     管道是否在屏幕坐标下工作
      * @return
      */
     public PipelineBuilder clip(boolean clipToMapBounds, boolean transformToScreenCoordinates) {

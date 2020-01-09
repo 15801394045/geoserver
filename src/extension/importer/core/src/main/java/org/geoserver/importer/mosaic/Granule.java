@@ -6,11 +6,14 @@
 package org.geoserver.importer.mosaic;
 
 import java.util.Date;
+
 import org.geoserver.importer.SpatialFile;
 import org.geotools.coverage.grid.GridGeometry2D;
 import org.geotools.geometry.Envelope2D;
 
-/** A tile of a mosaic. */
+/**
+ * A tile of a mosaic.
+ */
 public class Granule extends SpatialFile {
 
     Date timestamp;

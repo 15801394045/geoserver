@@ -20,16 +20,19 @@ class DummyMonitorDAO implements MonitorDAO {
     }
 
     @Override
-    public void init(MonitorConfig config) {}
+    public void init(MonitorConfig config) {
+    }
 
     public RequestData init(RequestData data) {
         request = data;
         return data;
     }
 
-    public void add(RequestData data) {}
+    public void add(RequestData data) {
+    }
 
-    public void update(RequestData data) {}
+    public void update(RequestData data) {
+    }
 
     public void save(RequestData data) {
         last = request;
@@ -44,7 +47,8 @@ class DummyMonitorDAO implements MonitorDAO {
         return null;
     }
 
-    public void getRequests(Query query, RequestDataVisitor visitor) {}
+    public void getRequests(Query query, RequestDataVisitor visitor) {
+    }
 
     public RequestData getRequest(long id) {
         return null;
@@ -71,7 +75,8 @@ class DummyMonitorDAO implements MonitorDAO {
         return null;
     }
 
-    public void getLayers(Query query, MonitorVisitor<ResourceData> visitor) {}
+    public void getLayers(Query query, MonitorVisitor<ResourceData> visitor) {
+    }
 
     public List<RequestData> getHistory() {
         return getRequests();
@@ -93,7 +98,9 @@ class DummyMonitorDAO implements MonitorDAO {
         return null;
     }
 
-    public void clear() {}
+    public void clear() {
+    }
 
-    public void dispose() {}
+    public void dispose() {
+    }
 }

@@ -7,13 +7,16 @@ package org.geoserver.sldservice.rest;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.geoserver.ows.kvp.FormatOptionsKvpParser;
 import org.geoserver.rest.DispatcherCallbackAdapter;
 import org.geoserver.rest.RestException;
 import org.geotools.filter.function.EnvFunction;
 import org.springframework.http.HttpStatus;
 
-/** Parses and sets the environment variables, clears them at the end of the request */
+/**
+ * Parses and sets the environment variables, clears them at the end of the request
+ */
 public class RestEnvVariableCallback extends DispatcherCallbackAdapter {
 
     static final FormatOptionsKvpParser PARSER = new FormatOptionsKvpParser("env");

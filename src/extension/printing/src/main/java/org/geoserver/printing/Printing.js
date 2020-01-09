@@ -1,25 +1,25 @@
 var printProvider, printForm;
 
-Ext.onReady(function() {
+Ext.onReady(function () {
 
     printProvider = new GeoExt.ux.data.PrintProvider({
         // using get for remote service access without same origin restriction.
         // For asynchronous requests, we would set method to "POST".
         //method: "GET",
         method: "POST",
-        
+
         // capabilities from script tag in Printing.html. For asynchonous
         // loading, we would configure url instead of capabilities.
         //capabilities: printCapabilities
         url: "/geoserver/pdf/"
     });
-    
+
     var mapPanel = new GeoExt.MapPanel({
         region: "center",
         layers: [new OpenLayers.Layer.WMS("Natural Earth",
             "/geoserver/wms",
-            {layers: "topp:states"})] ,
-        center: [-98,40],
+            {layers: "topp:states"})],
+        center: [-98, 40],
         zoom: 5
     });
 
@@ -41,7 +41,7 @@ Ext.onReady(function() {
         new Vec(geom("POINT(-98 38)"))
     ]);
     mapPanel.map.addLayer(redline);
-    
+
     // a simple print form
     printForm = new GeoExt.ux.form.SimplePrint({
         map: mapPanel,
@@ -73,7 +73,7 @@ Ext.onReady(function() {
             page: printForm.pages[0]
         })
     });
-    
+
     var formCt = new Ext.Panel({
         layout: "fit",
         region: "east",
@@ -87,7 +87,7 @@ Ext.onReady(function() {
         height: 350,
         items: [mapPanel, formCt]
     });
-    
+
     /* add the print form to its container and make sure that the print page
      * fits the max extent
     formCt.add(printForm);
@@ -98,13 +98,13 @@ Ext.onReady(function() {
     /* use this code block instead of the above one if you configured the
      * printProvider with url instead of capabilities
      */
-    var myMask = new Ext.LoadMask(formCt.body, {msg:"Loading data..."});
+    var myMask = new Ext.LoadMask(formCt.body, {msg: "Loading data..."});
     myMask.show();
-    printProvider.on("loadcapabilities", function() {
+    printProvider.on("loadcapabilities", function () {
         myMask.hide();
         formCt.add(printForm);
         formCt.doLayout();
         printForm.pages[0].fitPage(mapPanel.map);
     });
-    
+
 });

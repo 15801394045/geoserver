@@ -7,6 +7,7 @@
 package org.geoserver.wps.transmute;
 
 import java.io.InputStream;
+
 import org.geoserver.wps.WPSException;
 import org.geotools.xsd.Configuration;
 import org.geotools.xsd.Parser;
@@ -18,13 +19,19 @@ import org.locationtech.jts.geom.Geometry;
  * @author Lucas Reed, Refractions Research Inc
  */
 public abstract class ComplexTransmuter implements Transmuter {
-    /** Returns absolute URL to the schema which defines the in */
+    /**
+     * Returns absolute URL to the schema which defines the in
+     */
     public abstract String getSchema(String urlBase);
 
-    /** Returns the class of the XMLConfiguration used to parse/encode */
+    /**
+     * Returns the class of the XMLConfiguration used to parse/encode
+     */
     public abstract Class<?> getXMLConfiguration();
 
-    /** Returns mime-type of encoded data */
+    /**
+     * Returns mime-type of encoded data
+     */
     public abstract String getMimeType();
 
     /**

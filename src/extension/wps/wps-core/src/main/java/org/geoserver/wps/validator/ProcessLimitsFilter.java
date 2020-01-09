@@ -6,12 +6,14 @@ package org.geoserver.wps.validator;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
+
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
+
 import org.geoserver.config.GeoServer;
 import org.geoserver.platform.ExtensionPriority;
 import org.geoserver.wps.ProcessGroupInfo;
@@ -44,7 +46,9 @@ public class ProcessLimitsFilter
 
     static final Multimap<String, WPSInputValidator> EMPTY_MULTIMAP = ImmutableMultimap.of();
 
-    /** Key where the parameter validators will be stored */
+    /**
+     * Key where the parameter validators will be stored
+     */
     public static final String VALIDATORS_KEY = "wpsValidators";
 
     GeoServer geoServer;
@@ -92,8 +96,8 @@ public class ProcessLimitsFilter
             int maxComplexInputSize = wps.getMaxComplexInputSize();
             if (maxComplexInputSize <= 0
                     && (processInfo == null
-                            || processInfo.getValidators() == null
-                            || processInfo.getValidators().isEmpty())) {
+                    || processInfo.getValidators() == null
+                    || processInfo.getValidators().isEmpty())) {
                 return result;
             } else {
                 Multimap<String, WPSInputValidator> validatorsMap =
@@ -106,7 +110,7 @@ public class ProcessLimitsFilter
                     // can we skip to build a clone?
                     if (validators == null
                             && (maxComplexInputSize <= 0
-                                    || !ProcessParameterIO.isComplex(param, applicationContext))) {
+                            || !ProcessParameterIO.isComplex(param, applicationContext))) {
                         continue;
                     }
 
@@ -134,13 +138,13 @@ public class ProcessLimitsFilter
                                 boolean restricting = false;
                                 if (range.getMinValue() != null
                                         && (min == null
-                                                || min.compareTo(range.getMinValue()) < 0)) {
+                                        || min.compareTo(range.getMinValue()) < 0)) {
                                     min = range.getMinValue();
                                     restricting = true;
                                 }
                                 if (range.getMaxValue() != null
                                         && (max == null
-                                                || max.compareTo(range.getMaxValue()) > 0)) {
+                                        || max.compareTo(range.getMaxValue()) > 0)) {
                                     max = range.getMaxValue();
                                     restricting = true;
                                 }

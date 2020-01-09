@@ -6,6 +6,7 @@
 package org.geoserver.wcs2_0.eo;
 
 import java.io.IOException;
+
 import net.opengis.wcs20.GetCoverageType;
 import org.geoserver.catalog.CoverageInfo;
 import org.geoserver.ows.AbstractDispatcherCallback;

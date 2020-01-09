@@ -9,6 +9,7 @@ import static org.junit.Assert.assertSame;
 
 import java.util.Collections;
 import java.util.List;
+
 import org.geoserver.platform.GeoServerExtensions;
 import org.geoserver.platform.GeoServerExtensionsHelper;
 import org.geotools.data.Parameter;
@@ -19,10 +20,14 @@ import org.springframework.context.support.GenericApplicationContext;
 
 public class ProcessParameterIOTest {
 
-    public static class TestType {};
+    public static class TestType {
+    }
+
+    ;
 
     private static ProcessParameterIO testPPIO =
-            new ProcessParameterIO(TestType.class, TestType.class, "testPPIO") {};
+            new ProcessParameterIO(TestType.class, TestType.class, "testPPIO") {
+            };
 
     private static GenericApplicationContext context = new GenericApplicationContext();
 

@@ -11,6 +11,7 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import net.opengis.cat.csw20.GetDomainType;
 import net.opengis.ows10.DomainType;
 import org.geoserver.catalog.util.CloseableIterator;

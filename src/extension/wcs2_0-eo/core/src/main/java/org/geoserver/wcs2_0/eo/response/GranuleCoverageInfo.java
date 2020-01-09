@@ -7,6 +7,7 @@ package org.geoserver.wcs2_0.eo.response;
 
 import java.io.IOException;
 import java.util.List;
+
 import org.geoserver.catalog.CoverageInfo;
 import org.geoserver.security.decorators.DecoratingCoverageInfo;
 import org.geotools.coverage.grid.io.DimensionDescriptor;

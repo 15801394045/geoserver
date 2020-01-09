@@ -8,6 +8,7 @@ package org.geoserver.printing;
 import java.io.InputStream;
 import java.util.Properties;
 import java.util.logging.Logger;
+
 import org.geoserver.platform.GeoServerExtensions;
 import org.geoserver.platform.GeoServerResourceLoader;
 import org.geoserver.platform.resource.Paths;

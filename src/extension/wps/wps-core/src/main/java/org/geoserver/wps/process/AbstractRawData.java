@@ -7,6 +7,7 @@ package org.geoserver.wps.process;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
+
 import org.geotools.data.Parameter;
 import org.geotools.process.ProcessFactory;
 import org.geotools.util.logging.Logging;
@@ -20,13 +21,19 @@ public abstract class AbstractRawData implements RawData {
 
     protected String extension = AbstractRawData.DEFAULT_EXTENSION;
 
-    /** The default mime type */
+    /**
+     * The default mime type
+     */
     public static final String BINARY_MIME = "application/octet-stream";
 
-    /** The {@link Parameter} metadata entry listing the mime type for raw data */
+    /**
+     * The {@link Parameter} metadata entry listing the mime type for raw data
+     */
     public static final String MIME_TYPES = "mimeTypes";
 
-    /** The default file extension */
+    /**
+     * The default file extension
+     */
     public static final String DEFAULT_EXTENSION = "bin";
 
     /**
@@ -90,7 +97,7 @@ public abstract class AbstractRawData implements RawData {
                 return mimeTypes.split("\\s*,\\s*");
             }
         }
-        return new String[] {BINARY_MIME};
+        return new String[]{BINARY_MIME};
     }
 
     /**

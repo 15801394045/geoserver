@@ -9,6 +9,7 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.geoserver.flow.ControlFlowCallback;
 import org.geoserver.ows.Request;
 import org.geotools.util.logging.Logging;
@@ -35,13 +36,19 @@ public class UserConcurrentFlowController extends QueueController {
 
     CookieKeyGenerator keyGenerator = new CookieKeyGenerator();
 
-    /** Last time we've performed a queue cleanup */
+    /**
+     * Last time we've performed a queue cleanup
+     */
     long lastCleanup = System.currentTimeMillis();
 
-    /** Number of queues at which we start looking for purging stale ones */
+    /**
+     * Number of queues at which we start looking for purging stale ones
+     */
     int maxQueues = 100;
 
-    /** Time it takes for an inactive queue to be considered stale */
+    /**
+     * Time it takes for an inactive queue to be considered stale
+     */
     int maxAge = 10000;
 
     /**
@@ -59,7 +66,7 @@ public class UserConcurrentFlowController extends QueueController {
      *
      * @param queueSize the maximum amount of per user concurrent requests
      * @param maxQueues the number of accumulated user queues that will trigger a queue cleanup
-     * @param maxAge the max quiet time for an empty queue to be considered stale and removed
+     * @param maxAge    the max quiet time for an empty queue to be considered stale and removed
      */
     public UserConcurrentFlowController(int queueSize, int maxQueues, int maxAge) {
         this.queueSize = queueSize;

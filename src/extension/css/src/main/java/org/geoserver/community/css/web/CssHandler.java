@@ -18,6 +18,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
 import org.geoserver.catalog.SLDHandler;
@@ -35,7 +36,9 @@ import org.geotools.styling.css.Stylesheet;
 import org.geotools.util.Version;
 import org.xml.sax.EntityResolver;
 
-/** Style handler for geocss. Justin Deoliveira, Boundless */
+/**
+ * Style handler for geocss. Justin Deoliveira, Boundless
+ */
 public class CssHandler extends StyleHandler {
 
     public static final String FORMAT = "css";

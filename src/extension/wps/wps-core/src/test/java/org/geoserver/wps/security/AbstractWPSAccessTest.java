@@ -8,6 +8,7 @@ package org.geoserver.wps.security;
 
 import java.util.Collections;
 import java.util.List;
+
 import org.geoserver.config.GeoServer;
 import org.geoserver.data.test.SystemTestData;
 import org.geoserver.platform.GeoServerExtensions;
@@ -70,7 +71,9 @@ public abstract class AbstractWPSAccessTest extends WPSTestSupport {
         gs.save(wps);
     }
 
-    /** Enable the Spring Security auth filters */
+    /**
+     * Enable the Spring Security auth filters
+     */
     @Override
     protected List<javax.servlet.Filter> getFilters() {
         return Collections.singletonList(

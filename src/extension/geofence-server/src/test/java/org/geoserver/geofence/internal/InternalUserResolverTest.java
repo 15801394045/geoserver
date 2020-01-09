@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 import java.util.logging.Level;
+
 import org.geoserver.data.test.SystemTestData;
 import org.geoserver.security.AbstractSecurityServiceTest;
 import org.geoserver.security.GeoServerRoleService;

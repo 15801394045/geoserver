@@ -10,6 +10,7 @@ import javax.xml.namespace.QName;
 import javax.xml.transform.sax.SAXTransformerFactory;
 import javax.xml.transform.sax.TransformerHandler;
 import javax.xml.transform.stream.StreamResult;
+
 import org.geoserver.platform.GeoServerExtensions;
 import org.geoserver.util.EntityResolverProvider;
 import org.geotools.xsd.Configuration;
@@ -23,17 +24,23 @@ import org.xml.sax.ContentHandler;
  */
 public abstract class XMLPPIO extends ComplexPPIO {
 
-    /** */
+    /**
+     *
+     */
     protected QName element;
 
     protected volatile EntityResolverProvider resolverProvider;
 
-    /** Constructor specifying 'text/xml' as mime type. */
+    /**
+     * Constructor specifying 'text/xml' as mime type.
+     */
     protected XMLPPIO(Class externalType, Class internalType, QName element) {
         this(externalType, internalType, "text/xml", element);
     }
 
-    /** Constructor explicitly specifying mime type. */
+    /**
+     * Constructor explicitly specifying mime type.
+     */
     protected XMLPPIO(Class externalType, Class internalType, String mimeType, QName element) {
         super(externalType, internalType, mimeType);
         if (element == null) {
@@ -42,7 +49,9 @@ public abstract class XMLPPIO extends ComplexPPIO {
         this.element = element;
     }
 
-    /** The qualified name of the XML element in the XML representation of the object. */
+    /**
+     * The qualified name of the XML element in the XML representation of the object.
+     */
     public QName getElement() {
         return element;
     }
@@ -50,12 +59,14 @@ public abstract class XMLPPIO extends ComplexPPIO {
     /**
      * Encodes the internal representation of the object to an XML stream.
      *
-     * @param object An object of type {@link #getType()}.
+     * @param object  An object of type {@link #getType()}.
      * @param handler An XML content handler.
      */
     public abstract void encode(Object object, ContentHandler handler) throws Exception;
 
-    /** Encodes the internal object representation of a parameter as a string. */
+    /**
+     * Encodes the internal object representation of a parameter as a string.
+     */
     public void encode(Object value, OutputStream os) throws Exception {
         // create the document serializer
         TransformerHandler serializer =

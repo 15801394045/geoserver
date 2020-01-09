@@ -44,7 +44,9 @@ public interface ProcessListener {
      */
     void dismissing(ProcessEvent event) throws WPSException;
 
-    /** Notifies dismissal completion */
+    /**
+     * Notifies dismissal completion
+     */
     void dismissed(ProcessEvent event) throws WPSException;
 
     /**

@@ -28,7 +28,8 @@ public class TransformInfo {
 
     FeatureTypeInfo featureType;
 
-    public TransformInfo() {}
+    public TransformInfo() {
+    }
 
     public TransformInfo(TransformInfo other) {
         this.name = other.name;
@@ -39,7 +40,9 @@ public class TransformInfo {
         this.featureType = other.featureType;
     }
 
-    /** The transform name (same as the file used to persist the transform configuration) */
+    /**
+     * The transform name (same as the file used to persist the transform configuration)
+     */
     public String getName() {
         return name;
     }
@@ -86,7 +89,9 @@ public class TransformInfo {
         this.fileExtension = fileExtension;
     }
 
-    /** The XLST file name */
+    /**
+     * The XLST file name
+     */
     public String getXslt() {
         return xslt;
     }
@@ -115,7 +120,9 @@ public class TransformInfo {
         }
     }
 
-    /** Returns the output mime type */
+    /**
+     * Returns the output mime type
+     */
     public String getOutputMimeType() {
         return outputMimeType;
     }

@@ -18,6 +18,7 @@ import java.io.ByteArrayOutputStream;
 import java.util.Arrays;
 import java.util.List;
 import javax.xml.parsers.DocumentBuilderFactory;
+
 import org.custommonkey.xmlunit.XMLAssert;
 import org.geotools.process.classify.ClassificationStats;
 import org.geotools.process.vector.FeatureClassStats;
@@ -46,7 +47,7 @@ public class ClassificationStatsPPIOTest {
         s2.addRange(ranges.get(0));
         s2.offer(10d);
 
-        StreamingSampleStats[] stats = new StreamingSampleStats[] {s1, s2};
+        StreamingSampleStats[] stats = new StreamingSampleStats[]{s1, s2};
 
         ClassificationStats classStats = new FeatureClassStats.Results(ranges, stats);
 
@@ -92,7 +93,7 @@ public class ClassificationStatsPPIOTest {
         s2.addRange(ranges.get(0));
         s2.offer(10d);
 
-        StreamingSampleStats[] stats = new StreamingSampleStats[] {s1, s2};
+        StreamingSampleStats[] stats = new StreamingSampleStats[]{s1, s2};
 
         return new FeatureClassStats.Results(ranges, stats);
     }

@@ -8,6 +8,7 @@ package org.geoserver.csw;
 
 import java.io.File;
 import java.util.List;
+
 import net.opengis.cat.csw20.CapabilitiesType;
 import net.opengis.cat.csw20.DescribeRecordType;
 import net.opengis.cat.csw20.GetCapabilitiesType;
@@ -29,22 +30,34 @@ import org.opengis.feature.type.AttributeDescriptor;
  * @author Andrea Aime - GeoSolutions
  */
 public interface WebCatalogService {
-    /** The configuration of the service. */
+    /**
+     * The configuration of the service.
+     */
     CSWInfo getServiceInfo();
 
-    /** Returns a object model representing the capabilities document */
+    /**
+     * Returns a object model representing the capabilities document
+     */
     CapabilitiesType getCapabilities(GetCapabilitiesType request) throws ServiceException;
 
-    /** Returns the type of records managed by this catalog */
+    /**
+     * Returns the type of records managed by this catalog
+     */
     AttributeDescriptor[] describeRecord(DescribeRecordType request) throws ServiceException;
 
-    /** Returns the records matching the specified request */
+    /**
+     * Returns the records matching the specified request
+     */
     CSWRecordsResult getRecords(GetRecordsType request) throws ServiceException;
 
-    /** Returns the records matching the specified request */
+    /**
+     * Returns the records matching the specified request
+     */
     CSWRecordsResult getRecordById(GetRecordByIdType request) throws ServiceException;
 
-    /** Returns the list of possible values for the specified parameter/property */
+    /**
+     * Returns the list of possible values for the specified parameter/property
+     */
     CloseableIterator<String> getDomain(GetDomainType request) throws ServiceException;
 
     /**

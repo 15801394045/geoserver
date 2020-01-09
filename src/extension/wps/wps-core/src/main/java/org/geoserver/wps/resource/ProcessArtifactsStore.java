@@ -6,9 +6,12 @@ package org.geoserver.wps.resource;
 
 import java.io.IOException;
 import java.util.List;
+
 import org.geoserver.platform.resource.Resource;
 
-/** Handles all the artifacts for a given process */
+/**
+ * Handles all the artifacts for a given process
+ */
 public interface ProcessArtifactsStore {
 
     public enum ArtifactType {
@@ -27,7 +30,9 @@ public interface ProcessArtifactsStore {
      */
     Resource getArtifact(String executionId, ArtifactType type, String name);
 
-    /** Lists all known directories containing process artifacts */
+    /**
+     * Lists all known directories containing process artifacts
+     */
     List<Resource> listExecutionResourcess();
 
     /**

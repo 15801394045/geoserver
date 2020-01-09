@@ -6,7 +6,9 @@
 package org.geoserver.wfs.response;
 
 import com.thoughtworks.xstream.XStream;
+
 import java.util.Map;
+
 import org.geoserver.ogr.core.Format;
 import org.geoserver.ogr.core.OutputType;
 import org.geoserver.ogr.core.ToolConfiguration;
@@ -28,25 +30,27 @@ public class OgrConfiguration extends ToolConfiguration {
         DEFAULT.ogr2ogrLocation = "ogr2ogr";
         // add some default formats
         DEFAULT.formats =
-                new OgrFormat[] {
-                    new OgrFormat("MapInfo File", "OGR-TAB", ".tab", false, null),
-                    new OgrFormat(
-                            "MapInfo File", "OGR-MIF", ".mif", false, null, "-dsco", "FORMAT=MIF"),
-                    new OgrFormat("CSV", "OGR-CSV", ".csv", true, "text/csv", OutputType.TEXT),
-                    new OgrFormat(
-                            "KML",
-                            "OGR-KML",
-                            ".kml",
-                            true,
-                            "application/vnd.google-earth.kml",
-                            OutputType.XML),
+                new OgrFormat[]{
+                        new OgrFormat("MapInfo File", "OGR-TAB", ".tab", false, null),
+                        new OgrFormat(
+                                "MapInfo File", "OGR-MIF", ".mif", false, null, "-dsco", "FORMAT=MIF"),
+                        new OgrFormat("CSV", "OGR-CSV", ".csv", true, "text/csv", OutputType.TEXT),
+                        new OgrFormat(
+                                "KML",
+                                "OGR-KML",
+                                ".kml",
+                                true,
+                                "application/vnd.google-earth.kml",
+                                OutputType.XML),
                 };
     }
 
     public String ogr2ogrLocation;
     public String gdalData;
 
-    /** Ensures compatibility with old style configuration files. */
+    /**
+     * Ensures compatibility with old style configuration files.
+     */
     @Override
     public String getExecutable() {
         if (ogr2ogrLocation != null) {
@@ -56,7 +60,9 @@ public class OgrConfiguration extends ToolConfiguration {
         }
     }
 
-    /** Ensures compatibility with old style configuration files. */
+    /**
+     * Ensures compatibility with old style configuration files.
+     */
     @Override
     public Map<String, String> getEnvironment() {
         if (gdalData != null) {

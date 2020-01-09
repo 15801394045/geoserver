@@ -66,7 +66,7 @@ public class ProcessAccessLimits extends AccessLimits {
                 if (request != null
                         && !"GetCapabilities".equalsIgnoreCase(request.getRequest())
                         && ("Execute".equalsIgnoreCase(request.getRequest())
-                                || "DescribeProcess".equalsIgnoreCase(request.getRequest()))) {
+                        || "DescribeProcess".equalsIgnoreCase(request.getRequest()))) {
                     throw unauthorizedAccess(resource);
                 }
             }

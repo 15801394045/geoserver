@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <wcs:Capabilities updateSequence="20110104T160000Z" version="2.0.0"
-    xmlns:gml="http://www.opengis.net/gml/3.2"
-    xmlns:gmlcov="http://www.opengis.net/gmlcov/1.0"
-    xmlns:ogc="http://www.opengis.net/ogc"
-    xmlns:ows="http://www.opengis.net/ows/2.0"
-    xmlns:swe="http://www.opengis.net/swe/2.0"
-    xmlns:wcs="http://www.opengis.net/wcs/2.0"
-    xmlns:wcseo="http://www.opengis.net/wcseo/1.0"
-    xmlns:xlink="http://www.w3.org/1999/xlink"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.opengis.net/wcseo/1.0 http://schemas.opengis.net/wcseo/1.0/wcsEOAll.xsd">
+                  xmlns:gml="http://www.opengis.net/gml/3.2"
+                  xmlns:gmlcov="http://www.opengis.net/gmlcov/1.0"
+                  xmlns:ogc="http://www.opengis.net/ogc"
+                  xmlns:ows="http://www.opengis.net/ows/2.0"
+                  xmlns:swe="http://www.opengis.net/swe/2.0"
+                  xmlns:wcs="http://www.opengis.net/wcs/2.0"
+                  xmlns:wcseo="http://www.opengis.net/wcseo/1.0"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://www.opengis.net/wcseo/1.0 http://schemas.opengis.net/wcseo/1.0/wcsEOAll.xsd">
     <ows:ServiceIdentification>
         <ows:Title>Title</ows:Title>
         <ows:Abstract>Abstract</ows:Abstract>
@@ -32,7 +32,8 @@
         <ows:Profile>http://www.placeholder.com/INTERPOLATION</ows:Profile>
         <ows:Profile>http://www.placeholder.com/RANGESUBSET</ows:Profile>
         <ows:Profile>http://www.opengis.net/spec/WCS_application-profile_earth-observation/1.0/conf/eowcs</ows:Profile>
-        <ows:Profile>http://www.opengis.net/spec/WCS_application-profile_earth-observation/1.0/conf/eowcs_get-kvp</ows:Profile>
+        <ows:Profile>http://www.opengis.net/spec/WCS_application-profile_earth-observation/1.0/conf/eowcs_get-kvp
+        </ows:Profile>
     </ows:ServiceIdentification>
 
     <ows:OperationsMetadata>
@@ -113,7 +114,7 @@
             <wcs:CoverageSubtype>RectifiedDataset</wcs:CoverageSubtype>
             <wcs:CoverageSubtypeParent>
                 <wcs:CoverageSubtype>RectifiedGridCoverage</wcs:CoverageSubtype>
-        </wcs:CoverageSubtypeParent>
+            </wcs:CoverageSubtypeParent>
         </wcs:CoverageSummary>
         <!-- CoverageSummary including also optional elements -->
         <wcs:CoverageSummary>

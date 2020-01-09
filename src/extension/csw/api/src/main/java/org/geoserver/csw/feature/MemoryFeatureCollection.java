@@ -12,6 +12,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
+
 import org.geoserver.csw.feature.sort.ComplexComparatorFactory;
 import org.geotools.feature.FeatureCollection;
 import org.opengis.feature.Feature;
@@ -91,7 +92,7 @@ public class MemoryFeatureCollection extends AbstractFeatureCollection<FeatureTy
      * @param o element to be removed from this collection, if present.
      * @return <tt>true</tt> if the collection contained the specified element.
      * @throws UnsupportedOperationException if the <tt>remove</tt> method is not supported by this
-     *     collection.
+     *                                       collection.
      */
     public boolean remove(Object o) {
         return features.remove(o);
@@ -106,8 +107,8 @@ public class MemoryFeatureCollection extends AbstractFeatureCollection<FeatureTy
      * @param c elements to be removed from this collection.
      * @return <tt>true</tt> if this collection changed as a result of the call.
      * @throws UnsupportedOperationException if the <tt>removeAll</tt> method is not supported by
-     *     this collection.
-     * @throws NullPointerException if the specified collection is null.
+     *                                       this collection.
+     * @throws NullPointerException          if the specified collection is null.
      * @see #remove(Object)
      * @see #contains(Object)
      */
@@ -122,8 +123,8 @@ public class MemoryFeatureCollection extends AbstractFeatureCollection<FeatureTy
      * @param c elements to be retained in this collection.
      * @return <tt>true</tt> if this collection changed as a result of the call.
      * @throws UnsupportedOperationException if the <tt>retainAll</tt> method is not supported by
-     *     this Collection.
-     * @throws NullPointerException if the specified collection is null.
+     *                                       this Collection.
+     * @throws NullPointerException          if the specified collection is null.
      * @see #remove(Object)
      * @see #contains(Object)
      */
@@ -137,13 +138,13 @@ public class MemoryFeatureCollection extends AbstractFeatureCollection<FeatureTy
      * @param o element whose presence in this collection is to be ensured.
      * @return <tt>true</tt> if the collection changed as a result of the call.
      * @throws UnsupportedOperationException if the <tt>add</tt> method is not supported by this
-     *     collection.
-     * @throws NullPointerException if this collection does not permit <tt>null</tt> elements, and
-     *     the specified element is <tt>null</tt>.
-     * @throws ClassCastException if the class of the specified element prevents it from being added
-     *     to this collection.
-     * @throws IllegalArgumentException if some aspect of this element prevents it from being added
-     *     to this collection.
+     *                                       collection.
+     * @throws NullPointerException          if this collection does not permit <tt>null</tt> elements, and
+     *                                       the specified element is <tt>null</tt>.
+     * @throws ClassCastException            if the class of the specified element prevents it from being added
+     *                                       to this collection.
+     * @throws IllegalArgumentException      if some aspect of this element prevents it from being added
+     *                                       to this collection.
      */
     public boolean add(Feature o) {
         return features.add(o);
@@ -155,8 +156,8 @@ public class MemoryFeatureCollection extends AbstractFeatureCollection<FeatureTy
      * @param c collection whose elements are to be added to this collection.
      * @return <tt>true</tt> if this collection changed as a result of the call.
      * @throws UnsupportedOperationException if this collection does not support the <tt>addAll</tt>
-     *     method.
-     * @throws NullPointerException if the specified collection is null.
+     *                                       method.
+     * @throws NullPointerException          if the specified collection is null.
      * @see #add(Feature)
      */
     public boolean addAll(Collection<Feature> c) {

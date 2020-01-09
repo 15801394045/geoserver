@@ -33,14 +33,16 @@ public class Ogr2OgrConfigurator extends AbstractToolConfigurator {
         return OgrConfiguration.DEFAULT;
     }
 
-    /** Ensures compatibility with old style configuration files. */
+    /**
+     * Ensures compatibility with old style configuration files.
+     */
     @Override
     protected XStream buildXStream() {
         XStream xstream = super.buildXStream();
         // setup OGR-specific aliases
         xstream.alias("OgrConfiguration", OgrConfiguration.class);
         xstream.alias("Format", OgrFormat.class);
-        xstream.allowTypes(new Class[] {OgrConfiguration.class, OgrFormat.class});
+        xstream.allowTypes(new Class[]{OgrConfiguration.class, OgrFormat.class});
 
         return xstream;
     }

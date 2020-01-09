@@ -18,7 +18,7 @@ public interface RecordBuilder {
     /**
      * Adds an element to the current record
      *
-     * @param name name of property
+     * @param name   name of property
      * @param values value(s) to be attached to property
      */
     public void addElement(String name, String... values);

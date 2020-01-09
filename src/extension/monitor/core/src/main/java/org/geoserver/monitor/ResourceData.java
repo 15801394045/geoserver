@@ -19,22 +19,30 @@ public class ResourceData implements Serializable {
     String name;
     long accessCount;
 
-    /** Name of the resource. */
+    /**
+     * Name of the resource.
+     */
     public String getName() {
         return name;
     }
 
-    /** Sets name of the resource. */
+    /**
+     * Sets name of the resource.
+     */
     public void setName(String name) {
         this.name = name;
     }
 
-    /** Number of times the resource has been accessed. */
+    /**
+     * Number of times the resource has been accessed.
+     */
     public long getAccessCount() {
         return accessCount;
     }
 
-    /** Sets the number of times the resource has been accessed. */
+    /**
+     * Sets the number of times the resource has been accessed.
+     */
     public void setAccessCount(long accessCount) {
         this.accessCount = accessCount;
     }

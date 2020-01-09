@@ -11,6 +11,7 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assume.assumeTrue;
 
 import java.io.IOException;
+
 import org.geoserver.catalog.FeatureTypeInfo;
 import org.geotools.appschema.filter.FilterFactoryImplNamespaceAware;
 import org.geotools.appschema.jdbc.NestedFilterToSQL;
@@ -175,7 +176,9 @@ public class PolymorphismWfsTest extends AbstractAppSchemaTestSupport {
                 doc);
     }
 
-    /** Tests filtering mapping of any type works. */
+    /**
+     * Tests filtering mapping of any type works.
+     */
     @Test
     public void testAnyTypeFilters() {
         //        <AttributeMapping>
@@ -231,7 +234,9 @@ public class PolymorphismWfsTest extends AbstractAppSchemaTestSupport {
                 doc);
     }
 
-    /** Tests filtering feature chaining where it's linked by mappingName. */
+    /**
+     * Tests filtering feature chaining where it's linked by mappingName.
+     */
     @Test
     public void testMappingNameFilters() {
         //        <AttributeMapping>
@@ -301,7 +306,9 @@ public class PolymorphismWfsTest extends AbstractAppSchemaTestSupport {
                 doc);
     }
 
-    /** This is to test that polymorphism with feature chaining works. */
+    /**
+     * This is to test that polymorphism with feature chaining works.
+     */
     private void checkPolymorphicFeatureChaining(Document doc) {
         // f1: make sure only 1 gsml:CGI_NumericValue is encoded
         assertXpathCount(1, "//ex:PolymorphicFeature[@gml:id='f1']/ex:firstValue", doc);
@@ -354,7 +361,9 @@ public class PolymorphismWfsTest extends AbstractAppSchemaTestSupport {
         assertXpathCount(0, "//ex:PolymorphicFeature[@gml:id='f6']/ex:firstValue", doc);
     }
 
-    /** This is to test that polymorphism with no feature chaining works. */
+    /**
+     * This is to test that polymorphism with no feature chaining works.
+     */
     private void checkPolymorphismOnly(Document doc) {
 
         // f1: make sure only 1 gsml:CGI_NumericValue is encoded
@@ -449,7 +458,9 @@ public class PolymorphismWfsTest extends AbstractAppSchemaTestSupport {
                 doc);
     }
 
-    /** This is to test that polymorphism can be achieved with feature chaining alone. */
+    /**
+     * This is to test that polymorphism can be achieved with feature chaining alone.
+     */
     private void checkFeatureChainingOnly(Document doc) {
 
         // f1: make sure only 1 gsml:CGI_NumericValue is encoded
@@ -555,7 +566,9 @@ public class PolymorphismWfsTest extends AbstractAppSchemaTestSupport {
                 doc);
     }
 
-    /** This is to test referential polymorphism, mixed with sub-type polymorphism. */
+    /**
+     * This is to test referential polymorphism, mixed with sub-type polymorphism.
+     */
     private void checkXlinkHrefValues(Document doc) {
 
         // f1: make sure only null reference is encoded
@@ -698,7 +711,9 @@ public class PolymorphismWfsTest extends AbstractAppSchemaTestSupport {
                 doc);
     }
 
-    /** This is to test that conditional polymorphism works with xs:anyType. */
+    /**
+     * This is to test that conditional polymorphism works with xs:anyType.
+     */
     private void checkAnyType(Document doc) {
 
         // f1: make sure only 1 ex:AnyValue is encoded

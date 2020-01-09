@@ -8,6 +8,7 @@ package org.geoserver.test.onlineTest.setup;
 import java.io.InputStream;
 import java.util.List;
 import java.util.Properties;
+
 import org.geoserver.test.onlineTest.support.AbstractReferenceDataSetup;
 import org.geoserver.test.onlineTest.support.DatabaseUtil;
 import org.geotools.data.oracle.OracleNGDataStoreFactory;

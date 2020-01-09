@@ -10,11 +10,15 @@ import org.geotools.data.DataStore;
 import org.opengis.feature.simple.SimpleFeature;
 import org.opengis.feature.simple.SimpleFeatureType;
 
-/** Convenience base class to make creating inline vector transforms easier */
+/**
+ * Convenience base class to make creating inline vector transforms easier
+ */
 public abstract class AbstractInlineVectorTransform extends AbstractTransform
         implements InlineVectorTransform {
 
-    /** serialVersionUID */
+    /**
+     * serialVersionUID
+     */
     private static final long serialVersionUID = 1L;
 
     @Override

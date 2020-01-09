@@ -7,6 +7,7 @@ package org.geoserver.monitor.web;
 
 import java.util.Arrays;
 import java.util.List;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.panel.Panel;

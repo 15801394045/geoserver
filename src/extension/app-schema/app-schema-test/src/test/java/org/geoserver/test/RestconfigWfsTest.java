@@ -21,6 +21,7 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+
 import org.custommonkey.xmlunit.SimpleNamespaceContext;
 import org.custommonkey.xmlunit.XMLUnit;
 import org.custommonkey.xmlunit.XpathEngine;
@@ -217,7 +218,9 @@ public class RestconfigWfsTest extends CatalogRESTTestSupport {
         assertXpathCount(2, "//gsml:MappedFeature", doc);
     }
 
-    /** Copy the mapping and properties files to the data directory. */
+    /**
+     * Copy the mapping and properties files to the data directory.
+     */
     private void copyFiles() throws Exception {
         File dir =
                 new File(
@@ -277,7 +280,7 @@ public class RestconfigWfsTest extends CatalogRESTTestSupport {
      * Pretty-print a {@link Document} to an {@link OutputStream}.
      *
      * @param document document to be prettified
-     * @param output stream to which output is written
+     * @param output   stream to which output is written
      */
     private void prettyPrint(Document document, OutputStream output) {
         try {

@@ -12,6 +12,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
+
 import org.apache.commons.lang3.StringUtils;
 import org.geotools.data.property.PropertyFeatureReader;
 import org.geotools.util.Classes;
@@ -32,10 +33,14 @@ import org.opengis.filter.identity.FeatureId;
  * @author Rini Angreani (CSIRO Earth Science and Resource Engineering)
  */
 public class AppSchemaTestPostgisSetup extends ReferenceDataPostgisSetup {
-    /** Database schema to be used for postgis test database so they are isolated. */
+    /**
+     * Database schema to be used for postgis test database so they are isolated.
+     */
     public static final String ONLINE_DB_SCHEMA = "appschematest";
 
-    /** Mapping file database parameters */
+    /**
+     * Mapping file database parameters
+     */
     public static String DB_PARAMS =
             "<parameters>" //
                     + "\n<Parameter>\n" //
@@ -180,9 +185,9 @@ public class AppSchemaTestPostgisSetup extends ReferenceDataPostgisSetup {
                             geom.getType().getCoordinateReferenceSystem() == null
                                     ? 2
                                     : geom.getType()
-                                            .getCoordinateReferenceSystem()
-                                            .getCoordinateSystem()
-                                            .getDimension());
+                                    .getCoordinateReferenceSystem()
+                                    .getCoordinateSystem()
+                                    .getDimension());
                     buf.append(");\n");
                 }
 

@@ -10,6 +10,7 @@ import java.util.Set;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+
 import org.geoserver.geofence.core.model.IPAddressRange;
 import org.geoserver.geofence.core.model.Rule;
 import org.geoserver.geofence.core.model.RuleLimits;
@@ -24,7 +25,9 @@ import org.locationtech.jts.io.WKTReader;
 @XmlRootElement(name = "Rule")
 public class JaxbRule {
 
-    /** Specification for "LIMIT" rules. */
+    /**
+     * Specification for "LIMIT" rules.
+     */
     public static class Limits {
 
         private String allowedArea;
@@ -75,7 +78,9 @@ public class JaxbRule {
         }
     }
 
-    /** Access specification for a Layer Attribute */
+    /**
+     * Access specification for a Layer Attribute
+     */
     public static class LayerAttribute {
         private String name;
 
@@ -83,7 +88,8 @@ public class JaxbRule {
 
         private String accessType;
 
-        public LayerAttribute() {}
+        public LayerAttribute() {
+        }
 
         public LayerAttribute(org.geoserver.geofence.core.model.LayerAttribute att) {
             this.name = att.getName();
@@ -130,7 +136,9 @@ public class JaxbRule {
         }
     }
 
-    /** Details for layer access. */
+    /**
+     * Details for layer access.
+     */
     public static class LayerDetails {
         private String layerType;
 
@@ -297,7 +305,8 @@ public class JaxbRule {
 
     private LayerDetails layerDetails;
 
-    public JaxbRule() {}
+    public JaxbRule() {
+    }
 
     public JaxbRule(Rule rule) {
         id = rule.getId();

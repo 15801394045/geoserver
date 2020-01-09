@@ -16,6 +16,7 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.geoserver.wcs2_0.response.DimensionBean;
 import org.geoserver.wcs2_0.response.DimensionBean.DimensionType;
 import org.geoserver.wcs2_0.response.GranuleStack;
@@ -165,16 +166,24 @@ public class NetCDFDimensionsManager {
             this.name = name;
         }
 
-        /** The available (sorted) values for a Dimension */
+        /**
+         * The available (sorted) values for a Dimension
+         */
         private DimensionValues dimensionValues;
 
-        /** The input coverage Dimension (a {@link DimensionBean} instance) */
+        /**
+         * The input coverage Dimension (a {@link DimensionBean} instance)
+         */
         private DimensionBean coverageDimension;
 
-        /** The output netCDF dimension (a {@link Dimension} instance) */
+        /**
+         * The output netCDF dimension (a {@link Dimension} instance)
+         */
         private Dimension netCDFDimension;
 
-        /** the name of this dimension manager */
+        /**
+         * the name of this dimension manager
+         */
         private String name;
 
         @Override
@@ -220,7 +229,9 @@ public class NetCDFDimensionsManager {
             this.name = name;
         }
 
-        /** A simple interface to deal with the values of a Dimension */
+        /**
+         * A simple interface to deal with the values of a Dimension
+         */
         interface DimensionValues {
 
             abstract Object getValues();
@@ -230,7 +241,9 @@ public class NetCDFDimensionsManager {
             abstract int getSize();
         }
 
-        /** A DimensionValues based on Set of objects */
+        /**
+         * A DimensionValues based on Set of objects
+         */
         static class DimensionValuesSet implements DimensionValues {
             Set<Object> values;
 
@@ -254,7 +267,9 @@ public class NetCDFDimensionsManager {
             }
         }
 
-        /** A DimensionValues based on Array */
+        /**
+         * A DimensionValues based on Array
+         */
         static class DimensionValuesArray implements DimensionValues {
             Array values;
 
@@ -287,10 +302,10 @@ public class NetCDFDimensionsManager {
          * Get the values for a Dimension wrapped by its specific DimensionManager and return them
          * as a NetCDF Array object
          *
-         * @param rangeValues specify whether the data should be returned as a 1D array or a 2D
-         *     array (the latter for dimensions having ranges)
+         * @param rangeValues       specify whether the data should be returned as a 1D array or a 2D
+         *                          array (the latter for dimensions having ranges)
          * @param netCDFCoordinates used to check whether a dimension is related to a coordinate. In
-         *     that case, just return the coordinate values.
+         *                          that case, just return the coordinate values.
          */
         public Array getDimensionData(
                 final boolean rangeValues, NetCDFCoordinate[] netCDFCoordinates) {
@@ -330,7 +345,7 @@ public class NetCDFDimensionsManager {
 
                 // Get a proper array to contain the dimension values
                 final int[] dimensionSize =
-                        rangeValues ? new int[] {numElements, 2} : new int[] {numElements};
+                        rangeValues ? new int[]{numElements, 2} : new int[]{numElements};
                 final Array data = NetCDFUtilities.getArray(dimensionSize, netCDFDataType);
 
                 final Index index = data.getIndex();
@@ -357,7 +372,7 @@ public class NetCDFDimensionsManager {
          * referred to the time origin
          *
          * @param input
-         * @param isTime does this object represents a temporal entity?
+         * @param isTime   does this object represents a temporal entity?
          * @param endValue specify whether it needs to return the second value of a range
          */
         private Object getValue(Object input, boolean isTime, boolean endValue) {

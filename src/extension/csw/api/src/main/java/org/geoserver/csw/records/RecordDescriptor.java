@@ -7,6 +7,7 @@ package org.geoserver.csw.records;
 
 import java.util.LinkedHashSet;
 import java.util.List;
+
 import net.opengis.cat.csw20.ElementSetType;
 import org.geotools.data.Query;
 import org.opengis.feature.type.AttributeDescriptor;
@@ -24,13 +25,19 @@ import org.xml.sax.helpers.NamespaceSupport;
  */
 public interface RecordDescriptor {
 
-    /** The GeoTools feature type representing this kind of record */
+    /**
+     * The GeoTools feature type representing this kind of record
+     */
     FeatureType getFeatureType();
 
-    /** The GeoTools descriptor representing this kind of record */
+    /**
+     * The GeoTools descriptor representing this kind of record
+     */
     AttributeDescriptor getFeatureDescriptor();
 
-    /** The outputSchema name for this feature type */
+    /**
+     * The outputSchema name for this feature type
+     */
     String getOutputSchema();
 
     /**

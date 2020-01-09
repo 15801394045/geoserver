@@ -16,6 +16,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+
 import org.geoserver.catalog.Catalog;
 import org.geoserver.catalog.FeatureTypeInfo;
 import org.geoserver.data.test.SystemTestData;
@@ -59,7 +60,9 @@ public class SecuredFeatureChainingTest extends AbstractAppSchemaTestSupport {
         springContextLocations.add("classpath:/test-data/ResourceAccessManagerContext.xml");
     }
 
-    /** Enable the Spring Security auth filters */
+    /**
+     * Enable the Spring Security auth filters
+     */
     @Override
     protected List<javax.servlet.Filter> getFilters() {
         return Collections.singletonList(
@@ -112,7 +115,9 @@ public class SecuredFeatureChainingTest extends AbstractAppSchemaTestSupport {
                 new VectorAccessLimits(CatalogMode.HIDE, readAtts, f, null, null));
     }
 
-    /** Test that denormalized data reports the correct number of features */
+    /**
+     * Test that denormalized data reports the correct number of features
+     */
     @Test
     public void testDenormalisedFeaturesCount() {
         setRequestAuth("cite_readatts", "cite");
@@ -126,7 +131,9 @@ public class SecuredFeatureChainingTest extends AbstractAppSchemaTestSupport {
         assertXpathEvaluatesTo("3", "//wfs:FeatureCollection/@numberOfFeatures", doc);
     }
 
-    /** Test that denormalized data reports the right output */
+    /**
+     * Test that denormalized data reports the right output
+     */
     @Test
     public void testSecureFeatureContent() {
         setRequestAuth("cite_readatts", "cite");

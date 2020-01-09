@@ -10,6 +10,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+
 import org.geoserver.csw.records.CSWRecordDescriptor;
 import org.geotools.feature.ComplexFeatureBuilder;
 import org.geotools.feature.FeatureIterator;

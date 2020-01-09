@@ -6,11 +6,14 @@
 package org.geoserver.security;
 
 import java.util.Collection;
+
 import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-/** An authentication based on a unique key. Allows the unique key to be retrieved later */
+/**
+ * An authentication based on a unique key. Allows the unique key to be retrieved later
+ */
 public class KeyAuthenticationToken extends AbstractAuthenticationToken {
     private static final long serialVersionUID = -6354705060521817602L;
 

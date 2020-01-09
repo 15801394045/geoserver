@@ -7,6 +7,7 @@ package org.geoserver.wps.xml;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import net.opengis.wps10.ComplexDataType;
 import net.opengis.wps10.Wps10Factory;
 import org.eclipse.xsd.XSDElementDeclaration;
@@ -27,7 +28,7 @@ public class ComplexDataTypeBinding extends org.geotools.wps.bindings.ComplexDat
                 && complex.getData().get(0) instanceof XMLEncoderDelegate) {
             XMLEncoderDelegate delegate = (XMLEncoderDelegate) complex.getData().get(0);
             List properties = new ArrayList();
-            properties.add(new Object[] {delegate.getProcessParameterIO().getElement(), delegate});
+            properties.add(new Object[]{delegate.getProcessParameterIO().getElement(), delegate});
 
             return properties;
         }

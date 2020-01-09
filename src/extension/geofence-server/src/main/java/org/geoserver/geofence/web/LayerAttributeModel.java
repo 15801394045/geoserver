@@ -6,6 +6,7 @@ package org.geoserver.geofence.web;
 
 import java.util.Arrays;
 import java.util.List;
+
 import org.geoserver.geofence.core.model.LayerAttribute;
 import org.geoserver.web.wicket.GeoServerDataProvider;
 

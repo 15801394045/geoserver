@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema targetNamespace="http://www.opengis.net/wcseo/1.0"
-    xmlns:wcseo="http://www.opengis.net/wcseo/1.0"
-    xmlns:gml="http://www.opengis.net/gml/3.2"
-    xmlns:gmlcov="http://www.opengis.net/gmlcov/1.0"
-    xmlns:eop="http://www.opengis.net/eop/2.0"
-    xmlns="http://www.w3.org/2001/XMLSchema"
-    elementFormDefault="qualified" version="1.0.0" xml:lang="en">
+        xmlns:wcseo="http://www.opengis.net/wcseo/1.0"
+        xmlns:gml="http://www.opengis.net/gml/3.2"
+        xmlns:gmlcov="http://www.opengis.net/gmlcov/1.0"
+        xmlns:eop="http://www.opengis.net/eop/2.0"
+        xmlns="http://www.w3.org/2001/XMLSchema"
+        elementFormDefault="qualified" version="1.0.0" xml:lang="en">
     <annotation>
         <appinfo>wcsEOCoverage.xsd</appinfo>
-        <documentation>This XML Schema Document encodes the coverage elements and types that are defined in the WCS EO-AP.
+        <documentation>This XML Schema Document encodes the coverage elements and types that are defined in the WCS
+            EO-AP.
             This file is actually not needed by WCS EO-AP implementations but provided for completeness.
             Last updated: 2011-feb-04
             Copyright (c) 2011 Open Geospatial Consortium, Inc. All Rights Reserved.
@@ -20,8 +21,10 @@
     <!-- includes and imports                                        -->
     <!-- =========================================================== -->
     <import namespace="http://www.opengis.net/gml/3.2" schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd"/>
-    <import namespace="http://www.opengis.net/gmlcov/1.0" schemaLocation="http://schemas.opengis.net/gmlcov/1.0/gmlcovAll.xsd"/>
-    <import namespace="http://www.opengis.net/eop/2.0" schemaLocation="http://schemas.opengis.net/eop/2.0/eop.xsd"/> <!--TODO: Where will the schema reside?-->
+    <import namespace="http://www.opengis.net/gmlcov/1.0"
+            schemaLocation="http://schemas.opengis.net/gmlcov/1.0/gmlcovAll.xsd"/>
+    <import namespace="http://www.opengis.net/eop/2.0"
+            schemaLocation="http://schemas.opengis.net/eop/2.0/eop.xsd"/> <!--TODO: Where will the schema reside?-->
     <include schemaLocation="wcsEOAll.xsd"/>
 
     <!-- =========================================================== -->
@@ -36,11 +39,14 @@
         </complexContent>
     </complexType>
     <!-- =========================================================== -->
-    <element name="RectifiedEOCoverage" type="wcseo:AbstractEOCoverageType" abstract="true" substitutionGroup="gmlcov:RectifiedGridCoverage"/>
-    <element name="ReferenceableEOCoverage" type="wcseo:AbstractEOCoverageType" abstract="true" substitutionGroup="gmlcov:ReferenceableGridCoverage"/>
+    <element name="RectifiedEOCoverage" type="wcseo:AbstractEOCoverageType" abstract="true"
+             substitutionGroup="gmlcov:RectifiedGridCoverage"/>
+    <element name="ReferenceableEOCoverage" type="wcseo:AbstractEOCoverageType" abstract="true"
+             substitutionGroup="gmlcov:ReferenceableGridCoverage"/>
     <!-- =========================================================== -->
     <element name="RectifiedDataset" type="wcseo:AbstractEOCoverageType" substitutionGroup="wcseo:RectifiedEOCoverage"/>
-    <element name="ReferenceableDataset" type="wcseo:AbstractEOCoverageType" substitutionGroup="wcseo:ReferenceableEOCoverage"/>
+    <element name="ReferenceableDataset" type="wcseo:AbstractEOCoverageType"
+             substitutionGroup="wcseo:ReferenceableEOCoverage"/>
     <!-- =========================================================== -->
     <element name="RectifiedStitchedMosaic" substitutionGroup="wcseo:RectifiedEOCoverage">
         <complexType>

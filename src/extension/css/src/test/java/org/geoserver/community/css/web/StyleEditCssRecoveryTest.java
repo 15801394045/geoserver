@@ -11,6 +11,7 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+
 import org.geoserver.catalog.Catalog;
 import org.geoserver.catalog.StyleInfo;
 import org.geoserver.catalog.Styles;
@@ -51,8 +52,8 @@ public class StyleEditCssRecoveryTest extends GeoServerWicketTestSupport {
                         "styles/" + styleName + ext);
                 File f =
                         Paths.get(
-                                        testData.getDataDirectoryRoot().getAbsolutePath(),
-                                        "styles/" + styleName + ext)
+                                testData.getDataDirectoryRoot().getAbsolutePath(),
+                                "styles/" + styleName + ext)
                                 .toFile();
                 f.setLastModified(t0.getTime());
             }
@@ -61,8 +62,8 @@ public class StyleEditCssRecoveryTest extends GeoServerWicketTestSupport {
         // Make this SLD file appear as if it was edited after being generated from CSS.
         File manuallyEditedSld =
                 Paths.get(
-                                testData.getDataDirectoryRoot().getAbsolutePath(),
-                                "styles/" + oldCssStyleWithSLDManuallyEdited + ".sld")
+                        testData.getDataDirectoryRoot().getAbsolutePath(),
+                        "styles/" + oldCssStyleWithSLDManuallyEdited + ".sld")
                         .toFile();
         manuallyEditedSld.setLastModified(t0.getTime() + 1000000L);
     }
@@ -98,7 +99,7 @@ public class StyleEditCssRecoveryTest extends GeoServerWicketTestSupport {
         String editorContents =
                 (String)
                         tester.getComponentFromLastRenderedPage(
-                                        "styleForm:styleEditor:editorContainer:editorParent:editor")
+                                "styleForm:styleEditor:editorContainer:editorParent:editor")
                                 .getDefaultModelObject();
         Styles.handler("css").parse(editorContents, null, null, null);
 
@@ -128,7 +129,7 @@ public class StyleEditCssRecoveryTest extends GeoServerWicketTestSupport {
         String editorContents =
                 (String)
                         tester.getComponentFromLastRenderedPage(
-                                        "styleForm:styleEditor:editorContainer:editorParent:editor")
+                                "styleForm:styleEditor:editorContainer:editorParent:editor")
                                 .getDefaultModelObject();
         Styles.handler("css").parse(editorContents, null, null, null);
 
@@ -158,7 +159,7 @@ public class StyleEditCssRecoveryTest extends GeoServerWicketTestSupport {
         String editorContents =
                 (String)
                         tester.getComponentFromLastRenderedPage(
-                                        "styleForm:styleEditor:editorContainer:editorParent:editor")
+                                "styleForm:styleEditor:editorContainer:editorParent:editor")
                                 .getDefaultModelObject();
         Styles.handler("sld").parse(editorContents, null, null, null);
 

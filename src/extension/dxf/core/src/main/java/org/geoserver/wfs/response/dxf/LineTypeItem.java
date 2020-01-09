@@ -4,6 +4,7 @@
  * application directory.
  */
 package org.geoserver.wfs.response.dxf;
+
 /**
  * LineType pattern item. Describes an homogeneus part of a line type pattern, composed of a type
  * (DASH, DOT or EMPTY) and a length expressed in terms of base length.
@@ -33,7 +34,9 @@ public class LineTypeItem {
         this.type = type;
     }
 
-    /** Gets type of item (DASH, DOT, EMPTY). */
+    /**
+     * Gets type of item (DASH, DOT, EMPTY).
+     */
     public int getType() {
         return type;
     }

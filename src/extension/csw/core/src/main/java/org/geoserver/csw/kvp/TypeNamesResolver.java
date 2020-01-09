@@ -8,6 +8,7 @@ package org.geoserver.csw.kvp;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.namespace.QName;
+
 import org.geoserver.csw.util.QNameResolver;
 import org.geoserver.platform.ServiceException;
 import org.xml.sax.helpers.NamespaceSupport;
@@ -26,7 +27,7 @@ class TypeNamesResolver {
      * Parses the type names into a list of {@link QName}
      *
      * @param qualifiedString a comma separated value of qualified names prefix:name,prefix:name,...
-     * @param namespaces Binds prefixes with namespace URIs
+     * @param namespaces      Binds prefixes with namespace URIs
      */
     public List<QName> parseQNames(String qualifiedString, NamespaceSupport namespaces) {
         // simplify the algorithm below so that it does not have to care for NPE

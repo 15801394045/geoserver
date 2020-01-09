@@ -7,6 +7,7 @@ package org.geoserver.wcs.responses;
 import java.io.IOException;
 import java.util.Map;
 import java.util.Set;
+
 import org.geoserver.catalog.Catalog;
 import org.geoserver.catalog.LayerInfo;
 import org.geoserver.catalog.MetadataMap;
@@ -32,7 +33,9 @@ public interface NetCDFEncoder {
      */
     void write() throws IOException, InvalidRangeException;
 
-    /** Close and release resources */
+    /**
+     * Close and release resources
+     */
     void close();
 
     /**

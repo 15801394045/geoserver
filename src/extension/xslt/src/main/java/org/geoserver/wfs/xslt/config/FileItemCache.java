@@ -7,6 +7,7 @@ package org.geoserver.wfs.xslt.config;
 
 import java.io.IOException;
 import java.util.Map;
+
 import org.geoserver.platform.resource.Resource;
 import org.geotools.util.SoftValueHashMap;
 
@@ -14,19 +15,23 @@ import org.geotools.util.SoftValueHashMap;
  * An abstract cache for resources that need to be loaded from files. Loads the resources
  * autonomously, making sure the returned items are fresh compared to the file system
  *
- * @author Andrea Aime - GeoSolutions
  * @param <T>
+ * @author Andrea Aime - GeoSolutions
  */
 abstract class FileItemCache<T> {
 
-    /** Caches objects, from file name to the actual parsed content */
+    /**
+     * Caches objects, from file name to the actual parsed content
+     */
     Map<String, CacheItem<T>> cache;
 
     public FileItemCache(int maxHardReferences) {
         cache = new SoftValueHashMap<String, CacheItem<T>>(maxHardReferences);
     }
 
-    /** Clears the cache contents */
+    /**
+     * Clears the cache contents
+     */
     public void clear() {
         cache.clear();
     }

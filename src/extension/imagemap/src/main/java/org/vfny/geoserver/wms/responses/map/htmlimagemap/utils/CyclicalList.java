@@ -4,6 +4,7 @@
  * application directory.
  */
 package org.vfny.geoserver.wms.responses.map.htmlimagemap.utils;
+
 /**
  * Cyclical implementation of ArrayList: when a not available index is used, then index is wrapped
  * until it falls in tre available index range.
@@ -29,5 +30,6 @@ public class CyclicalList extends java.util.ArrayList {
         return super.set(wrapIndex(index), value);
     }
 
-    public CyclicalList() {}
+    public CyclicalList() {
+    }
 }

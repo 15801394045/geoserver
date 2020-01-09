@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-    <!--
-        Mapped Feature mapping file with no gsml:specification attribute. This is to avoid circular
-        reference problem when this is linked as gsml:occurrence in Geologic Unit type.
-    -->
+<!--
+    Mapped Feature mapping file with no gsml:specification attribute. This is to avoid circular
+    reference problem when this is linked as gsml:occurrence in Geologic Unit type.
+-->
 <as:AppSchemaDataAccess xmlns:as="http://www.geotools.org/app-schema"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.geotools.org/app-schema AppSchemaDataAccess.xsd">
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                        xsi:schemaLocation="http://www.geotools.org/app-schema AppSchemaDataAccess.xsd">
     <namespaces>
         <Namespace>
             <prefix>gml</prefix>
@@ -41,8 +42,8 @@
             <attributeMappings>
                 <AttributeMapping>
                     <targetAttribute>
-						gsml:CGI_TermValue
-					</targetAttribute>
+                        gsml:CGI_TermValue
+                    </targetAttribute>
                     <idExpression>
                         <OCQL>ID</OCQL>
                     </idExpression>
@@ -59,8 +60,8 @@
                 </AttributeMapping>
                 <AttributeMapping>
                     <targetAttribute>
-                       FEATURE_LINK
-					</targetAttribute>
+                        FEATURE_LINK
+                    </targetAttribute>
                     <sourceExpression>
                         <OCQL>MAPPEDFEATURE_ID</OCQL>
                     </sourceExpression>

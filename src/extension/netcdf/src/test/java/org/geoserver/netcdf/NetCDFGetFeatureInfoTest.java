@@ -7,6 +7,7 @@ package org.geoserver.netcdf;
 
 import java.util.HashMap;
 import javax.xml.namespace.QName;
+
 import org.geoserver.catalog.CoverageInfo;
 import org.geoserver.data.test.MockData;
 import org.geoserver.data.test.SystemTestData;
@@ -14,7 +15,9 @@ import org.geoserver.wms.WMSTestSupport;
 import org.junit.Assert;
 import org.junit.Test;
 
-/** Tests for WMS GetFeatureInfo on a layer sourced from NetCDF. */
+/**
+ * Tests for WMS GetFeatureInfo on a layer sourced from NetCDF.
+ */
 public class NetCDFGetFeatureInfoTest extends WMSTestSupport {
 
     @SuppressWarnings({"rawtypes", "unchecked"})

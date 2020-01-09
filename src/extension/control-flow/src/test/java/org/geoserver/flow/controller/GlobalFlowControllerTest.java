@@ -8,6 +8,7 @@ package org.geoserver.flow.controller;
 import static org.junit.Assert.*;
 
 import java.util.concurrent.CountDownLatch;
+
 import org.geoserver.flow.controller.FlowControllerTestingThread.ThreadState;
 import org.geoserver.ows.Request;
 import org.junit.Test;

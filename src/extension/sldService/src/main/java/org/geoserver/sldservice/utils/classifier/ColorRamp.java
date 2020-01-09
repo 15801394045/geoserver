@@ -21,7 +21,9 @@ public interface ColorRamp {
      */
     public void setNumClasses(int numClass);
 
-    /** @return int classes number */
+    /**
+     * @return int classes number
+     */
     public int getNumClasses();
 
     /**
@@ -31,6 +33,8 @@ public interface ColorRamp {
      */
     public List<Color> getRamp() throws Exception;
 
-    /** revert color ramp order */
+    /**
+     * revert color ramp order
+     */
     public void revert();
 }

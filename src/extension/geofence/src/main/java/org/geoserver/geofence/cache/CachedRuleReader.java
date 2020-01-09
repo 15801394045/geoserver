@@ -10,12 +10,14 @@ import com.google.common.cache.CacheStats;
 import com.google.common.cache.LoadingCache;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
+
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.geoserver.geofence.config.GeoFenceConfigurationManager;
 import org.geoserver.geofence.services.RuleReaderService;
 import org.geoserver.geofence.services.dto.AccessInfo;
@@ -48,7 +50,9 @@ public class CachedRuleReader implements RuleReaderService {
 
     private final GeoFenceConfigurationManager configurationManager;
 
-    /** Latest configuration used */
+    /**
+     * Latest configuration used
+     */
     private CacheConfiguration cacheConfiguration = new CacheConfiguration();
 
     public CachedRuleReader(GeoFenceConfigurationManager configurationManager) {
@@ -332,7 +336,9 @@ public class CachedRuleReader implements RuleReaderService {
         return userCache.size();
     }
 
-    /** May be useful if an external peer doesn't want to use the guava dep. */
+    /**
+     * May be useful if an external peer doesn't want to use the guava dep.
+     */
     public String getStatsString() {
         return ruleCache.stats().toString();
     }
@@ -357,7 +363,8 @@ public class CachedRuleReader implements RuleReaderService {
 
         private String pw;
 
-        public NamePw() {}
+        public NamePw() {
+        }
 
         public NamePw(String name, String pw) {
             this.name = name;
@@ -409,7 +416,8 @@ public class CachedRuleReader implements RuleReaderService {
 
     class NoAuthException extends Exception {
 
-        public NoAuthException() {}
+        public NoAuthException() {
+        }
 
         public NoAuthException(String message) {
             super(message);

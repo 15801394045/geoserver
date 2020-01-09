@@ -9,12 +9,15 @@ import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.InputStream;
 import javax.imageio.ImageIO;
+
 import org.geotools.image.test.ImageAssert;
 import org.geotools.util.URLs;
 import org.junit.Test;
 import org.w3c.dom.Document;
 
-/** @author Niels Charlier */
+/**
+ * @author Niels Charlier
+ */
 public class WmsGetMapTest extends AbstractAppSchemaTestSupport {
 
     public WmsGetMapTest() throws Exception {

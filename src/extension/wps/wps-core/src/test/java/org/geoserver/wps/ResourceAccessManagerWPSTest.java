@@ -8,6 +8,7 @@ import static org.junit.Assert.*;
 
 import java.util.Collections;
 import java.util.List;
+
 import org.geoserver.catalog.Catalog;
 import org.geoserver.catalog.FeatureTypeInfo;
 import org.geoserver.data.test.MockData;
@@ -22,14 +23,18 @@ import org.w3c.dom.Document;
 
 public class ResourceAccessManagerWPSTest extends WPSTestSupport {
 
-    /** Enable the Spring Security auth filters */
+    /**
+     * Enable the Spring Security auth filters
+     */
     @Override
     protected List<javax.servlet.Filter> getFilters() {
         return Collections.singletonList(
                 (javax.servlet.Filter) GeoServerExtensions.bean("filterChainProxy"));
     }
 
-    /** Add the test resource access manager in the spring context */
+    /**
+     * Add the test resource access manager in the spring context
+     */
     @Override
     protected void setUpSpring(List<String> springContextLocations) {
         super.setUpSpring(springContextLocations);
@@ -81,15 +86,15 @@ public class ResourceAccessManagerWPSTest extends WPSTestSupport {
         assertEquals("1", xp.evaluate("count(//wps:ProcessSucceeded)", dom));
         String[] lc =
                 xp.evaluate(
-                                "//wps:Output[ows:Identifier = 'bounds']/wps:Data/wps:BoundingBoxData/ows:LowerCorner",
-                                dom)
+                        "//wps:Output[ows:Identifier = 'bounds']/wps:Data/wps:BoundingBoxData/ows:LowerCorner",
+                        dom)
                         .split("\\s+");
         assertEquals(8.0E-4, Double.parseDouble(lc[0]), 0d);
         assertEquals(5.0E-4, Double.parseDouble(lc[1]), 0d);
         String[] uc =
                 xp.evaluate(
-                                "//wps:Output[ows:Identifier = 'bounds']/wps:Data/wps:BoundingBoxData/ows:UpperCorner",
-                                dom)
+                        "//wps:Output[ows:Identifier = 'bounds']/wps:Data/wps:BoundingBoxData/ows:UpperCorner",
+                        dom)
                         .split("\\s+");
         assertEquals(0.0024, Double.parseDouble(uc[0]), 0d);
         assertEquals(0.001, Double.parseDouble(uc[1]), 0d);

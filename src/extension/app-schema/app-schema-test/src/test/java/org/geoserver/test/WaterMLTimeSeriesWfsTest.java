@@ -23,7 +23,9 @@ public class WaterMLTimeSeriesWfsTest extends AbstractAppSchemaTestSupport {
         return new WaterMLTimeSeriesMockData();
     }
 
-    /** Test get feature is fine with QuantityList as a list of simple type. */
+    /**
+     * Test get feature is fine with QuantityList as a list of simple type.
+     */
     @Test
     public void testGetFeature() {
         String path =
@@ -120,7 +122,9 @@ public class WaterMLTimeSeriesWfsTest extends AbstractAppSchemaTestSupport {
                 doc);
     }
 
-    /** Test filtering QuantityList as a list of simple type. */
+    /**
+     * Test filtering QuantityList as a list of simple type.
+     */
     @Test
     public void testFilter() {
         String xml =
@@ -193,7 +197,9 @@ public class WaterMLTimeSeriesWfsTest extends AbstractAppSchemaTestSupport {
                 doc);
     }
 
-    /** Test filtering timePositionList expecting a subset. */
+    /**
+     * Test filtering timePositionList expecting a subset.
+     */
     @Test
     public void testTimePositionSubset() {
         String xml =

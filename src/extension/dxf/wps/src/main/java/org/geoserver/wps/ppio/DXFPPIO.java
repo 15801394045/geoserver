@@ -13,6 +13,7 @@ import java.io.OutputStreamWriter;
 import java.nio.charset.Charset;
 import java.util.LinkedList;
 import java.util.List;
+
 import org.geoserver.wfs.response.dxf.DXFWriter;
 import org.geoserver.wfs.response.dxf.DXFWriterFinder;
 import org.geotools.feature.FeatureCollection;

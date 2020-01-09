@@ -13,7 +13,8 @@ public class PostgresqlProperties {
     private String database;
     private String schema = "meteo";
 
-    public PostgresqlProperties() {}
+    public PostgresqlProperties() {
+    }
 
     public String getHost() {
         return host;

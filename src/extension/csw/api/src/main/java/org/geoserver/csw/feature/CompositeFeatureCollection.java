@@ -8,6 +8,7 @@ package org.geoserver.csw.feature;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
 import org.geotools.feature.FeatureCollection;
 import org.opengis.feature.Feature;
 import org.opengis.feature.type.FeatureType;

@@ -8,6 +8,7 @@ package org.geoserver.monitor.web;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+
 import org.geoserver.monitor.Monitor;
 import org.jfree.data.time.RegularTimePeriod;
 import org.jfree.data.time.Second;
@@ -30,8 +31,10 @@ public class DailyActivityPanel extends ActivityChartBasePanel {
         then.set(Calendar.MINUTE, 0);
         then.set(Calendar.SECOND, 0);
 
-        return new Date[] {then.getTime(), now};
-    };
+        return new Date[]{then.getTime(), now};
+    }
+
+    ;
 
     @Override
     protected RegularTimePeriod getTimePeriod(Date time) {

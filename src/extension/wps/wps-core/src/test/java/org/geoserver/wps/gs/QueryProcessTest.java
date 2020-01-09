@@ -9,6 +9,7 @@ import static org.custommonkey.xmlunit.XMLAssert.assertXpathEvaluatesTo;
 import static org.junit.Assert.assertEquals;
 
 import java.util.Map;
+
 import org.custommonkey.xmlunit.XMLUnit;
 import org.custommonkey.xmlunit.XpathEngine;
 import org.geoserver.catalog.FeatureTypeInfo;
@@ -63,7 +64,7 @@ public class QueryProcessTest extends WPSTestSupport {
         // the expected number of features
         assertEquals(
                 xpath.getMatchingNodes(
-                                "/wfs:FeatureCollection/gml:featureMember/feature:Buildings", d)
+                        "/wfs:FeatureCollection/gml:featureMember/feature:Buildings", d)
                         .getLength(),
                 fc.size());
         // the expected number of attributes (+1 for the feature bounds)

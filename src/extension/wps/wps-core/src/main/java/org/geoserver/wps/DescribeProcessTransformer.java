@@ -6,6 +6,7 @@
 package org.geoserver.wps;
 
 import java.util.Locale;
+
 import net.opengis.ows11.CodeType;
 import net.opengis.wps10.DescribeProcessType;
 import org.geoserver.ows.Ows11Util;

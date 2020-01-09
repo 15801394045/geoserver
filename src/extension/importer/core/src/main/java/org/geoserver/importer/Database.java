@@ -7,11 +7,13 @@ package org.geoserver.importer;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
+
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
 import org.apache.commons.io.FilenameUtils;
 import org.geoserver.importer.job.ProgressMonitor;
 import org.geotools.data.DataStore;
@@ -21,10 +23,14 @@ import org.vfny.geoserver.util.DataStoreUtils;
 
 public class Database extends ImportData {
 
-    /** Database connection parameters */
+    /**
+     * Database connection parameters
+     */
     Map<String, Serializable> parameters;
 
-    /** List of tables */
+    /**
+     * List of tables
+     */
     List<Table> tables = new ArrayList<Table>();
 
     public Database(Map<String, Serializable> parameters) {
@@ -50,7 +56,9 @@ public class Database extends ImportData {
         return database;
     }
 
-    /** Loads the available tables from this database. */
+    /**
+     * Loads the available tables from this database.
+     */
     @Override
     public void prepare(ProgressMonitor m) throws IOException {
         tables = new ArrayList<Table>();

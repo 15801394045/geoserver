@@ -15,6 +15,7 @@ import java.util.StringTokenizer;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 import org.geoserver.config.GeoServerPluginConfigurator;
 import org.geoserver.flow.ControlFlowConfigurator;
 import org.geoserver.flow.FlowController;
@@ -93,7 +94,9 @@ public class DefaultControlFlowConfigurator
 
     long timeout = -1;
 
-    /** Default watches controlflow.properties */
+    /**
+     * Default watches controlflow.properties
+     */
     public DefaultControlFlowConfigurator() {
         GeoServerResourceLoader loader = GeoServerExtensions.bean(GeoServerResourceLoader.class);
         Resource controlflow = loader.get(PROPERTYFILENAME);
@@ -256,9 +259,9 @@ public class DefaultControlFlowConfigurator
     /**
      * Builds a {@link ThreadBlocker} based on a queue size and a prority provider
      *
-     * @param queueSize The count of concurrent requests allowed to run
+     * @param queueSize        The count of concurrent requests allowed to run
      * @param priorityProvider The priority provider (if not null, a {@link
-     *     org.geoserver.flow.controller.PriorityThreadBlocker} will be built
+     *                         org.geoserver.flow.controller.PriorityThreadBlocker} will be built
      * @return a {@link ThreadBlocker}
      */
     private ThreadBlocker buildBlocker(int queueSize, PriorityProvider priorityProvider) {

@@ -7,6 +7,7 @@ package org.geoserver.importer;
 
 import java.io.IOException;
 import java.io.Serializable;
+
 import org.geoserver.importer.job.ProgressMonitor;
 
 /**
@@ -16,19 +17,26 @@ import org.geoserver.importer.job.ProgressMonitor;
  */
 public abstract class ImportData implements Serializable {
 
-    /** serialVersionUID */
+    /**
+     * serialVersionUID
+     */
     private static final long serialVersionUID = 1L;
 
-    /** the format for this data */
+    /**
+     * the format for this data
+     */
     DataFormat format;
 
     Object parent; // either the task or inputcontext - that owns this data
     String charsetEncoding;
 
-    /** message associated with the data, usually for error reporting. */
+    /**
+     * message associated with the data, usually for error reporting.
+     */
     String message;
 
-    public ImportData() {}
+    public ImportData() {
+    }
 
     public ImportData(ImportData data) {
         this.format = data.getFormat();
@@ -59,16 +67,23 @@ public abstract class ImportData implements Serializable {
         this.message = message;
     }
 
-    /** Generates a name for this data. */
+    /**
+     * Generates a name for this data.
+     */
     public abstract String getName();
 
-    /** Runs any initial checks against the data preparing for import. */
+    /**
+     * Runs any initial checks against the data preparing for import.
+     */
     public final void prepare() throws IOException {
         prepare(new ProgressMonitor());
     }
 
-    /** Runs any initial checks against the data preparing for import. */
-    public void prepare(ProgressMonitor monitor) throws IOException {}
+    /**
+     * Runs any initial checks against the data preparing for import.
+     */
+    public void prepare(ProgressMonitor monitor) throws IOException {
+    }
 
     public void cleanup() throws IOException {
         // do nothing
@@ -83,7 +98,9 @@ public abstract class ImportData implements Serializable {
         return this;
     }
 
-    /** A dummy transfer object to hold properties but has no functionality. */
+    /**
+     * A dummy transfer object to hold properties but has no functionality.
+     */
     public static class TransferObject extends ImportData {
 
         @Override
@@ -102,7 +119,8 @@ public abstract class ImportData implements Serializable {
         }
     }
 
-    public void reattach() {}
+    public void reattach() {
+    }
 
     /*
      * (non-Javadoc)
@@ -166,7 +184,9 @@ public abstract class ImportData implements Serializable {
         parent = context;
     }
 
-    /** @return the parent */
+    /**
+     * @return the parent
+     */
     public Object getParent() {
         return parent;
     }

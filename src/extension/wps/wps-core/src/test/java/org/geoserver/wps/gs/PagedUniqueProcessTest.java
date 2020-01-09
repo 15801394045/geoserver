@@ -8,10 +8,12 @@ package org.geoserver.wps.gs;
 import static org.junit.Assert.assertEquals;
 
 import com.google.common.collect.Ordering;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.concurrent.atomic.AtomicInteger;
 import javax.xml.namespace.QName;
+
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import net.sf.json.JSONSerializer;
@@ -150,18 +152,18 @@ public class PagedUniqueProcessTest extends WPSTestSupport {
         // mock optimized store behaviour to always
         // use hasLimits
         Mockito.doAnswer(
-                        new Answer() {
-                            @Override
-                            public Object answer(InvocationOnMock invocation) throws Throwable {
-                                UniqueVisitor visitor =
-                                        (UniqueVisitor) invocation.getArguments()[0];
-                                if (visitor.hasLimits()) {
-                                    counter.incrementAndGet();
-                                }
-                                visitor.setValue(Arrays.asList("a", "b", "c", "d"));
-                                return null;
-                            }
-                        })
+                new Answer() {
+                    @Override
+                    public Object answer(InvocationOnMock invocation) throws Throwable {
+                        UniqueVisitor visitor =
+                                (UniqueVisitor) invocation.getArguments()[0];
+                        if (visitor.hasLimits()) {
+                            counter.incrementAndGet();
+                        }
+                        visitor.setValue(Arrays.asList("a", "b", "c", "d"));
+                        return null;
+                    }
+                })
                 .when(features)
                 .accepts(Mockito.any(UniqueVisitor.class), Mockito.any());
         process.execute(features, FIELD_NAME, 0, 2);

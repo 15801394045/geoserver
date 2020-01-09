@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
+
 import org.geoserver.monitor.Monitor;
 import org.geoserver.monitor.Query;
 import org.geoserver.monitor.RequestData;
@@ -19,7 +20,9 @@ import org.springframework.http.HttpOutputMessage;
 import org.springframework.http.converter.HttpMessageNotWritableException;
 import org.springframework.stereotype.Component;
 
-/** Convert MonitorResutls to a zip file (containing csv files). */
+/**
+ * Convert MonitorResutls to a zip file (containing csv files).
+ */
 @Component
 public class ZIPMonitorConverter extends BaseMonitorConverter {
 

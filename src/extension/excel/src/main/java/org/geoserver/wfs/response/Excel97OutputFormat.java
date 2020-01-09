@@ -30,7 +30,9 @@ public class Excel97OutputFormat extends ExcelOutputFormat {
         mimeType = "application/msexcel";
     }
 
-    /** Returns a new HSSFWorkbook workbook */
+    /**
+     * Returns a new HSSFWorkbook workbook
+     */
     @Override
     protected Workbook getNewWorkbook() {
         return new HSSFWorkbook();

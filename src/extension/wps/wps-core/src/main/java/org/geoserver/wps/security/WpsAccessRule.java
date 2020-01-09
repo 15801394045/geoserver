@@ -8,6 +8,7 @@ import java.io.Serializable;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
@@ -20,7 +21,9 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 @SuppressWarnings("serial")
 public class WpsAccessRule implements Comparable<WpsAccessRule>, Serializable {
 
-    /** Any layer, or any workspace, or any role */
+    /**
+     * Any layer, or any workspace, or any role
+     */
     public static final String ANY = "*";
 
     public static WpsAccessRule EXECUTE_ALL = new WpsAccessRule(ANY, ANY, ANY);
@@ -31,7 +34,9 @@ public class WpsAccessRule implements Comparable<WpsAccessRule>, Serializable {
 
     private Set<String> roles;
 
-    /** Builds a new rule */
+    /**
+     * Builds a new rule
+     */
     public WpsAccessRule(String groupName, String wpsName, Set<String> roles) {
         super();
         this.groupName = groupName;
@@ -40,19 +45,25 @@ public class WpsAccessRule implements Comparable<WpsAccessRule>, Serializable {
         else this.roles = new HashSet<String>(roles);
     }
 
-    /** Builds a new rule */
+    /**
+     * Builds a new rule
+     */
     public WpsAccessRule(String groupName, String wpsName, String... roles) {
         this(groupName, wpsName, roles == null ? null : new HashSet<String>(Arrays.asList(roles)));
     }
 
-    /** Copy constructor */
+    /**
+     * Copy constructor
+     */
     public WpsAccessRule(WpsAccessRule other) {
         this.groupName = other.groupName;
         this.wpsName = other.wpsName;
         this.roles = new HashSet<String>(other.roles);
     }
 
-    /** Builds the default rule: *.*.r=* */
+    /**
+     * Builds the default rule: *.*.r=*
+     */
     public WpsAccessRule() {
         this(ANY, ANY);
     }
@@ -81,12 +92,16 @@ public class WpsAccessRule implements Comparable<WpsAccessRule>, Serializable {
         return roles;
     }
 
-    /** Returns the key for the current rule. No other rule should have the same */
+    /**
+     * Returns the key for the current rule. No other rule should have the same
+     */
     public String getKey() {
         return groupName + "." + wpsName;
     }
 
-    /** Returns the list of roles as a comma separated string for this rule */
+    /**
+     * Returns the list of roles as a comma separated string for this rule
+     */
     public String getValue() {
         if (roles.isEmpty()) {
             return WpsAccessRule.ANY;
@@ -113,7 +128,9 @@ public class WpsAccessRule implements Comparable<WpsAccessRule>, Serializable {
         return compareName;
     }
 
-    /** Equality based on ws/layer/mode only */
+    /**
+     * Equality based on ws/layer/mode only
+     */
     @Override
     public boolean equals(Object obj) {
         if (!(obj instanceof WpsAccessRule)) return false;
@@ -121,19 +138,25 @@ public class WpsAccessRule implements Comparable<WpsAccessRule>, Serializable {
         return 0 == compareTo((WpsAccessRule) obj);
     }
 
-    /** Full equality, roles included */
+    /**
+     * Full equality, roles included
+     */
     public boolean equalsExact(WpsAccessRule obj) {
         if (0 != compareTo(obj)) return false;
         else return roles.equals(obj.roles);
     }
 
-    /** Hashcode based on wfs/layer/mode only */
+    /**
+     * Hashcode based on wfs/layer/mode only
+     */
     @Override
     public int hashCode() {
         return new HashCodeBuilder().append(groupName).append(wpsName).toHashCode();
     }
 
-    /** Generic string comparison that considers the use of {@link #ANY} */
+    /**
+     * Generic string comparison that considers the use of {@link #ANY}
+     */
     public int compareCatalogItems(String item, String otherItem) {
         if (item.equals(otherItem)) return 0;
         else if (ANY.equals(item)) return -1;

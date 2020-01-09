@@ -6,6 +6,7 @@ package org.geoserver.security;
 
 import java.io.IOException;
 import java.util.logging.Logger;
+
 import org.geoserver.config.util.XStreamPersister;
 import org.geoserver.security.config.SecurityNamedServiceConfig;
 import org.geotools.util.logging.Logging;

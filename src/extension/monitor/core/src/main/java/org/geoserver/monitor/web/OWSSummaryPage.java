@@ -7,6 +7,7 @@ package org.geoserver.monitor.web;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.apache.wicket.extensions.markup.html.tabs.AbstractTab;
 import org.apache.wicket.extensions.markup.html.tabs.TabbedPanel;
 import org.apache.wicket.markup.html.panel.Panel;

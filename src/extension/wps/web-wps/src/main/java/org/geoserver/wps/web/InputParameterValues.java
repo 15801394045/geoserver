@@ -11,6 +11,7 @@ import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+
 import org.geoserver.wps.ppio.BoundingBoxPPIO;
 import org.geoserver.wps.ppio.ComplexPPIO;
 import org.geoserver.wps.ppio.CoordinateReferenceSystemPPIO;
@@ -38,7 +39,9 @@ class InputParameterValues implements Serializable {
         RASTER_LAYER,
         REFERENCE,
         SUBPROCESS;
-    };
+    }
+
+    ;
 
     Name processName;
 
@@ -135,7 +138,9 @@ class InputParameterValues implements Serializable {
         return getProcessFactory().getParameterInfo(processName).get(paramName);
     }
 
-    /** A single value, along with the chosen editor and its mime type */
+    /**
+     * A single value, along with the chosen editor and its mime type
+     */
     static class ParameterValue implements Serializable {
         ParameterType type;
 

@@ -5,13 +5,16 @@
 package org.geoserver.test;
 
 import java.util.Optional;
+
 import org.geoserver.catalog.FeatureTypeInfo;
 import org.geotools.feature.NameImpl;
 import org.junit.Test;
 import org.opengis.feature.type.Name;
 import org.w3c.dom.Document;
 
-/** Testing for Coordinates formatting configurations on WFS GML 3.1 & 3.2 on complex features */
+/**
+ * Testing for Coordinates formatting configurations on WFS GML 3.1 & 3.2 on complex features
+ */
 public class CoordinatesFormattingTest extends StationsAppSchemaTestSupport {
 
     @Test

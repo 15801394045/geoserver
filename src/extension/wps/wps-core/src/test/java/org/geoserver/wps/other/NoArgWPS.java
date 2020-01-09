@@ -8,7 +8,9 @@ import org.geoserver.wps.gs.GeoServerProcess;
 import org.geotools.process.factory.DescribeProcess;
 import org.geotools.process.factory.DescribeResult;
 
-/** No argument process, used for the sake of testing */
+/**
+ * No argument process, used for the sake of testing
+ */
 @DescribeProcess(title = "NoArgWPS", description = "NoArgWPS - test case for no argument process")
 public class NoArgWPS implements GeoServerProcess {
 

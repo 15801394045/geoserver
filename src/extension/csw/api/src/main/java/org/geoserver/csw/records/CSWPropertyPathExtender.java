@@ -6,6 +6,7 @@
 package org.geoserver.csw.records;
 
 import javax.xml.namespace.QName;
+
 import org.geoserver.csw.util.QNameResolver;
 import org.geotools.csw.DC;
 import org.geotools.csw.DCT;

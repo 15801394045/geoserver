@@ -6,6 +6,7 @@ package org.geoserver.csw.records;
 
 import java.util.Collection;
 import java.util.Collections;
+
 import org.eclipse.xsd.XSDComplexTypeDefinition;
 import org.eclipse.xsd.XSDTypeDefinition;
 import org.geotools.xsd.Configuration;

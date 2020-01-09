@@ -15,10 +15,13 @@ import org.geoserver.security.config.SecurityUserGroupServiceConfig;
 public class WebServiceBodyResponseUserGroupServiceConfig extends BaseSecurityNamedServiceConfig
         implements SecurityUserGroupServiceConfig {
 
-    /** serialVersionUID */
+    /**
+     * serialVersionUID
+     */
     private static final long serialVersionUID = 4071134289430150933L;
 
-    public WebServiceBodyResponseUserGroupServiceConfig() {}
+    public WebServiceBodyResponseUserGroupServiceConfig() {
+    }
 
     public WebServiceBodyResponseUserGroupServiceConfig(
             WebServiceBodyResponseUserGroupServiceConfig other) {
@@ -78,11 +81,11 @@ public class WebServiceBodyResponseUserGroupServiceConfig extends BaseSecurityNa
      * must be in the form
      *
      * <pre>"GROUP_&lt;ROLENAME 1&gt;, ..., GROUP_&lt;ROLENAME N&gt;"</pre>
-     *
+     * <p>
      * , where
      *
      * <pre>ROLE_&lt;ROLENAME 1&gt;, ..., ROLE_&lt;ROLENAME N&gt;</pre>
-     *
+     * <p>
      * represent all the possible Roles returned by the Web Service.
      *
      * @return the availableGroups
@@ -96,11 +99,11 @@ public class WebServiceBodyResponseUserGroupServiceConfig extends BaseSecurityNa
      * must be in the form
      *
      * <pre>"GROUP_&lt;ROLENAME 1&gt;, ..., GROUP_&lt;ROLENAME N&gt;"</pre>
-     *
+     * <p>
      * , where
      *
      * <pre>ROLE_&lt;ROLENAME 1&gt;, ..., ROLE_&lt;ROLENAME N&gt;</pre>
-     *
+     * <p>
      * represent all the possible Roles returned by the Web Service.
      *
      * @param availableGroups the availableGroups to set

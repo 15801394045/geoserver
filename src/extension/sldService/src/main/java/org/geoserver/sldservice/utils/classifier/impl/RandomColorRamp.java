@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
 import org.geoserver.sldservice.utils.classifier.ColorRamp;
 
 /**

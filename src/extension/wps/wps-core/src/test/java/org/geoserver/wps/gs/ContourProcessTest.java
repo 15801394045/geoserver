@@ -9,6 +9,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
+
 import org.geoserver.catalog.CoverageInfo;
 import org.geotools.coverage.grid.GridCoverage2D;
 import org.geotools.coverage.processing.Operations;

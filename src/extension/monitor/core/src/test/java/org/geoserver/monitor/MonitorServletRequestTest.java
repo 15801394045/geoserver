@@ -17,6 +17,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.concurrent.atomic.AtomicBoolean;
 import javax.servlet.ServletInputStream;
+
 import org.apache.commons.io.IOUtils;
 import org.geoserver.monitor.MonitorServletRequest.MonitorInputStream;
 import org.junit.Test;

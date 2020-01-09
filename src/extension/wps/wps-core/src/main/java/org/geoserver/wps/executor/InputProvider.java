@@ -22,10 +22,14 @@ interface InputProvider {
      */
     public Object getValue(ProgressListener subListener) throws Exception;
 
-    /** Returns the input id for this value */
+    /**
+     * Returns the input id for this value
+     */
     public String getInputId();
 
-    /** Returns true if the value has already been parsed */
+    /**
+     * Returns true if the value has already been parsed
+     */
     public boolean resolved();
 
     /**

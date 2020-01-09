@@ -16,6 +16,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import java.io.InputStream;
+
 import org.easymock.IAnswer;
 import org.geoserver.catalog.Catalog;
 import org.geoserver.catalog.FeatureTypeInfo;
@@ -101,7 +102,9 @@ public class YsldStyleGeneratorTest {
                 new StyleGenerator(cat) {
                     protected void randomizeRamp() {
                         // do not randomize for this test
-                    };
+                    }
+
+                    ;
                 };
         gen.setWorkspace(ws);
 

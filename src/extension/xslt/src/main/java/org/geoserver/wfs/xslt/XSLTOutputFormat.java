@@ -26,6 +26,7 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
+
 import org.apache.commons.beanutils.BeanUtils;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -91,7 +92,7 @@ public class XSLTOutputFormat extends WFSGetFeatureOutputFormat
         Request request = Dispatcher.REQUEST.get();
         if (request != null
                 && (request.getOutputFormat() == null
-                        || !formats.containsKey(request.getOutputFormat()))) {
+                || !formats.containsKey(request.getOutputFormat()))) {
             LOGGER.log(Level.FINE, "Formats are: " + formats);
             return false;
         } else {
@@ -253,7 +254,7 @@ public class XSLTOutputFormat extends WFSGetFeatureOutputFormat
                             operation.getId(),
                             operation.getService(),
                             operation.getMethod(),
-                            new Object[] {copy});
+                            new Object[]{copy});
             return sourceOperation;
         } catch (Exception e) {
             throw new WFSException(

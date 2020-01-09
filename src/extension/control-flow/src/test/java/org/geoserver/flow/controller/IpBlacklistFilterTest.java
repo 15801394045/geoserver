@@ -15,6 +15,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServlet;
+
 import org.junit.Test;
 import org.springframework.mock.web.MockFilterChain;
 import org.springframework.mock.web.MockHttpServletRequest;
@@ -54,7 +55,9 @@ public class IpBlacklistFilterTest {
     }
 
     static class TestServlet extends HttpServlet {
-        /** serialVersionUID */
+        /**
+         * serialVersionUID
+         */
         private static final long serialVersionUID = 1L;
 
         private boolean serviceCalled = false;

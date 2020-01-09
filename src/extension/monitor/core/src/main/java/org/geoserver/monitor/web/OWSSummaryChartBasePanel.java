@@ -7,6 +7,7 @@ package org.geoserver.monitor.web;
 
 import java.awt.Color;
 import java.util.Map;
+
 import org.apache.wicket.markup.html.image.NonCachingImage;
 import org.apache.wicket.markup.html.image.resource.BufferedDynamicImageResource;
 import org.apache.wicket.markup.html.panel.Panel;

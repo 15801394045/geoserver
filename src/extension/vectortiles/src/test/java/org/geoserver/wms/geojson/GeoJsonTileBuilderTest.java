@@ -8,10 +8,12 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 
 import com.google.common.collect.ImmutableMap;
+
 import java.awt.Rectangle;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Map;
+
 import org.geoserver.wms.WMSMapContent;
 import org.geoserver.wms.map.RawMap;
 import org.geotools.geometry.jts.ReferencedEnvelope;

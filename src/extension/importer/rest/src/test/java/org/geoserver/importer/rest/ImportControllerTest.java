@@ -13,6 +13,7 @@ import static org.junit.Assert.assertTrue;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
+
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.geoserver.importer.Database;

@@ -12,7 +12,9 @@ import org.junit.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 
-/** @author Xiangtan Lin, CSIRO Information Management and Technology */
+/**
+ * @author Xiangtan Lin, CSIRO Information Management and Technology
+ */
 public class PropertyEncodingOrderTest extends AbstractAppSchemaTestSupport {
 
     @Override

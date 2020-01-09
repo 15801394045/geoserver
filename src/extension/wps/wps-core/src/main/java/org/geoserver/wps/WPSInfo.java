@@ -6,6 +6,7 @@
 package org.geoserver.wps;
 
 import java.util.List;
+
 import org.geoserver.config.ServiceInfo;
 import org.geoserver.security.CatalogMode;
 
@@ -49,7 +50,9 @@ public interface WPSInfo extends ServiceInfo {
      */
     public int getMaxSynchronousProcesses();
 
-    /** Sets the maximum number of processes that can run in synchronous mode in parallel. */
+    /**
+     * Sets the maximum number of processes that can run in synchronous mode in parallel.
+     */
     public void setMaxSynchronousProcesses(int maxSynchronousProcesses);
 
     /**
@@ -65,10 +68,14 @@ public interface WPSInfo extends ServiceInfo {
      */
     public void setMaxAsynchronousProcesses(int maxAsynchronousProcesses);
 
-    /** Retrieves the process groups configurations */
+    /**
+     * Retrieves the process groups configurations
+     */
     public List<ProcessGroupInfo> getProcessGroups();
 
-    /** Gets the current output storage directory */
+    /**
+     * Gets the current output storage directory
+     */
     public String getStorageDirectory();
 
     /**
@@ -86,7 +93,9 @@ public interface WPSInfo extends ServiceInfo {
      */
     public CatalogMode getCatalogMode();
 
-    /** Sets the policy to control access to secured processes */
+    /**
+     * Sets the policy to control access to secured processes
+     */
     public void setCatalogMode(CatalogMode catalogMode);
 
     /**

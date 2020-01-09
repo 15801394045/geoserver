@@ -7,6 +7,7 @@ package org.geoserver.importer.mosaic;
 
 import java.io.IOException;
 import java.util.List;
+
 import org.geoserver.catalog.Catalog;
 import org.geoserver.catalog.CoverageStoreInfo;
 import org.geoserver.catalog.DimensionInfo;

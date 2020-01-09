@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+
 import org.geoserver.catalog.Catalog;
 import org.geoserver.csw.feature.AbstractFeatureCollection;
 import org.geoserver.csw.feature.MemoryFeatureCollection;
@@ -42,13 +43,13 @@ class CatalogStoreFeatureCollection extends AbstractFeatureCollection<FeatureTyp
     /**
      * Create new CatalogStoreFeatureCollection
      *
-     * @param offset Offset
-     * @param count Count
+     * @param offset    Offset
+     * @param count     Count
      * @param sortOrder Sort Order
-     * @param filter Filter
-     * @param catalog The GeoServer Catalog
-     * @param mapping The Mapping
-     * @param rd Record Descriptor
+     * @param filter    Filter
+     * @param catalog   The GeoServer Catalog
+     * @param mapping   The Mapping
+     * @param rd        Record Descriptor
      */
     public CatalogStoreFeatureCollection(
             int offset,
@@ -77,7 +78,8 @@ class CatalogStoreFeatureCollection extends AbstractFeatureCollection<FeatureTyp
     }
 
     @Override
-    protected void closeIterator(Iterator<Feature> close) {}
+    protected void closeIterator(Iterator<Feature> close) {
+    }
 
     @Override
     public FeatureCollection<FeatureType, Feature> subCollection(Filter filter) {

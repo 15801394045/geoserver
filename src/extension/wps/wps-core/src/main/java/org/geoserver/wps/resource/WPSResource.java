@@ -21,9 +21,13 @@ package org.geoserver.wps.resource;
  */
 public interface WPSResource {
 
-    /** Deletes the resource permanently */
+    /**
+     * Deletes the resource permanently
+     */
     void delete() throws Exception;
 
-    /** The resource name, used for error reporting */
+    /**
+     * The resource name, used for error reporting
+     */
     String getName();
 }

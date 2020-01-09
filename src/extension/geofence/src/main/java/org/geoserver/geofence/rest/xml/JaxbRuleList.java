@@ -9,6 +9,7 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+
 import org.geoserver.geofence.core.model.Rule;
 
 @XmlRootElement(name = "Rules")
@@ -18,7 +19,8 @@ public class JaxbRuleList {
 
     protected long count;
 
-    public JaxbRuleList() {}
+    public JaxbRuleList() {
+    }
 
     public JaxbRuleList(long count) {
         this.count = count;

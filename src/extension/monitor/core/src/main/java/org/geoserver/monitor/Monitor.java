@@ -7,6 +7,7 @@ package org.geoserver.monitor;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.geoserver.config.GeoServer;
 import org.geoserver.monitor.MonitorConfig.Mode;
 import org.geoserver.platform.GeoServerExtensions;
@@ -31,10 +32,14 @@ import org.springframework.context.event.ContextRefreshedEvent;
  */
 public class Monitor implements ApplicationListener<ApplicationEvent> {
 
-    /** thread local request object. */
+    /**
+     * thread local request object.
+     */
     static ThreadLocal<RequestData> REQUEST = new ThreadLocal<RequestData>();
 
-    /** default page size when executing queries */
+    /**
+     * default page size when executing queries
+     */
     static long PAGE_SIZE = 1000;
 
     MonitorConfig config;
@@ -45,7 +50,9 @@ public class Monitor implements ApplicationListener<ApplicationEvent> {
     // configuration, TODO: take another look at the initialization
     GeoServer server;
 
-    /** The set of listeners for the monitor */
+    /**
+     * The set of listeners for the monitor
+     */
     List<RequestDataListener> listeners = new ArrayList<RequestDataListener>();
 
     public Monitor(MonitorConfig config) {

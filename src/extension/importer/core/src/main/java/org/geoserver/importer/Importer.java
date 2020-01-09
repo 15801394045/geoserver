@@ -7,6 +7,7 @@ package org.geoserver.importer;
 
 import com.google.common.collect.Iterators;
 import com.thoughtworks.xstream.XStream;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -25,6 +26,7 @@ import java.util.TreeSet;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.apache.commons.io.FilenameUtils;
 import org.geoserver.catalog.Catalog;
 import org.geoserver.catalog.CatalogBuilder;
@@ -119,19 +121,29 @@ public class Importer implements DisposableBean, ApplicationListener {
 
     private Properties props;
 
-    /** catalog */
+    /**
+     * catalog
+     */
     Catalog catalog;
 
-    /** import context storage */
+    /**
+     * import context storage
+     */
     ImportStore contextStore;
 
-    /** style generator */
+    /**
+     * style generator
+     */
     StyleGenerator styleGen;
 
-    /** style handler */
+    /**
+     * style handler
+     */
     StyleHandler styleHandler = new SLDHandler();
 
-    /** job queue */
+    /**
+     * job queue
+     */
     JobQueue jobs = new JobQueue();
 
     ConcurrentHashMap<Long, ImportTask> currentlyProcessing =
@@ -164,7 +176,9 @@ public class Importer implements DisposableBean, ApplicationListener {
         }
     }
 
-    /** Returns the style generator. */
+    /**
+     * Returns the style generator.
+     */
     public StyleGenerator getStyleGenerator() {
         return styleGen;
     }
@@ -1170,15 +1184,15 @@ public class Importer implements DisposableBean, ApplicationListener {
      * (Re)calculates the bounds for a FeatureTypeInfo. Bounds will be calculated if:
      * <li>The native bounds of the resource are null or empty
      * <li>The resource has a metadata entry "recalculate-bounds"="true"<br>
-     *     <br>
-     *     Otherwise, this method has no effect.<br>
-     *     <br>
-     *     If the metadata entry "recalculate-bounds"="true" exists, it will be removed after bounds
-     *     are calculated.<br>
-     *     <br>
-     *     This is currently used by csv / kml uploads that have a geometry that may be the result
-     *     of a transform, and by JDBC imports which wait to calculate bounds until after the layers
-     *     that will be imported have been chosen.
+     * <br>
+     * Otherwise, this method has no effect.<br>
+     * <br>
+     * If the metadata entry "recalculate-bounds"="true" exists, it will be removed after bounds
+     * are calculated.<br>
+     * <br>
+     * This is currently used by csv / kml uploads that have a geometry that may be the result
+     * of a transform, and by JDBC imports which wait to calculate bounds until after the layers
+     * that will be imported have been chosen.
      *
      * @param resource The resource to calculate the bounds for
      */
@@ -1681,16 +1695,16 @@ public class Importer implements DisposableBean, ApplicationListener {
     boolean isOracleDataStore(DataStore dataStore) {
         return dataStore instanceof JDBCDataStore
                 && "org.geotools.data.oracle.OracleDialect"
-                        .equals(((JDBCDataStore) dataStore).getSQLDialect().getClass().getName());
+                .equals(((JDBCDataStore) dataStore).getSQLDialect().getClass().getName());
     }
 
     boolean isPostGISDataStore(DataStore dataStore) {
         return dataStore instanceof JDBCDataStore
                 && ((JDBCDataStore) dataStore)
-                        .getSQLDialect()
-                        .getClass()
-                        .getName()
-                        .startsWith("org.geotools.data.postgis");
+                .getSQLDialect()
+                .getClass()
+                .getName()
+                .startsWith("org.geotools.data.postgis");
     }
 
     /*
@@ -1844,7 +1858,7 @@ public class Importer implements DisposableBean, ApplicationListener {
                 RemoteData.class, "password", new EncryptedFieldConverter(securityManager));
 
         // security
-        xs.allowTypes(new Class[] {ImportContext.class, ImportTask.class, File.class});
+        xs.allowTypes(new Class[]{ImportContext.class, ImportTask.class, File.class});
         xs.allowTypeHierarchy(TransformChain.class);
         xs.allowTypeHierarchy(DataFormat.class);
         xs.allowTypeHierarchy(ImportData.class);

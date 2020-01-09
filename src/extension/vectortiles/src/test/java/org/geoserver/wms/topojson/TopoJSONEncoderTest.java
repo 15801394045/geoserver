@@ -5,6 +5,7 @@
 package org.geoserver.wms.topojson;
 
 import com.google.common.collect.ImmutableList;
+
 import java.awt.geom.AffineTransform;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
@@ -13,6 +14,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import org.geoserver.wms.topojson.TopoGeom.GeometryColleciton;
 import org.junit.Test;
 import org.locationtech.jts.geom.LineString;

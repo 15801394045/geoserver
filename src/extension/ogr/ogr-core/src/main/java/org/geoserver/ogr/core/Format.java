@@ -17,19 +17,29 @@ import java.util.List;
  * @author Stefano Costa - GeoSolutions
  */
 public class Format {
-    /** The tool output format name */
+    /**
+     * The tool output format name
+     */
     private String toolFormat;
 
-    /** The GeoServer output format name */
+    /**
+     * The GeoServer output format name
+     */
     private String geoserverFormat;
 
-    /** The extension of the generated file, if any (shall include a dot, example, ".tab") */
+    /**
+     * The extension of the generated file, if any (shall include a dot, example, ".tab")
+     */
     private String fileExtension;
 
-    /** The options that will be added to the command line */
+    /**
+     * The options that will be added to the command line
+     */
     private List<String> options;
 
-    /** The type of format, used to instantiate the correct converter */
+    /**
+     * The type of format, used to instantiate the correct converter
+     */
     private OutputType type;
 
     /**
@@ -38,10 +48,14 @@ public class Format {
      */
     private boolean singleFile;
 
-    /** The mime type of the single file output */
+    /**
+     * The mime type of the single file output
+     */
     private String mimeType;
 
-    /** Eventual adapters to to be run before encoding */
+    /**
+     * Eventual adapters to to be run before encoding
+     */
     List<FormatAdapter> formatAdapters;
 
     public Format() {
@@ -87,27 +101,37 @@ public class Format {
                 options);
     }
 
-    /** @return the toolFormat */
+    /**
+     * @return the toolFormat
+     */
     public String getToolFormat() {
         return toolFormat;
     }
 
-    /** @param toolFormat the toolFormat to set */
+    /**
+     * @param toolFormat the toolFormat to set
+     */
     public void setToolFormat(String toolFormat) {
         this.toolFormat = toolFormat;
     }
 
-    /** @return the geoserverFormat */
+    /**
+     * @return the geoserverFormat
+     */
     public String getGeoserverFormat() {
         return geoserverFormat;
     }
 
-    /** @param geoserverFormat the geoserverFormat to set */
+    /**
+     * @param geoserverFormat the geoserverFormat to set
+     */
     public void setGeoserverFormat(String geoserverFormat) {
         this.geoserverFormat = geoserverFormat;
     }
 
-    /** Returns the configured format adapters, or an empty list if none was setup */
+    /**
+     * Returns the configured format adapters, or an empty list if none was setup
+     */
     public List<FormatAdapter> getFormatAdapters() {
         if (formatAdapters == null) {
             formatAdapters = new ArrayList<>();
@@ -115,52 +139,72 @@ public class Format {
         return formatAdapters;
     }
 
-    /** @return the fileExtension */
+    /**
+     * @return the fileExtension
+     */
     public String getFileExtension() {
         return fileExtension;
     }
 
-    /** @param fileExtension the fileExtension to set */
+    /**
+     * @param fileExtension the fileExtension to set
+     */
     public void setFileExtension(String fileExtension) {
         this.fileExtension = fileExtension;
     }
 
-    /** @return the options */
+    /**
+     * @return the options
+     */
     public List<String> getOptions() {
         return options;
     }
 
-    /** @param options the options to set */
+    /**
+     * @param options the options to set
+     */
     public void setOptions(List<String> options) {
         this.options = options;
     }
 
-    /** @return the type */
+    /**
+     * @return the type
+     */
     public OutputType getType() {
         return type;
     }
 
-    /** @param type the type to set */
+    /**
+     * @param type the type to set
+     */
     public void setType(OutputType type) {
         this.type = type;
     }
 
-    /** @return the singleFile */
+    /**
+     * @return the singleFile
+     */
     public boolean isSingleFile() {
         return singleFile;
     }
 
-    /** @param singleFile the singleFile to set */
+    /**
+     * @param singleFile the singleFile to set
+     */
     public void setSingleFile(boolean singleFile) {
         this.singleFile = singleFile;
     }
 
-    /** @return the mimeType */
+    /**
+     * @return the mimeType
+     */
     public String getMimeType() {
         return mimeType;
     }
 
-    /** @param mimeType the mimeType to set */
+    /**
+     * @param mimeType the mimeType to set
+     */
     public void setMimeType(String mimeType) {
         this.mimeType = mimeType;
     }

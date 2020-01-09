@@ -76,7 +76,9 @@ public class SRSWfsTest extends AbstractAppSchemaTestSupport {
         CRS.reset("all");
     }
 
-    /** Test content of GetFeature response. */
+    /**
+     * Test content of GetFeature response.
+     */
     @Test
     public void testGetFeatureContent() throws NoSuchAuthorityCodeException, FactoryException {
         String id = "1";
@@ -238,7 +240,7 @@ public class SRSWfsTest extends AbstractAppSchemaTestSupport {
     @Test
     public void testReproject()
             throws NoSuchAuthorityCodeException, FactoryException, MismatchedDimensionException,
-                    TransformException {
+            TransformException {
 
         // reprojected geometries
         CoordinateReferenceSystem sourceCRS = (CoordinateReferenceSystem) CRS.decode(EPSG_4283);
@@ -250,12 +252,12 @@ public class SRSWfsTest extends AbstractAppSchemaTestSupport {
                         factory.createLinearRing(
                                 factory.getCoordinateSequenceFactory()
                                         .create(
-                                                new Coordinate[] {
-                                                    new Coordinate(-1.2, 52.5),
-                                                    new Coordinate(-1.2, 52.6),
-                                                    new Coordinate(-1.1, 52.6),
-                                                    new Coordinate(-1.1, 52.5),
-                                                    new Coordinate(-1.2, 52.5)
+                                                new Coordinate[]{
+                                                        new Coordinate(-1.2, 52.5),
+                                                        new Coordinate(-1.2, 52.6),
+                                                        new Coordinate(-1.1, 52.6),
+                                                        new Coordinate(-1.1, 52.5),
+                                                        new Coordinate(-1.2, 52.5)
                                                 })),
                         null);
         Polygon targetPolygon = (Polygon) JTS.transform(srcPolygon, transform);
@@ -426,7 +428,9 @@ public class SRSWfsTest extends AbstractAppSchemaTestSupport {
                 doc);
     }
 
-    /** Ensure filters are still working. */
+    /**
+     * Ensure filters are still working.
+     */
     @Test
     public void testFilters() {
         Document doc =

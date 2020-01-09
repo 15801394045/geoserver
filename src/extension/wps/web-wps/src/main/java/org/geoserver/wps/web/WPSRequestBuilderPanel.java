@@ -12,6 +12,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
+
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 import org.apache.wicket.ajax.AjaxRequestTarget;
@@ -92,7 +93,7 @@ public class WPSRequestBuilderPanel extends Panel {
      *   <li<an executeRequest with the processName set, which displays the process and parameters
      * </ul>
      *
-     * @param id id of the panel
+     * @param id             id of the panel
      * @param executeRequest execute request, possibly with processName set
      */
     @SuppressWarnings({"rawtypes", "unchecked"})
@@ -373,7 +374,9 @@ public class WPSRequestBuilderPanel extends Panel {
         return result;
     }
 
-    /** Builds a list of process ids */
+    /**
+     * Builds a list of process ids
+     */
     List<String> buildProcessList() {
         List<String> result = new ArrayList<String>();
 

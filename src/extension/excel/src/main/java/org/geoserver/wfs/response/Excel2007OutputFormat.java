@@ -29,7 +29,9 @@ public class Excel2007OutputFormat extends ExcelOutputFormat {
         mimeType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
     }
 
-    /** Returns a new SXSSFWorkbook workbook */
+    /**
+     * Returns a new SXSSFWorkbook workbook
+     */
     @Override
     protected Workbook getNewWorkbook() {
         return new SXSSFWorkbook(1);

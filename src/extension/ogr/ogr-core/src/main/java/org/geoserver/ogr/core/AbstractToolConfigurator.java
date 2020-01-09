@@ -6,12 +6,14 @@ package org.geoserver.ogr.core;
 
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.converters.extended.NamedMapConverter;
+
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.geoserver.config.util.SecureXStream;
 import org.geoserver.platform.GeoServerExtensions;
 import org.geoserver.platform.GeoServerResourceLoader;
@@ -48,7 +50,9 @@ public abstract class AbstractToolConfigurator implements ApplicationListener<Co
                 }
             };
 
-    /** @param formatConverter the format converter tool */
+    /**
+     * @param formatConverter the format converter tool
+     */
     public AbstractToolConfigurator(
             FormatConverter formatConverter, ToolWrapperFactory wrapperFactory) {
         this.of = formatConverter;
@@ -60,13 +64,19 @@ public abstract class AbstractToolConfigurator implements ApplicationListener<Co
         configFile.addListener(listener);
     }
 
-    /** @return the name of the tool configuration file, relative to GeoServer's data directory. */
+    /**
+     * @return the name of the tool configuration file, relative to GeoServer's data directory.
+     */
     protected abstract String getConfigurationFile();
 
-    /** @return the tool's default configuration */
+    /**
+     * @return the tool's default configuration
+     */
     protected abstract ToolConfiguration getDefaultConfiguration();
 
-    /** Loads configuration from file, if any; otherwise, loads internal defaults. */
+    /**
+     * Loads configuration from file, if any; otherwise, loads internal defaults.
+     */
     public void loadConfiguration() {
         // start with the default configuration, override if we can load the file
         ToolConfiguration configuration = getDefaultConfiguration();
@@ -126,12 +136,14 @@ public abstract class AbstractToolConfigurator implements ApplicationListener<Co
         of.replaceFormats(toBeAdded);
     }
 
-    /** Builds and configures the XStream used for de-serializing the configuration */
+    /**
+     * Builds and configures the XStream used for de-serializing the configuration
+     */
     protected XStream buildXStream() {
         XStream xstream = new SecureXStream();
         xstream.alias("ToolConfiguration", ToolConfiguration.class);
         xstream.alias("Format", Format.class);
-        xstream.allowTypes(new Class[] {ToolConfiguration.class, Format.class});
+        xstream.allowTypes(new Class[]{ToolConfiguration.class, Format.class});
         xstream.allowTypeHierarchy(FormatAdapter.class);
         xstream.addImplicitCollection(Format.class, "options", "option", String.class);
         NamedMapConverter environmentConverter =
@@ -150,7 +162,9 @@ public abstract class AbstractToolConfigurator implements ApplicationListener<Co
         return xstream;
     }
 
-    /** Kill all threads on web app context shutdown to avoid permgen leaks */
+    /**
+     * Kill all threads on web app context shutdown to avoid permgen leaks
+     */
     public void onApplicationEvent(ContextClosedEvent event) {
         if (configFile != null) {
             configFile.removeListener(listener);

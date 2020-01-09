@@ -30,7 +30,9 @@ public class DefaultIdTest extends AbstractAppSchemaTestSupport {
         return new DefaultIdMockData();
     }
 
-    /** Test GetFeature. */
+    /**
+     * Test GetFeature.
+     */
     @Test
     public void testGetFeature() {
         Document doc =
@@ -91,7 +93,9 @@ public class DefaultIdTest extends AbstractAppSchemaTestSupport {
                 doc);
     }
 
-    /** Test GetFeature with filters. */
+    /**
+     * Test GetFeature with filters.
+     */
     @Test
     public void testGetFeatureWithFilter() {
         Document doc =

@@ -6,6 +6,7 @@ package org.geoserver.geofence.rest.xml;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 import javax.xml.parsers.DocumentBuilderFactory;
+
 import org.geotools.gml3.v3_2.GMLConfiguration;
 import org.geotools.xsd.DOMParser;
 import org.geotools.xsd.Encoder;
@@ -45,7 +46,7 @@ public class MultiPolygonAdapter extends XmlAdapter<Object, MultiPolygon> {
             DOMParser parser = new DOMParser(new GMLConfiguration(), doc);
             Geometry geom = (Geometry) parser.parse();
             if (geom instanceof Polygon) {
-                return new MultiPolygon(new Polygon[] {(Polygon) geom}, geom.getFactory());
+                return new MultiPolygon(new Polygon[]{(Polygon) geom}, geom.getFactory());
             } else if (geom instanceof GeometryCollection) {
                 Polygon[] pols = new Polygon[((GeometryCollection) geom).getNumGeometries()];
                 for (int i = 0; i < pols.length; i++) {

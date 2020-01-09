@@ -6,6 +6,7 @@
 package org.geoserver.importer;
 
 import java.sql.Statement;
+
 import org.junit.Ignore;
 
 @Ignore
@@ -68,5 +69,7 @@ public class OracleImportTest extends ImporterDbTestBase {
                 "INSERT INTO WIDGETS VALUES (2,"
                         + "MDSYS.SDO_GEOMETRY(2001,4326,SDO_POINT_TYPE(2.0,2.0,NULL),NULL,NULL), 3.99, 'dynamite')";
         run(sql, st);
-    };
+    }
+
+    ;
 }

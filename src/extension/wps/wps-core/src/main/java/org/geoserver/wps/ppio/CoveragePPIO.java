@@ -10,6 +10,7 @@ import java.io.OutputStream;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import org.geotools.coverage.grid.GridCoverage2D;
 import org.geotools.image.ImageWorker;
 import org.geotools.util.logging.Logging;

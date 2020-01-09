@@ -7,6 +7,7 @@ package org.geoserver.importer.format;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.NoSuchElementException;
+
 import org.geotools.data.FeatureReader;
 import org.geotools.feature.simple.SimpleFeatureBuilder;
 import org.geotools.xsd.Configuration;

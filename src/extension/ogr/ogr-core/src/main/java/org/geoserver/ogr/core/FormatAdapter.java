@@ -9,8 +9,8 @@ package org.geoserver.ogr.core;
  * to cope with format specific limitations. It is explicitly configured in the output format
  * configuration file
  *
- * @author Andrea Aime
  * @param <T>
+ * @author Andrea Aime
  */
 public interface FormatAdapter<T> {
 

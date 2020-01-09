@@ -9,9 +9,12 @@ import com.sleepycat.bind.EntryBinding;
 import com.sleepycat.bind.serial.SerialBase;
 import com.sleepycat.je.DatabaseEntry;
 import com.sleepycat.util.FastOutputStream;
+
 import java.io.*;
 
-/** @author Ian Schneider <ischneider@opengeo.org> */
+/**
+ * @author Ian Schneider <ischneider@opengeo.org>
+ */
 public class SerialVersionSafeSerialBinding<T> extends SerialBase implements EntryBinding<T> {
 
     @Override

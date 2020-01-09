@@ -10,11 +10,13 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import au.com.bytecode.opencsv.CSVReader;
+
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 import org.junit.Test;
 import org.springframework.mock.web.MockHttpServletResponse;
 
@@ -30,7 +32,9 @@ public class CSVOutputFormatTest extends AbstractAppSchemaTestSupport {
         return new BoreholeViewMockData();
     }
 
-    /** Tests full request with CSV outputFormat. */
+    /**
+     * Tests full request with CSV outputFormat.
+     */
     @Test
     public void testFullRequest() throws Exception {
 
@@ -53,22 +57,22 @@ public class CSVOutputFormatTest extends AbstractAppSchemaTestSupport {
 
         // check the header
         String[] header =
-                new String[] {
-                    "gml:id",
-                    "gsmlp:identifier",
-                    "gsmlp:name",
-                    "gsmlp:drillingMethod",
-                    "gsmlp:driller",
-                    "gsmlp:drillStartDate",
-                    "gsmlp:startPoint",
-                    "gsmlp:inclinationType",
-                    "gsmlp:boreholeMaterialCustodian",
-                    "gsmlp:boreholeLength_m",
-                    "gsmlp:elevation_m",
-                    "gsmlp:elevation_srs",
-                    "gsmlp:specification_uri",
-                    "gsmlp:metadata_uri",
-                    "gsmlp:shape"
+                new String[]{
+                        "gml:id",
+                        "gsmlp:identifier",
+                        "gsmlp:name",
+                        "gsmlp:drillingMethod",
+                        "gsmlp:driller",
+                        "gsmlp:drillStartDate",
+                        "gsmlp:startPoint",
+                        "gsmlp:inclinationType",
+                        "gsmlp:boreholeMaterialCustodian",
+                        "gsmlp:boreholeLength_m",
+                        "gsmlp:elevation_m",
+                        "gsmlp:elevation_srs",
+                        "gsmlp:specification_uri",
+                        "gsmlp:metadata_uri",
+                        "gsmlp:shape"
                 };
 
         assertTrue(Arrays.asList(lines.get(0)).containsAll(Arrays.asList(header)));
@@ -79,7 +83,9 @@ public class CSVOutputFormatTest extends AbstractAppSchemaTestSupport {
         assertEquals(headerCount, lines.get(2).length);
     }
 
-    /** Tests CSV outputFormat with filters. */
+    /**
+     * Tests CSV outputFormat with filters.
+     */
     @Test
     public void testFilter() throws Exception {
         String IDENTIFIER = "borehole.GA.17338";
@@ -123,22 +129,22 @@ public class CSVOutputFormatTest extends AbstractAppSchemaTestSupport {
 
         // check the header
         String[] header =
-                new String[] {
-                    "gml:id",
-                    "gsmlp:identifier",
-                    "gsmlp:name",
-                    "gsmlp:drillingMethod",
-                    "gsmlp:driller",
-                    "gsmlp:drillStartDate",
-                    "gsmlp:startPoint",
-                    "gsmlp:inclinationType",
-                    "gsmlp:boreholeMaterialCustodian",
-                    "gsmlp:boreholeLength_m",
-                    "gsmlp:elevation_m",
-                    "gsmlp:elevation_srs",
-                    "gsmlp:specification_uri",
-                    "gsmlp:metadata_uri",
-                    "gsmlp:shape"
+                new String[]{
+                        "gml:id",
+                        "gsmlp:identifier",
+                        "gsmlp:name",
+                        "gsmlp:drillingMethod",
+                        "gsmlp:driller",
+                        "gsmlp:drillStartDate",
+                        "gsmlp:startPoint",
+                        "gsmlp:inclinationType",
+                        "gsmlp:boreholeMaterialCustodian",
+                        "gsmlp:boreholeLength_m",
+                        "gsmlp:elevation_m",
+                        "gsmlp:elevation_srs",
+                        "gsmlp:specification_uri",
+                        "gsmlp:metadata_uri",
+                        "gsmlp:shape"
                 };
 
         assertTrue(Arrays.asList(lines.get(0)).containsAll(Arrays.asList(header)));

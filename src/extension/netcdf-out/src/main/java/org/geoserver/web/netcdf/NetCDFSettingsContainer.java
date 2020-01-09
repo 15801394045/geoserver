@@ -7,6 +7,7 @@ package org.geoserver.web.netcdf;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
 import org.geoserver.catalog.MetadataMap;
 import org.geoserver.web.netcdf.layer.NetCDFLayerSettingsContainer;
 
@@ -86,22 +87,30 @@ public class NetCDFSettingsContainer implements Serializable {
         this.shuffle = shuffle;
     }
 
-    /** Whether to copy attributes from the NetCDF/GRIB source to the main output variable. */
+    /**
+     * Whether to copy attributes from the NetCDF/GRIB source to the main output variable.
+     */
     public boolean isCopyAttributes() {
         return copyAttributes;
     }
 
-    /** Whether to copy global attributes from the NetCDF/GRIB source to the main output. */
+    /**
+     * Whether to copy global attributes from the NetCDF/GRIB source to the main output.
+     */
     public boolean isCopyGlobalAttributes() {
         return copyGlobalAttributes;
     }
 
-    /** Whether to copy attributes from the NetCDF/GRIB source to the main output variable. */
+    /**
+     * Whether to copy attributes from the NetCDF/GRIB source to the main output variable.
+     */
     public void setCopyAttributes(boolean copyAttributes) {
         this.copyAttributes = copyAttributes;
     }
 
-    /** Whether to copy global attributes from the NetCDF/GRIB source to the main output. */
+    /**
+     * Whether to copy global attributes from the NetCDF/GRIB source to the main output.
+     */
     public void setCopyGlobalAttributes(boolean copyGlobalAttributes) {
         this.copyGlobalAttributes = copyGlobalAttributes;
     }
@@ -176,7 +185,9 @@ public class NetCDFSettingsContainer implements Serializable {
             this.value = value;
         }
 
-        /** @see java.lang.Object#equals(java.lang.Object) */
+        /**
+         * @see java.lang.Object#equals(java.lang.Object)
+         */
         @Override
         public boolean equals(Object other) {
             return other instanceof AbstractAttribute
@@ -184,21 +195,27 @@ public class NetCDFSettingsContainer implements Serializable {
                     && getValue().equals(((AbstractAttribute) other).getValue());
         }
 
-        /** @see java.lang.Object#hashCode() */
+        /**
+         * @see java.lang.Object#hashCode()
+         */
         @Override
         public int hashCode() {
             return getKey().hashCode() + getValue().hashCode();
         }
     }
 
-    /** Global attribute to be set in the NetCDF output. */
+    /**
+     * Global attribute to be set in the NetCDF output.
+     */
     public static class GlobalAttribute extends AbstractAttribute {
 
         public GlobalAttribute(String key, String value) {
             super(key, value);
         }
 
-        /** @see java.lang.Object#equals(java.lang.Object) */
+        /**
+         * @see java.lang.Object#equals(java.lang.Object)
+         */
         @Override
         @SuppressWarnings("PMD.OverrideBothEqualsAndHashcode")
         public boolean equals(Object other) {
@@ -206,14 +223,18 @@ public class NetCDFSettingsContainer implements Serializable {
         }
     }
 
-    /** Attribute to be set on the main variable in the NetCDF output. */
+    /**
+     * Attribute to be set on the main variable in the NetCDF output.
+     */
     public static class VariableAttribute extends AbstractAttribute {
 
         public VariableAttribute(String key, String value) {
             super(key, value);
         }
 
-        /** @see java.lang.Object#equals(java.lang.Object) */
+        /**
+         * @see java.lang.Object#equals(java.lang.Object)
+         */
         @Override
         @SuppressWarnings("PMD.OverrideBothEqualsAndHashcode")
         public boolean equals(Object other) {
@@ -221,13 +242,19 @@ public class NetCDFSettingsContainer implements Serializable {
         }
     }
 
-    /** Extra variable that should be copied from NetCDF/GRIB source to output. */
+    /**
+     * Extra variable that should be copied from NetCDF/GRIB source to output.
+     */
     public static class ExtraVariable implements Serializable {
 
-        /** Name of source variable. */
+        /**
+         * Name of source variable.
+         */
         private String source;
 
-        /** Name of output variable. */
+        /**
+         * Name of output variable.
+         */
         private String output;
 
         /**
@@ -239,8 +266,8 @@ public class NetCDFSettingsContainer implements Serializable {
         private String dimensions;
 
         /**
-         * @param source name of source variable
-         * @param output name of output variable
+         * @param source     name of source variable
+         * @param output     name of output variable
          * @param dimensions whitespace-separated list of output variable dimension names
          */
         public ExtraVariable(String source, String output, String dimensions) {
@@ -283,7 +310,9 @@ public class NetCDFSettingsContainer implements Serializable {
             this.dimensions = dimensions;
         }
 
-        /** @see java.lang.Object#equals(java.lang.Object) */
+        /**
+         * @see java.lang.Object#equals(java.lang.Object)
+         */
         @Override
         public boolean equals(Object other) {
             return other instanceof ExtraVariable
@@ -292,7 +321,9 @@ public class NetCDFSettingsContainer implements Serializable {
                     && getDimensions().equals(((ExtraVariable) other).getDimensions());
         }
 
-        /** @see java.lang.Object#hashCode() */
+        /**
+         * @see java.lang.Object#hashCode()
+         */
         @Override
         public int hashCode() {
             return getSource().hashCode() + getOutput().hashCode() + getDimensions().hashCode();

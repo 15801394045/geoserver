@@ -13,6 +13,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Properties;
 import java.util.Set;
+
 import org.apache.wicket.model.IModel;
 import org.geoserver.inspire.InspireSchema;
 
@@ -30,13 +31,17 @@ public class AllLanguagesModel implements IModel<List<String>> {
 
     private List<String> langs;
 
-    /** @see org.apache.wicket.model.IModel#setObject(java.lang.Object) */
+    /**
+     * @see org.apache.wicket.model.IModel#setObject(java.lang.Object)
+     */
     @Override
     public void setObject(List<String> object) {
         this.langs = object;
     }
 
-    /** @see org.apache.wicket.model.IModel#getObject() */
+    /**
+     * @see org.apache.wicket.model.IModel#getObject()
+     */
     @Override
     public List<String> getObject() {
         if (langs == null) {
@@ -49,7 +54,9 @@ public class AllLanguagesModel implements IModel<List<String>> {
         return langs;
     }
 
-    /** @see org.apache.wicket.model.IDetachable#detach() */
+    /**
+     * @see org.apache.wicket.model.IDetachable#detach()
+     */
     @Override
     public void detach() {
         langs = null;

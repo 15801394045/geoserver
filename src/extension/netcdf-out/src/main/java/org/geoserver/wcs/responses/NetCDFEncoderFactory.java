@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Map;
+
 import org.geoserver.wcs2_0.response.GranuleStack;
 import org.geotools.coverage.grid.GridCoverage2D;
 

@@ -11,6 +11,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+
 import org.apache.commons.io.IOUtils;
 import org.geotools.coverage.grid.GridCoverage2D;
 import org.geotools.gce.arcgrid.ArcGridFormat;
@@ -57,7 +58,7 @@ public class ArcGridPPIO extends CDataPPIO {
                 new Parameter<Boolean>(ArcGridFormat.FORCE_CELLSIZE, Boolean.TRUE);
         new ArcGridFormat()
                 .getWriter(os)
-                .write((GridCoverage2D) value, new GeneralParameterValue[] {forceSquareCells});
+                .write((GridCoverage2D) value, new GeneralParameterValue[]{forceSquareCells});
     }
 
     @Override

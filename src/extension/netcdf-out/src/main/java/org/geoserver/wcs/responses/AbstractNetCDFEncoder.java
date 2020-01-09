@@ -18,6 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.measure.UnitConverter;
 import javax.media.jai.iterator.RandomIter;
+
 import org.geoserver.catalog.Catalog;
 import org.geoserver.catalog.LayerInfo;
 import org.geoserver.catalog.MetadataMap;
@@ -96,7 +97,9 @@ public abstract class AbstractNetCDFEncoder implements NetCDFEncoder {
                 }
             };
 
-    /** Bean related to the {@link NetCDFCFParser} */
+    /**
+     * Bean related to the {@link NetCDFCFParser}
+     */
     protected static NetCDFParserBean parserBean = GeoServerExtensions.bean(NetCDFParserBean.class);
 
     /**
@@ -105,46 +108,64 @@ public abstract class AbstractNetCDFEncoder implements NetCDFEncoder {
      */
     protected NetCDFDimensionsManager dimensionsManager = new NetCDFDimensionsManager();
 
-    /** A sample reference granule to get basic properties. */
+    /**
+     * A sample reference granule to get basic properties.
+     */
     protected GridCoverage2D sampleGranule;
 
-    /** The stack of granules containing all the GridCoverage2D to be written. */
+    /**
+     * The stack of granules containing all the GridCoverage2D to be written.
+     */
     protected GranuleStack granuleStack;
 
-    /** The global attributes to be added to the output NetCDF */
+    /**
+     * The global attributes to be added to the output NetCDF
+     */
     protected List<NetCDFSettingsContainer.GlobalAttribute> globalAttributes;
 
-    /** The variable attributes to be added to the output variable */
+    /**
+     * The variable attributes to be added to the output variable
+     */
     protected List<NetCDFSettingsContainer.VariableAttribute> variableAttributes;
 
-    /** The extra variables to be copied from the source to output NetCDF */
+    /**
+     * The extra variables to be copied from the source to output NetCDF
+     */
     protected List<NetCDFSettingsContainer.ExtraVariable> extraVariables;
 
     protected boolean shuffle = NetCDFSettingsContainer.DEFAULT_SHUFFLE;
 
-    /** Whether to copy attributes from NetCDF source variable to output variable */
+    /**
+     * Whether to copy attributes from NetCDF source variable to output variable
+     */
     protected boolean copyAttributes = NetCDFSettingsContainer.DEFAULT_COPY_ATTRIBUTES;
 
-    /** Weather to copy global attributes from NetCDF source to output */
+    /**
+     * Weather to copy global attributes from NetCDF source to output
+     */
     protected boolean copyGlobalAttributes = NetCDFSettingsContainer.DEFAULT_COPY_GLOBAL_ATTRIBUTES;
 
     protected int compressionLevel = NetCDFSettingsContainer.DEFAULT_COMPRESSION;
 
     protected DataPacking dataPacking = DataPacking.getDefault();
 
-    /** The underlying {@link NetcdfFileWriter} which will be used to write down data. */
+    /**
+     * The underlying {@link NetcdfFileWriter} which will be used to write down data.
+     */
     protected NetcdfFileWriter writer;
 
     protected NetcdfFileWriter.Version version;
 
-    /** The instance of the class delegated to do proper NetCDF coordinates setup */
+    /**
+     * The instance of the class delegated to do proper NetCDF coordinates setup
+     */
     protected NetCDFCRSWriter crsWriter;
 
     /**
      * {@link DefaultNetCDFEncoder} constructor.
      *
-     * @param granuleStack the granule stack to be written
-     * @param file an output file
+     * @param granuleStack       the granule stack to be written
+     * @param file               an output file
      * @param encodingParameters customized encoding params
      * @throws IOException
      */
@@ -176,7 +197,9 @@ public abstract class AbstractNetCDFEncoder implements NetCDFEncoder {
         extraVariables = settings.getExtraVariables();
     }
 
-    /** Basic NetCDF Initialization */
+    /**
+     * Basic NetCDF Initialization
+     */
     protected void initializeNetCDF() {
         // Initialize the coordinates writer
         crsWriter = new NetCDFCRSWriter(writer, sampleGranule);
@@ -190,16 +213,22 @@ public abstract class AbstractNetCDFEncoder implements NetCDFEncoder {
         initializeGlobalAttributes();
     }
 
-    /** Initializes the actual data variables in the output NetCDF (not lon/lat/time/elevation) */
+    /**
+     * Initializes the actual data variables in the output NetCDF (not lon/lat/time/elevation)
+     */
     protected abstract void initializeVariables();
 
-    /** Add global attributes to the Dataset if needed */
+    /**
+     * Add global attributes to the Dataset if needed
+     */
     protected void initializeGlobalAttributes() {
         copyGlobalAttribute();
         addGlobalAttributesFromSettings();
     }
 
-    /** Adds the global attributes from the settings in the UI */
+    /**
+     * Adds the global attributes from the settings in the UI
+     */
     protected void addGlobalAttributesFromSettings() {
         // Add global attributes from settings
         if (globalAttributes != null) {
@@ -216,7 +245,9 @@ public abstract class AbstractNetCDFEncoder implements NetCDFEncoder {
         }
     }
 
-    /** Copies over the global attributes, if enabled */
+    /**
+     * Copies over the global attributes, if enabled
+     */
     protected void copyGlobalAttribute() {
         // Copy global attributes from source NetCDF
         if (copyGlobalAttributes) {
@@ -238,7 +269,9 @@ public abstract class AbstractNetCDFEncoder implements NetCDFEncoder {
         }
     }
 
-    /** Return source {@link NetcdfDataset} for this granule or null if it does not have one. */
+    /**
+     * Return source {@link NetcdfDataset} for this granule or null if it does not have one.
+     */
     protected NetcdfDataset getSourceNetcdfDataset(GridCoverage2D granule) {
         URL sourceUrl = (URL) granule.getProperty(GridCoverage2DReader.SOURCE_URL_PROPERTY);
         if (sourceUrl != null) {
@@ -254,7 +287,9 @@ public abstract class AbstractNetCDFEncoder implements NetCDFEncoder {
         return null;
     }
 
-    /** Build an {@link Attribute}, trying different numeric types before falling back on string. */
+    /**
+     * Build an {@link Attribute}, trying different numeric types before falling back on string.
+     */
     protected Attribute buildAttribute(String key, String value) {
         try {
             return new Attribute(key, Integer.parseInt(value));
@@ -297,13 +332,13 @@ public abstract class AbstractNetCDFEncoder implements NetCDFEncoder {
         return writer != null
                 ? writer
                 : NetcdfFileWriter.createNew(
-                        NetcdfFileWriter.Version.netcdf3, file.getAbsolutePath());
+                NetcdfFileWriter.Version.netcdf3, file.getAbsolutePath());
     }
 
     /**
      * Collects stats for future dataPacking from the provided coverage and update the statistics.
      *
-     * @param coverage The coverage on which the statistics will be collected
+     * @param coverage  The coverage on which the statistics will be collected
      * @param statsList The list of statistic beans, one per image band
      */
     protected void collectStats(GridCoverage2D coverage, List<DataPacking.DataStats> statsList) {
@@ -397,7 +432,9 @@ public abstract class AbstractNetCDFEncoder implements NetCDFEncoder {
         }
     }
 
-    /** Initialize the dimensions by creating NetCDF Dimensions of the proper type. */
+    /**
+     * Initialize the dimensions by creating NetCDF Dimensions of the proper type.
+     */
     protected void initializeDimensions() {
 
         initializeHigherRankDimensions();
@@ -406,7 +443,9 @@ public abstract class AbstractNetCDFEncoder implements NetCDFEncoder {
         dimensionsManager.addDimensions(crsWriter.initialize2DCoordinatesDimensions());
     }
 
-    /** Initialize higher rank dimensions, such as time, elevation, custom, ... */
+    /**
+     * Initialize higher rank dimensions, such as time, elevation, custom, ...
+     */
     protected void initializeHigherRankDimensions() {
         // TODO: Do we support coverages which doesn't share same BBox?
         // I assume they will still have the same bbox, eventually filled with background data/fill
@@ -500,10 +539,14 @@ public abstract class AbstractNetCDFEncoder implements NetCDFEncoder {
         }
     }
 
-    /** Actually writes out values into the output NetCDf */
+    /**
+     * Actually writes out values into the output NetCDf
+     */
     protected abstract void writeDataValues() throws IOException, InvalidRangeException;
 
-    /** Release resources */
+    /**
+     * Release resources
+     */
     public void close() {
         // release resources
         for (NetCDFDimensionsManager.NetCDFDimensionMapping mapper :
@@ -522,7 +565,9 @@ public abstract class AbstractNetCDFEncoder implements NetCDFEncoder {
         return outDataType;
     }
 
-    /** Method checking if LayerName and LayerUOM are compliant */
+    /**
+     * Method checking if LayerName and LayerUOM are compliant
+     */
     protected boolean checkCompliant(Variable var) {
         // Check in the Variable
         if (var == null) {
@@ -780,8 +825,8 @@ public abstract class AbstractNetCDFEncoder implements NetCDFEncoder {
                     scalarExtraVariables.add(extra);
                 } else {
                     for (int dimensionIndex = 0;
-                            dimensionIndex < dimName.length;
-                            dimensionIndex++) {
+                         dimensionIndex < dimName.length;
+                         dimensionIndex++) {
                         // side effect of this condition is to skip extra variables
                         // with multiple output dimensions (unsupported)
                         if (extra.getDimensions().equals(dimName[dimensionIndex])) {

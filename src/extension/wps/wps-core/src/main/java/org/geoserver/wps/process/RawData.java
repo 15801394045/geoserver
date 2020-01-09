@@ -16,7 +16,9 @@ import java.io.InputStream;
  */
 public interface RawData {
 
-    /** Returns the mime type of the stream's contents */
+    /**
+     * Returns the mime type of the stream's contents
+     */
     public String getMimeType();
 
     /**
@@ -27,6 +29,8 @@ public interface RawData {
      */
     public InputStream getInputStream() throws IOException;
 
-    /** Optional field for output raw data, used by WPS to generate a file extension */
+    /**
+     * Optional field for output raw data, used by WPS to generate a file extension
+     */
     public String getFileExtension();
 }

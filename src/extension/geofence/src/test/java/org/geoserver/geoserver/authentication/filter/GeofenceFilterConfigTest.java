@@ -5,6 +5,7 @@
 package org.geoserver.geoserver.authentication.filter;
 
 import java.util.logging.Logger;
+
 import org.geoserver.geofence.GeofenceBaseTest;
 import org.geoserver.geoserver.authentication.auth.GeoFenceSecurityProvider;
 import org.geotools.util.logging.Logging;
@@ -12,7 +13,7 @@ import org.junit.Test;
 
 /**
  * @author Alessio Fabiani, GeoSolutions S.A.S.
- *     <p>Validates {@link GeoFenceAuthFilterConfig} objects.
+ * <p>Validates {@link GeoFenceAuthFilterConfig} objects.
  */
 public class GeofenceFilterConfigTest extends GeofenceBaseTest {
 

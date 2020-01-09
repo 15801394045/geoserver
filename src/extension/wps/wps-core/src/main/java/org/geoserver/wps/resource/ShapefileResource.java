@@ -7,6 +7,7 @@ package org.geoserver.wps.resource;
 
 import java.io.File;
 import java.io.IOException;
+
 import org.geoserver.platform.resource.Files;
 import org.geoserver.platform.resource.Resource;
 import org.geotools.data.shapefile.ShapefileDataStore;

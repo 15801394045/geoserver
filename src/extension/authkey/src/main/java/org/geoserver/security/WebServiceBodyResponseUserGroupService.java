@@ -14,6 +14,7 @@ import java.util.logging.Level;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
+
 import org.geoserver.security.config.SecurityNamedServiceConfig;
 import org.geoserver.security.event.UserGroupLoadedListener;
 import org.geoserver.security.impl.AbstractGeoServerSecurityService;
@@ -100,13 +101,17 @@ public class WebServiceBodyResponseUserGroupService extends AbstractGeoServerSec
         defaultSecurityService = null;
     }
 
-    /** Read only store. */
+    /**
+     * Read only store.
+     */
     @Override
     public boolean canCreateStore() {
         return false;
     }
 
-    /** Read only store. */
+    /**
+     * Read only store.
+     */
     @Override
     public GeoServerUserGroupStore createStore() throws IOException {
         return null; // read-only!
@@ -300,17 +305,23 @@ public class WebServiceBodyResponseUserGroupService extends AbstractGeoServerSec
         return passwordValidatorName;
     }
 
-    /** @return the roleServiceName */
+    /**
+     * @return the roleServiceName
+     */
     public String getRoleServiceName() {
         return roleServiceName;
     }
 
-    /** @param roleServiceName the roleServiceName to set */
+    /**
+     * @param roleServiceName the roleServiceName to set
+     */
     public void setRoleServiceName(String roleServiceName) {
         this.roleServiceName = roleServiceName;
     }
 
-    /** @return the defaultSecurityService */
+    /**
+     * @return the defaultSecurityService
+     */
     public GeoServerRoleService getDefaultSecurityService() {
         if (defaultSecurityService == null) {
             if (StringUtils.hasLength(roleServiceName)) {
@@ -334,7 +345,9 @@ public class WebServiceBodyResponseUserGroupService extends AbstractGeoServerSec
         return defaultSecurityService;
     }
 
-    /** @param defaultSecurityService the defaultSecurityService to set */
+    /**
+     * @param defaultSecurityService the defaultSecurityService to set
+     */
     public void setDefaultSecurityService(GeoServerRoleService defaultSecurityService) {
         this.defaultSecurityService = defaultSecurityService;
     }

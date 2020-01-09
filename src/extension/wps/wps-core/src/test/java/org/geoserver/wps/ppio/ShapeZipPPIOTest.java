@@ -10,6 +10,7 @@ import static org.junit.Assert.fail;
 
 import java.io.IOException;
 import java.io.InputStream;
+
 import org.geoserver.util.ZipTestUtil;
 import org.junit.Test;
 

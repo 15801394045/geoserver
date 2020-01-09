@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+
 import org.geoserver.monitor.Query.Comparison;
 import org.geoserver.monitor.Query.SortOrder;
 import org.geoserver.monitor.RequestData.Status;

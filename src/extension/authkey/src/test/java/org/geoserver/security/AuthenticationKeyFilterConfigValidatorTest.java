@@ -9,6 +9,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.logging.Logger;
+
 import org.geoserver.security.validation.FilterConfigException;
 import org.geoserver.security.xml.XMLUserGroupService;
 import org.geoserver.test.GeoServerMockTestSupport;

@@ -1,17 +1,23 @@
-<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:swe="http://www.opengis.net/swe/2.0" targetNamespace="http://www.opengis.net/swe/2.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0.0">
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:swe="http://www.opengis.net/swe/2.0"
+        targetNamespace="http://www.opengis.net/swe/2.0" elementFormDefault="qualified"
+        attributeFormDefault="unqualified" version="2.0.0">
     <annotation>
-        <documentation>SWE Common Data Model schema for specifying parameters of advanced encoding methods (Raw Binary, Base64 Binary, Compressed Binary). See requirements class http://www.opengis.net/spec/SWE/2.0/req/xsd-advanced-encodings/
-        
-        SWE Common is an OGC Standard.
-        Copyright (c) 2010 Open Geospatial Consortium, Inc. All Rights Reserved. 
-        To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
+        <documentation>SWE Common Data Model schema for specifying parameters of advanced encoding methods (Raw Binary,
+            Base64 Binary, Compressed Binary). See requirements class
+            http://www.opengis.net/spec/SWE/2.0/req/xsd-advanced-encodings/
+
+            SWE Common is an OGC Standard.
+            Copyright (c) 2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+            To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
         </documentation>
     </annotation>
     <include schemaLocation="simple_encodings.xsd"/>
     <!-- ================================================= -->
     <element name="Block" substitutionGroup="swe:AbstractSWE" type="swe:BlockType">
         <annotation>
-            <documentation>Binary encoding parameters used to encode a block of values at once. This is used for encrypting or compressing a complete array of values for instance</documentation>
+            <documentation>Binary encoding parameters used to encode a block of values at once. This is used for
+                encrypting or compressing a complete array of values for instance
+            </documentation>
         </annotation>
     </element>
     <complexType name="BlockType">
@@ -19,22 +25,28 @@
             <extension base="swe:AbstractSWEType">
                 <attribute name="compression" type="anyURI" use="optional">
                     <annotation>
-                        <documentation>Name of the compression method used to encrypt the block of values described by the referenced data component</documentation>
+                        <documentation>Name of the compression method used to encrypt the block of values described by
+                            the referenced data component
+                        </documentation>
                     </annotation>
                 </attribute>
                 <attribute name="encryption" type="anyURI" use="optional">
                     <annotation>
-                        <documentation>Name of the encryption method used to encrypt the block of values described by the referenced data component</documentation>
+                        <documentation>Name of the encryption method used to encrypt the block of values described by
+                            the referenced data component
+                        </documentation>
                     </annotation>
                 </attribute>
                 <attribute name="paddingBytes-after" type="integer" use="optional">
                     <annotation>
-                        <documentation>Number of padding bytes present in the stream after this binary block</documentation>
+                        <documentation>Number of padding bytes present in the stream after this binary block
+                        </documentation>
                     </annotation>
                 </attribute>
                 <attribute name="paddingBytes-before" type="integer" use="optional">
                     <annotation>
-                        <documentation>Number of padding bytes present in the stream before this binary block</documentation>
+                        <documentation>Number of padding bytes present in the stream before this binary block
+                        </documentation>
                     </annotation>
                 </attribute>
                 <attribute name="byteLength" type="integer" use="optional">
@@ -44,7 +56,9 @@
                 </attribute>
                 <attribute name="ref" type="string" use="required">
                     <annotation>
-                        <documentation>Reference to the aggregate data component that this binary block encoding settings apply to</documentation>
+                        <documentation>Reference to the aggregate data component that this binary block encoding
+                            settings apply to
+                        </documentation>
                     </annotation>
                 </attribute>
             </extension>
@@ -72,7 +86,9 @@
                 <sequence>
                     <element maxOccurs="unbounded" minOccurs="1" name="member">
                         <annotation>
-                            <documentation>Each member contains detailed parameters for encoding a scalar value or a block of values</documentation>
+                            <documentation>Each member contains detailed parameters for encoding a scalar value or a
+                                block of values
+                            </documentation>
                         </annotation>
                         <complexType>
                             <sequence>
@@ -83,12 +99,15 @@
                 </sequence>
                 <attribute name="byteOrder" type="swe:ByteOrderType" use="required">
                     <annotation>
-                        <documentation>Byte order convention used to encode this binary data (big endian = most significant byte first, MSB or little endian = least significant byte first, LSB)</documentation>
+                        <documentation>Byte order convention used to encode this binary data (big endian = most
+                            significant byte first, MSB or little endian = least significant byte first, LSB)
+                        </documentation>
                     </annotation>
                 </attribute>
                 <attribute name="byteEncoding" type="swe:ByteEncodingType" use="required">
                     <annotation>
-                        <documentation>Byte encoding method used to encode the binary data (raw or base 64)</documentation>
+                        <documentation>Byte encoding method used to encode the binary data (raw or base 64)
+                        </documentation>
                     </annotation>
                 </attribute>
                 <attribute name="byteLength" type="integer" use="optional">
@@ -120,12 +139,15 @@
             <extension base="swe:AbstractSWEType">
                 <attribute name="encryption" type="anyURI" use="optional">
                     <annotation>
-                        <documentation>Name of the encryption method used to encrypt the value of this field</documentation>
+                        <documentation>Name of the encryption method used to encrypt the value of this field
+                        </documentation>
                     </annotation>
                 </attribute>
                 <attribute name="significantBits" type="integer" use="optional">
                     <annotation>
-                        <documentation>Number of significant bits actually used for a binary encoded numerical value (all remaining bits shall be set to 0)</documentation>
+                        <documentation>Number of significant bits actually used for a binary encoded numerical value
+                            (all remaining bits shall be set to 0)
+                        </documentation>
                     </annotation>
                 </attribute>
                 <attribute name="bitLength" type="integer" use="optional"/>
@@ -136,12 +158,14 @@
                 </attribute>
                 <attribute name="dataType" type="anyURI" use="required">
                     <annotation>
-                        <documentation>Binary data type used to encode the value(s) of the referenced data component</documentation>
+                        <documentation>Binary data type used to encode the value(s) of the referenced data component
+                        </documentation>
                     </annotation>
                 </attribute>
                 <attribute name="ref" type="string" use="required">
                     <annotation>
-                        <documentation>Reference to the data component that these binary encoding settings apply to</documentation>
+                        <documentation>Reference to the data component that these binary encoding settings apply to
+                        </documentation>
                     </annotation>
                 </attribute>
             </extension>

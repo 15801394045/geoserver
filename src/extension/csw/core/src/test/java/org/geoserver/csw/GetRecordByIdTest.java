@@ -12,6 +12,7 @@ import static org.junit.Assert.fail;
 
 import java.util.HashMap;
 import java.util.Map;
+
 import net.opengis.cat.csw20.ElementSetType;
 import net.opengis.cat.csw20.GetRecordByIdType;
 import org.geoserver.csw.kvp.GetRecordByIdKvpRequestReader;
@@ -24,7 +25,9 @@ import org.geotools.util.PreventLocalEntityResolver;
 import org.junit.Test;
 import org.w3c.dom.Document;
 
-/** @author Niels Charlier */
+/**
+ * @author Niels Charlier
+ */
 public class GetRecordByIdTest extends CSWSimpleTestSupport {
 
     @Test

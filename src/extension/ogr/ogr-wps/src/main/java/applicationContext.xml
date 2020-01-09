@@ -8,7 +8,7 @@
 
     <bean id="ogr2ogrPPIOFactory" class="org.geoserver.wps.ogr.Ogr2OgrPPIOFactory">
         <constructor-arg>
-            <ref bean="ogr2ogrOutputFormat" />
+            <ref bean="ogr2ogrOutputFormat"/>
         </constructor-arg>
     </bean>
 

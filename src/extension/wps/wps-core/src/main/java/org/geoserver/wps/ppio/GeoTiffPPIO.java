@@ -16,6 +16,7 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageWriteParam;
+
 import org.apache.commons.io.IOUtils;
 import org.geoserver.wcs.responses.GeoTiffWriterHelper;
 import org.geoserver.wps.WPSException;

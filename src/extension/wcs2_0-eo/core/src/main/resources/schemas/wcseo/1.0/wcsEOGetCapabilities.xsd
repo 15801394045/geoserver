@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema targetNamespace="http://www.opengis.net/wcseo/1.0"
-    xmlns:wcseo="http://www.opengis.net/wcseo/1.0"
-    xmlns:wcs="http://www.opengis.net/wcs/2.0"
-    xmlns:ows="http://www.opengis.net/ows/2.0"
-    xmlns:gml="http://www.opengis.net/gml/3.2"
-    xmlns="http://www.w3.org/2001/XMLSchema"
-    elementFormDefault="qualified" version="1.0.0" xml:lang="en">
+        xmlns:wcseo="http://www.opengis.net/wcseo/1.0"
+        xmlns:wcs="http://www.opengis.net/wcs/2.0"
+        xmlns:ows="http://www.opengis.net/ows/2.0"
+        xmlns:gml="http://www.opengis.net/gml/3.2"
+        xmlns="http://www.w3.org/2001/XMLSchema"
+        elementFormDefault="qualified" version="1.0.0" xml:lang="en">
     <annotation>
         <appinfo>wcsEOGetCapabilities.xsd</appinfo>
-        <documentation>This XML Schema Document includes, directly and indirectly, all the XML Schema Documents defined by the OGC Web Coverage Service (WCS) Earth Observation Application Profile (EO-WCS).
+        <documentation>This XML Schema Document includes, directly and indirectly, all the XML Schema Documents defined
+            by the OGC Web Coverage Service (WCS) Earth Observation Application Profile (EO-WCS).
             Last updated: 2011-feb-04
             Copyright (c) 2011 Open Geospatial Consortium, Inc. All Rights Reserved.
             To obtain additional rights of use, visit http://www.opengeospatial.org/legal/.
@@ -28,7 +29,9 @@
     <!-- =========================================================== -->
     <element name="DatasetSeriesSummary" type="wcseo:DatasetSeriesSummaryType">
         <annotation>
-            <documentation>A DatasetSeriesSummary contains information essential for accessing a Dataset Series served by an EO-WCS. The DatasetSeriesId is the identifier used to address a particular Dataset Series.</documentation>
+            <documentation>A DatasetSeriesSummary contains information essential for accessing a Dataset Series served
+                by an EO-WCS. The DatasetSeriesId is the identifier used to address a particular Dataset Series.
+            </documentation>
         </annotation>
     </element>
     <complexType name="DatasetSeriesSummaryType">

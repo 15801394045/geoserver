@@ -20,16 +20,24 @@ import org.springframework.context.ApplicationContext;
  */
 public class Dismiss {
 
-    /** The object tracking the status of various processes */
+    /**
+     * The object tracking the status of various processes
+     */
     private ProcessStatusTracker statusTracker;
 
-    /** The resource tracker, we use it to build the responses */
+    /**
+     * The resource tracker, we use it to build the responses
+     */
     private WPSResourceManager resources;
 
-    /** Used by the response builder */
+    /**
+     * Used by the response builder
+     */
     private ApplicationContext ctx;
 
-    /** Used to cancel the progress of a certain process */
+    /**
+     * Used to cancel the progress of a certain process
+     */
     private WPSExecutionManager executionManager;
 
     public Dismiss(

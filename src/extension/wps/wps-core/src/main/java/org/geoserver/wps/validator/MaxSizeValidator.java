@@ -18,10 +18,14 @@ public class MaxSizeValidator implements WPSInputValidator {
 
     private static final long serialVersionUID = 6486547223545859567L;
 
-    /** Key in the {@link Parameter} metadata map representing the size limits */
+    /**
+     * Key in the {@link Parameter} metadata map representing the size limits
+     */
     public static String PARAMETER_KEY = "MaxSizeMB";
 
-    /** The size of a megabyte, in bytes */
+    /**
+     * The size of a megabyte, in bytes
+     */
     static final long MB = 1024 * 1024;
 
     static final String CODE = "ExcessSize";

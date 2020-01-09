@@ -16,7 +16,9 @@ public class CasAuthenticationFilterConfig extends PreAuthenticatedUserNameFilte
 
     private static final long serialVersionUID = 1L;
 
-    /** if true, no single sign on possible */
+    /**
+     * if true, no single sign on possible
+     */
     private boolean sendRenew;
 
     /**
@@ -44,7 +46,9 @@ public class CasAuthenticationFilterConfig extends PreAuthenticatedUserNameFilte
      */
     private String urlInCasLogoutPage;
 
-    /** Participate in Single Sign Out. */
+    /**
+     * Participate in Single Sign Out.
+     */
     private boolean singleSignOut;
 
     public boolean isSendRenew() {
