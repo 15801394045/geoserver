@@ -7,7 +7,6 @@ package org.geoserver.wms.geojson;
 import static org.geoserver.wms.geojson.GeoJsonBuilderFactory.MIME_TYPE;
 
 import com.google.common.base.Charsets;
-
 import java.awt.Rectangle;
 import java.io.File;
 import java.io.IOException;
@@ -15,7 +14,6 @@ import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.util.Map;
 import javax.measure.Unit;
-
 import org.apache.commons.io.output.DeferredFileOutputStream;
 import org.geoserver.wms.WMSMapContent;
 import org.geoserver.wms.map.RawMap;

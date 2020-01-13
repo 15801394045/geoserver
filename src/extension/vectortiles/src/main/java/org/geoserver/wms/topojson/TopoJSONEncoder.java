@@ -15,7 +15,6 @@ import com.google.gson.JsonParseException;
 import com.google.gson.JsonPrimitive;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
-
 import java.awt.geom.AffineTransform;
 import java.io.IOException;
 import java.io.Writer;
@@ -23,7 +22,6 @@ import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
 import javax.annotation.Nullable;
-
 import org.geoserver.wms.topojson.TopoGeom.GeometryColleciton;
 import org.geoserver.wms.topojson.TopoGeom.LineString;
 import org.geoserver.wms.topojson.TopoGeom.MultiLineString;

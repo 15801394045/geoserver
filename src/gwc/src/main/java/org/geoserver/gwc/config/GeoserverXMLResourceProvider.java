@@ -31,33 +31,35 @@ public class GeoserverXMLResourceProvider implements ConfigurationResourceProvid
 
     private static Log LOGGER = LogFactory.getLog(GeoserverXMLResourceProvider.class);
 
-    static final String GEOWEBCACHE_CONFIG_DIR_PROPERTY = XMLFileResourceProvider.GWC_CONFIG_DIR_VAR;
+    static final String GEOWEBCACHE_CONFIG_DIR_PROPERTY =
+            XMLFileResourceProvider.GWC_CONFIG_DIR_VAR;
 
     static final String GEOWEBCACHE_CACHE_DIR_PROPERTY = DefaultStorageFinder.GWC_CACHE_DIR;
 
     public static final String DEFAULT_CONFIGURATION_DIR_NAME = "gwc";
 
-    /**
-     * Location of the configuration file
-     * 配置文件的位置
-     */
+    /** Location of the configuration file 配置文件的位置 */
     private final Resource configDirectory;
 
-    /**
-     * Name of the configuration file
-     * 配置文件的名称
-     */
+    /** Name of the configuration file 配置文件的名称 */
     private final String configFileName;
 
     private String templateLocation;
 
-    public GeoserverXMLResourceProvider(String providedConfigDirectory, String configFileName, ResourceStore resourceStore) throws ConfigurationException {
+    public GeoserverXMLResourceProvider(
+            String providedConfigDirectory, String configFileName, ResourceStore resourceStore)
+            throws ConfigurationException {
         this.configFileName = configFileName;
         this.configDirectory = inferConfigDirectory(resourceStore, providedConfigDirectory);
-        LOGGER.info(String.format("Will look for '%s' in directory '%s'.", configFileName, configDirectory.dir().getAbsolutePath()));
+        LOGGER.info(
+                String.format(
+                        "Will look for '%s' in directory '%s'.",
+                        configFileName, configDirectory.dir().getAbsolutePath()));
     }
 
-    public GeoserverXMLResourceProvider(final String configFileName, final ResourceStore resourceStore) throws ConfigurationException {
+    public GeoserverXMLResourceProvider(
+            final String configFileName, final ResourceStore resourceStore)
+            throws ConfigurationException {
         this(null, configFileName, resourceStore);
     }
 
@@ -68,23 +70,27 @@ public class GeoserverXMLResourceProvider implements ConfigurationResourceProvid
      * the default location.
      * Helper方法，用于推断包含或将包含GWC配置的目录。首先，我们将使用geowebache_CONFIG_DIR和geowebache_CACHE_DIR属性检查是否设置了特定位置，然后检查是否提供了位置，然后返回默认位置。
      */
-    private static Resource inferConfigDirectory(ResourceStore resourceStore, String providedConfigDirectory) {
-        // check if a specific location was provided using a context property otherwise use the provided directory
-        //检查是否使用上下文属性提供了特定位置，否则使用提供的目录
-        String configDirectoryPath = findFirstDefined(GEOWEBCACHE_CONFIG_DIR_PROPERTY, GEOWEBCACHE_CACHE_DIR_PROPERTY).orElse(providedConfigDirectory);
+    private static Resource inferConfigDirectory(
+            ResourceStore resourceStore, String providedConfigDirectory) {
+        // check if a specific location was provided using a context property otherwise use the
+        // provided directory
+        // 检查是否使用上下文属性提供了特定位置，否则使用提供的目录
+        String configDirectoryPath =
+                findFirstDefined(GEOWEBCACHE_CONFIG_DIR_PROPERTY, GEOWEBCACHE_CACHE_DIR_PROPERTY)
+                        .orElse(providedConfigDirectory);
         // if the configuration directory stills not defined we use the default location
-        //如果仍然没有定义配置目录，则使用默认位置
+        // 如果仍然没有定义配置目录，则使用默认位置
         if (configDirectoryPath == null) {
             configDirectoryPath = DEFAULT_CONFIGURATION_DIR_NAME;
         }
         // instantiate a resource for the configuration directory
-        //为配置目录实例化资源
+        // 为配置目录实例化资源
         File configurationDirectory = new File(configDirectoryPath);
         if (configurationDirectory.isAbsolute()) {
             return Resources.fromPath(configurationDirectory.getAbsolutePath());
         }
         // configuration directory path is relative to geoserver data directory
-        //配置目录路径相对于geoserver数据目录
+        // 配置目录路径相对于geoserver数据目录
         return resourceStore.get(configDirectoryPath);
     }
 
@@ -95,7 +101,7 @@ public class GeoserverXMLResourceProvider implements ConfigurationResourceProvid
     private static Optional<String> findFirstDefined(String... propertiesNames) {
         for (String propertyName : propertiesNames) {
             // looks the property using GeoServer extensions mechanism
-            //使用GeoServer扩展机制查找属性
+            // 使用GeoServer扩展机制查找属性
             String propertyValue = GeoServerExtensions.getProperty(propertyName);
             if (propertyValue != null) {
                 // this property is defined so let's use is value
@@ -107,7 +113,7 @@ public class GeoserverXMLResourceProvider implements ConfigurationResourceProvid
             }
         }
         // no property is defined
-        //未定义属性
+        // 未定义属性
         return Optional.empty();
     }
 

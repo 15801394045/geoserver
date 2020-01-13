@@ -9,7 +9,6 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import static org.geotools.renderer.lite.VectorMapRenderUtils.getStyleQuery;
 
 import com.google.common.base.Stopwatch;
-
 import java.awt.Rectangle;
 import java.io.IOException;
 import java.util.Arrays;
@@ -17,7 +16,7 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+import org.apache.commons.lang3.StringUtils;
 import org.geoserver.platform.ServiceException;
 import org.geoserver.wms.MapProducerCapabilities;
 import org.geoserver.wms.WMSMapContent;
@@ -48,14 +47,14 @@ import org.opengis.referencing.crs.CoordinateReferenceSystem;
 
 public class VectorTileMapOutputFormat extends AbstractMapOutputFormat {
 
-    /**
-     * A logger for this class.
-     */
+    /** A logger for this class. */
     private static final Logger LOGGER = Logging.getLogger(VectorTileMapOutputFormat.class);
 
     private final VectorTileBuilderFactory tileBuilderFactory;
 
     private boolean clipToMapBounds;
+    /** 设置多少级以前化简 */
+    private Long clipGeometryZIndex = 5L;
     /**
      * 1=no oversampling, 4=four time oversample (generialization will be 1/4 pixel)
      * 1=无过采样，4=四次过采样（一般化为1/4像素）
@@ -90,15 +89,17 @@ public class VectorTileMapOutputFormat extends AbstractMapOutputFormat {
         this.clipToMapBounds = clip;
     }
 
-    /**
-     * Does this format use screen coordinates 此格式是否使用屏幕坐标
-     */
+    /** Does this format use screen coordinates 此格式是否使用屏幕坐标 */
     public void setTransformToScreenCoordinates(boolean useScreenCoords) {
         this.transformToScreenCoordinates = useScreenCoords;
     }
 
     public void setTld(TileLayerDispatcher tld) {
         this.tld = tld;
+    }
+
+    public void setClipGeometryZIndex(Long zIndex) {
+        this.clipGeometryZIndex = zIndex;
     }
 
     @Override
@@ -150,7 +151,7 @@ public class VectorTileMapOutputFormat extends AbstractMapOutputFormat {
 
             FeatureCollection<?, ?> features = featureSource.getFeatures(query);
 
-            run(features, pipeline, geometryDescriptor, vectorTileBuilder, layer);
+            run(mapContent, features, pipeline, geometryDescriptor, vectorTileBuilder, layer);
         }
 
         WebMap map = vectorTileBuilder.build(mapContent);
@@ -247,11 +248,22 @@ public class VectorTileMapOutputFormat extends AbstractMapOutputFormat {
     }
 
     void run(
+            final WMSMapContent mapContent,
             FeatureCollection<?, ?> features,
             Pipeline pipeline,
             GeometryDescriptor geometryDescriptor,
             VectorTileBuilder vectorTileBuilder,
             Layer layer) {
+
+        Map<String, String> rawKvp = mapContent.getRequest().getRawKvp();
+        String layers = rawKvp.get("LAYERS");
+        // 获取当前层级
+        String tileindex = rawKvp.get("TILEINDEX");
+        Long zIndex = null;
+        if (StringUtils.isNotBlank(tileindex)) {
+            String[] tileindexs = tileindex.split(",");
+            zIndex = Long.valueOf(tileindexs[2]);
+        }
         Stopwatch sw = Stopwatch.createStarted();
         int count = 0;
         int total = 0;
@@ -263,10 +275,13 @@ public class VectorTileMapOutputFormat extends AbstractMapOutputFormat {
                 total++;
                 Geometry originalGeom;
                 Geometry finalGeom;
-
                 originalGeom = (Geometry) feature.getDefaultGeometryProperty().getValue();
                 try {
-                    finalGeom = pipeline.execute(originalGeom);
+                    if (zIndex != null && zIndex < clipGeometryZIndex) {
+                        finalGeom = pipeline.execute(originalGeom);
+                    } else {
+                        finalGeom = originalGeom;
+                    }
                 } catch (Exception processingException) {
                     processingException.printStackTrace();
                     continue;
@@ -296,9 +311,7 @@ public class VectorTileMapOutputFormat extends AbstractMapOutputFormat {
         }
     }
 
-    /**
-     * @return {@code null}，不是光栅格式。
-     */
+    /** @return {@code null}，不是光栅格式。 */
     @Override
     public MapProducerCapabilities getCapabilities(String format) {
         return null;

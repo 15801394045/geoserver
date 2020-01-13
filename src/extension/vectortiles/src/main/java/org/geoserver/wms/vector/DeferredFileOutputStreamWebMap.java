@@ -7,7 +7,6 @@ package org.geoserver.wms.vector;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-
 import org.apache.commons.io.output.DeferredFileOutputStream;
 import org.geoserver.wms.WMSMapContent;
 import org.geoserver.wms.map.RawMap;
@@ -21,10 +20,10 @@ public class DeferredFileOutputStreamWebMap extends RawMap {
     private DeferredFileOutputStream mapContents;
 
     /**
-     * @param mapContent  Unencoded map content 未编码的地图内容
+     * @param mapContent Unencoded map content 未编码的地图内容
      * @param mapContents Stream to which the encoded map has been written. This will be closed.
-     *                    已将编码映射写入的流。这将关闭。
-     * @param mimeType    Format of the map 地图格式
+     *     已将编码映射写入的流。这将关闭。
+     * @param mimeType Format of the map 地图格式
      * @throws IOException
      */
     public DeferredFileOutputStreamWebMap(

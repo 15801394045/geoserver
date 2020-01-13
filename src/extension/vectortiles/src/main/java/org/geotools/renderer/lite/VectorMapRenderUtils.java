@@ -5,7 +5,6 @@
 package org.geotools.renderer.lite;
 
 import com.google.common.base.Preconditions;
-
 import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,7 +13,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Stream;
-
 import org.geoserver.wms.WMSMapContent;
 import org.geotools.data.DataUtilities;
 import org.geotools.data.FeatureSource;
@@ -74,13 +72,16 @@ public class VectorMapRenderUtils {
      */
     public static Query getStyleQuery(Layer layer, WMSMapContent mapContent) throws IOException {
 
+        // 渲染区域
         final ReferencedEnvelope renderingArea = mapContent.getRenderingArea();
+        // 屏幕大小
         final Rectangle screenSize =
                 new Rectangle(mapContent.getMapWidth(), mapContent.getMapHeight());
+        // 地图比例尺
         final double mapScale = getMapScale(mapContent, renderingArea);
-
+        // 请求缓冲区屏幕
         final int requestBufferScreen = mapContent.getBuffer();
-
+        // 像素大小
         double[] pixelSize = getPixelSize(renderingArea, screenSize);
 
         FeatureSource<?, ?> featureSource = layer.getFeatureSource();
@@ -163,8 +164,8 @@ public class VectorMapRenderUtils {
             pixelSize =
                     Decimator.computeGeneralizationDistances(
                             ProjectiveTransform.create(
-                                    RendererUtilities.worldToScreenTransform(
-                                            renderingArea, screenSize))
+                                            RendererUtilities.worldToScreenTransform(
+                                                    renderingArea, screenSize))
                                     .inverse(),
                             screenSize,
                             1.0);
@@ -173,9 +174,9 @@ public class VectorMapRenderUtils {
                 LOGGER.log(Level.WARNING, "Error while computing pixel size", ex);
             }
             pixelSize =
-                    new double[]{
-                            renderingArea.getWidth() / screenSize.getWidth(),
-                            renderingArea.getHeight() / screenSize.getHeight()
+                    new double[] {
+                        renderingArea.getWidth() / screenSize.getWidth(),
+                        renderingArea.getHeight() / screenSize.getHeight()
                     };
         }
         return pixelSize;
@@ -220,27 +221,40 @@ public class VectorMapRenderUtils {
     }
 
     /*
-     * Reprojects spatial filters so that they match the feature source native CRS, and assuming all literal
-     * geometries are specified in the specified declaredCRS
+
+    *
+    * Modified from StreamingRenderer
+    */
+
+    /**
+     * Reprojects spatial filters so that they match the feature source native CRS, and assuming all
+     * literal geometries are specified in the specified declaredCRS
+     * 重新投影空间过滤器，使其与特征源本地CRS匹配，并假设在指定的声明CRS中指定了所有文字几何图形 从StreamingRenderer修改
      *
-     * Modified from StreamingRenderer
+     * @param declaredCRS declaredCRS
+     * @param schema schema
+     * @param filter filter
+     * @return Filter
      */
     private static Filter reprojectSpatialFilter(
             CoordinateReferenceSystem declaredCRS, FeatureType schema, Filter filter) {
         // NPE avoidance
+        // NPE规避
         if (filter == null) {
             return null;
         }
 
         // do we have any spatial filter?
+        // 我们有空间滤波器吗？
         SpatialFilterVisitor sfv = new SpatialFilterVisitor();
         filter.accept(sfv, null);
         if (!sfv.hasSpatialFilter()) {
             return filter;
         }
 
-        // all right, we need to default the literals to the declaredCRS and then reproject to
-        // the native one
+        // all right, we need to default the literals to the declaredCRS and then reproject to the
+        // native one
+        // 好吧，我们需要将文本默认为声明的crs，然后再重投影到本机的crs
         DefaultCRSFilterVisitor defaulter = new DefaultCRSFilterVisitor(FF, declaredCRS);
         Filter defaulted = (Filter) filter.accept(defaulter, null);
         ReprojectingFilterVisitor reprojector = new ReprojectingFilterVisitor(FF, schema);
@@ -251,16 +265,23 @@ public class VectorMapRenderUtils {
     /**
      * Builds the transform from sourceCRS to destCRS/
      *
+     * <p>构建从sourceCRS到destCRS的转换/
+     *
      * <p>Although we ask for 2D content (via {@link Hints#FEATURE_2D} ) not all DataStore
      * implementations are capable. With that in mind if the provided soruceCRS is not 2D we are
      * going to manually post-process the Geomtries into {@link DefaultGeographicCRS#WGS84} - and
      * the {@link MathTransform2D} returned here will transition from WGS84 to the requested
      * destCRS.
      *
+     * <p>尽管我们要求2D内容（通过{@link Hints#FEATURE_2D}），但并非所有的数据存储实现都能实现。考虑到这一点，如果提供的soruceCRS不是2D，
+     * 我们将手动将geometry过账到{@link DefaultGeographicCRS#WGS84}-并且这里返回的{@link
+     * MathTransform2D}将从WGS84过渡到请求的destCRS。
+     *
      * @param sourceCRS
      * @param destCRS
      * @return the transform from {@code sourceCRS} to {@code destCRS}, will be an identity
-     * transform if the the two crs are equal
+     *     transform if the the two crs are equal 如果两个crs相等，则从{@code sourceCRS}到{@code
+     *     destCRS}的转换将是标识转换
      * @throws FactoryException If no transform is available to the destCRS
      */
     public static MathTransform buildTransform(
@@ -273,6 +294,8 @@ public class VectorMapRenderUtils {
         if (sourceCRS.getCoordinateSystem().getDimension() >= 3) {
             // We are going to transform over to DefaultGeographic.WGS84 on the fly
             // so we will set up our math transform to take it from there
+            // 我们将在运行中转换为DefaultGeographic.WGS84
+            // 所以我们将设置数学转换来从那里获取它
             MathTransform toWgs84_3d =
                     CRS.findMathTransform(sourceCRS, DefaultGeographicCRS.WGS84_3D);
             MathTransform toWgs84_2d =
@@ -283,6 +306,7 @@ public class VectorMapRenderUtils {
         }
 
         // the basic crs transformation, if any
+        // 基本的crs转换，如果有的话
         MathTransform2D sourceToTarget;
         sourceToTarget = (MathTransform2D) CRS.findMathTransform(sourceCRS, destCRS, true);
 
@@ -333,17 +357,24 @@ public class VectorMapRenderUtils {
             final List<Filter> filtersToDS = new ArrayList<Filter>();
             // look at each featuretypestyle
             for (LiteFeatureTypeStyle style : styles) {
-                if (style.elseRules.length > 0) // uh-oh has elseRule
+                // uh-oh has elseRule
+                if (style.elseRules.length > 0) {
                     return;
+                }
                 // look at each rule in the featuretypestyle
                 for (Rule r : style.ruleList) {
-                    if (r.getFilter() == null) return; // uh-oh has no filter (want all rows)
+                    // uh-oh has no filter (want all rows)
+                    if (r.getFilter() == null) {
+                        return;
+                    }
                     filtersToDS.add(r.getFilter());
                 }
             }
 
             // if too many bail out
-            if (filtersToDS.size() > maxFilters) return;
+            if (filtersToDS.size() > maxFilters) {
+                return;
+            }
 
             // or together all the filters
             org.opengis.filter.Filter ruleFiltersCombined;
@@ -374,7 +405,7 @@ public class VectorMapRenderUtils {
             Rectangle screenSize)
             throws IOException {
 
-        ArrayList<LiteFeatureTypeStyle> result = new ArrayList<LiteFeatureTypeStyle>();
+        ArrayList<LiteFeatureTypeStyle> result = new ArrayList<>();
 
         LiteFeatureTypeStyle lfts;
 
@@ -388,7 +419,9 @@ public class VectorMapRenderUtils {
                 List<Rule> elseRuleList = splittedRules[1];
 
                 // if none, skip it
-                if ((ruleList.isEmpty()) && (elseRuleList.isEmpty())) continue;
+                if ((ruleList.isEmpty()) && (elseRuleList.isEmpty())) {
+                    continue;
+                }
 
                 // we can optimize this one and draw directly on the graphics, assuming
                 // there is no composition
@@ -423,7 +456,7 @@ public class VectorMapRenderUtils {
         }
 
         @SuppressWarnings("unchecked")
-        List<Rule>[] ret = new List[]{ruleList, elseRuleList};
+        List<Rule>[] ret = new List[] {ruleList, elseRuleList};
         return ret;
     }
 

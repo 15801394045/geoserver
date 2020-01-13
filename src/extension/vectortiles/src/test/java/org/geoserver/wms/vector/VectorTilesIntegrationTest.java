@@ -10,9 +10,7 @@ import static org.junit.Assert.assertThat;
 
 import com.jayway.jsonpath.DocumentContext;
 import com.jayway.jsonpath.JsonPath;
-
 import java.util.List;
-
 import net.minidev.json.JSONArray;
 import no.ecc.vectortile.VectorTileDecoder;
 import org.geoserver.data.test.MockData;
@@ -54,8 +52,8 @@ public class VectorTilesIntegrationTest extends WMSTestSupport {
         assertEquals(
                 1,
                 ((JSONArray)
-                        json.read(
-                                "$.features[?(@.properties.NAME == 'Dirt Road by Green Forest')]"))
+                                json.read(
+                                        "$.features[?(@.properties.NAME == 'Dirt Road by Green Forest')]"))
                         .size());
     }
 
@@ -118,8 +116,8 @@ public class VectorTilesIntegrationTest extends WMSTestSupport {
         assertEquals(
                 0,
                 ((JSONArray)
-                        json.read(
-                                "$.features[?(@.properties.NAME == 'Dirt Road by Green Forest')]"))
+                                json.read(
+                                        "$.features[?(@.properties.NAME == 'Dirt Road by Green Forest')]"))
                         .size());
     }
 
@@ -143,8 +141,8 @@ public class VectorTilesIntegrationTest extends WMSTestSupport {
         assertEquals(
                 1,
                 ((JSONArray)
-                        json.read(
-                                "$.features[?(@.properties.NAME == 'Dirt Road by Green Forest')]"))
+                                json.read(
+                                        "$.features[?(@.properties.NAME == 'Dirt Road by Green Forest')]"))
                         .size());
     }
 }

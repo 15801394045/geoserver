@@ -6,7 +6,6 @@ package org.geoserver.wms.vector;
 
 import java.awt.Rectangle;
 import java.util.Set;
-
 import org.geotools.geometry.jts.ReferencedEnvelope;
 
 public interface VectorTileBuilderFactory {
@@ -17,16 +16,14 @@ public interface VectorTileBuilderFactory {
      */
     Set<String> getOutputFormats();
 
-    /**
-     * The MIME type of the format produced by builders from this factory. 此工厂的建设者生成的格式的MIME类型。
-     */
+    /** The MIME type of the format produced by builders from this factory. 此工厂的建设者生成的格式的MIME类型。 */
     String getMimeType();
 
     /**
      * Create a builder 创建生成器
      *
      * @param screenSize The extent of the tile in screen coordinates 屏幕坐标中平铺的范围
-     * @param mapArea    The extent of the tile in target CRS coordinates 目标CRS坐标中的平铺范围
+     * @param mapArea The extent of the tile in target CRS coordinates 目标CRS坐标中的平铺范围
      */
     VectorTileBuilder newBuilder(Rectangle screenSize, ReferencedEnvelope mapArea);
 

@@ -49,6 +49,7 @@
             </description>
         </property>
         <property name="tld" ref="gwcTLDispatcher"/>
+        <property name="clipGeometryZIndex" value="6"/>
     </bean>
 
     <bean id="wmsMapBoxBuilderFactory" class="org.geoserver.wms.mapbox.MapBoxTileBuilderFactory">
