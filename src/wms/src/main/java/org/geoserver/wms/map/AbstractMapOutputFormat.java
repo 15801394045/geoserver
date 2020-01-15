@@ -61,11 +61,13 @@ public abstract class AbstractMapOutputFormat implements GetMapOutputFormat {
     }
 
     /** @see GetMapOutputFormat#getMimeType() */
+    @Override
     public String getMimeType() {
         return mime;
     }
 
     /** @see GetMapOutputFormat#getOutputFormatNames() */
+    @Override
     public Set<String> getOutputFormatNames() {
         return outputFormatNames;
     }

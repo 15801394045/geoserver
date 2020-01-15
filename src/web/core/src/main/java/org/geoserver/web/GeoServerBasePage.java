@@ -47,11 +47,12 @@ import org.springframework.security.core.Authentication;
 
 /**
  * Base class for web pages in GeoServer web application.
- *
+ * GeoServer web应用程序中网页的基类。
  * <ul>
- *   <li>The basic layout
- *   <li>An OO infrastructure for common elements location
+ *   <li>The basic layout 基本布局
+ *   <li>An OO infrastructure for common elements location 面向对象的公共元素定位基础设施
  *   <li>An infrastructure for locating subpages in the Spring context and creating links
+ *      用于在Spring上下文中定位子页和创建链接的基础结构
  * </ul>
  *
  * @author Andrea Aaime, The Open Planning Project
@@ -59,7 +60,10 @@ import org.springframework.security.core.Authentication;
  */
 public class GeoServerBasePage extends WebPage implements IAjaxIndicatorAware {
 
-    /** The id of the panel sitting in the page-header, right below the page description */
+    /**
+     * The id of the panel sitting in the page-header, right below the page description
+     * 位于页眉、页面描述正下方的面板的id
+     * */
     protected static final String HEADER_PANEL = "headerPanel";
 
     protected static final Logger LOGGER = Logging.getLogger(GeoServerBasePage.class);

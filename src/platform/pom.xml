@@ -18,7 +18,7 @@
  <artifactId>gs-platform</artifactId>
  <packaging>jar</packaging>
  <name>Core Platform Module</name>
-
+ 
  <dependencies>
   <dependency>
    <groupId>org.springframework</groupId>

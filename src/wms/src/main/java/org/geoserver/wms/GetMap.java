@@ -57,7 +57,7 @@ import org.opengis.referencing.crs.CoordinateReferenceSystem;
 
 /**
  * WMS GetMap operation default implementation.
- *
+ * WMS GetMap操作的默认实现。
  * @author Gabriel Roldan
  */
 public class GetMap {
@@ -89,9 +89,9 @@ public class GetMap {
      * Implements the map production logic for a WMS GetMap request, delegating the encoding to the
      * appropriate output format to a {@link GetMapOutputFormat} appropriate for the required
      * format.
-     *
+     * 实现WMS GetMap请求的映射生成逻辑，将编码委托给适当的输出格式，将编码委托给适合所需格式的{@link GetMapOutputFormat}
      * <p>Preconditions:
-     *
+     * 先决条件
      * <ul>
      *   <li>request.getLayers().size() > 0
      *   <li>request.getStyles().length == request.getLayers().size()
@@ -174,32 +174,33 @@ public class GetMap {
 
         final boolean isTiled = MetatileMapOutputFormat.isRequestTiled(request, delegate);
 
-        //
         // check the capabilities for this delegate raster map produces
-        //
+        // 检查此代理光栅地图生成的功能
         final MapProducerCapabilities cap = delegate.getCapabilities(request.getFormat());
 
         // is the request tiled? We support that?
+        //请求是否平铺？我们支持吗？
         if (cap != null && !cap.isTiledRequestsSupported() && isTiled) {
             throw new ServiceException(
                     "Format " + request.getFormat() + " does not support tiled requests");
         }
         // enable on the fly meta tiling if request looks like a tiled one
+        //如果请求看起来像平铺的请求，则启用动态元平铺
         if (MetatileMapOutputFormat.isRequestTiled(request, delegate)) {
             if (LOGGER.isLoggable(Level.FINER)) {
                 LOGGER.finer("Tiled request detected, activating on the fly meta tiler");
             }
 
-            delegate =
-                    new MetatileMapOutputFormat(request, (RenderedImageMapOutputFormat) delegate);
+            delegate = new MetatileMapOutputFormat(request, (RenderedImageMapOutputFormat) delegate);
         }
 
         // check if the format can do animations
-        final boolean isMultivaluedSupported =
-                (cap != null ? cap.isMultivalueRequestsSupported() : false);
+        //检查格式是否可以制作动画
+        final boolean isMultivaluedSupported = (cap != null && cap.isMultivalueRequestsSupported());
 
         //
         // Test if the parameter "TIME" or ELEVATION are present in the WMS
+        //测试WMS中是否存在参数“TIME”或ELEVATION
         // request
         // TIME
         List<Object> times = request.getTime();
@@ -207,35 +208,34 @@ public class GetMap {
         boolean singleTimeRange = numTimes == 1 && times.get(0) instanceof DateRange;
 
         // ELEVATION
+        //高程
         List<Object> elevations = request.getElevation();
         final int numElevations = elevations.size();
-        boolean singleElevationRange =
-                numElevations == 1 && elevations.get(0) instanceof NumberRange;
+        boolean singleElevationRange = numElevations == 1 && elevations.get(0) instanceof NumberRange;
 
         // handling time series and elevation series
+        //处理时间序列和高程序列
         MaxAnimationTimeHelper maxAnimationTimeHelper = new MaxAnimationTimeHelper(wms, request);
         int maxAllowedFrames = wms.getMaxAllowedFrames();
         if ((numTimes > 1 || singleTimeRange) && isMultivaluedSupported) {
             WebMap map = null;
-            List<RenderedImage> images = new ArrayList<RenderedImage>();
+            List<RenderedImage> images = new ArrayList<>();
             if (singleTimeRange) {
-                List<Object> expandTimeList =
-                        expandTimeList((DateRange) times.get(0), request, maxAllowedFrames);
+                List<Object> expandTimeList = expandTimeList((DateRange) times.get(0), request, maxAllowedFrames);
                 if (expandTimeList.size() == 0) {
                     return executeInternal(
-                            mapContent, request, delegate, Arrays.asList(times.get(0)), elevations);
+                            mapContent, request, delegate, Collections.singletonList(times.get(0)), elevations);
                 } else {
                     times = expandTimeList;
                 }
             }
             for (Object currentTime : times) {
                 maxAnimationTimeHelper.checkTimeout();
-                map =
-                        executeInternal(
+                map = executeInternal(
                                 mapContent,
                                 request,
                                 delegate,
-                                Arrays.asList(currentTime),
+                        Collections.singletonList(currentTime),
                                 elevations);
 
                 // remove layers to start over again
@@ -396,20 +396,16 @@ public class GetMap {
     /**
      * Actually computes the WebMap, either in a single shot, or for a particular time/elevation
      * value should there be a list of them
-     *
-     * @param request
-     * @param mapContent
-     * @param delegate
-     * @param env
+     * 实际上，可以在一个快照中计算网络地图，如果有一个列表，则可以为特定的时间/高程值计算网络地图
+     * @param mapContent mapContent
+     * @param request request
+     * @param delegate delegate
+     * @param times times
+     * @param elevations elevations
+     * @return
      * @throws IOException
      */
-    WebMap executeInternal(
-            WMSMapContent mapContent,
-            final GetMapRequest request,
-            GetMapOutputFormat delegate,
-            List<Object> times,
-            List<Object> elevations)
-            throws IOException {
+    WebMap executeInternal(WMSMapContent mapContent, final GetMapRequest request, GetMapOutputFormat delegate, List<Object> times, List<Object> elevations) throws IOException {
         final Envelope envelope = request.getBbox();
         final List<MapLayerInfo> layers = request.getLayers();
         final List<Map<String, String>> viewParams = request.getViewParams();
@@ -419,15 +415,15 @@ public class GetMap {
         final List<SortBy[]> sorts = request.getSortByArrays();
 
         // if there's a crs in the request, use that. If not, assume its 4326
+        //如果请求中有crs，请使用它。如果不是，假设是4326
         final CoordinateReferenceSystem mapcrs = request.getCrs();
 
         // DJB: added this to be nicer about the "NONE" srs.
+        //DJB：加上这个是为了更好的“无”srs。
         if (mapcrs != null) {
             mapContent.getViewport().setBounds(new ReferencedEnvelope(envelope, mapcrs));
         } else {
-            mapContent
-                    .getViewport()
-                    .setBounds(new ReferencedEnvelope(envelope, DefaultGeographicCRS.WGS84));
+            mapContent.getViewport().setBounds(new ReferencedEnvelope(envelope, DefaultGeographicCRS.WGS84));
         }
 
         mapContent.setMapWidth(request.getWidth());
@@ -442,7 +438,7 @@ public class GetMap {
         //
         // Check to see if we really have something to display. Sometimes width
         // or height or both are non positive or the requested area is null.
-        //
+        // 看看我们是否真的有东西要展示。有时宽度或高度或两者都是非正数，或者请求的区域为空。
         // ///
         if ((request.getWidth() <= 0)
                 || (request.getHeight() <= 0)
@@ -463,17 +459,15 @@ public class GetMap {
         fireMapContentInit(mapContent);
 
         // track the external caching strategy for any map layers
+        //跟踪任何映射层的外部缓存策略
         boolean cachingPossible = request.isGet();
         final String featureVersion = request.getFeatureVersion();
         int maxAge = Integer.MAX_VALUE;
         for (int i = 0; i < layers.size(); i++) {
             final MapLayerInfo mapLayerInfo = layers.get(i);
-
             cachingPossible &= mapLayerInfo.isCachingEnabled();
             if (cachingPossible) {
                 maxAge = Math.min(maxAge, mapLayerInfo.getCacheMaxAge());
-            } else {
-                cachingPossible = false;
             }
 
             final Style layerStyle = styles[i];
@@ -484,20 +478,14 @@ public class GetMap {
 
             int layerType = mapLayerInfo.getType();
             if (layerType == MapLayerInfo.TYPE_REMOTE_VECTOR) {
-
                 final SimpleFeatureSource source = mapLayerInfo.getRemoteFeatureSource();
                 FeatureLayer featureLayer = new FeatureLayer(source, layerStyle);
-                featureLayer.setTitle(
-                        mapLayerInfo.getRemoteFeatureSource().getSchema().getTypeName());
-
+                featureLayer.setTitle(mapLayerInfo.getRemoteFeatureSource().getSchema().getTypeName());
                 final Query definitionQuery = new Query(source.getSchema().getTypeName());
                 definitionQuery.setFilter(layerFilter);
                 definitionQuery.setVersion(featureVersion);
                 definitionQuery.setSortBy(layerSort);
-                int maxFeatures =
-                        request.getMaxFeatures() != null
-                                ? request.getMaxFeatures()
-                                : Integer.MAX_VALUE;
+                int maxFeatures = request.getMaxFeatures() != null ? request.getMaxFeatures() : Integer.MAX_VALUE;
                 definitionQuery.setMaxFeatures(maxFeatures);
                 featureLayer.setQuery(definitionQuery);
 
@@ -509,14 +497,14 @@ public class GetMap {
                 // /////////////////////////////////////////////////////////
                 //
                 // Adding a feature layer
-                //
+                //添加要素图层
                 // /////////////////////////////////////////////////////////
                 try {
                     source = mapLayerInfo.getFeatureSource(true);
 
                     if (layerSort != null) {
-                        // filter gets validated down in the renderer, but
-                        // sorting is done without the renderer knowing, perform validation here
+                        // filter gets validated down in the renderer, but sorting is done without the renderer knowing, perform validation here
+                        // 过滤器在渲染器中得到验证，但是排序是在渲染器不知道的情况下完成的，在这里执行验证
                         validateSort(source, layerSort, mapLayerInfo);
                     }
 
@@ -551,29 +539,26 @@ public class GetMap {
                 featureLayer.getUserData().put("abstract", mapLayerInfo.getDescription());
 
                 // mix the dimension related filter with the layer filter
-                Filter dimensionFilter =
-                        wms.getTimeElevationToFilter(times, elevations, mapLayerInfo.getFeature());
-                Filter filter =
-                        SimplifyingFilterVisitor.simplify(
-                                Filters.and(ff, layerFilter, dimensionFilter));
+                //将维度相关过滤器与层过滤器混合
+                Filter dimensionFilter = wms.getTimeElevationToFilter(times, elevations, mapLayerInfo.getFeature());
+                Filter filter = SimplifyingFilterVisitor.simplify(Filters.and(ff, layerFilter, dimensionFilter));
 
-                final Query definitionQuery =
-                        new Query(source.getSchema().getName().getLocalPart());
+                final Query definitionQuery = new Query(source.getSchema().getName().getLocalPart());
                 definitionQuery.setVersion(featureVersion);
                 definitionQuery.setFilter(filter);
                 definitionQuery.setSortBy(layerSort);
                 if (viewParams != null) {
-                    definitionQuery.setHints(
-                            new Hints(Hints.VIRTUAL_TABLE_PARAMETERS, viewParams.get(i)));
+                    definitionQuery.setHints(new Hints(Hints.VIRTUAL_TABLE_PARAMETERS, viewParams.get(i)));
                 }
 
                 // check for startIndex + offset
+                //检查startIndex+偏移量
                 final Integer startIndex = request.getStartIndex();
                 if (startIndex != null) {
                     QueryCapabilities queryCapabilities = source.getQueryCapabilities();
                     if (queryCapabilities.isOffsetSupported()) {
-                        // fsource is required to support
-                        // SortBy.NATURAL_ORDER so we don't bother checking
+                        // fsource is required to support 需要fsource来支持
+                        // SortBy.NATURAL_ORDER so we don't bother checking 很自然的顺序，所以我们不必检查
                         definitionQuery.setStartIndex(startIndex);
                     } else {
                         // source = new PagingFeatureSource(source,
@@ -600,7 +585,7 @@ public class GetMap {
                 // /////////////////////////////////////////////////////////
                 //
                 // Adding a coverage layer
-                //
+                // 添加覆盖层
                 // /////////////////////////////////////////////////////////
                 final GridCoverage2DReader reader =
                         (GridCoverage2DReader) mapLayerInfo.getCoverageReader();

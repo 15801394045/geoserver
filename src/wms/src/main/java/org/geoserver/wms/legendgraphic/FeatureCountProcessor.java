@@ -49,7 +49,7 @@ import org.opengis.style.Description;
 
 /**
  * Alters a legend to add a count of the rules descriptions
- *
+ * 更改图例以添加规则说明的计数
  * @author Andrea Aime - GeoSolutions
  */
 class FeatureCountProcessor {

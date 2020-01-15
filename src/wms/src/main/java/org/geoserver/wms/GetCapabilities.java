@@ -16,7 +16,7 @@ import org.geotools.xml.transform.TransformerBase;
 
 /**
  * WMS GetCapabilities operation default implementation.
- *
+ * WMS GetCapabilities操作默认实现。
  * @author Gabriel Roldan
  */
 public class GetCapabilities {

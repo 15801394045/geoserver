@@ -34,7 +34,8 @@
  	<bean id="wmsFactoryExtension" class="org.geoserver.wms.WMSFactoryExtension"/>
  	
  	<!-- 
-		operation beans for handling incoming requests 
+		operation beans for handling incoming requests
+		处理传入请求的操作bean
 	-->
 	<bean id="wmsGetCapabilities" 
 		class="org.geoserver.wms.GetCapabilities" >

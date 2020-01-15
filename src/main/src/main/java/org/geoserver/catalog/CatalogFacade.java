@@ -17,7 +17,7 @@ import org.opengis.filter.sort.SortBy;
 
 /**
  * Data access facade for the catalog.
- *
+ * 目录的数据访问外观。
  * @author ETj <etj at geo-solutions.it>
  * @author Justin Deoliveira, OpenGeo
  */

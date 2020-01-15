@@ -103,7 +103,7 @@ import org.springframework.context.ApplicationContextAware;
 
 /**
  * A facade providing access to the WMS configuration details
- *
+ *  A facade providing access to the WMS configuration details
  * @author Gabriel Roldan
  */
 public class WMS implements ApplicationContextAware {

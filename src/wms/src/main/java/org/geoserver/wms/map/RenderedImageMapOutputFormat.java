@@ -263,6 +263,7 @@ public class RenderedImageMapOutputFormat extends AbstractMapOutputFormat {
         this.extension = extension;
     }
 
+    @Override
     public MapProducerCapabilities getCapabilities(String format) {
         return capabilities.get(format);
     }
@@ -272,6 +273,7 @@ public class RenderedImageMapOutputFormat extends AbstractMapOutputFormat {
     }
 
     /** @see org.geoserver.wms.GetMapOutputFormat#produceMap(org.geoserver.wms.WMSMapContent) */
+    @Override
     public final RenderedImageMap produceMap(WMSMapContent mapContent) throws ServiceException {
         return produceMap(mapContent, false);
     }

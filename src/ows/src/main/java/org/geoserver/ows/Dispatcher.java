@@ -16,6 +16,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.lang.reflect.Method;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -69,7 +70,7 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
 /**
- * Dispatches an http request to an open web service (OWS).
+ * Dispatches an http request to an open web service (OWS). 向打开的web服务（OWS）发送http请求。
  *
  * <p>An OWS request contains three bits of information:
  *
@@ -114,18 +115,21 @@ public class Dispatcher extends AbstractController {
     /** Logging instance */
     static Logger logger = org.geotools.util.logging.Logging.getLogger("org.geoserver.ows");
 
-    /** flag to control wether the dispatcher is cite compliant */
+    /** flag to control wether the dispatcher is cite compliant 控制调度员是否符合cite的标志 */
     boolean citeCompliant = false;
 
-    /** buffer size for incoming XML POST requests */
+    /** buffer size for incoming XML POST requests 传入XML POST请求的缓冲区大小 */
     int xmlPostRequestLogBufferSize = 1024;
 
-    /** thread local variable for the request */
-    public static final ThreadLocal<Request> REQUEST = new InheritableThreadLocal<Request>();
+    /** thread local variable for the request 请求的线程局部变量 */
+    public static final ThreadLocal<Request> REQUEST = new InheritableThreadLocal<>();
 
-    static final Charset UTF8 = Charset.forName("UTF-8");
+    static final Charset UTF8 = StandardCharsets.UTF_8;
 
-    /** The amount of bytes to be read to determine the proper xml reader in POST request */
+    /**
+     * The amount of bytes to be read to determine the proper xml reader in POST request
+     * 要读取的字节数，以确定POST请求中正确的xml读取器
+     */
     int XML_LOOKAHEAD = 8192;
 
     /** list of callbacks */
@@ -144,6 +148,7 @@ public class Dispatcher extends AbstractController {
     {
         try {
             // Use reflection to access class/method in the gs-main module.
+            // 使用反射访问gs主模块中的类/方法
             Class<?> clazz = Class.forName("org.geoserver.util.EntityResolverProvider");
             getEntityResolver = clazz.getMethod("getEntityResolver");
         } catch (Exception e) {
@@ -185,13 +190,14 @@ public class Dispatcher extends AbstractController {
         if (lookahead != null) {
             try {
                 int lookaheadValue = Integer.valueOf(lookahead);
-                if (lookaheadValue <= 0)
+                if (lookaheadValue <= 0) {
                     logger.log(
                             Level.SEVERE,
                             "Invalid XML_LOOKAHEAD value, "
                                     + "will use "
                                     + XML_LOOKAHEAD
                                     + " instead");
+                }
                 XML_LOOKAHEAD = lookaheadValue;
             } catch (Exception e) {
                 logger.log(
@@ -207,16 +213,18 @@ public class Dispatcher extends AbstractController {
 
         // TODO: make this server settable
         charSet = UTF8;
-        if (request.getCharacterEncoding() != null)
+        if (request.getCharacterEncoding() != null) {
             try {
                 charSet = Charset.forName(request.getCharacterEncoding());
             } catch (Exception e) {
                 // ok, we tried...
             }
+        }
 
         request.setCharacterEncoding(charSet.name());
     }
 
+    @Override
     protected ModelAndView handleRequestInternal(
             HttpServletRequest httpRequest, HttpServletResponse httpResponse) throws Exception {
         preprocessRequest(httpRequest);
@@ -278,7 +286,7 @@ public class Dispatcher extends AbstractController {
             REQUEST.remove();
         }
 
-        return null;
+         return null;
     }
 
     void flagAsSOAP(Operation op) {
@@ -374,8 +382,11 @@ public class Dispatcher extends AbstractController {
                     logger.fine("Raw XML request starts with: " + new String(req) + "...");
                 }
             }
-            if (read == -1) request.setInput(null);
-            else request.getInput().reset();
+            if (read == -1) {
+                request.setInput(null);
+            } else {
+                request.getInput().reset();
+            }
         }
         // parse the request path into two components. (1) the 'path' which
         // is the string after the last '/', and the 'context' which is the
@@ -1430,49 +1441,47 @@ public class Dispatcher extends AbstractController {
             if (vmatches.size() > 1) {
                 // use highest version
                 Comparator comparator =
-                        new Comparator() {
-                            public int compare(Object o1, Object o2) {
-                                XmlRequestReader r1 = (XmlRequestReader) o1;
-                                XmlRequestReader r2 = (XmlRequestReader) o2;
+                        (o1, o2) -> {
+                            XmlRequestReader r1 = (XmlRequestReader) o1;
+                            XmlRequestReader r2 = (XmlRequestReader) o2;
 
-                                Version v1 = r1.getVersion();
-                                Version v2 = r2.getVersion();
+                            Version v1 = r1.getVersion();
+                            Version v2 = r2.getVersion();
 
-                                if ((v1 == null) && (v2 == null)) {
-                                    return 0;
-                                }
-
-                                if ((v1 != null) && (v2 == null)) {
-                                    return 1;
-                                }
-
-                                if ((v1 == null) && (v2 != null)) {
-                                    return -1;
-                                }
-
-                                int versionCompare = v1.compareTo(v2);
-
-                                if (versionCompare != 0) {
-                                    return versionCompare;
-                                }
-
-                                String sid1 = r1.getServiceId();
-                                String sid2 = r2.getServiceId();
-
-                                if ((sid1 == null) && (sid2 == null)) {
-                                    return 0;
-                                }
-
-                                if ((sid1 != null) && (sid2 == null)) {
-                                    return 1;
-                                }
-
-                                if ((sid1 == null) && (sid2 != null)) {
-                                    return -1;
-                                }
-
-                                return sid1.compareTo(sid2);
+                            if ((v1 == null) && (v2 == null)) {
+                                return 0;
                             }
+
+                            if ((v1 != null) && (v2 == null)) {
+                                return 1;
+                            }
+
+                            if ((v1 == null) && (v2 != null)) {
+                                return -1;
+                            }
+
+                            int versionCompare = v1.compareTo(v2);
+
+                            if (versionCompare != 0) {
+                                return versionCompare;
+                            }
+
+                            String sid1 = r1.getServiceId();
+                            String sid2 = r2.getServiceId();
+
+                            if ((sid1 == null) && (sid2 == null)) {
+                                return 0;
+                            }
+
+                            if ((sid1 != null) && (sid2 == null)) {
+                                return 1;
+                            }
+
+                            if ((sid1 == null) && (sid2 != null)) {
+                                return -1;
+                            }
+
+                            return sid1.compareTo(sid2);
                         };
 
                 Collections.sort(vmatches, comparator);
@@ -1669,8 +1678,11 @@ public class Dispatcher extends AbstractController {
                 && !(current instanceof ClientStreamAbortedException)
                 && !isSecurityException(current)
                 && !(current instanceof HttpErrorCodeException)) {
-            if (current instanceof SAXException) current = ((SAXException) current).getException();
-            else current = current.getCause();
+            if (current instanceof SAXException) {
+                current = ((SAXException) current).getException();
+            } else {
+                current = current.getCause();
+            }
         }
         if (current instanceof ClientStreamAbortedException) {
             logger.log(Level.FINER, "Client has closed stream", t);

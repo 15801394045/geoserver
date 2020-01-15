@@ -65,54 +65,101 @@ import org.springframework.context.ApplicationContextAware;
  */
 public class DefaultWebMapService
         implements WebMapService, ApplicationContextAware, DisposableBean {
-    /** default for 'format' parameter. */
+    /**
+     * default for 'format' parameter.
+     * “format”参数的默认值。
+     * */
     public static String FORMAT = "image/png";
 
-    /** default for 'styles' parameter. */
+    /**
+     * default for 'styles' parameter.
+     * default for 'styles' parameter.
+     * */
     public static List<Style> STYLES = Collections.emptyList();
 
-    /** longest side for the preview */
+    /**
+     * longest side for the preview
+     * 预览的最长边
+     * */
     public static int MAX_SIDE = 768;
 
-    /** minimum height to have a reasonable looking OL preview */
+    /**
+     * minimum height to have a reasonable looking OL preview
+     * 具有合理外观的最低高度
+     * */
     public static int MIN_OL_HEIGHT = 330;
 
-    /** minimum width to have a reasonable looking OL preview */
+    /**
+     * minimum width to have a reasonable looking OL preview
+     * 具有合理外观的最小宽度
+     * */
     public static int MIN_OL_WIDTH = 330;
 
-    /** max height to have a reasonable looking OL preview */
+    /**
+     * max height to have a reasonable looking OL preview
+     * 最大高度有一个合理的外观OL预览
+     * */
     public static int MAX_OL_HEIGHT = 768;
 
-    /** max width to have a reasonable looking OL preview */
+    /**
+     * max width to have a reasonable looking OL preview
+     * 具有合理外观的最大宽度OL预览
+     * */
     public static int MAX_OL_WIDTH = 1024;
 
-    /** default for 'srs' parameter. */
+    /**
+     * default for 'srs' parameter.
+     * “srs”参数的默认值。
+     *  */
     public static String SRS = "EPSG:4326";
 
-    /** default for 'transparent' parameter. */
+    /**
+     * default for 'transparent' parameter.
+     * “transparent”参数的默认值。
+     *  */
     public static Boolean TRANSPARENT = Boolean.TRUE;
 
-    /** default for 'transparent' parameter. */
+    /**
+     * default for 'transparent' parameter.
+     * “transparent”参数的默认值。
+     * */
     public static volatile ExecutorService RENDERING_POOL;
 
-    /** default for 'bbox' paramter */
-    public static ReferencedEnvelope BBOX =
-            new ReferencedEnvelope(new Envelope(-180, 180, -90, 90), DefaultGeographicCRS.WGS84);
+    /**
+     * default for 'bbox' paramter
+     * “bbox”参数的默认值
+     * */
+    public static ReferencedEnvelope BBOX = new ReferencedEnvelope(new Envelope(-180, 180, -90, 90), DefaultGeographicCRS.WGS84);
 
-    /** wms configuration */
+    /**
+     * wms configuration
+     * wms配置
+     * */
     private final WMS wms;
 
-    /** Temporary field that handles the usage of the line width optimization code */
+    /**
+     * Temporary field that handles the usage of the line width optimization code
+     * 处理线宽优化代码使用的临时字段
+     * */
     private static Boolean OPTIMIZE_LINE_WIDTH = null;
 
-    /** This variable is used to bypass direct raster rendering. */
+    /**
+     * This variable is used to bypass direct raster rendering.
+     * 此变量用于绕过直接光栅渲染。
+     * */
     private static boolean BYPASS_DIRECT =
             Boolean.getBoolean("org.geoserver.render.raster.direct.disable");
 
-    /** Max number of rule filters to be used against the data source */
+    /**
+     * Max number of rule filters to be used against the data source
+     * 对数据源使用的最大规则筛选器数
+     * */
     private static Integer MAX_FILTER_RULES = null;
 
-    /** Use a global rendering pool, or use a new pool each time */
+    /**
+     * Use a global rendering pool, or use a new pool each time
+     * 使用全局渲染池，或每次使用新池
+     * */
     private static Boolean USE_GLOBAL_RENDERING_POOL = null;
 
     private GetCapabilities getCapabilities;
@@ -132,6 +179,7 @@ public class DefaultWebMapService
     }
 
     /** @see WebMapService#getServiceInfo() */
+    @Override
     public WMSInfo getServiceInfo() {
         return wms.getServiceInfo();
     }
@@ -167,31 +215,47 @@ public class DefaultWebMapService
     }
 
     /** @see ApplicationContextAware#setApplicationContext(ApplicationContext) */
-    @SuppressFBWarnings("LI_LAZY_INIT_STATIC") // method is not called by multiple threads
+    @Override
+    @SuppressFBWarnings("LI_LAZY_INIT_STATIC") // method is not called by multiple threads 方法不是由多个线程调用的
     public void setApplicationContext(ApplicationContext context) throws BeansException {
 
         // first time initialization of line width optimization flag
+        //首次初始化线宽优化标志
         if (OPTIMIZE_LINE_WIDTH == null) {
             String enabled = GeoServerExtensions.getProperty("OPTIMIZE_LINE_WIDTH", context);
             // default to true, but allow switching off
-            if (enabled == null) OPTIMIZE_LINE_WIDTH = false;
-            else OPTIMIZE_LINE_WIDTH = Boolean.valueOf(enabled);
+            //默认为true，但允许关闭
+            if (enabled == null) {
+                OPTIMIZE_LINE_WIDTH = false;
+            } else {
+                OPTIMIZE_LINE_WIDTH = Boolean.valueOf(enabled);
+            }
         }
 
         // initialization of the renderer choice flag
+        //渲染器选择标志的初始化
         if (MAX_FILTER_RULES == null) {
             String rules = GeoServerExtensions.getProperty("MAX_FILTER_RULES", context);
             // default to true, but allow switching off
-            if (rules == null) MAX_FILTER_RULES = 20;
-            else MAX_FILTER_RULES = Integer.valueOf(rules);
+            //默认为true，但允许关闭
+            if (rules == null) {
+                MAX_FILTER_RULES = 20;
+            } else {
+                MAX_FILTER_RULES = Integer.valueOf(rules);
+            }
         }
 
         // control usage of the global rendering thread pool
+        //控制全局呈现线程池的使用
         if (USE_GLOBAL_RENDERING_POOL == null) {
             String usePool = GeoServerExtensions.getProperty("USE_GLOBAL_RENDERING_POOL", context);
             // default to true, but allow switching off
-            if (usePool == null) USE_GLOBAL_RENDERING_POOL = true;
-            else USE_GLOBAL_RENDERING_POOL = Boolean.valueOf(usePool);
+            //默认为true，但允许关闭
+            if (usePool == null) {
+                USE_GLOBAL_RENDERING_POOL = true;
+            } else {
+                USE_GLOBAL_RENDERING_POOL = Boolean.valueOf(usePool);
+            }
         }
     }
 
@@ -221,6 +285,7 @@ public class DefaultWebMapService
      * @see GetCapabilitiesTransformer
      * @see Capabilities_1_3_0_Transformer
      */
+    @Override
     public TransformerBase getCapabilities(GetCapabilitiesRequest request) {
         if (null == getCapabilities) {
             throw new UnsupportedOperationException(
@@ -230,6 +295,7 @@ public class DefaultWebMapService
     }
 
     /** @see WebMapService#capabilities(GetCapabilitiesRequest) */
+    @Override
     public TransformerBase capabilities(GetCapabilitiesRequest request) {
         return getCapabilities(request);
     }
@@ -245,6 +311,7 @@ public class DefaultWebMapService
     }
 
     /** @see WebMapService#getMap(GetMapRequest) */
+    @Override
     public WebMap getMap(GetMapRequest request) {
         if (null == getMap) {
             throw new UnsupportedOperationException(
@@ -254,11 +321,13 @@ public class DefaultWebMapService
     }
 
     /** @see WebMapService#map(GetMapRequest) */
+    @Override
     public WebMap map(GetMapRequest request) {
         return getMap(request);
     }
 
     /** @see WebMapService#getFeatureInfo(GetFeatureInfoRequest) */
+    @Override
     public FeatureCollectionType getFeatureInfo(final GetFeatureInfoRequest request) {
         if (null == getFeatureInfo) {
             throw new UnsupportedOperationException(
@@ -268,6 +337,7 @@ public class DefaultWebMapService
     }
 
     /** @see WebMapService#getLegendGraphic(GetLegendGraphicRequest) */
+    @Override
     public Object getLegendGraphic(GetLegendGraphicRequest request) {
         if (null == getLegendGraphic) {
             throw new UnsupportedOperationException(
@@ -276,6 +346,7 @@ public class DefaultWebMapService
         return getLegendGraphic.run(request);
     }
 
+    @Override
     public WebMap kml(GetMapRequest getMap) {
         throw new ServiceException(
                 "kml service is not available, please include a KML module in WEB-INF/lib");
@@ -287,6 +358,7 @@ public class DefaultWebMapService
      * @param getMap GetMapRequest
      * @return the <WebMap> output
      */
+    @Override
     public WebMap animate(GetMapRequest getMap) {
         try {
             return Animator.produce(getMap, this, wms);
@@ -296,11 +368,13 @@ public class DefaultWebMapService
     }
 
     /** @see WebMapService#reflect(GetMapRequest) */
+    @Override
     public WebMap reflect(GetMapRequest request) {
         return getMapReflect(request);
     }
 
     /** @see org.geoserver.wms.WebMapService#getStyles(org.geoserver.sld.GetStylesRequest) */
+    @Override
     public StyledLayerDescriptor getStyles(GetStylesRequest request) {
         return getStyles.run(request);
     }
@@ -310,6 +384,7 @@ public class DefaultWebMapService
      *
      * @see WebMapService#getMapReflect(GetMapRequest)
      */
+    @Override
     public WebMap getMapReflect(GetMapRequest request) {
 
         GetMapRequest getMap = autoSetMissingProperties(request);

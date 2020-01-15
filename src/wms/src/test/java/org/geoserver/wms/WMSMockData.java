@@ -182,11 +182,13 @@ public class WMSMockData {
         }
 
         /** @see org.geoserver.wms.GetMapOutputFormat#getOutputFormatNames() */
+        @Override
         public Set<String> getOutputFormatNames() {
             return Collections.singleton(MIME_TYPE);
         }
 
         /** @see org.geoserver.wms.GetMapOutputFormat#getMimeType() */
+        @Override
         public String getMimeType() {
             return MIME_TYPE;
         }
@@ -195,6 +197,7 @@ public class WMSMockData {
          * @see
          *     org.geoserver.wms.map.RasterMapOutputFormat#produceMap(org.geoserver.wms.WMSMapContent)
          */
+        @Override
         public WebMap produceMap(WMSMapContent mapContent) throws ServiceException, IOException {
             produceMapCalled = true;
             return new WebMap(mapContent) {};
@@ -217,6 +220,7 @@ public class WMSMockData {
         public void write(Object value, OutputStream output, Operation operation)
                 throws IOException, ServiceException {}
 
+        @Override
         public MapProducerCapabilities getCapabilities(String format) {
             return new MapProducerCapabilities(true, true, true, true, MIME_TYPE);
         }

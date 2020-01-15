@@ -10,7 +10,7 @@ import org.geoserver.wms.describelayer.DescribeLayerModel;
 
 /**
  * DescribeLayer WMS operation default implementation.
- *
+ * 描述WMS操作的默认实现。
  * @author carlo cancellieri
  */
 public class DescribeLayer {
