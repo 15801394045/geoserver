@@ -9,6 +9,7 @@ import java.awt.Rectangle;
 import java.util.Set;
 import org.geoserver.wms.vector.VectorTileBuilderFactory;
 import org.geotools.geometry.jts.ReferencedEnvelope;
+import org.springframework.stereotype.Component;
 
 @SuppressWarnings("PMD")
 public class GeoJsonBuilderFactory implements VectorTileBuilderFactory {
@@ -28,6 +29,7 @@ public class GeoJsonBuilderFactory implements VectorTileBuilderFactory {
 
     @Override
     public GeoJsonWMSBuilder newBuilder(Rectangle screenSize, ReferencedEnvelope mapArea) {
-        return new GeoJsonWMSBuilder(screenSize, mapArea);
+         return new GeoJsonWMSBuilder(screenSize, mapArea);
+       // return new GeoJsonBuilder(screenSize, mapArea);
     }
 }

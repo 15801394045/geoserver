@@ -34,6 +34,7 @@ public class GeoJsonTileBuilderTest {
         Geometry line = geom("LINESTRING(0 0, 1 1, 2 2)");
         Map<String, Object> lineProps = ImmutableMap.<String, Object>of("name", "line1");
 
+        //GeoJsonBuilder tileBuilder = builderFact.newBuilder(screenSize, mapArea);
         GeoJsonWMSBuilder tileBuilder = builderFact.newBuilder(screenSize, mapArea);
 
         tileBuilder.addFeature("Points", "unused", "unused", point, pointProps);
