@@ -58,7 +58,7 @@ import org.xml.sax.EntityResolver;
  * File or Resource access to GeoServer data directory. In addition to paths Catalog obhjects such
  * as workspace or FeatureTypeInfo can be used to locate resources.
  *
- * 对GeoServer数据目录的文件或资源访问。除了路径之外，目录对象（如工作区或FeatureTypeInfo）还可用于定位资源。
+ * <p>对GeoServer数据目录的文件或资源访问。除了路径之外，目录对象（如工作区或FeatureTypeInfo）还可用于定位资源。
  *
  * <p>Example usage:
  *
@@ -86,10 +86,7 @@ import org.xml.sax.EntityResolver;
 @SuppressWarnings("unused")
 public class GeoServerDataDirectory {
 
-    /**
-     *  resource loader
-     *  资源加载程序
-     * */
+    /** resource loader 资源加载程序 */
     GeoServerResourceLoader resourceLoader;
 
     EntityResolverProvider entityResolverProvider;
@@ -99,25 +96,18 @@ public class GeoServerDataDirectory {
     /**
      * Creates the data directory specifying the resource loader.
      *
-     * 创建指定资源加载程序的数据目录。
-     *
-     * */
+     * <p>创建指定资源加载程序的数据目录。
+     */
     public GeoServerDataDirectory(GeoServerResourceLoader resourceLoader) {
         this.resourceLoader = resourceLoader;
     }
 
-    /**
-     * Creates the data directory specifying the base directory.
-     * 创建指定基本目录的数据目录。
-     * */
+    /** Creates the data directory specifying the base directory. 创建指定基本目录的数据目录。 */
     public GeoServerDataDirectory(File baseDirectory) {
         this(new GeoServerResourceLoader(baseDirectory));
     }
 
-    /**
-     *  Returns the underlying resource loader.
-     *  返回基础资源加载程序。
-     * */
+    /** Returns the underlying resource loader. 返回基础资源加载程序。 */
     public GeoServerResourceLoader getResourceLoader() {
         return resourceLoader;
     }
@@ -126,17 +116,15 @@ public class GeoServerDataDirectory {
         return resourceLoader.get(path);
     }
 
-    /**
-     *  The root of the data directory.
-     *  数据目录的根目录。
-     * */
+    /** The root of the data directory. 数据目录的根目录。 */
     public File root() {
         return resourceLoader.getBaseDirectory();
     }
 
     /**
-     * Returns a directory under the {@link #root()} directory, if the directory does not exist it will be created.
-     * 返回一个目录，该目录位于{@link #root()}目录下，如果目录不存在，它将被创建。
+     * Returns a directory under the {@link #root()} directory, if the directory does not exist it
+     * will be created. 返回一个目录，该目录位于{@link #root()}目录下，如果目录不存在，它将被创建。
+     *
      * @return directory (created if needed)
      */
     public File findOrCreateDir(String... location) throws IOException {
@@ -144,9 +132,10 @@ public class GeoServerDataDirectory {
     }
 
     /**
-     * Returns a file under the {@link #root()} directory, if the file does not exist null is returned.
+     * Returns a file under the {@link #root()} directory, if the file does not exist null is
+     * returned.
      *
-     * 返回一个文件，在{@link #root()} 目录下，如果文件不存在，返回null。
+     * <p>返回一个文件，在{@link #root()} 目录下，如果文件不存在，返回null。
      */
     public File findFile(String... location) throws IOException {
         Resource resource = get(Paths.path(location));
@@ -155,10 +144,10 @@ public class GeoServerDataDirectory {
 
     /**
      * Returns the root of the directory which contains spatial data files, if the directory does
-     * exist, null is returned.
-     * 返回包含空间数据文件的目录的根目录，如果目录确实存在，则返回NULL。
+     * exist, null is returned. 返回包含空间数据文件的目录的根目录，如果目录确实存在，则返回NULL。
      *
      * <p>This directory is called 'data', and is located directly under {@link #root()}
+     *
      * <p>此目录名为“data”，直接位于 {@link #root()}
      */
     public File findDataRoot() throws IOException {

@@ -6,8 +6,7 @@
 package org.geoserver.util;
 
 /**
- * Simple generic Filter
- * 简单泛型筛选器
+ * Simple generic Filter 简单泛型筛选器
  *
  * @param <T>
  * @author Niels Charlier

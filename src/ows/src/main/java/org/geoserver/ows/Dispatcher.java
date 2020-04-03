@@ -286,7 +286,7 @@ public class Dispatcher extends AbstractController {
             REQUEST.remove();
         }
 
-         return null;
+        return null;
     }
 
     void flagAsSOAP(Operation op) {

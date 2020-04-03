@@ -15,7 +15,6 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletContext;
-
 import org.apache.commons.lang3.StringUtils;
 import org.geoserver.platform.resource.Paths;
 import org.geotools.util.SoftValueHashMap;
@@ -31,8 +30,8 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.web.context.WebApplicationContext;
 
 /**
- * Utility class uses to process GeoServer extension points.
- * 实用程序类用于处理GeoServer扩展点
+ * Utility class uses to process GeoServer extension points. 实用程序类用于处理GeoServer扩展点
+ *
  * <p>An instance of this class needs to be registered in spring context as follows.
  *
  * <pre><code>
@@ -62,49 +61,40 @@ public class GeoServerExtensions implements ApplicationContextAware, Application
 
     /**
      * Property cache maintained by GeoServerExtensionsHelper allowing temporary override of {@link
-     * #getProperty(String)} results.
-     * *GeoServerExtensionsHelper维护的属性缓存允许临时重写{@link
+     * #getProperty(String)} results. *GeoServerExtensionsHelper维护的属性缓存允许临时重写{@link
      * *#getProperty（String）}结果
      */
     static ConcurrentHashMap<String, String> propertyCache = new ConcurrentHashMap<>();
 
     /**
      * File cache maintained by GeoServerExtensionsHelper allowing temporary override of {@link
-     * #file(String)} results.
-     * *GeoServerExtensionsHelper维护的文件缓存允许临时重写{@link
-     * #file(String)}结果。
+     * #file(String)} results. *GeoServerExtensionsHelper维护的文件缓存允许临时重写{@link #file(String)}结果。
      */
     static ConcurrentHashMap<String, File> fileCache = new ConcurrentHashMap<String, File>();
 
-    /**
-     *  SPI lookups are very expensive, we need to cache them
-     *  SPI查找非常昂贵，我们需要缓存它们
-     * */
+    /** SPI lookups are very expensive, we need to cache them SPI查找非常昂贵，我们需要缓存它们 */
     static SoftValueHashMap<Class, List<Object>> spiCache = new SoftValueHashMap<>(40);
 
     /**
      * Flag to identify use of spring context via {@link #setApplicationContext(ApplicationContext)}
-     * an enable additional consistency checks for missing extensions.
-     * *通过{@link #setApplicationContext(ApplicationContext)}标识使用spring上下文的标志，可以对缺少的扩展启用其他一致性检查。
+     * an enable additional consistency checks for missing extensions. *通过{@link
+     * #setApplicationContext(ApplicationContext)}标识使用spring上下文的标志，可以对缺少的扩展启用其他一致性检查。
      */
     static boolean isSpringContext = true;
-    /**
-     * A static application context
-     * 静态应用程序上下文
-     * */
+    /** A static application context 静态应用程序上下文 */
     static ApplicationContext context;
 
     /**
-     * Sets the web application context to be used for looking up extensions.
-     * 设置用于查找扩展的web应用程序上下文。
+     * Sets the web application context to be used for looking up extensions. 设置用于查找扩展的web应用程序上下文。
+     *
      * <p>This method is called by the spring container, and should never be called by client code.
-     * 此方法由spring容器调用，客户端代码不应调用它。
-     * If client needs to supply a particular context, methods which take a context are available.
-     * 如果客户端需要提供特定的上下文，则可以使用获取上下文的方法。
+     * 此方法由spring容器调用，客户端代码不应调用它。 If client needs to supply a particular context, methods which take
+     * a context are available. 如果客户端需要提供特定的上下文，则可以使用获取上下文的方法。
+     *
      * <p>This is the context that is used for methods which don't supply their own context.
      * 这是用于不提供自己上下文的方法的上下文。
-     * @param context ApplicationContext used to lookup extensions
-     *                用于查找扩展的ApplicationContext
+     *
+     * @param context ApplicationContext used to lookup extensions 用于查找扩展的ApplicationContext
      */
     @Override
     @SuppressFBWarnings("ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD")
@@ -117,19 +107,21 @@ public class GeoServerExtensions implements ApplicationContextAware, Application
     }
 
     /**
-     * Loads all extensions implementing or extending <code>extensionPoint</code>.
-     * 加载实现或扩展<code>扩展点的所有扩展</code>。
+     * Loads all extensions implementing or extending <code>extensionPoint</code>. 加载实现或扩展<code>
+     * 扩展点的所有扩展</code>。
+     *
      * @param extensionPoint The class or interface of the extensions. 扩展的类或接口。
      * @param context The context in which to perform the lookup. 执行查找的上下文。
      * @return A collection of the extensions, or an empty collection. 扩展名的集合，或空集合。
      */
     @SuppressWarnings("unchecked")
-    public static final <T> List<T> extensions(Class<T> extensionPoint, ApplicationContext context) {
+    public static final <T> List<T> extensions(
+            Class<T> extensionPoint, ApplicationContext context) {
         Collection<String> names;
         names = extensionNames(extensionPoint, context);
 
         // lookup extension filters preventing recursion
-        //阻止递归的查找扩展筛选器
+        // 阻止递归的查找扩展筛选器
         List<ExtensionFilter> filters;
         if (ExtensionFilter.class.isAssignableFrom(extensionPoint)) {
             filters = Collections.emptyList();
@@ -138,7 +130,7 @@ public class GeoServerExtensions implements ApplicationContextAware, Application
         }
 
         // look up all the beans
-        //查一查所有的beans
+        // 查一查所有的beans
         List<T> result = new ArrayList<T>(names.size());
         for (String name : names) {
             Object bean = getBean(context, name);
@@ -146,7 +138,7 @@ public class GeoServerExtensions implements ApplicationContextAware, Application
         }
 
         // load from secondary extension providers
-        //从辅助扩展提供程序加载
+        // 从辅助扩展提供程序加载
         if (!ExtensionProvider.class.isAssignableFrom(extensionPoint)
                 && !ExtensionFilter.class.isAssignableFrom(extensionPoint)) {
 
@@ -164,7 +156,7 @@ public class GeoServerExtensions implements ApplicationContextAware, Application
         }
 
         // load from factory spi
-        //从工厂spi加载
+        // 从工厂spi加载
         List<Object> spiExtensions = spiCache.get(extensionPoint);
         if (spiExtensions == null) {
             spiExtensions = new ArrayList<Object>();
@@ -176,7 +168,7 @@ public class GeoServerExtensions implements ApplicationContextAware, Application
         // filter the beans coming from SPI (we don't cache the results
         // of the filtering, an extension filter can change its mind
         // from call to call
-        //过滤来自SPI的bean（我们不缓存过滤的结果，扩展过滤器可以在调用之间改变主意
+        // 过滤来自SPI的bean（我们不缓存过滤的结果，扩展过滤器可以在调用之间改变主意
         filter(spiExtensions, filters, result);
 
         // sort the results based on ExtensionPriority
@@ -189,7 +181,8 @@ public class GeoServerExtensions implements ApplicationContextAware, Application
         return extensionNames(extensionPoint, context);
     }
 
-    public static <T> Collection<String> extensionNames(Class<T> extensionPoint, ApplicationContext context) {
+    public static <T> Collection<String> extensionNames(
+            Class<T> extensionPoint, ApplicationContext context) {
         String[] names;
         if (GeoServerExtensions.context == context) {
             names = extensionsCache.get(extensionPoint);
@@ -205,7 +198,7 @@ public class GeoServerExtensions implements ApplicationContextAware, Application
                         names = new String[0];
                     }
                     // update cache only if dealing with the same context
-                    //仅当处理同一上下文时才更新缓存
+                    // 仅当处理同一上下文时才更新缓存
                     if (GeoServerExtensions.context == context) {
                         extensionsCache.put(extensionPoint, names);
                     }
@@ -299,9 +292,12 @@ public class GeoServerExtensions implements ApplicationContextAware, Application
     /**
      * Loads a single bean by its type from the specified application context.
      * 从指定的应用程序上下文中按类型加载单个bean。
+     *
      * <p>This method returns null if there is no such bean. An exception is thrown if multiple
      * beans of the specified type exist.
+     *
      * <p>如果没有此类bean，则此方法返回null。如果存在指定类型的多个bean，则引发异常。
+     *
      * @param type THe type of the bean to lookup.
      * @param context The application context
      * @throws MultipleBeansException If there are multiple beans of the specified type in the
@@ -323,8 +319,7 @@ public class GeoServerExtensions implements ApplicationContextAware, Application
 
     /**
      * Exception thrown when multiple beans implementing an extension point and only one is
-     * expected.
-     * 当多个bean实现一个扩展点而预期只有一个时引发异常。
+     * expected. 当多个bean实现一个扩展点而预期只有一个时引发异常。
      */
     public static class MultipleBeansException extends IllegalArgumentException {
         /** serialVersionUID */
@@ -357,10 +352,7 @@ public class GeoServerExtensions implements ApplicationContextAware, Application
         }
     }
 
-    /**
-     * Checks the context, if null will issue a warning.
-     * 检查上下文，如果为空则发出警告。
-     * */
+    /** Checks the context, if null will issue a warning. 检查上下文，如果为空则发出警告。 */
     static void checkContext(ApplicationContext context, String bean) {
         if (context == null && isSpringContext) {
             LOGGER.warning("Extension lookup '" + bean + "', but ApplicationContext is unset.");
@@ -371,11 +363,13 @@ public class GeoServerExtensions implements ApplicationContextAware, Application
      * Looks up for a named string property in the order defined by {@link #getProperty(String,
      * ApplicationContext)} using the internally cached spring application context.
      *
-     * 使用内部缓存的spring应用程序上下文按{@link #getProperty(String,ApplicationContext)}定义的顺序查找命名字符串属性。
+     * <p>使用内部缓存的spring应用程序上下文按{@link #getProperty(String,ApplicationContext)}定义的顺序查找命名字符串属性。
+     *
      * <p>Care should be taken when using this method. It should not be called during startup or
      * from tests cases as the internal context will not have been set.
      *
-     *<p>使用此方法时应小心。不应在启动期间或从测试用例中调用它，因为将不会设置内部上下文。
+     * <p>使用此方法时应小心。不应在启动期间或从测试用例中调用它，因为将不会设置内部上下文。
+     *
      * @param propertyName The property name to lookup. 要查找的属性名。
      * @return The property value, or null if not found 属性值，如果找不到则为空
      */
@@ -386,18 +380,20 @@ public class GeoServerExtensions implements ApplicationContextAware, Application
     /**
      * Looks up for a named string property into the following contexts (in order):
      * 在以下上下文中查找命名字符串属性（按顺序）：
+     *
      * <ul>
      *   <li>System Property
      *   <li>web.xml init parameters (only works if the context is a {@link WebApplicationContext}
      *   <li>Environment variable
      * </ul>
+     *
      * <ul>
-     *  <li>系统属性
-     *  <li>web.xml init参数（仅当上下文是{@link WebApplicationContext}时有效
-     *  <li>环境变量
+     *   <li>系统属性
+     *   <li>web.xml init参数（仅当上下文是{@link WebApplicationContext}时有效
+     *   <li>环境变量
      * </ul>
-     * and returns the first non null, non empty value found.
-     * 并返回找到的第一个非空值。
+     *
+     * and returns the first non null, non empty value found. 并返回找到的第一个非空值。
      *
      * @param propertyName The property name to be searched 要搜索的属性名
      * @param context The Spring context (may be null) Spring上下文（可以为空）
@@ -414,6 +410,7 @@ public class GeoServerExtensions implements ApplicationContextAware, Application
     /**
      * Looks up for a named string property into the following contexts (in order):
      * 在以下上下文中查找命名字符串属性（按顺序）：
+     *
      * <ul>
      *   <li>Test override supplied by GeoServerExtensionsHelper
      *   <li>System Property
@@ -422,15 +419,17 @@ public class GeoServerExtensions implements ApplicationContextAware, Application
      * </ul>
      *
      * <ul>
-     *  <li>GeoServerExtensionsHelper提供的测试重写
-     *  <li>系统属性
-     *  <li>web.xml初始化参数
-     *  <li>环境变量
+     *   <li>GeoServerExtensionsHelper提供的测试重写
+     *   <li>系统属性
+     *   <li>web.xml初始化参数
+     *   <li>环境变量
      * </ul>
-     * and returns the first non null, non empty value found.
-     * 并返回找到的第一个非空值。
+     *
+     * and returns the first non null, non empty value found. 并返回找到的第一个非空值。
+     *
      * @param propertyName The property name to be searched 要搜索的属性名
-     * @param context The servlet context used to look into web.xml (may be null) 用于查找web.xml的servlet上下文（可能为空）
+     * @param context The servlet context used to look into web.xml (may be null)
+     *     用于查找web.xml的servlet上下文（可能为空）
      * @return The property value, or null if not found 属性值，如果找不到则为空
      */
     public static String getProperty(String propertyName, ServletContext context) {
@@ -480,8 +479,8 @@ public class GeoServerExtensions implements ApplicationContextAware, Application
     }
 
     /**
-     * Search the context for indicated file.
-     * 在上下文中搜索指定的文件。
+     * Search the context for indicated file. 在上下文中搜索指定的文件。
+     *
      * <p>Example:
      *
      * <pre><code>
@@ -493,7 +492,9 @@ public class GeoServerExtensions implements ApplicationContextAware, Application
      */
     public static File file(String path) {
         if (fileCache.containsKey(path)) {
-            return fileCache.get(path); // override provided by GeoServerExtensionsHelper 由GeoServerExtensionsHelper提供的重写
+            return fileCache.get(
+                    path); // override provided by GeoServerExtensionsHelper
+                           // 由GeoServerExtensionsHelper提供的重写
         }
         ServletContext servletContext;
         if (context instanceof WebApplicationContext
@@ -524,7 +525,7 @@ public class GeoServerExtensions implements ApplicationContextAware, Application
             }
         }
         // unavaialble
-        //不可用
+        // 不可用
         return null;
     }
 }

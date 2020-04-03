@@ -32,7 +32,9 @@ import org.geotools.util.logging.Logging;
  *
  * <p>This utility class focuses on making file management tasks easier for ResourceStore
  * implementors.
+ *
  * <p>这个实用程序类专注于使资源存储实现者更容易执行文件管理任务。
+ *
  * @since 2.5
  */
 public final class Files {
@@ -40,7 +42,7 @@ public final class Files {
     /**
      * Quick Resource adaptor suitable for a single file.
      *
-     * 适用于单个文件的快速资源适配器。
+     * <p>适用于单个文件的快速资源适配器。
      *
      * <p>This can be used to handle absolute file references that are not located in the data
      * directory.
@@ -100,7 +102,7 @@ public final class Files {
                 throw new IllegalStateException("Cannot access " + actualFile);
             }
             // first save to a temp file
-            //第一次保存到临时文件
+            // 第一次保存到临时文件
             final File temp;
             synchronized (this) {
                 File tryTemp;
@@ -117,7 +119,7 @@ public final class Files {
             try {
                 temp.createNewFile();
                 // OutputStream wrapper used to write to a temporary file
-                //用于写入临时文件的OutputStream包装器
+                // 用于写入临时文件的OutputStream包装器
                 return new OutputStream() {
                     FileOutputStream delegate = new FileOutputStream(temp);
 
@@ -125,7 +127,7 @@ public final class Files {
                     public void close() throws IOException {
                         delegate.close();
                         // if already closed, there should be no exception (see spec Closeable)
-                        //如果已经关闭，应该没有异常（请参见规范可关闭）
+                        // 如果已经关闭，应该没有异常（请参见规范可关闭）
                         if (temp.exists()) {
                             Files.move(temp, file);
                         }
@@ -280,21 +282,21 @@ public final class Files {
     private static final Logger LOGGER = Logging.getLogger(Files.class);
 
     /**
-     * Watcher used for {@link #asResource(File)} resources.
-     * 用于{@link #asResource(File)}资源的观察程序。
+     * Watcher used for {@link #asResource(File)} resources. 用于{@link #asResource(File)}资源的观察程序。
+     *
      * <p>Each file is monitored for change.
+     *
      * <p>监控每个文件的更改。
      */
     static final FileSystemWatcher watcher = new FileSystemWatcher();
 
     private Files() {
         // utility class do not subclass
-        //实用程序类不是子类
+        // 实用程序类不是子类
     }
 
     /**
-     * Used to look up Files based on user provided url (or path).
-     * 用于根据用户提供的url（或路径）查找文件。
+     * Used to look up Files based on user provided url (or path). 用于根据用户提供的url（或路径）查找文件。
      *
      * <p>This method is used to process a URL provided by a user: <i>given a path, tries to
      * interpret it as a file into the data directory, or as an absolute location, and returns the
@@ -303,26 +305,25 @@ public final class Files {
      * <p>此方法用于处理用户提供的URL:<i>给定路径，尝试将其解释为数据目录中的文件或绝对位置，并返回文件的实际绝对位置。</i>
      *
      * <p>Over time this url method has grown in the telling to support:
+     *
      * <p>随着时间的推移，此url方法已逐渐支持以下内容：
      *
      * <ul>
      *   <li>Actual URL to external resoruce using http or ftp protocol - will return null
-     *   使用http或ftp协议的外部资源的实际URL-将返回null
-     *   <li>Resource URL - support resources from resource store
-     *   资源URL-资源存储中的支持资源
-     *   <li>File URL - will support absolute file references
-     *   文件URL-将支持绝对文件引用
+     *       使用http或ftp协议的外部资源的实际URL-将返回null
+     *   <li>Resource URL - support resources from resource store 资源URL-资源存储中的支持资源
+     *   <li>File URL - will support absolute file references 文件URL-将支持绝对文件引用
      *   <li>File URL - will support relative file references - this is deprecated, use resource:
      *       instead 文件URL-将支持相对的文件引用-这是不推荐的，请改用resource:
-     *   <li>Fake URLs - sde://user:pass@server:port - will return null. 假url-sde://user:pass@server:port-将返回空值。
-     *   <li>path - user supplied file path (operating specific specific)
-     *    path-用户提供的文件路径（特定于操作）
+     *   <li>Fake URLs - sde://user:pass@server:port - will return null.
+     *       假url-sde://user:pass@server:port-将返回空值。
+     *   <li>path - user supplied file path (operating specific specific) path-用户提供的文件路径（特定于操作）
      * </ul>
      *
-     * Note that the baseDirectory is optional (and may be null).
-     * 请注意，baseDirectory是可选的（并且可以为空）。
+     * Note that the baseDirectory is optional (and may be null). 请注意，baseDirectory是可选的（并且可以为空）。
+     *
      * @param baseDirectory Optional base directory used to resolve relative file URLs
-     *                      用于解析相对文件URL的可选基本目录
+     *     用于解析相对文件URL的可选基本目录
      * @param url File URL or path relative to data directory 相对于数据目录的文件URL或路径
      * @return Resource indicated by provided URL 由提供的URL指示的资源
      */
@@ -338,13 +339,13 @@ public final class Files {
         }
 
         // if path looks like an absolute file: URL, try standard conversion
-        //如果path看起来像一个绝对文件：URL，请尝试标准转换
+        // 如果path看起来像一个绝对文件：URL，请尝试标准转换
         if (url.startsWith("file:/")) {
             try {
                 return URLs.urlToFile(new URL(url));
             } catch (Exception e) {
                 // failure, so fall through
-                //失败，所以失败
+                // 失败，所以失败
             }
         }
 
@@ -354,7 +355,7 @@ public final class Files {
             File f = new File(url);
             if (f.isAbsolute() || f.exists()) {
                 // if it's an absolute path, use it as such
-                //如果它是一条绝对路径，那么就这样使用它
+                // 如果它是一条绝对路径，那么就这样使用它
                 return f;
             } else if (baseDirectory != null) {
                 return new File(baseDirectory, url);

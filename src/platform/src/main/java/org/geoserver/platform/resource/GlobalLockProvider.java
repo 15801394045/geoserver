@@ -11,7 +11,7 @@ import org.geoserver.platform.resource.Resource.Lock;
  * A lock provider that delegates the work to another {@link LockProvider} instance, which needs to
  * be configured by calling {@link #setDelegate(LockProvider)}.
  *
- * 将工作委托给另一个{@link LockProvider}实例的锁提供程序，该实例需要通过调用{@link #setDelegate(LockProvider)}进行配置。
+ * <p>将工作委托给另一个{@link LockProvider}实例的锁提供程序，该实例需要通过调用{@link #setDelegate(LockProvider)}进行配置。
  *
  * <p>GeoServer is configured with a single globalLockProvider for use by the application. This
  * instance is configured with an appropriate bean instance as configured by the user.

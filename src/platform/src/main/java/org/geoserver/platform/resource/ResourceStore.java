@@ -9,8 +9,7 @@ package org.geoserver.platform.resource;
  * Used to manage configuration storage (file system, test harness, or database blob).
  * 用于管理配置存储（文件系统、测试线束或数据库blob）。
  *
- * <p>InputStream used to access configuration information:
- * 用于访问配置信息的InputStream：
+ * <p>InputStream used to access configuration information: 用于访问配置信息的InputStream：
  *
  * <pre>
  * <code>
@@ -32,8 +31,7 @@ package org.geoserver.platform.resource;
  * </code>
  * </pre>
  *
- * Resources can also be extracted to a file if needed.
- *如果需要，还可以将资源提取到文件中。
+ * Resources can also be extracted to a file if needed. 如果需要，还可以将资源提取到文件中。
  *
  * <pre>
  * <code>
@@ -43,20 +41,19 @@ package org.geoserver.platform.resource;
  * </pre>
  *
  * The base directory is available using {@link Paths#BASE} (as "") but relative paths ("." and
- * "..") are not supported.
- * 基本目录可以使用{@link Paths#BASE}（as“”）使用，但不支持相对路径（“.”和“..”）。
+ * "..") are not supported. 基本目录可以使用{@link Paths#BASE}（as“”）使用，但不支持相对路径（“.”和“..”）。
  *
  * <p>This abstraction assumes a unix like file system, all paths should use forward slash "/" as
  * the separator.
  *
- *<p>这个抽象假设一个类unix的文件系统，所有路径都应该使用正斜杠“/”作为分隔符。
+ * <p>这个抽象假设一个类unix的文件系统，所有路径都应该使用正斜杠“/”作为分隔符。
+ *
  * @see Resources
  * @see Resource
  */
 public interface ResourceStore {
     /**
-     * Empty placeholder for ResourceStore.
-     * ResourceStore的空占位符。
+     * Empty placeholder for ResourceStore. ResourceStore的空占位符。
      *
      * <p>Empty placeholder intended for test cases (used as spring context default when a base
      * directory is not provided). This implementation prevents client code from requiring null
@@ -69,8 +66,7 @@ public interface ResourceStore {
     public static ResourceStore EMPTY = new NullResourceStore();
 
     /**
-     * Path based resource access.
-     * 基于路径的资源访问。
+     * Path based resource access. 基于路径的资源访问。
      *
      * <p>The returned Resource acts as a handle, and may be UNDEFINED. In general Resources are
      * created in a lazy fashion when used for the first time.
@@ -78,10 +74,9 @@ public interface ResourceStore {
      * <p>返回的资源充当句柄，可能未定义。一般来说，资源在第一次使用时是以惰性的方式创建的。
      *
      * @param path Path (using unix conventions, forward slash as separator) of requested resource
-     *             请求资源的路径（使用unix约定，正斜杠作为分隔符）
+     *     请求资源的路径（使用unix约定，正斜杠作为分隔符）
      * @return Resource at the indicated location (null is never returned although Resource may be
-     *     UNDEFINED).
-     *     指定位置的资源（尽管资源可能未定义，但从不返回空值）。
+     *     UNDEFINED). 指定位置的资源（尽管资源可能未定义，但从不返回空值）。
      * @throws IllegalArgumentException If path is invalid 如果路径无效
      */
     Resource get(String path);
@@ -106,16 +101,14 @@ public interface ResourceStore {
      * 在指定的路径上移动资源（包括单个资源或目录）。
      *
      * @param path Path of resource to move (using unix conventions, forward slash as separator)
-     *             要移动的资源路径（使用unix约定，正斜杠作为分隔符）
-     * @param target path for moved resource
-     *               移动资源的路径
+     *     要移动的资源路径（使用unix约定，正斜杠作为分隔符）
+     * @param target path for moved resource 移动资源的路径
      * @return true if resource was moved target path 如果资源已移动到目标路径，则为true
      */
     boolean move(String path, String target);
 
     /**
-     * The Resource Notification Dispatcher
-     * 资源通知调度程序
+     * The Resource Notification Dispatcher 资源通知调度程序
      *
      * @return resource notification dispatcher 资源通知调度程序
      */

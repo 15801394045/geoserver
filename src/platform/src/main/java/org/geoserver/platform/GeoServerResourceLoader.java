@@ -28,7 +28,7 @@ import org.springframework.web.context.ServletContextAware;
  * Access to resources in GeoServer including configuration information and unmanaged cache or log
  * files.
  *
- * 访问GeoServer中的资源，包括配置信息和非托管缓存或日志文件。
+ * <p>访问GeoServer中的资源，包括配置信息和非托管缓存或日志文件。
  *
  * <p>The loader maintains a search path in which it will use to look up resources.
  *
@@ -45,8 +45,8 @@ import org.springframework.web.context.ServletContextAware;
  * </ul>
  *
  * <ul>
- *     <li> 使用提供基于流的访问的{@link ResourceStore#get(String)}访问配置。如果需要，可以将配置解压到数据目录中的文件中。最常见的例子是用作模板。
- *     <li> 数据目录中的文件也可以用作临时缓存。这些文件应被视为临时文件，可能需要重新创建（升级时或在群集中的不同节点上使用时）。
+ *   <li>使用提供基于流的访问的{@link ResourceStore#get(String)}访问配置。如果需要，可以将配置解压到数据目录中的文件中。最常见的例子是用作模板。
+ *   <li>数据目录中的文件也可以用作临时缓存。这些文件应被视为临时文件，可能需要重新创建（升级时或在群集中的不同节点上使用时）。
  * </ul>
  *
  * <p>The {@link #baseDirectory} is a member of this path. Files and directories created by the
