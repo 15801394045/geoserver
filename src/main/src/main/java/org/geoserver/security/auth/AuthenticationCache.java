@@ -10,9 +10,12 @@ import org.geoserver.security.filter.AuthenticationCachingFilter;
 import org.springframework.security.core.Authentication;
 
 /**
- * Interface to cache {@link Authentication} objects.
+ * Interface to cache {@link Authentication} objects. 缓存{@link Authentication}对象的接口。
  *
  * <p>The key is created from the name of the filter and the result of {@link
+ * AuthenticationCachingFilter#getCacheKey(javax.servlet.http.HttpServletRequest)}
+ *
+ * <p>密钥是根据筛选器的名称和 {@link
  * AuthenticationCachingFilter#getCacheKey(javax.servlet.http.HttpServletRequest)}
  *
  * @author mcr
@@ -22,10 +25,10 @@ public interface AuthenticationCache {
     int DEFAULT_IDLE_TIME = 300;
     int DEFAULT_LIVE_TIME = 600;
 
-    /** Clears all cache entries */
+    /** Clears all cache entries 清除所有缓存项 */
     public void removeAll();
     /**
-     * Clears all cache entries for filterName
+     * Clears all cache entries for filterName 清除filterName的所有缓存项
      *
      * @param filterName
      */
@@ -61,6 +64,7 @@ public interface AuthenticationCache {
 
     /**
      * timeToIdleSeconds and timeToLiveSeconds are derived from the cache global settings
+     * timeToIdleSeconds和timeToLiveSeconds是从缓存全局设置派生的
      *
      * @param filterName
      * @param cacheKey

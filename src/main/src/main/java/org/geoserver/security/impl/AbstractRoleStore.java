@@ -53,14 +53,17 @@ public abstract class AbstractRoleStore implements GeoServerRoleStore {
         service.setName(name);
     }
 
+    @Override
     public GeoServerSecurityManager getSecurityManager() {
         return service.getSecurityManager();
     }
 
+    @Override
     public void setSecurityManager(GeoServerSecurityManager securityManager) {
         service.setSecurityManager(securityManager);
     }
 
+    @Override
     public boolean canCreateStore() {
         return service.canCreateStore();
     }

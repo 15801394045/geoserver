@@ -6,8 +6,10 @@ package org.geoserver.gwc.dispatch;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.geoserver.gwc.GWC;
 import org.geowebcache.controller.GeoWebCacheDispatcherController;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,5 +29,16 @@ public class GeoServerGWCDispatcherController extends GeoWebCacheDispatcherContr
     public void handleRestApiRequest(HttpServletRequest request, HttpServletResponse response)
             throws Exception {
         super.handleRestApiRequest(request, response);
+    }
+
+    /**
+     * 清除缓存
+     *
+     * @param layerName 图层名称
+     */
+    @RequestMapping("/clear/cache/{layerName}")
+    public void clearCache(@PathVariable String layerName) {
+        GWC facade = GWC.get();
+        facade.truncate(layerName);
     }
 }

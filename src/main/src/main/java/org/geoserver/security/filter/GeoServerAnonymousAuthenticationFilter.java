@@ -33,6 +33,7 @@ import org.springframework.util.Assert;
 public class GeoServerAnonymousAuthenticationFilter extends GeoServerSecurityFilter
         implements GeoServerAuthenticationFilter {
 
+    @Override
     public void initializeFromConfig(SecurityNamedServiceConfig config) throws IOException {
         super.initializeFromConfig(config);
     }

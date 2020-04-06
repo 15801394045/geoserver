@@ -7,7 +7,7 @@
 package org.geoserver.security.config;
 
 /**
- * Base class for named security service configuration objects.
+ * Base class for named security service configuration objects. 命名安全服务配置对象的基类。
  *
  * <p>In general, developers seeking to implement this interface should start from {@link
  * BaseSecurityNamedServiceConfig } which provides valid default implementations for all methods in

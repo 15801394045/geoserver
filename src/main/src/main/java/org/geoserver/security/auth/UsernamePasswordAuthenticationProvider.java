@@ -23,7 +23,8 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 
 /**
- * Authentication provider that delegates to a {@link GeoServerUserGroupService}.
+ * Authentication provider that delegates to a {@link GeoServerUserGroupService}. 委托给{@link
+ * GeoServerUserGroupService}的身份验证提供程序。
  *
  * @author Justin Deoliveira, OpenGeo
  */

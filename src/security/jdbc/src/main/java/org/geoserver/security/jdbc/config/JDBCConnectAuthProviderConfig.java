@@ -11,7 +11,8 @@ import org.geoserver.security.config.SecurityNamedServiceConfig;
 
 /**
  * Extension of {@link SecurityNamedServiceConfig} for authentication providers checking
- * username/password with a JDBC connect.
+ * username/password with a JDBC connect. {@link
+ * SecurityNamedServiceConfig}的扩展，用于身份验证提供程序使用JDBC连接检查用户名/密码。
  *
  * @author christian
  */
@@ -34,29 +35,33 @@ public class JDBCConnectAuthProviderConfig extends BaseSecurityNamedServiceConfi
     }
 
     /**
-     * The JDBC driver class name.
+     * The JDBC driver class name. JDBC驱动程序类名。
      *
      * <p>Used only if {@link #isJndi()} is false.
+     *
+     * <p>仅在{@link #isJndi()} 为false时使用。
      */
     public String getDriverClassName() {
         return driverClassName;
     }
 
-    /** Sets the JDBC driver class name. */
+    /** Sets the JDBC driver class name. 设置JDBC驱动程序类名。 */
     public void setDriverClassName(String driverClassName) {
         this.driverClassName = driverClassName;
     }
 
     /**
-     * The JDBC url with which to obtain a database connection with.
+     * The JDBC url with which to obtain a database connection with. 用于获取数据库连接的JDBC url。
      *
      * <p>Used only if {@link #isJndi()} is false.
+     *
+     * <p>仅在 {@link #isJndi()} 为false时使用。
      */
     public String getConnectURL() {
         return connectURL;
     }
 
-    /** The JDBC url with which to obtain a database connection with. */
+    /** The JDBC url with which to obtain a database connection with. 用于获取数据库连接的JDBC url。 */
     public void setConnectURL(String connectURL) {
         this.connectURL = connectURL;
     }

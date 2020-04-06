@@ -32,7 +32,7 @@ import org.geoserver.security.jdbc.config.JDBCSecurityServiceConfig;
 import org.springframework.util.StringUtils;
 
 /**
- * JDBC implementation of {@link GeoServerRoleService}
+ * JDBC implementation of {@link GeoServerRoleService} {@link GeoServerRoleService}的JDBC实现 JDBC角色服务
  *
  * @author christian
  */
@@ -54,7 +54,9 @@ public class JDBCRoleService extends AbstractJDBCService implements GeoServerRol
 
     @Override
     public GeoServerRole getAdminRole() {
-        if (StringUtils.hasLength(adminRoleName) == false) return null;
+        if (!StringUtils.hasLength(adminRoleName)) {
+            return null;
+        }
         try {
             return getRoleByName(adminRoleName);
         } catch (IOException e) {
@@ -64,7 +66,9 @@ public class JDBCRoleService extends AbstractJDBCService implements GeoServerRol
 
     @Override
     public GeoServerRole getGroupAdminRole() {
-        if (StringUtils.hasLength(groupAdminRoleName) == false) return null;
+        if (!StringUtils.hasLength(groupAdminRoleName)) {
+            return null;
+        }
         try {
             return getRoleByName(groupAdminRoleName);
         } catch (IOException e) {
@@ -119,6 +123,7 @@ public class JDBCRoleService extends AbstractJDBCService implements GeoServerRol
     }
 
     /** @see org.geoserver.security.jdbc.AbstractJDBCService#getOrderedNamesForCreate() */
+    @Override
     protected String[] getOrderedNamesForCreate() {
         return new String[] {
             "roles.create",
@@ -130,11 +135,13 @@ public class JDBCRoleService extends AbstractJDBCService implements GeoServerRol
         };
     }
     /** @see org.geoserver.security.jdbc.AbstractJDBCService#getOrderedNamesForDrop() */
+    @Override
     protected String[] getOrderedNamesForDrop() {
         return new String[] {"grouproles.drop", "userroles.drop", "roleprops.drop", "roles.drop"};
     }
 
     /** @see org.geoserver.security.GeoServerRoleService#getRoleByName(java.lang.String) */
+    @Override
     public GeoServerRole getRoleByName(String role) throws IOException {
 
         Connection con = null;
@@ -171,6 +178,7 @@ public class JDBCRoleService extends AbstractJDBCService implements GeoServerRol
     }
 
     /** @see org.geoserver.security.GeoServerRoleService#getRoles() */
+    @Override
     public SortedSet<GeoServerRole> getRoles() throws IOException {
         Connection con = null;
         PreparedStatement ps = null;
@@ -212,6 +220,7 @@ public class JDBCRoleService extends AbstractJDBCService implements GeoServerRol
     }
 
     /** @see org.geoserver.security.GeoServerRoleService#getParentMappings() */
+    @Override
     public Map<String, String> getParentMappings() throws IOException {
         Connection con = null;
         PreparedStatement ps = null;
@@ -235,11 +244,13 @@ public class JDBCRoleService extends AbstractJDBCService implements GeoServerRol
     }
 
     /** @see org.geoserver.security.GeoServerRoleService#createRoleObject(java.lang.String) */
+    @Override
     public GeoServerRole createRoleObject(String role) {
         return new GeoServerRole(role);
     }
 
     /** @see org.geoserver.security.GeoServerRoleService#getRolesForUser(java.lang.String) */
+    @Override
     public SortedSet<GeoServerRole> getRolesForUser(String username) throws IOException {
         Connection con = null;
         PreparedStatement ps = null, ps2 = null;
@@ -285,6 +296,7 @@ public class JDBCRoleService extends AbstractJDBCService implements GeoServerRol
     }
 
     /** @see org.geoserver.security.GeoServerRoleService#getRolesForGroup(java.lang.String) */
+    @Override
     public SortedSet<GeoServerRole> getRolesForGroup(String groupname) throws IOException {
         Connection con = null;
         PreparedStatement ps = null, ps2 = null;
@@ -330,6 +342,7 @@ public class JDBCRoleService extends AbstractJDBCService implements GeoServerRol
     }
 
     /** @see org.geoserver.security.GeoServerRoleService#load() */
+    @Override
     public void load() throws IOException {
         // do nothing
     }
@@ -338,6 +351,7 @@ public class JDBCRoleService extends AbstractJDBCService implements GeoServerRol
      * @see
      *     org.geoserver.security.GeoServerRoleService#getParentRole(org.geoserver.security.impl.GeoServerRole)
      */
+    @Override
     public GeoServerRole getParentRole(GeoServerRole role) throws IOException {
 
         Connection con = null;
@@ -378,6 +392,7 @@ public class JDBCRoleService extends AbstractJDBCService implements GeoServerRol
      * @see
      *     org.geoserver.security.GeoServerRoleService#registerRoleLoadedListener(RoleLoadedListener)
      */
+    @Override
     public void registerRoleLoadedListener(RoleLoadedListener listener) {
         listeners.add(listener);
     }
@@ -386,6 +401,7 @@ public class JDBCRoleService extends AbstractJDBCService implements GeoServerRol
      * @see
      *     org.geoserver.security.GeoServerRoleService#unregisterRoleLoadedListener(RoleLoadedListener)
      */
+    @Override
     public void unregisterRoleLoadedListener(RoleLoadedListener listener) {
         listeners.remove(listener);
     }
@@ -402,6 +418,7 @@ public class JDBCRoleService extends AbstractJDBCService implements GeoServerRol
      * @see
      *     org.geoserver.security.GeoServerRoleService#getGroupNamesForRole(org.geoserver.security.impl.GeoServerRole)
      */
+    @Override
     public SortedSet<String> getGroupNamesForRole(GeoServerRole role) throws IOException {
         Connection con = null;
         PreparedStatement ps = null;
@@ -429,6 +446,7 @@ public class JDBCRoleService extends AbstractJDBCService implements GeoServerRol
      * @see
      *     org.geoserver.security.GeoServerRoleService#getUserNamesForRole(org.geoserver.security.impl.GeoServerRole)
      */
+    @Override
     public SortedSet<String> getUserNamesForRole(GeoServerRole role) throws IOException {
         Connection con = null;
         PreparedStatement ps = null;
@@ -455,6 +473,7 @@ public class JDBCRoleService extends AbstractJDBCService implements GeoServerRol
     /* (non-Javadoc)
      * @see org.geoserver.security.GeoServerRoleService#getRoleCount()
      */
+    @Override
     public int getRoleCount() throws IOException {
         Connection con = null;
         PreparedStatement ps = null;
@@ -482,6 +501,7 @@ public class JDBCRoleService extends AbstractJDBCService implements GeoServerRol
      *     <p>Default implementation: if a user property name equals a role propertyname, take the
      *     value from to user property and use it for the role property.
      */
+    @Override
     public Properties personalizeRoleParams(
             String roleName, Properties roleParams, String userName, Properties userProps)
             throws IOException {
@@ -497,7 +517,9 @@ public class JDBCRoleService extends AbstractJDBCService implements GeoServerRol
             if (userProps.containsKey(key)) {
                 props.put(key, userProps.get(key));
                 personalized = true;
-            } else props.put(key, roleParams.get(key));
+            } else {
+                props.put(key, roleParams.get(key));
+            }
         }
         return personalized ? props : null;
     }

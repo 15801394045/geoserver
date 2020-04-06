@@ -222,10 +222,12 @@ public class RoleServiceValidationWrapper extends AbstractSecurityValidator
 
     // start wrapper methods
 
+    @Override
     public void initializeFromConfig(SecurityNamedServiceConfig config) throws IOException {
         service.initializeFromConfig(config);
     }
 
+    @Override
     public boolean canCreateStore() {
         return service.canCreateStore();
     }
@@ -242,6 +244,7 @@ public class RoleServiceValidationWrapper extends AbstractSecurityValidator
         service.setName(name);
     }
 
+    @Override
     public void setSecurityManager(GeoServerSecurityManager securityManager) {
         service.setSecurityManager(securityManager);
     }
@@ -250,6 +253,7 @@ public class RoleServiceValidationWrapper extends AbstractSecurityValidator
         service.registerRoleLoadedListener(listener);
     }
 
+    @Override
     public GeoServerSecurityManager getSecurityManager() {
         return service.getSecurityManager();
     }

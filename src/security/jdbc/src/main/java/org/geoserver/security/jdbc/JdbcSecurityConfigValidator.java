@@ -33,8 +33,11 @@ public class JdbcSecurityConfigValidator extends SecurityConfigValidator {
                 jdbcConfig, JDBCRoleService.DEFAULT_DDL_FILE, JDBCRoleService.DEFAULT_DML_FILE);
         checkAutomaticTableCreation(jdbcConfig);
 
-        if (jdbcConfig.isJndi()) validateJNDI(jdbcConfig);
-        else validateJDBC(jdbcConfig);
+        if (jdbcConfig.isJndi()) {
+            validateJNDI(jdbcConfig);
+        } else {
+            validateJDBC(jdbcConfig);
+        }
     }
 
     @Override
@@ -49,15 +52,19 @@ public class JdbcSecurityConfigValidator extends SecurityConfigValidator {
                 JDBCUserGroupService.DEFAULT_DML_FILE);
         checkAutomaticTableCreation(jdbcConfig);
 
-        if (jdbcConfig.isJndi()) validateJNDI(jdbcConfig);
-        else validateJDBC(jdbcConfig);
+        if (jdbcConfig.isJndi()) {
+            validateJNDI(jdbcConfig);
+        } else {
+            validateJDBC(jdbcConfig);
+        }
     }
 
     protected void checkAutomaticTableCreation(JDBCSecurityServiceConfig config)
             throws SecurityConfigException {
         if (config.isCreatingTables()) {
-            if (isNotEmpty(config.getPropertyFileNameDDL()) == false)
+            if (!isNotEmpty(config.getPropertyFileNameDDL())) {
                 throw createSecurityException(DDL_FILE_REQUIRED);
+            }
         }
     }
 
@@ -68,22 +75,22 @@ public class JdbcSecurityConfigValidator extends SecurityConfigValidator {
         String fileName = config.getPropertyFileNameDDL();
         // ddl may be null
         if (isNotEmpty(fileName)) {
-            if (defaultDDL.equals(fileName) == false) {
+            if (!defaultDDL.equals(fileName)) {
                 // not the default property file
                 File file = new File(fileName);
-                if (checkFile(file) == false) {
+                if (!checkFile(file)) {
                     throw createSecurityException(DDL_FILE_INVALID, fileName);
                 }
             }
         }
 
         fileName = config.getPropertyFileNameDML();
-        if (isNotEmpty(fileName) == false) {
+        if (!isNotEmpty(fileName)) {
             // dml file is required
             throw createSecurityException(DML_FILE_REQUIRED);
         }
 
-        if (defaultDML.equals(fileName) == false) {
+        if (!defaultDML.equals(fileName)) {
             // not the default property file
             File file = new File(fileName);
             if (checkFile(file) == false) {
@@ -93,17 +100,21 @@ public class JdbcSecurityConfigValidator extends SecurityConfigValidator {
     }
 
     protected void validateJNDI(JDBCSecurityServiceConfig config) throws SecurityConfigException {
-        if (isNotEmpty(config.getJndiName()) == false)
+        if (!isNotEmpty(config.getJndiName())) {
             throw createSecurityException(JNDINAME_REQUIRED);
+        }
     }
 
     protected void validateJDBC(JDBCSecurityServiceConfig config) throws SecurityConfigException {
-        if (isNotEmpty(config.getDriverClassName()) == false)
+        if (!isNotEmpty(config.getDriverClassName())) {
             throw createSecurityException(DRIVER_CLASSNAME_REQUIRED);
-        if (isNotEmpty(config.getUserName()) == false)
+        }
+        if (!isNotEmpty(config.getUserName())) {
             throw createSecurityException(USERNAME_REQUIRED);
-        if (isNotEmpty(config.getConnectURL()) == false)
+        }
+        if (!isNotEmpty(config.getConnectURL())) {
             throw createSecurityException(JDBCURL_REQUIRED);
+        }
 
         try {
             Class.forName(config.getDriverClassName());
@@ -116,10 +127,12 @@ public class JdbcSecurityConfigValidator extends SecurityConfigValidator {
     public void validate(SecurityAuthProviderConfig config) throws SecurityConfigException {
         super.validate(config);
         JDBCConnectAuthProviderConfig jdbcConfig = (JDBCConnectAuthProviderConfig) config;
-        if (isNotEmpty(jdbcConfig.getDriverClassName()) == false)
+        if (!isNotEmpty(jdbcConfig.getDriverClassName())) {
             throw createSecurityException(DRIVER_CLASSNAME_REQUIRED);
-        if (isNotEmpty(jdbcConfig.getConnectURL()) == false)
+        }
+        if (!isNotEmpty(jdbcConfig.getConnectURL())) {
             throw createSecurityException(JDBCURL_REQUIRED);
+        }
 
         try {
             Class.forName(jdbcConfig.getDriverClassName());

@@ -8,6 +8,7 @@ package org.geoserver.security.jdbc.config;
 
 import org.geoserver.security.config.SecurityUserGroupServiceConfig;
 
+/** JDBC用户组服务配置 */
 public class JDBCUserGroupServiceConfig extends JDBCSecurityServiceConfig
         implements SecurityUserGroupServiceConfig {
 
@@ -25,10 +26,12 @@ public class JDBCUserGroupServiceConfig extends JDBCSecurityServiceConfig
         passwordPolicyName = other.getPasswordPolicyName();
     }
 
+    @Override
     public String getPasswordPolicyName() {
         return passwordPolicyName;
     }
 
+    @Override
     public void setPasswordPolicyName(String passwordPolicyName) {
         this.passwordPolicyName = passwordPolicyName;
     }

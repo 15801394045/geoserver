@@ -9,7 +9,7 @@ package org.geoserver.security.auth;
 import java.util.Objects;
 
 /**
- * Composite key implementation for filter name and cache key
+ * Composite key implementation for filter name and cache key 过滤器名和缓存键的组合键实现
  *
  * @author christian
  */
@@ -29,20 +29,27 @@ public class AuthenticationCacheKey {
         return cacheKey;
     }
 
+    @Override
     public boolean equals(Object other) {
-        if (other == this) return true;
-        if (!(other instanceof AuthenticationCacheKey)) return false;
+        if (other == this) {
+            return true;
+        }
+        if (!(other instanceof AuthenticationCacheKey)) {
+            return false;
+        }
 
         AuthenticationCacheKey otherKey = (AuthenticationCacheKey) other;
         return (Objects.equals(filterName, otherKey.filterName))
                 && (Objects.equals(cacheKey, otherKey.cacheKey));
     }
 
+    @Override
     public int hashCode() {
         return ((filterName == null) ? 0 : filterName.hashCode())
                 ^ ((cacheKey == null) ? 0 : cacheKey.hashCode());
     }
 
+    @Override
     public String toString() {
         return filterName + ":" + cacheKey;
     }

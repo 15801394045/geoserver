@@ -9,22 +9,28 @@ package org.geoserver.security.auth;
 import org.springframework.security.core.Authentication;
 
 /**
- * Cache entry implementation for {@link Authentication} objects
+ * Cache entry implementation for {@link Authentication} objects {@link Authentication}对象的缓存项实现
  *
  * @author christian
  */
 public class AuthenticationCacheEntry {
-    /** The Spring authentication to cache */
+    /** The Spring authentication to cache 要缓存的Spring身份验证 */
     private Authentication authentication;
-    /** Time in seconds. The entry expires if (last accessed time + idle time) < current time */
+    /**
+     * Time in seconds. The entry expires if (last accessed time + idle time) < current time
+     * 以秒为单位的时间。如果（上次访问时间+空闲时间）<当前时间，则条目将过期
+     */
     private int timeToIdleSeconds;
 
-    /** Time in seconds, The entry expires if (creation time + live time) < current time */
+    /**
+     * Time in seconds, The entry expires if (creation time + live time) < current time
+     * 时间在第二个，输入的Expires if（“创作时间+现场时间”）<Current Time
+     */
     private int timeToLiveSeconds;
 
-    /** Time stamp of last access in milliseconds */
+    /** Time stamp of last access in milliseconds 上次访问的时间戳（毫秒） */
     private long lastAccessed;
-    /** Time stamp of creation in milliseconds */
+    /** Time stamp of creation in milliseconds 创建的时间戳（毫秒） */
     private long created;
 
     public AuthenticationCacheEntry(
@@ -62,14 +68,15 @@ public class AuthenticationCacheEntry {
     }
 
     /**
-     * returns true if the entry has expired, false otherwise
+     * returns true if the entry has expired, false otherwise 如果条目已过期，则返回true；否则返回false
      *
      * @param timeInMilliSecs
      */
     public boolean hasExpired(long timeInMilliSecs) {
-        if (lastAccessed + timeToIdleSeconds * 1000 < timeInMilliSecs) return true;
-        if (created + timeToLiveSeconds * 1000 < timeInMilliSecs) return true;
-        return false;
+        if (lastAccessed + timeToIdleSeconds * 1000 < timeInMilliSecs) {
+            return true;
+        }
+        return created + timeToLiveSeconds * 1000 < timeInMilliSecs;
     }
 
     @Override
@@ -80,13 +87,21 @@ public class AuthenticationCacheEntry {
     @Override
     public boolean equals(Object o) {
 
-        if (this == o) return true;
+        if (this == o) {
+            return true;
+        }
 
-        if (o instanceof AuthenticationCacheEntry == false) return false;
+        if (!(o instanceof AuthenticationCacheEntry)) {
+            return false;
+        }
 
         AuthenticationCacheEntry other = (AuthenticationCacheEntry) o;
-        if (authentication == other.authentication) return true;
-        if (authentication == null || other.authentication == null) return false;
+        if (authentication == other.authentication) {
+            return true;
+        }
+        if (authentication == null || other.authentication == null) {
+            return false;
+        }
         return authentication.equals(other.authentication);
     }
 }

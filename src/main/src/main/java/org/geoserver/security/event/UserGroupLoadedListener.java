@@ -9,7 +9,7 @@ import java.util.EventListener;
 
 /**
  * Classes implementing this interfaces may register for notifications on a successful load from
- * backend
+ * backend 实现此接口的类可以在从后端成功加载时注册通知
  *
  * @author christian
  */

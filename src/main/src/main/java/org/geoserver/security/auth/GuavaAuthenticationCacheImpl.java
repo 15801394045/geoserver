@@ -22,7 +22,7 @@ import org.springframework.scheduling.concurrent.CustomizableThreadFactory;
 import org.springframework.security.core.Authentication;
 
 /**
- * Implementation of GeoServer AuthenticationCache based on Guava Cache.
+ * Implementation of GeoServer AuthenticationCache based on Guava Cache. 基于Guava缓存的GeoServer认证缓存的实现。
  *
  * @author Mauro Bartolomeoli (mauro.bartolomeoli at geo-solutions.it)
  */

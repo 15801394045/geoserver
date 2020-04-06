@@ -24,10 +24,16 @@ import org.springframework.security.core.GrantedAuthority;
  * An authentication provider for the superuser called {@link #ROOTUSERNAME}. This user hat the
  * administrator role {@link GeoServerRole#ADMIN_ROLE} No other users are authenticated.
  *
+ * <p>超级用户的身份验证提供程序，名为 {@link #ROOTUSERNAME}。此用户具有管理员角色{@link GeoServerRole#ADMIN_ROLE}没有其他用户经过身份验证。
+ *
  * <p>The password is checked using {@link GeoServerSecurityManager#checkMasterPassword(String)}
+ *
+ * <p>使用{@link GeoServerSecurityManager#checkMasterPassword(String)}检查密码
  *
  * <p>If the password does not match, NO {@link BadCredentialsException} is thrown. Maybe there is a
  * user in one of the {@link GeoServerUserGroupService} objects with the same name.
+ *
+ * <p>如果密码不匹配，则不会引发{@link BadCredentialsException}。可能在{@link GeoServerUserGroupService}对象中有一个同名的用户。
  *
  * @author christian
  */
@@ -51,10 +57,13 @@ public class GeoServerRootAuthenticationProvider extends GeoServerAuthentication
                 (UsernamePasswordAuthenticationToken) authentication;
 
         // check if name is root
-        if (GeoServerUser.ROOT_USERNAME.equals(SecurityUtils.getUsername(token.getPrincipal()))
-                == false) return null;
+        // 检查名称是否为根
+        if (!GeoServerUser.ROOT_USERNAME.equals(SecurityUtils.getUsername(token.getPrincipal()))) {
+            return null;
+        }
 
         // check password
+        // 检查密码
         if (token.getCredentials() != null) {
             if (getSecurityManager().checkMasterPassword(token.getCredentials().toString())) {
                 Collection<GrantedAuthority> roles = new ArrayList<GrantedAuthority>();
@@ -68,8 +77,8 @@ public class GeoServerRootAuthenticationProvider extends GeoServerAuthentication
             }
         }
 
-        // not BadCredentialException is thrown, maybe there is another user with
-        // the same name
+        // not BadCredentialException is thrown, maybe there is another user with the same name
+        // 没有引发BadCredentialException，可能有另一个同名用户
         log(new BadCredentialsException("Bad credentials for: " + token.getPrincipal()));
         return null;
     }

@@ -32,7 +32,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 /**
- * Authentication Provider based on a successful JDBC Connect
+ * Authentication Provider based on a successful JDBC Connect 基于成功JDBC连接的身份验证提供程序
  *
  * @author christian
  */
@@ -53,7 +53,10 @@ public class JDBCConnectAuthProvider extends GeoServerAuthenticationProvider {
                 (UsernamePasswordAuthenticationToken) authentication;
 
         // check for valid user name
-        if (token.getPrincipal() == null || token.getPrincipal().toString().isEmpty()) return null;
+        // 检查有效用户名
+        if (token.getPrincipal() == null || token.getPrincipal().toString().isEmpty()) {
+            return null;
+        }
         String user = token.getPrincipal().toString();
         String password = token.getCredentials() == null ? "" : token.getCredentials().toString();
 
@@ -64,7 +67,7 @@ public class JDBCConnectAuthProvider extends GeoServerAuthenticationProvider {
                 GeoServerUserGroupService service =
                         getSecurityManager().loadUserGroupService(userGroupServiceName);
                 details = service.loadUserByUsername(user);
-                if (details.isEnabled() == false) {
+                if (!details.isEnabled()) {
                     log(new DisabledException("User " + user + " is disabled"));
                     return null;
                 }

@@ -9,7 +9,7 @@ package org.geoserver.security.config;
 import java.io.Serializable;
 
 /**
- * Common base interface for all security configuration classes.
+ * Common base interface for all security configuration classes. 所有安全配置类的公共基接口。
  *
  * @author christian
  */
@@ -17,10 +17,10 @@ public interface SecurityConfig extends Serializable {
 
     /**
      * Clone of a Security Config allowing expansion of placeholders through GeoServerEnvironment
-     * helper.
+     * helper. 克隆安全配置，允许通过GeoServerEnvironment助手扩展占位符。
      *
-     * @param allowEnvParametrization
-     * @return
+     * @param allowEnvParametrization 允许参数化
+     * @return SecurityConfig
      */
     public SecurityConfig clone(boolean allowEnvParametrization);
 }

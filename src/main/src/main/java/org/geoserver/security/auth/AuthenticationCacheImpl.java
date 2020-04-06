@@ -11,6 +11,7 @@ import org.springframework.security.core.Authentication;
 /**
  * @author mcr
  *     <p>Null implementation doing nothing
+ *     <p>空实现什么也不做
  */
 public class AuthenticationCacheImpl implements AuthenticationCache {
 

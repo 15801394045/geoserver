@@ -15,28 +15,52 @@ import org.geoserver.security.config.SecurityNamedServiceConfig;
  */
 public interface GeoServerSecurityService {
 
-    /** Initialize from configuration object */
+    /**
+     * Initialize from configuration object 从配置对象初始化
+     *
+     * @param config
+     * @throws IOException
+     */
     void initializeFromConfig(SecurityNamedServiceConfig config) throws IOException;
 
-    /** Flag specifying whether the service can create an associated store. */
+    /**
+     * Flag specifying whether the service can create an associated store. 指定服务是否可以创建关联存储的标志。
+     *
+     * @return boolean
+     */
     boolean canCreateStore();
 
-    /** The name of this service */
+    /**
+     * The name of this service 此服务的名称
+     *
+     * @return String
+     */
     String getName();
 
-    /** Sets the name of this service */
+    /**
+     * Sets the name of this service 设置此服务的名称
+     *
+     * @param name
+     */
     void setName(String name);
 
+    /** */
     /**
-     * Sets the reference to the security manager facade for the service.
+     * Sets the reference to the security manager facade for the service. 设置对服务的安全管理器外观的引用。
      *
      * <p>This method is called when the service is loaded.
+     *
+     * <p>加载服务时调用此方法。
+     *
+     * @param securityManager GeoServerSecurityManager
      */
     void setSecurityManager(GeoServerSecurityManager securityManager);
 
     /**
      * Returns the reference to the security manager, set by {@link
-     * #setSecurityManager(GeoServerSecurityManager)}.
+     * #setSecurityManager(GeoServerSecurityManager)}. 返回对安全管理器的引用
+     *
+     * @return GeoServerSecurityManager
      */
     GeoServerSecurityManager getSecurityManager();
 

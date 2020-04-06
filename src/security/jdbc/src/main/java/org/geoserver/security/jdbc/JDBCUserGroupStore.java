@@ -67,6 +67,7 @@ public class JDBCUserGroupStore extends JDBCUserGroupService implements GeoServe
      * @see
      *     org.geoserver.security.GeoServerUserGroupStore#initializeFromServer(org.geoserver.security.GeoServerUserGroupService)
      */
+    @Override
     public void initializeFromService(GeoServerUserGroupService service) throws IOException {
         jdbcService = (JDBCUserGroupService) service;
         setSecurityManager(service.getSecurityManager());
@@ -88,6 +89,7 @@ public class JDBCUserGroupStore extends JDBCUserGroupService implements GeoServe
      *
      * @see org.geoserver.security.jdbc.JDBCUserGroupService#load()
      */
+    @Override
     public void load() throws IOException {
         // Simply roll back the transaction
         try {
@@ -111,7 +113,9 @@ public class JDBCUserGroupStore extends JDBCUserGroupService implements GeoServe
      */
     protected void addUserProperties(GeoServerUser user, Connection con)
             throws SQLException, IOException {
-        if (user.getProperties().size() == 0) return; // nothing to do
+        if (user.getProperties().size() == 0) {
+            return; // nothing to do
+        }
 
         PreparedStatement ps = getDMLStatement("userprops.insert", con);
         try {
@@ -137,8 +141,9 @@ public class JDBCUserGroupStore extends JDBCUserGroupService implements GeoServe
 
         char[] passwordArray = user.getPassword() != null ? user.getPassword().toCharArray() : null;
 
-        if (PasswordValidatorImpl.passwordStartsWithEncoderPrefix(passwordArray) != null)
+        if (PasswordValidatorImpl.passwordStartsWithEncoderPrefix(passwordArray) != null) {
             return; // do nothing, password already encoded
+        }
 
         // we have a plain text password
         // validate it
@@ -157,6 +162,7 @@ public class JDBCUserGroupStore extends JDBCUserGroupService implements GeoServe
     /* (non-Javadoc)
      * @see org.geoserver.security.GeoserverUserGroupStore#addUser(org.geoserver.security.impl.GeoserverUser)
      */
+    @Override
     public void addUser(GeoServerUser user) throws IOException, PasswordPolicyException {
 
         preparePassword(user);
@@ -188,6 +194,7 @@ public class JDBCUserGroupStore extends JDBCUserGroupService implements GeoServe
     /* (non-Javadoc)
      * @see org.geoserver.security.GeoserverUserGroupStore#updateUser(org.geoserver.security.impl.GeoserverUser)
      */
+    @Override
     public void updateUser(GeoServerUser user) throws IOException, PasswordPolicyException {
 
         preparePassword(user);

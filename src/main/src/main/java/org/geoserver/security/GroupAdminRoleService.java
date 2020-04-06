@@ -30,6 +30,7 @@ public class GroupAdminRoleService extends AuthorizingRoleService {
         this.groups = groups;
     }
 
+    @Override
     public boolean canCreateStore() {
         return false;
     }

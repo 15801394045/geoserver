@@ -52,7 +52,6 @@ public class GeoServerBasicAuthenticationFilter extends GeoServerCompositeFilter
         } catch (Exception e) {
             throw new IOException(e);
         }
-
         BasicAuthenticationFilterConfig authConfig = (BasicAuthenticationFilterConfig) config;
 
         BasicAuthenticationFilter filter =
