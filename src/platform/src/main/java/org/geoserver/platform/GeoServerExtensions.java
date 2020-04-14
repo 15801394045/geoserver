@@ -81,7 +81,7 @@ public class GeoServerExtensions implements ApplicationContextAware, Application
      * #setApplicationContext(ApplicationContext)}标识使用spring上下文的标志，可以对缺少的扩展启用其他一致性检查。
      */
     static boolean isSpringContext = true;
-    /** A static application context 静态应用程序上下文 */
+    /** A static application context */
     static ApplicationContext context;
 
     /**
@@ -352,7 +352,7 @@ public class GeoServerExtensions implements ApplicationContextAware, Application
         }
     }
 
-    /** Checks the context, if null will issue a warning. 检查上下文，如果为空则发出警告。 */
+    /** Checks the context, if null will issue a warning. */
     static void checkContext(ApplicationContext context, String bean) {
         if (context == null && isSpringContext) {
             LOGGER.warning("Extension lookup '" + bean + "', but ApplicationContext is unset.");

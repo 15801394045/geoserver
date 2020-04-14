@@ -50,6 +50,8 @@ import org.geoserver.config.JAIInfo;
 import org.geoserver.data.util.CoverageUtils;
 import org.geoserver.platform.GeoServerExtensions;
 import org.geoserver.platform.ServiceException;
+import org.geoserver.util.NearestMatchFinder;
+import org.geoserver.util.NearestMatchWarningAppender;
 import org.geoserver.wms.WMSInfo.WMSInterpolation;
 import org.geoserver.wms.WatermarkInfo.Position;
 import org.geoserver.wms.dimension.DimensionDefaultValueSelectionStrategy;
@@ -1641,7 +1643,8 @@ public class WMS implements ApplicationContextAware {
 
             if (timeInfo.isNearestMatchEnabled()) {
                 List<Object> nearestMatchedTimes =
-                        getNearestMatches(typeInfo, timeInfo, defaultedTimes, ResourceInfo.TIME);
+                        getNearestTimeMatch(
+                                typeInfo, timeInfo, defaultedTimes, getMaxRenderingTime());
                 builder.appendFilters(
                         timeInfo.getAttribute(), timeInfo.getEndAttribute(), nearestMatchedTimes);
             } else {
@@ -1670,55 +1673,29 @@ public class WMS implements ApplicationContextAware {
         return result;
     }
 
-    private List<Object> getNearestMatches(
-            ResourceInfo resourceInfo,
-            DimensionInfo dimension,
-            List<Object> values,
-            String dimensionName)
-            throws IOException {
-        // if there is a max rendering time set, use it on this match, as the input request might
-        // make the
-        // code go through a lot of nearest match queries
-        int maxRenderingTime = getMaxRenderingTime();
-        long maxTime =
-                maxRenderingTime > 0 ? System.currentTimeMillis() + maxRenderingTime * 1000 : -1;
-        NearestMatchFinder finder = NearestMatchFinder.get(resourceInfo, dimension, dimensionName);
-        List<Object> result = new ArrayList<>();
-        for (Object value : values) {
-            Object nearest = finder.getNearest(value);
-            if (nearest == null) {
-                // no way to specify there is no match yet, so we'll use the original value, which
-                // will not match
-                NearestMatchWarningAppender.addWarning(
-                        resourceInfo.prefixedName(),
-                        dimensionName,
-                        null,
-                        dimension.getUnits(),
-                        NotFound);
-                result.add(value);
-            } else if (value.equals(nearest)) {
-                result.add(value);
-            } else {
-                NearestMatchWarningAppender.addWarning(
-                        resourceInfo.prefixedName(),
-                        dimensionName,
-                        nearest,
-                        dimension.getUnits(),
-                        Nearest);
-                result.add(nearest);
-            }
-
-            // check timeout
-            if (maxTime > 0 && System.currentTimeMillis() > maxTime) {
-                throw new ServiceException(
-                        "Nearest matching dimension values required more time than allowed and has been forcefully stopped. "
-                                + "The max rendering time is "
-                                + (maxRenderingTime)
-                                + "s");
-            }
-        }
-
-        return result;
+    /**
+     * Builds the custom dimensions filter in base to type info and KVP.
+     *
+     * @param rawKVP Request KVP map
+     * @param typeInfo Feature type info instance
+     * @return builded filter
+     */
+    public Filter getDimensionsToFilter(
+            final Map<String, String> rawKVP, final FeatureTypeInfo typeInfo) {
+        CustomDimensionFilterConverter.DefaultValueStrategyFactory defaultValueStrategyFactory =
+                new CustomDimensionFilterConverter.DefaultValueStrategyFactory() {
+                    @Override
+                    public DimensionDefaultValueSelectionStrategy getDefaultValueStrategy(
+                            ResourceInfo resource,
+                            String dimensionName,
+                            DimensionInfo dimensionInfo) {
+                        return WMS.this.getDefaultValueStrategy(
+                                resource, dimensionName, dimensionInfo);
+                    }
+                };
+        final CustomDimensionFilterConverter converter =
+                new CustomDimensionFilterConverter(defaultValueStrategyFactory, ff);
+        return converter.getDimensionsToFilter(rawKVP, typeInfo);
     }
 
     /**
@@ -1901,5 +1878,41 @@ public class WMS implements ApplicationContextAware {
         }
 
         return false;
+    }
+
+    /**
+     * Returns available values for a custom dimension.
+     *
+     * @param typeInfo feature type info that holds the custom dimension.
+     * @param dimensionInfo Custom dimension name.
+     * @return values list.
+     */
+    public TreeSet<Object> getDimensionValues(FeatureTypeInfo typeInfo, DimensionInfo dimensionInfo)
+            throws IOException {
+        final FeatureCollection fcollection = getDimensionCollection(typeInfo, dimensionInfo);
+
+        final TreeSet<Object> result = new TreeSet<>();
+        if (dimensionInfo.getPresentation() == DimensionPresentation.LIST
+                || (dimensionInfo.getPresentation() == DimensionPresentation.DISCRETE_INTERVAL
+                        && dimensionInfo.getResolution() == null)) {
+            final UniqueVisitor uniqueVisitor = new UniqueVisitor(dimensionInfo.getAttribute());
+            fcollection.accepts(uniqueVisitor, null);
+            Set<Object> uniqueValues = uniqueVisitor.getUnique();
+            for (Object obj : uniqueValues) {
+                result.add(obj);
+            }
+        } else {
+            final MinVisitor minVisitor = new MinVisitor(dimensionInfo.getAttribute());
+            fcollection.accepts(minVisitor, null);
+            final CalcResult minResult = minVisitor.getResult();
+            if (minResult != CalcResult.NULL_RESULT) {
+                result.add(minResult.getValue());
+                final MaxVisitor maxVisitor = new MaxVisitor(dimensionInfo.getAttribute());
+                fcollection.accepts(maxVisitor, null);
+                result.add(maxVisitor.getMax());
+            }
+        }
+
+        return result;
     }
 }
