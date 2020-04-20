@@ -12,8 +12,8 @@ import org.geoserver.wms.describelayer.DescribeLayerModel;
 import org.geotools.styling.StyledLayerDescriptor;
 
 /**
- * Web Map Service implementation.
- * Web地图服务实现。
+ * Web Map Service implementation. Web地图服务实现。
+ *
  * <p>Each of the methods on this class corresponds to an operation as defined by the Web Map
  * Specification. See {@link "http://www.opengeospatial.org/standards/wms"} for more details.
  *

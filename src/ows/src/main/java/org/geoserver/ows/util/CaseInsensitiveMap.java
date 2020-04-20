@@ -11,7 +11,7 @@ import java.util.Set;
 import java.util.TreeMap;
 
 /**
- * Map decorator which makes String keys case-insensitive.
+ * Map decorator which makes String keys case-insensitive. 使字符串键不区分大小写的映射修饰符。
  *
  * @author Justin Deoliveira, The Open Planning Project, jdeolive@openplans.org
  */

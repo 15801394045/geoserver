@@ -65,101 +65,56 @@ import org.springframework.context.ApplicationContextAware;
  */
 public class DefaultWebMapService
         implements WebMapService, ApplicationContextAware, DisposableBean {
-    /**
-     * default for 'format' parameter.
-     * “format”参数的默认值。
-     * */
+    /** default for 'format' parameter. “format”参数的默认值。 */
     public static String FORMAT = "image/png";
 
-    /**
-     * default for 'styles' parameter.
-     * default for 'styles' parameter.
-     * */
+    /** default for 'styles' parameter. default for 'styles' parameter. */
     public static List<Style> STYLES = Collections.emptyList();
 
-    /**
-     * longest side for the preview
-     * 预览的最长边
-     * */
+    /** longest side for the preview 预览的最长边 */
     public static int MAX_SIDE = 768;
 
-    /**
-     * minimum height to have a reasonable looking OL preview
-     * 具有合理外观的最低高度
-     * */
+    /** minimum height to have a reasonable looking OL preview 具有合理外观的最低高度 */
     public static int MIN_OL_HEIGHT = 330;
 
-    /**
-     * minimum width to have a reasonable looking OL preview
-     * 具有合理外观的最小宽度
-     * */
+    /** minimum width to have a reasonable looking OL preview 具有合理外观的最小宽度 */
     public static int MIN_OL_WIDTH = 330;
 
-    /**
-     * max height to have a reasonable looking OL preview
-     * 最大高度有一个合理的外观OL预览
-     * */
+    /** max height to have a reasonable looking OL preview 最大高度有一个合理的外观OL预览 */
     public static int MAX_OL_HEIGHT = 768;
 
-    /**
-     * max width to have a reasonable looking OL preview
-     * 具有合理外观的最大宽度OL预览
-     * */
+    /** max width to have a reasonable looking OL preview 具有合理外观的最大宽度OL预览 */
     public static int MAX_OL_WIDTH = 1024;
 
-    /**
-     * default for 'srs' parameter.
-     * “srs”参数的默认值。
-     *  */
+    /** default for 'srs' parameter. “srs”参数的默认值。 */
     public static String SRS = "EPSG:4326";
 
-    /**
-     * default for 'transparent' parameter.
-     * “transparent”参数的默认值。
-     *  */
+    /** default for 'transparent' parameter. “transparent”参数的默认值。 */
     public static Boolean TRANSPARENT = Boolean.TRUE;
 
-    /**
-     * default for 'transparent' parameter.
-     * “transparent”参数的默认值。
-     * */
+    /** default for 'transparent' parameter. “transparent”参数的默认值。 */
     public static volatile ExecutorService RENDERING_POOL;
 
-    /**
-     * default for 'bbox' paramter
-     * “bbox”参数的默认值
-     * */
-    public static ReferencedEnvelope BBOX = new ReferencedEnvelope(new Envelope(-180, 180, -90, 90), DefaultGeographicCRS.WGS84);
+    /** default for 'bbox' paramter “bbox”参数的默认值 */
+    public static ReferencedEnvelope BBOX =
+            new ReferencedEnvelope(new Envelope(-180, 180, -90, 90), DefaultGeographicCRS.WGS84);
 
-    /**
-     * wms configuration
-     * wms配置
-     * */
+    /** wms configuration wms配置 */
     private final WMS wms;
 
     /**
-     * Temporary field that handles the usage of the line width optimization code
-     * 处理线宽优化代码使用的临时字段
-     * */
+     * Temporary field that handles the usage of the line width optimization code 处理线宽优化代码使用的临时字段
+     */
     private static Boolean OPTIMIZE_LINE_WIDTH = null;
 
-    /**
-     * This variable is used to bypass direct raster rendering.
-     * 此变量用于绕过直接光栅渲染。
-     * */
+    /** This variable is used to bypass direct raster rendering. 此变量用于绕过直接光栅渲染。 */
     private static boolean BYPASS_DIRECT =
             Boolean.getBoolean("org.geoserver.render.raster.direct.disable");
 
-    /**
-     * Max number of rule filters to be used against the data source
-     * 对数据源使用的最大规则筛选器数
-     * */
+    /** Max number of rule filters to be used against the data source 对数据源使用的最大规则筛选器数 */
     private static Integer MAX_FILTER_RULES = null;
 
-    /**
-     * Use a global rendering pool, or use a new pool each time
-     * 使用全局渲染池，或每次使用新池
-     * */
+    /** Use a global rendering pool, or use a new pool each time 使用全局渲染池，或每次使用新池 */
     private static Boolean USE_GLOBAL_RENDERING_POOL = null;
 
     private GetCapabilities getCapabilities;
@@ -216,15 +171,16 @@ public class DefaultWebMapService
 
     /** @see ApplicationContextAware#setApplicationContext(ApplicationContext) */
     @Override
-    @SuppressFBWarnings("LI_LAZY_INIT_STATIC") // method is not called by multiple threads 方法不是由多个线程调用的
+    @SuppressFBWarnings(
+            "LI_LAZY_INIT_STATIC") // method is not called by multiple threads 方法不是由多个线程调用的
     public void setApplicationContext(ApplicationContext context) throws BeansException {
 
         // first time initialization of line width optimization flag
-        //首次初始化线宽优化标志
+        // 首次初始化线宽优化标志
         if (OPTIMIZE_LINE_WIDTH == null) {
             String enabled = GeoServerExtensions.getProperty("OPTIMIZE_LINE_WIDTH", context);
             // default to true, but allow switching off
-            //默认为true，但允许关闭
+            // 默认为true，但允许关闭
             if (enabled == null) {
                 OPTIMIZE_LINE_WIDTH = false;
             } else {
@@ -233,11 +189,11 @@ public class DefaultWebMapService
         }
 
         // initialization of the renderer choice flag
-        //渲染器选择标志的初始化
+        // 渲染器选择标志的初始化
         if (MAX_FILTER_RULES == null) {
             String rules = GeoServerExtensions.getProperty("MAX_FILTER_RULES", context);
             // default to true, but allow switching off
-            //默认为true，但允许关闭
+            // 默认为true，但允许关闭
             if (rules == null) {
                 MAX_FILTER_RULES = 20;
             } else {
@@ -246,11 +202,11 @@ public class DefaultWebMapService
         }
 
         // control usage of the global rendering thread pool
-        //控制全局呈现线程池的使用
+        // 控制全局呈现线程池的使用
         if (USE_GLOBAL_RENDERING_POOL == null) {
             String usePool = GeoServerExtensions.getProperty("USE_GLOBAL_RENDERING_POOL", context);
             // default to true, but allow switching off
-            //默认为true，但允许关闭
+            // 默认为true，但允许关闭
             if (usePool == null) {
                 USE_GLOBAL_RENDERING_POOL = true;
             } else {

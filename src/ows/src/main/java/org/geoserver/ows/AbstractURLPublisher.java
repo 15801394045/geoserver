@@ -27,7 +27,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractController;
 
 /**
- * Controller which publishes files through a web interface from the classpath
+ * Controller which publishes files through a web interface from the classpath 从类路径通过web接口发布文件的控制器
  *
  * <p>To use this controller, it should be mapped to a particular url in the url mapping of the
  * spring dispatcher servlet. Example:

@@ -11,6 +11,7 @@ import org.xml.sax.EntityResolver;
 
 /**
  * Creates an EntityResolver using geoserver configuration settings.
+ * 使用geoserver配置设置创建EntityResolver。
  *
  * @author Davide Savazzi - geo-solutions.it
  */
@@ -18,7 +19,7 @@ public class EntityResolverProvider {
 
     private static EntityResolver entityResolver = PreventLocalEntityResolver.INSTANCE;
 
-    /** A entity resolver provider that always disables entity resolution */
+    /** A entity resolver provider that always disables entity resolution 始终禁用实体解析的实体解析程序提供程序 */
     public static final EntityResolverProvider RESOLVE_DISABLED_PROVIDER =
             new EntityResolverProvider(null);
 
@@ -37,6 +38,7 @@ public class EntityResolverProvider {
             Boolean externalEntitiesEnabled = geoServer.getGlobal().isXmlExternalEntitiesEnabled();
             if (externalEntitiesEnabled != null && externalEntitiesEnabled) {
                 // XML parser will try to resolve entities
+                // XML解析器将尝试解析实体
                 return null;
             }
         }

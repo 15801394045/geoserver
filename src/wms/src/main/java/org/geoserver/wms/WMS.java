@@ -50,8 +50,6 @@ import org.geoserver.config.JAIInfo;
 import org.geoserver.data.util.CoverageUtils;
 import org.geoserver.platform.GeoServerExtensions;
 import org.geoserver.platform.ServiceException;
-import org.geoserver.util.NearestMatchFinder;
-import org.geoserver.util.NearestMatchWarningAppender;
 import org.geoserver.wms.WMSInfo.WMSInterpolation;
 import org.geoserver.wms.WatermarkInfo.Position;
 import org.geoserver.wms.dimension.DimensionDefaultValueSelectionStrategy;
@@ -104,8 +102,9 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
 /**
- * A facade providing access to the WMS configuration details
- *  A facade providing access to the WMS configuration details
+ * A facade providing access to the WMS configuration details A facade providing access to the WMS
+ * configuration details
+ *
  * @author Gabriel Roldan
  */
 public class WMS implements ApplicationContextAware {
@@ -1643,8 +1642,7 @@ public class WMS implements ApplicationContextAware {
 
             if (timeInfo.isNearestMatchEnabled()) {
                 List<Object> nearestMatchedTimes =
-                        getNearestTimeMatch(
-                                typeInfo, timeInfo, defaultedTimes, getMaxRenderingTime());
+                        getNearestMatches(typeInfo, timeInfo, defaultedTimes, ResourceInfo.TIME);
                 builder.appendFilters(
                         timeInfo.getAttribute(), timeInfo.getEndAttribute(), nearestMatchedTimes);
             } else {
@@ -1673,29 +1671,55 @@ public class WMS implements ApplicationContextAware {
         return result;
     }
 
-    /**
-     * Builds the custom dimensions filter in base to type info and KVP.
-     *
-     * @param rawKVP Request KVP map
-     * @param typeInfo Feature type info instance
-     * @return builded filter
-     */
-    public Filter getDimensionsToFilter(
-            final Map<String, String> rawKVP, final FeatureTypeInfo typeInfo) {
-        CustomDimensionFilterConverter.DefaultValueStrategyFactory defaultValueStrategyFactory =
-                new CustomDimensionFilterConverter.DefaultValueStrategyFactory() {
-                    @Override
-                    public DimensionDefaultValueSelectionStrategy getDefaultValueStrategy(
-                            ResourceInfo resource,
-                            String dimensionName,
-                            DimensionInfo dimensionInfo) {
-                        return WMS.this.getDefaultValueStrategy(
-                                resource, dimensionName, dimensionInfo);
-                    }
-                };
-        final CustomDimensionFilterConverter converter =
-                new CustomDimensionFilterConverter(defaultValueStrategyFactory, ff);
-        return converter.getDimensionsToFilter(rawKVP, typeInfo);
+    private List<Object> getNearestMatches(
+            ResourceInfo resourceInfo,
+            DimensionInfo dimension,
+            List<Object> values,
+            String dimensionName)
+            throws IOException {
+        // if there is a max rendering time set, use it on this match, as the input request might
+        // make the
+        // code go through a lot of nearest match queries
+        int maxRenderingTime = getMaxRenderingTime();
+        long maxTime =
+                maxRenderingTime > 0 ? System.currentTimeMillis() + maxRenderingTime * 1000 : -1;
+        NearestMatchFinder finder = NearestMatchFinder.get(resourceInfo, dimension, dimensionName);
+        List<Object> result = new ArrayList<>();
+        for (Object value : values) {
+            Object nearest = finder.getNearest(value);
+            if (nearest == null) {
+                // no way to specify there is no match yet, so we'll use the original value, which
+                // will not match
+                NearestMatchWarningAppender.addWarning(
+                        resourceInfo.prefixedName(),
+                        dimensionName,
+                        null,
+                        dimension.getUnits(),
+                        NotFound);
+                result.add(value);
+            } else if (value.equals(nearest)) {
+                result.add(value);
+            } else {
+                NearestMatchWarningAppender.addWarning(
+                        resourceInfo.prefixedName(),
+                        dimensionName,
+                        nearest,
+                        dimension.getUnits(),
+                        Nearest);
+                result.add(nearest);
+            }
+
+            // check timeout
+            if (maxTime > 0 && System.currentTimeMillis() > maxTime) {
+                throw new ServiceException(
+                        "Nearest matching dimension values required more time than allowed and has been forcefully stopped. "
+                                + "The max rendering time is "
+                                + (maxRenderingTime)
+                                + "s");
+            }
+        }
+
+        return result;
     }
 
     /**

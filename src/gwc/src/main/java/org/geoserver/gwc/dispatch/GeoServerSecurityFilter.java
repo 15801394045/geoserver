@@ -19,7 +19,7 @@ import org.opengis.geometry.MismatchedDimensionException;
 import org.opengis.referencing.FactoryException;
 
 /**
- * Filter which applies GeoServer security to GWC requests
+ * Filter which applies GeoServer security to GWC requests 对GWC请求应用GeoServer安全性的筛选器
  *
  * @author Kevin Smith, Boundless
  */

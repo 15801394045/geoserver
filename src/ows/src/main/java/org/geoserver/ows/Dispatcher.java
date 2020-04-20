@@ -132,15 +132,15 @@ public class Dispatcher extends AbstractController {
      */
     int XML_LOOKAHEAD = 8192;
 
-    /** list of callbacks */
+    /** list of callbacks 回调列表 */
     List<DispatcherCallback> callbacks = Collections.EMPTY_LIST;
 
-    /** SOAP namespaces */
+    /** SOAP namespaces SOAP命名空间 */
     public static final String SOAP_12_NS = "http://www.w3.org/2003/05/soap-envelope";
 
     public static final String SOAP_11_NS = "http://schemas.xmlsoap.org/soap/envelope/";
 
-    /** SOAP mime type */
+    /** SOAP mime type SOAP mime类型 */
     static final String SOAP_MIME = "application/soap+xml";
 
     private Method getEntityResolver = null;
@@ -163,7 +163,7 @@ public class Dispatcher extends AbstractController {
     }
 
     /**
-     * Sets the flag to control wether the dispatcher is cite compliante.
+     * Sets the flag to control wether the dispatcher is cite compliante. 设置标志以控制调度程序是否引用符合性。
      *
      * <p>If set to <code>true</code>, the dispatcher with throw exceptions when it encounters
      * something that is not 100% compliant with CITE standards. An example would be a request which
@@ -183,13 +183,15 @@ public class Dispatcher extends AbstractController {
     @Override
     protected void initApplicationContext(ApplicationContext context) {
         // load life cycle callbacks
+        // 负载生命周期回调
         callbacks = GeoServerExtensions.extensions(DispatcherCallback.class, context);
 
         // setup the xml lookahead value
+        // 设置xml lookahead
         String lookahead = GeoServerExtensions.getProperty("XML_LOOKAHEAD", context);
         if (lookahead != null) {
             try {
-                int lookaheadValue = Integer.valueOf(lookahead);
+                int lookaheadValue = Integer.parseInt(lookahead);
                 if (lookaheadValue <= 0) {
                     logger.log(
                             Level.SEVERE,
@@ -209,6 +211,7 @@ public class Dispatcher extends AbstractController {
 
     protected void preprocessRequest(HttpServletRequest request) throws Exception {
         // set the charset
+        // 设置字符集
         Charset charSet = null;
 
         // TODO: make this server settable
@@ -230,9 +233,11 @@ public class Dispatcher extends AbstractController {
         preprocessRequest(httpRequest);
 
         // create a new request instance
+        // 创建新的请求实例
         Request request = new Request();
 
         // set request / response
+        // 设置请求/响应
         request.setHttpRequest(httpRequest);
         request.setHttpResponse(httpResponse);
 
@@ -240,12 +245,15 @@ public class Dispatcher extends AbstractController {
 
         try {
             // initialize the request and allow callbacks to override it
+            // 初始化请求并允许回调重写它
             request = init(request);
 
             // store it in the thread local
+            // 存储在线程本地
             REQUEST.set(request);
 
             // find the service
+            // 找到服务
             try {
                 service = service(request);
             } catch (Throwable t) {
@@ -255,30 +263,36 @@ public class Dispatcher extends AbstractController {
             }
 
             // throw any outstanding errors
+            // 抛出任何未解决的错误
             if (request.getError() != null) {
                 throw request.getError();
             }
 
             // dispatch the operation
+            // 调度操作
             Operation operation = dispatch(request, service);
             request.setOperation(operation);
 
             if (request.isSOAP()) {
                 // let the request object know that this is a SOAP request, since it effects
                 // often how the request will be encoded
+                // 让请求对象知道这是一个SOAP请求，因为它经常影响请求的编码方式
                 flagAsSOAP(operation);
             }
 
             // execute it
+            // 执行它
             Object result = execute(request, operation);
 
             // write the response
+            // 写下回应
             if (result != null) {
                 response(result, request, operation);
             }
         } catch (Throwable t) {
             // make Spring security exceptions flow so that exception transformer filter can handle
             // them
+            // 使Spring安全异常流动，以便异常转换器过滤器能够处理它们
             if (isSecurityException(t)) throw (Exception) t;
             exception(t, service, request);
         } finally {
@@ -318,13 +332,16 @@ public class Dispatcher extends AbstractController {
 
         String reqContentType = httpRequest.getContentType();
         // figure out method
+        // 计算方法
         request.setGet("GET".equalsIgnoreCase(httpRequest.getMethod()) || isForm(reqContentType));
 
         // create the kvp map
+        // 创建kvp映射
         parseKVP(request);
 
         if (!request.isGet()) { // && httpRequest.getInputStream().available() > 0) {
             // check for a SOAP request, if so we need to unwrap the SOAP stuff
+            // 检查SOAP请求，如果需要的话，我们需要打开SOAP
             if (httpRequest.getContentType() != null
                     && httpRequest.getContentType().startsWith(SOAP_MIME)) {
                 request.setSOAP(true);
@@ -336,6 +353,7 @@ public class Dispatcher extends AbstractController {
                 up.setFileItemFactory(new DiskFileItemFactory());
 
                 // treat regular form fields as additional kvp parameters
+                // 将常规表单字段视为其他kvp参数
                 Map<String, FileItem> kvpFileItems = new CaseInsensitiveMap(new LinkedHashMap());
                 try {
                     for (FileItem item : (List<FileItem>) up.parseRequest(httpRequest)) {
@@ -350,6 +368,7 @@ public class Dispatcher extends AbstractController {
                 }
 
                 // if no file fields were found, look for one named "body"
+                // 如果找不到文件字段，请查找一个名为“body”的字段
                 if (request.getInput() == null) {
                     FileItem body = kvpFileItems.get("body");
                     if (body != null) {
@@ -367,6 +386,7 @@ public class Dispatcher extends AbstractController {
             } else {
                 // regular XML POST
                 // wrap the input stream in a buffered input stream
+                // 常规的XML POST将输入流包装在缓冲的输入流中
                 request.setInput(reader(httpRequest));
             }
 
@@ -391,13 +411,15 @@ public class Dispatcher extends AbstractController {
         // parse the request path into two components. (1) the 'path' which
         // is the string after the last '/', and the 'context' which is the
         // string before the last '/'
+        // 将请求路径解析为两个组件。（1） “path”是最后一个“/”之后的字符串，“context”是最后一个“/”之前的字符串
         String ctxPath = request.httpRequest.getContextPath();
         String reqPath = request.httpRequest.getRequestURI();
         reqPath = reqPath.substring(ctxPath.length());
 
         // strip off leading and trailing slashes
+        // 去掉前后斜线
         if (reqPath.startsWith("/")) {
-            reqPath = reqPath.substring(1, reqPath.length());
+            reqPath = reqPath.substring(1);
         }
 
         if (reqPath.endsWith("/")) {
@@ -538,6 +560,7 @@ public class Dispatcher extends AbstractController {
         // JD: for cite compliance, a service *must* be specified explicitley by
         // either a kvp, or an xml attribute, however in reality the context
         // is often a good way to infer the service or request
+        // 尝试从上下文JD推断：对于引用遵从性，服务*必须*由kvp或xml属性明确指定，但实际上上下文通常是推断服务或请求的好方法
         String service = req.getService();
 
         if ((service == null) || (req.getRequest() == null)) {
@@ -545,12 +568,10 @@ public class Dispatcher extends AbstractController {
 
             if (service == null) {
                 service = normalize((String) map.get("service"));
-
                 if ((service != null) && !citeCompliant) {
                     req.setService(service);
                 }
             }
-
             if (req.getRequest() == null) {
                 req.setRequest(normalize((String) map.get("request")));
             }
@@ -563,6 +584,7 @@ public class Dispatcher extends AbstractController {
         }
 
         // load from teh context
+        // 从上下文加载
         Service serviceDescriptor = findService(service, req.getVersion(), req.getNamespace());
         if (serviceDescriptor == null) {
             // hack for backwards compatability, try finding the service with the context instead
@@ -572,6 +594,7 @@ public class Dispatcher extends AbstractController {
                         findService(req.getContext(), req.getVersion(), req.getNamespace());
                 if (serviceDescriptor != null) {
                     // found, assume that the client is using <service>/<request>
+                    // 找到，假设客户端正在使用<service>/<request>
                     if (req.getRequest() == null) {
                         req.setRequest(req.getService());
                     }
@@ -597,10 +620,11 @@ public class Dispatcher extends AbstractController {
     }
 
     /**
-     * Normalize a parameter, trimming whitespace
+     * Normalize a parameter, trimming whitespace 规范化参数，修剪空白
      *
-     * @param value
+     * @param value value
      * @return The value with whitespace trimmed, or null if this would result in an empty string.
+     *     已修剪空白的值，如果这将导致空字符串，则为空。
      */
     public static String normalize(String value) {
         if (value == null) {
@@ -1164,11 +1188,13 @@ public class Dispatcher extends AbstractController {
         // the id is actually the pathinfo, in case workspace specific services
         // are active we want to skip the workspace part in the path and go directly to the
         // servlet, which normally, if we ended up here, is a reflector (wms/kml)
+        // id实际上是pathinfo，如果工作区特定的服务是活动的，我们希望跳过路径中的工作区部分，直接转到servlet，如果我们在这里结束，它通常是一个反射器（wms/kml）
         if (id.contains("/")) {
             id = id.substring(id.indexOf("/") + 1);
         }
 
         // first just match on service,request
+        // 首先是服务匹配，请求
         List matches = new ArrayList();
 
         for (Iterator itr = services.iterator(); itr.hasNext(); ) {
@@ -1186,12 +1212,15 @@ public class Dispatcher extends AbstractController {
         Service sBean = null;
 
         // if multiple, use version to filter match
+        // 如果有多个，请使用版本筛选匹配项
         if (matches.size() > 1) {
             List vmatches = new ArrayList(matches);
 
             // match up the version
+            // 匹配版本
             if (version != null) {
                 // version specified, look for a match
+                // 指定版本，查找匹配项
                 for (Iterator itr = vmatches.iterator(); itr.hasNext(); ) {
                     Service s = (Service) itr.next();
 
@@ -1205,11 +1234,13 @@ public class Dispatcher extends AbstractController {
                 if (vmatches.isEmpty()) {
                     // no matching version found, drop out and next step
                     // will sort to return highest version
+                    // 找不到匹配的版本，退出，下一步将排序以返回最高版本
                     vmatches = new ArrayList(matches);
                 }
             }
 
             // if still multiple matches use namespace, if available, to filter
+            // 如果仍然有多个匹配项，则使用命名空间（如果可用）进行筛选
             if (namespace != null && vmatches.size() > 1) {
                 List nmatches = new ArrayList(vmatches);
                 for (Iterator itr = nmatches.iterator(); itr.hasNext(); ) {
@@ -1217,6 +1248,7 @@ public class Dispatcher extends AbstractController {
                     if (s.getNamespace() != null && !s.getNamespace().equals(namespace)) {
                         // service declares namespace, kick it out if there is no match, otherwise
                         // leave it along
+                        // 服务声明名称空间，如果没有匹配项，则将其踢出，否则保留它
                         itr.remove();
                     }
                 }
@@ -1227,16 +1259,15 @@ public class Dispatcher extends AbstractController {
             }
 
             // multiple services found, sort by version
+            // 找到多个服务，按版本排序
             if (vmatches.size() > 1) {
-                // use highest version
+                //
+                // 使用最高版本
                 Comparator comparator =
-                        new Comparator() {
-                            public int compare(Object o1, Object o2) {
-                                Service s1 = (Service) o1;
-                                Service s2 = (Service) o2;
-
-                                return s1.getVersion().compareTo(s2.getVersion());
-                            }
+                        (o1, o2) -> {
+                            Service s1 = (Service) o1;
+                            Service s2 = (Service) o2;
+                            return s1.getVersion().compareTo(s2.getVersion());
                         };
 
                 Collections.sort(vmatches, comparator);
@@ -1609,7 +1640,8 @@ public class Dispatcher extends AbstractController {
     }
 
     /**
-     * Reads the following parameters from an OWS XML request body: * service
+     * Reads the following parameters from an OWS XML request body: * service 从OWS
+     * XML请求正文中读取以下参数：*服务
      *
      * @param request {@link Request} object
      * @return a {@link Map} containing the parsed parameters.

@@ -492,9 +492,8 @@ public class GeoServerExtensions implements ApplicationContextAware, Application
      */
     public static File file(String path) {
         if (fileCache.containsKey(path)) {
-            return fileCache.get(
-                    path); // override provided by GeoServerExtensionsHelper
-                           // 由GeoServerExtensionsHelper提供的重写
+            return fileCache.get(path); // override provided by GeoServerExtensionsHelper
+            // 由GeoServerExtensionsHelper提供的重写
         }
         ServletContext servletContext;
         if (context instanceof WebApplicationContext

@@ -25,7 +25,6 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -156,7 +155,8 @@ import org.springframework.context.ApplicationContextAware;
 
 /**
  * Spring bean acting as a mediator between GWC and GeoServer for the GWC integration classes so
- * that they don't need to worry about complexities nor API changes in either.
+ * that they don't need to worry about complexities nor API changes in either. Spring
+ * bean充当GWC和GeoServer之间GWC集成类的中介，这样它们就不必担心其中的复杂性和API更改。
  *
  * @author Gabriel Roldan
  * @version $Id$
@@ -192,10 +192,10 @@ public class GWC implements DisposableBean, InitializingBean, ApplicationContext
 
     private CatalogStyleChangeListener catalogStyleChangeListener;
 
-    /** The catalog, secured and filtered */
+    /** The catalog, secured and filtered 目录，安全和过滤 */
     private final Catalog catalog;
 
-    /** The raw catalog, non secured. Use with extreme caution! */
+    /** The raw catalog, non secured. Use with extreme caution! 原始目录，不安全。小心使用！ */
     private Catalog rawCatalog;
 
     private ConfigurableLockProvider lockProvider;
@@ -209,17 +209,18 @@ public class GWC implements DisposableBean, InitializingBean, ApplicationContext
     final GeoServerEnvironment gsEnvironment = GeoServerExtensions.bean(GeoServerEnvironment.class);
 
     // list of GeoServer contributed grid sets that should not be editable by the user
+    // 用户不应编辑的GeoServer提供的网格集列表
     private final Set<String> geoserverEmbeddedGridSets = new HashSet<>();
 
     private BlobStoreAggregator blobStoreAggregator;
 
     /**
-     * Constructor for the GWC mediator
+     * Constructor for the GWC mediator GWC中介的构造函数
      *
      * @param gwcConfigPersister
      * @param sb The GeoWebCache StorageBroker
-     * @param tld The GeoWebCache TileLayer Aggregator
-     * @param gridSetBroker The GeoWebCache GridSet Aggregator
+     * @param tld The GeoWebCache TileLayer Aggregator GeoWebCache TilleLayer聚合器
+     * @param gridSetBroker The GeoWebCache GridSet Aggregator GeoWebCache网格集聚合器
      * @param tileBreeder The GeoWebCache TileBreeder (Used for seeding)
      * @param monitor The GeoWebCache DiskQuota Monitor
      * @param owsDispatcher The GeoServer OWS Service Dispatcher
@@ -267,7 +268,7 @@ public class GWC implements DisposableBean, InitializingBean, ApplicationContext
     }
 
     /**
-     * Updates the configurable lock provider to use the specified bean
+     * Updates the configurable lock provider to use the specified bean 更新可配置的锁提供程序以使用指定的bean
      *
      * @param lockProviderName
      */
@@ -349,7 +350,7 @@ public class GWC implements DisposableBean, InitializingBean, ApplicationContext
     }
 
     /**
-     * Fully truncates the given layer, including any ParameterFilter
+     * Fully truncates the given layer, including any ParameterFilter 完全截断给定层，包括任何参数筛选器
      *
      * @param layerName
      */
@@ -2239,6 +2240,7 @@ public class GWC implements DisposableBean, InitializingBean, ApplicationContext
 
     /**
      * Verify that a layer is accessible within a certain bounding box using the (secured) catalog
+     * 使用（安全的）目录验证在某个边界框内是否可以访问某个图层
      *
      * @param layerName name of the layer
      * @param boundingBox bounding box
@@ -2247,22 +2249,26 @@ public class GWC implements DisposableBean, InitializingBean, ApplicationContext
     public void verifyAccessLayer(String layerName, ReferencedEnvelope boundingBox)
             throws ServiceException, SecurityException {
         // get the list of internal layers corresponding to the advertised layer
+        // 获取与公布层对应的内部层的列表
         List<LayerInfo> layerInfos = null;
         LayerInfo li = getCatalog().getLayerByName(layerName);
         if (li != null) {
-            layerInfos = Arrays.asList(li);
+            layerInfos = Collections.singletonList(li);
         } else {
             // tricky here, first we need to flatten the group, and we also need
             // to make sure we are getting the full layer group, not just part of it
             // otherwise we are going to cache different views for different users
+            // 这里有点棘手，首先我们需要将组扁平化，我们还需要确保得到的是完整的层组，而不仅仅是其中的一部分，否则我们将为不同的用户缓存不同的视图
             LayerGroupInfo group = getCatalog().getLayerGroupByName(layerName);
             if (group != null) {
                 // use the prefixed name to avoid clashes because the raw catalog is not
                 // workspace-filtered
+                // 使用前缀名称避免冲突，因为原始目录未经过工作区筛选
                 LayerGroupInfo rawGroup;
                 if (group.getWorkspace() != null) {
                     // LocalWorkspace has a NameDequalifyingProxy which will strip off the workspace
                     // if we just call prefixedName
+                    // LocalWorkspace有一个NameDequalifyingProxy，如果我们只调用prefixedName，它将删除工作区
                     rawGroup =
                             rawCatalog.getLayerGroupByName(group.getWorkspace(), group.getName());
                 } else {
@@ -2280,6 +2286,7 @@ public class GWC implements DisposableBean, InitializingBean, ApplicationContext
         if (boundingBox != null) {
             for (LayerInfo layerInfo : layerInfos) {
                 // Unwrap potential proxy instances, so the instanceof SecuredLayerInfo check works.
+                // 展开潜在的代理实例，以便SecuredLayerInfo检查的实例正常工作。
                 if (layerInfo instanceof Proxy) {
                     layerInfo =
                             ProxyUtils.unwrap(
@@ -2288,12 +2295,14 @@ public class GWC implements DisposableBean, InitializingBean, ApplicationContext
 
                 if (layerInfo instanceof SecuredLayerInfo) {
                     // test layer bbox limits
+                    // 测试层bbox限制
                     SecuredLayerInfo securedLayerInfo = (SecuredLayerInfo) layerInfo;
                     WrapperPolicy policy = securedLayerInfo.getWrapperPolicy();
                     AccessLimits limits = policy.getLimits();
 
                     if (limits instanceof DataAccessLimits) {
                         // ensure we are all using the same CRS
+                        // 确保我们都使用相同的CRS
                         CoordinateReferenceSystem dataCrs = layerInfo.getResource().getCRS();
                         if (boundingBox.getCoordinateReferenceSystem() != null
                                 && !CRS.equalsIgnoreMetadata(
@@ -2302,6 +2311,7 @@ public class GWC implements DisposableBean, InitializingBean, ApplicationContext
                                 boundingBox = boundingBox.transform(dataCrs, true);
                             } catch (Exception e) {
                                 // bboxes not compatible? deny access for all certainty.
+                                // bboxes不兼容？完全肯定地拒绝访问。
                                 boundingBox = null;
                             }
                         }
@@ -2311,6 +2321,7 @@ public class GWC implements DisposableBean, InitializingBean, ApplicationContext
                         Filter filter = ((DataAccessLimits) limits).getReadFilter();
                         if (filter != null) {
                             // extract filter envelope from filter
+                            // 从滤波器中提取滤波器包络
                             Envelope box =
                                     (Envelope)
                                             filter.accept(
