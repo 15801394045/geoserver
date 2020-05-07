@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.geoserver.rest.edit.mapper.BuildMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="org.geoserver.rest.edit.entity.Build">
+        <result column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="floor" property="floor"/>
+        <result column="floor_height" property="floorHeight"/>
+        <result column="height" property="height"/>
+        <result column="source" property="source"/>
+        <result column="geom" property="geom"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, name, floor, floor_height, height, source, st_asgeojson(geom) as geom
+    </sql>
+
+    <insert id="insert" parameterType="org.geoserver.rest.edit.entity.Build" useGeneratedKeys="true" keyProperty="id"
+            keyColumn="id">
+        insert into build (name, floor,
+                           floor_height, height, source,
+                           geom)
+        values (#{name,jdbcType=VARCHAR}, #{floor,jdbcType=INTEGER},
+                #{floorHeight,jdbcType=DOUBLE}, #{height,jdbcType=DOUBLE}, #{source,jdbcType=INTEGER},
+                st_geometryfromtext(st_astext(st_geomfromgeojson(
+                        #{geom,jdbcType=VARCHAR})),
+                                    4326))
+    </insert>
+
+    <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from build where id=#{id,jdbcType=INTEGER}
+    </select>
+
+    <select id="selectList" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from build ${ew.customSqlSegment}
+    </select>
+
+    <select id="selectPage" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from build ${ew.customSqlSegment}
+    </select>
+
+    <update id="updateById" parameterType="org.geoserver.rest.edit.entity.Poi">
+        update build
+        <set>
+            <if test="et.name != null">
+                name = #{et.name,jdbcType=VARCHAR},
+            </if>
+            <if test="et.floor != null">
+                floor = #{et.floor,jdbcType=INTEGER},
+            </if>
+            <if test="et.floorHeight != null">
+                floor_height = #{et.floorHeight,jdbcType=DOUBLE},
+            </if>
+            <if test="et.height != null">
+                height = #{et.height,jdbcType=DOUBLE},
+            </if>
+            <if test="et.source != null">
+                source = #{et.source,jdbcType=INTEGER},
+            </if>
+            <if test="et.geom != null">
+                geom = st_geometryfromtext(st_astext(st_geomfromgeojson(
+                #{et.geom,jdbcType=VARCHAR})),
+                4326),
+            </if>
+        </set>
+        where id=#{et.id,jdbcType=INTEGER}
+    </update>
+</mapper>

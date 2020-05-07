@@ -1,0 +1,32 @@
+
+
+POST http://localhost:8080/geoserver/poi
+Content-Type: application/json;charset=UTF-8
+
+{
+  "name": "test",
+  "adress": "江苏省扬州市高邮市郭集镇平安路75号",
+  "telephone": "None",
+  "category": "酒店;星级酒店",
+  "geom": {"type":"Point","coordinates":[119.428254904,32.400902405]}
+}
+###
+
+PUT http://localhost:8080/geoserver/poi
+Content-Type: application/json;charset=UTF-8
+
+{
+  "adress": "江苏省扬州市高邮市郭集镇平安路75号",
+  "category": "酒店;星级酒店",
+  "geom": {
+    "coordinates": [
+      119.428254904,
+      32.400902405
+    ],
+    "type": "Point"
+  },
+  "id": 159828,
+  "name": "test",
+  "telephone": "None"
+}
+###

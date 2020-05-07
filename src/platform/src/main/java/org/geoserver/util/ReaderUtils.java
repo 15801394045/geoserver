@@ -38,7 +38,7 @@ import org.xml.sax.helpers.DefaultHandler;
  * <p>This class is intended to be used as a library of XML relevant operation for the GeoTools
  * XMLConfigDigester class.
  *
- * <p>该类旨在用作GeoTools xmlconfigudigester类的XML相关操作库。
+ * <p>该类旨在用作GeoTools XMLConfigDigester类的XML相关操作库。
  *
  * <p>
  *

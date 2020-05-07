@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.geoserver.rest.edit.mapper.WatersMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="org.geoserver.rest.edit.entity.Waters">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="geom" property="geom"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, name,  st_asgeojson(geom) as geom
+    </sql>
+
+    <insert id="insert" parameterType="org.geoserver.rest.edit.entity.Waters" useGeneratedKeys="true"
+            keyProperty="id"
+            keyColumn="id">
+        insert into waters (name, geom)
+        values (#{name,jdbcType=VARCHAR}, st_geometryfromtext(st_astext(st_geomfromgeojson(
+                #{geom,jdbcType=VARCHAR})), 4326))
+    </insert>
+    <update id="updateById" parameterType="org.geoserver.rest.edit.entity.Waters">
+        update waters
+        <set>
+            <if test="et.name != null">
+                name = #{et.name,jdbcType=VARCHAR},
+            </if>
+            <if test="et.geom != null">
+                geom = st_geometryfromtext(st_astext(st_geomfromgeojson(
+                #{et.geom,jdbcType=VARCHAR})),
+                4326),
+            </if>
+        </set>
+        where id=#{et.id,jdbcType=INTEGER}
+    </update>
+    <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from waters where id=#{id,jdbcType=INTEGER}
+    </select>
+
+    <select id="selectList" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from waters ${ew.customSqlSegment}
+    </select>
+
+    <select id="selectPage" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from waters ${ew.customSqlSegment}
+    </select>
+
+</mapper>

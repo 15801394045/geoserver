@@ -521,11 +521,11 @@ public class GeoServerBasePage extends WebPage implements IAjaxIndicatorAware {
      */
     String getPageTitle() {
         try {
-            return "GeoServer: " + getTitle();
+            return "WhaleServer: " + getTitle();
         } catch (Exception e) {
             LOGGER.warning(getClass().getSimpleName() + " does not have a title set");
         }
-        return "GeoServer";
+        return "WhaleServer";
     }
 
     /**

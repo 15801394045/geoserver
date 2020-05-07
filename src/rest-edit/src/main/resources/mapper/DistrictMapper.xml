@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.geoserver.rest.edit.mapper.DistrictMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="org.geoserver.rest.edit.entity.District">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="layer" property="layer"/>
+        <result column="code" property="code"/>
+        <result column="geom" property="geom"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, name, layer, code, st_asgeojson(geom) as geom
+    </sql>
+    <insert id="insert" parameterType="org.geoserver.rest.edit.entity.District" useGeneratedKeys="true" keyProperty="id"
+            keyColumn="id">
+        insert into district (name, layer,
+                              code, geom)
+        values (#{name,jdbcType=VARCHAR}, #{layer,jdbcType=VARCHAR},
+                #{code,jdbcType=VARCHAR}, st_geometryfromtext(st_astext(st_geomfromgeojson(
+                    #{geom,jdbcType=VARCHAR})), 4326))
+    </insert>
+    <update id="updateById"  parameterType="org.geoserver.rest.edit.entity.District">
+        update district
+        <set>
+            <if test="et.name != null">
+                name = #{et.name,jdbcType=VARCHAR},
+            </if>
+            <if test="et.layer != null">
+                layer = #{et.layer,jdbcType=VARCHAR},
+            </if>
+            <if test="et.code != null">
+                code = #{et.code,jdbcType=VARCHAR},
+            </if>
+            <if test="et.geom != null">
+                geom = st_geometryfromtext(st_astext(st_geomfromgeojson(
+                #{et.geom,jdbcType=VARCHAR})),
+                4326),
+            </if>
+        </set>
+        where id=#{et.id,jdbcType=INTEGER}
+    </update>
+    <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from district where id=#{id,jdbcType=INTEGER}
+    </select>
+
+    <select id="selectList" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from district ${ew.customSqlSegment}
+    </select>
+
+    <select id="selectPage" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from district ${ew.customSqlSegment}
+    </select>
+</mapper>
